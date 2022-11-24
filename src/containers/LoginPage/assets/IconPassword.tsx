@@ -1,4 +1,4 @@
-export default function LogoPassword() {
+export default function IconPassword() {
   return (
     <svg
       width="29"

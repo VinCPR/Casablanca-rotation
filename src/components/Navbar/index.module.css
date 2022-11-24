@@ -1,0 +1,17 @@
+.navbarContainer {
+  display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: transparent;
+  border-bottom: 1px solid #dfe1e6;
+}
+
+.title {
+  color: #3bacb6;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 20px;
+}
