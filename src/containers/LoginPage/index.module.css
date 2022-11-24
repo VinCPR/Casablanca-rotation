@@ -1,0 +1,95 @@
+.loginBackground {
+  background-image: url("./../../../public/images/LoginBackground.png");
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.loginSection {
+  display: flex;
+  justify-content: center;
+}
+
+.loginContainer {
+  background-color: linear-gradient(
+    111.68deg,
+    rgba(255, 255, 255, 0.29) -8.74%,
+    rgba(255, 255, 255, 0.39) 85.7%
+  );
+  border: 3px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0px 4px 40px rgba(0, 187, 249, 0.2);
+  border-radius: 61px;
+  width: 632px;
+  height: 600px;
+  margin-top: 150px;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid rgba(59, 172, 182, 0.98);
+  border-radius: 50px;
+  padding: 15px 60px;
+  font-size: 15px;
+  background-: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  opacity: 0.5;
+}
+
+.input + .input {
+  margin-top: 50px;
+}
+
+.forgotPassword {
+  color: #ffb830;
+  text-decoration-line: underline;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.loginButton {
+  border: none;
+  background: rgba(59, 172, 182, 0.98);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 25px;
+  height: 60px;
+  margin-top: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.newAccount {
+  color: rgba(59, 172, 182, 0.98);
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.iconEmail {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+.iconPassword {
+  position: absolute;
+  margin-top: 112px;
+  margin-left: 20px;
+}
