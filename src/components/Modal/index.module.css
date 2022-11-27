@@ -17,8 +17,8 @@
 }
 
 .modal {
-  width: 900px;
-  height: 600px;
+  width: 1000px;
+  height: 650px;
   left: 300px;
   top: 247px;
   background: white;
@@ -29,46 +29,41 @@
 }
 
 .modalHeader {
-  height: 50px;
+  height: 60px;
   background: white;
   overflow: hidden;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   margin: 0;
-  padding: 10px;
+  padding-top: 30px;
   color: #2c3e50;
   font-family: "Roboto";
   font-weight: 500;
-  font-size: 18px;
+  font-size: 24px;
   text-align: center;
 }
 
-.modalContent {
-  padding: 10px;
-  font-size: 14px;
-  font-family: "Roboto";
-  color: #2c3e50;
-  text-align: center;
+.modalContainer {
+  padding: 20px 40px;
+  height: 82.5%;
+}
+
+.actionsContainer {
+  padding: 0px 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .closeBtn {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-  bottom: 2px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  font-family: "Roboto";
+  width: 150px;
+  height: 40px;
   font-weight: 500;
   padding: 11px 28px;
   border-radius: 12px;
-  font-size: 0.8rem;
+  font-size: 16px;
+  font-family: "Roboto";
   border: none;
   color: #fff;
   background: #ff3e4e;
@@ -79,4 +74,25 @@
   box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
   transform: translateY(-5px);
   background: #ff3e4e;
+}
+
+.previewBtn {
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-family: "Roboto";
+  font-size: 16px;
+  border: none;
+  color: #fff;
+  background: #3bacb6;
+  transition: all 0.25s ease;
+}
+
+.previewBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
+  transform: translateY(-5px);
+  background: rgb(59, 172, 182);
 }
