@@ -14,16 +14,19 @@ export default function BlockContainer(props: Props) {
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
+          <div className={styles.selectionContainer}></div>
           <button className={styles.addBtn}>+</button>
           <div className={styles.totalBox}>{counters.department}</div>
         </div>
         {/* Container for Services */}
         <div className={styles.btnContainer}>
+        <div className={styles.selectionContainer}></div>
           <button className={styles.addBtn}>+</button>
           <div className={styles.totalBox}>{counters.service}</div>
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
+        <div className={styles.selectionContainer}></div>
           <button className={styles.addBtn}>+</button>
           <div className={styles.totalBox}>{counters.hospital}</div>
         </div>

@@ -20,6 +20,13 @@
   border: 3px solid #3bacb6;
 }
 
+.selectionContainer{
+  position: absolute;
+  top: 125px;
+  height: 60%;
+  width: 100%;
+}
+
 .blockContainer {
   display: flex;
   justify-content: center;
@@ -51,6 +58,7 @@
   border: none;
   border-radius: 12px; 
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .addBtn:hover{
