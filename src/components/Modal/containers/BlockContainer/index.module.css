@@ -37,3 +37,41 @@
 .btnContainer:last-of-type {
   border-right: none;
 }
+
+.addBtn{
+  position: absolute;
+  bottom: 2.65%;
+  left: 7.5%;
+  width: 180px;
+  height: 50px;
+  background:#3BACB6;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px; 
+  transition: all 0.25s ease;
+}
+
+.addBtn:hover{
+  box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
+  transform: translateY(-5px);
+  background: rgb(59, 172, 182);
+}
+
+.totalBox{
+  position: absolute;
+  bottom: 2.65%;
+  right: 7.5%;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  color: #2c3e50;
+  font-family: "Roboto";
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
