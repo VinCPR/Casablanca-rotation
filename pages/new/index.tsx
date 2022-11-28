@@ -7,13 +7,13 @@ export default function New() {
   const { isOpened, toggle } = useModal();
 
   return (
-    <main>
+    <>
       <button className={styles.primaryBtn} onClick={toggle}>
         Open Modal
       </button>
       <Modal isOpened={isOpened} toggle={toggle}>
-        <BlockContainer></BlockContainer>
+        <BlockContainer/>
       </Modal>
-    </main>
+    </>
   );
 }
