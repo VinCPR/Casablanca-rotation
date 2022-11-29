@@ -2,7 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import StyledCalendar from "../../src/containers/ViewCalendarPage/containers/StyledCalendar";
 
-export default () => {
+export default function RouteToRotationView() {
   const [value, setValue] = useState(new Date());
   return (
     <StyledCalendar
@@ -11,4 +11,4 @@ export default () => {
       value={value}
     />
   );
-};
+}
