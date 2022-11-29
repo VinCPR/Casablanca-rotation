@@ -1,0 +1,44 @@
+.sideBarContainer {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    width: 300px;
+    height: 680px;
+    align-items: center;
+  
+    border-right:1px solid #dfe1e6;
+    border-bottom: 1px solid #dfe1e6;
+
+  }
+  .sideBarContainer h4{
+    width: 100%;
+    height: 56px;
+
+    text-align: center;
+    position: relative;
+    background: #ffffff;
+    color: #778494;
+    ;
+    
+
+  }
+  .sideBarContainer h4:hover{
+    width: 100%;
+    height: 56px;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+    background: #F4F5F7;
+    color: #3bacb6;
+    
+
+  }
+  .title {
+    color: #3bacb6;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  
