@@ -11,7 +11,7 @@ export default function New() {
       <button className={styles.primaryBtn} onClick={toggle}>
         Open Modal
       </button>
-      <Modal isOpened={isOpened} toggle={toggle}>
+      <Modal heading={"Design Rotation for Block 1"} isOpened={isOpened} toggle={toggle}>
         <BlockContainer/>
       </Modal>
     </>

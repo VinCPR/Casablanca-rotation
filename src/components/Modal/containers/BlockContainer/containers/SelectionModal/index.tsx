@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import styles from "./index.module.css";
+import { ReactNode } from "react";
 
 interface Props {
   children?: ReactNode;
@@ -8,7 +8,7 @@ interface Props {
   heading: string;
 }
 
-export default function Modal({
+export default function SelectionModal({
   children,
   isOpened,
   toggle,
@@ -24,7 +24,7 @@ export default function Modal({
               <div className={styles.modalHeader}>{heading}</div>
               <div className={styles.modalContainer}>{children}</div>
               <div className={styles.actionsContainer}>
-                <button className={styles.previewBtn}>Preview</button>
+                <button className={styles.addBtn}>Add</button>
                 <button className={styles.closeBtn} onClick={() => toggle()}>
                   Close
                 </button>
@@ -36,3 +36,4 @@ export default function Modal({
     </>
   );
 }
+  

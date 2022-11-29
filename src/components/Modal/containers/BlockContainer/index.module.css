@@ -22,9 +22,11 @@
 
 .selectionContainer{
   position: absolute;
-  top: 125px;
-  height: 60%;
-  width: 100%;
+  padding-top: 125px;
+  height: 82.5%;
+  width: 101%;
+  border-bottom: 3px solid #3BACB6;
+  left: -2px;
 }
 
 .blockContainer {
