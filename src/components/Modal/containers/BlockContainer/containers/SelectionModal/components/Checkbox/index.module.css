@@ -1,0 +1,11 @@
+.checkbox {
+  width: 50px;
+  height: 50px;
+  background: #D9D9D9;
+  border-radius: 12px;
+  margin-left: 10px;
+}
+
+.checkbox:hover{
+    cursor: pointer;
+}

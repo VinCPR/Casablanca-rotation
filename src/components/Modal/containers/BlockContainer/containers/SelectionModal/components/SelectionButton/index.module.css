@@ -1,0 +1,11 @@
+.selectionBtn {
+  border-radius: 10px;
+  background-color: gold;
+  width: 325px;
+  height: 50px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Roboto";
+}

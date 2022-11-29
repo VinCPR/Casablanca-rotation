@@ -29,6 +29,12 @@
   left: -2px;
 }
 
+.deptContainer{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
 .blockContainer {
   display: flex;
   justify-content: center;

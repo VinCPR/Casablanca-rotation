@@ -1,6 +1,9 @@
 import useModal from "../../useModal";
 import SelectionModal from "./containers/SelectionModal";
+import Checkbox from "./containers/SelectionModal/components/Checkbox";
+import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
 import styles from "./index.module.css";
+import data from "./data"
 
 export default function BlockContainer() {
   const counters = { department: 0, service: 0, hospital: 0 };
@@ -9,6 +12,9 @@ export default function BlockContainer() {
     service: useModal(),
     hospital: useModal(),
   };
+  const [departments, services, hospitals] = data();
+  const colors = ["#18A0FB", "#9747FF", "#9D7E2F", "#7DABF8", "#FF4747", "#453BB6", "#FF9620", "#F46B6B", "#6EB5FF", "#FF9CEE"];
+
 
   return (
     <div className={styles.container}>
@@ -53,18 +59,43 @@ export default function BlockContainer() {
           toggle={modalSelector.department.toggle}
           heading={"Please select the departments for this block"}
         >
-          
+          {departments.map((value) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton value={value} />
+                <Checkbox />
+              </div>
+            );
+          })}
         </SelectionModal>
         <SelectionModal
           isOpened={modalSelector.service.isOpened}
           toggle={modalSelector.service.toggle}
           heading={"Please select the services for this block"}
-        />
+        >
+          {services.map((value) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton value={value} />
+                <Checkbox />
+              </div>
+            );
+          })}
+        </SelectionModal>
         <SelectionModal
           isOpened={modalSelector.hospital.isOpened}
           toggle={modalSelector.hospital.toggle}
           heading={"Please select the hospitals for this block"}
-        />
+        >
+          {hospitals.map((value) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton value={value} />
+                <Checkbox />
+              </div>
+            );
+          })}
+        </SelectionModal>
       </div>
     </div>
   );
