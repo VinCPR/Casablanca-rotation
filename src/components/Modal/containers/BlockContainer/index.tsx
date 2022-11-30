@@ -75,7 +75,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox label={value}/>
+                <Checkbox onClick={onClick} label={value}/>
               </div>
             );
           })}
@@ -89,7 +89,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox label={value}/>
+                <Checkbox onClick={onClick} label={value}/>
               </div>
             );
           })}
@@ -103,7 +103,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox label={value}/>
+                <Checkbox onClick={onClick} label={value}/>
               </div>
             );
           })}
