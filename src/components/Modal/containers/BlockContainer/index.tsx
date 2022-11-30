@@ -4,6 +4,7 @@ import Checkbox from "./containers/SelectionModal/components/Checkbox";
 import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
 import styles from "./index.module.css";
 import data from "./data"
+import React, { useState } from "react";
 
 export default function BlockContainer() {
   const counters = { department: 0, service: 0, hospital: 0 };
@@ -15,6 +16,10 @@ export default function BlockContainer() {
   const [departments, services, hospitals] = data();
   const colors = ["#18A0FB", "#9747FF", "#9D7E2F", "#7DABF8", "#FF4747", "#453BB6", "#FF9620", "#F46B6B", "#6EB5FF", "#FF9CEE"];
 
+  function onClick(event:any):void{
+     const target = event.target as HTMLInputElement;
+     console.log(target.value);
+  }
 
   return (
     <div className={styles.container}>

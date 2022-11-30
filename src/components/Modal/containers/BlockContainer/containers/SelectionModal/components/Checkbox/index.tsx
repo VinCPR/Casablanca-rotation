@@ -4,26 +4,24 @@ import Checkmark from "./assets/Checkmark";
 
 interface Props {
   label?: string;
-  checked?: boolean;
 }
 
-export default function Checkbox({ label = "", checked = false }: Props) {
-  const [isChecked, setIsChecked] = useState(checked);
+export default function Checkbox({ label = "" }: Props) {
+  const [isChecked, setIsChecked] = useState(false);
 
   function handleClick() {
     setIsChecked((prevState) => !prevState);
-    console.log({label, isChecked})
   }
 
   return (
     <>
       {!isChecked && (
-        <div onClick={handleClick} className={styles.unchecked}></div>
+        <button onClick={handleClick} className={styles.unchecked} value={label}></button>
       )}
       {isChecked && (
-        <div onClick={handleClick} className={styles.checked}>
+        <button onClick={handleClick} className={styles.checked} value={label}>
           <Checkmark />
-        </div>
+        </button>
       )}
     </>
   );
