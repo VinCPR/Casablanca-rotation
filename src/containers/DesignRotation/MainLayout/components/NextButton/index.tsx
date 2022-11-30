@@ -10,7 +10,7 @@ export default function NextButton () {
     return(
         <Link href="/design-rotation/second-step">
         <button  className={styles.nextButton}>
-            <span>Next&gt;&gt;</span>
+            <span>Next &gt;&gt;</span>
         </button>
         </Link>
     )

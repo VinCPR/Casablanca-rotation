@@ -8,8 +8,21 @@ export default function FirstStep(){
     
     return (
         <div  >
-        <BackButton></BackButton>
+        <h1 className={styles.firstText}>Design Rotation</h1>
+        <BackButton/>
+        <div className={styles.parent} >
+            <div className={styles.stepActive}>
+                <text>Step 1</text>
+                <text>Specify rotation requirements</text>
+            </div>
+            <div className={styles.stepNormal}>
+                <text>Step 2</text>
+                <text>Design rotation requirements</text>
+            </div>
+
+        </div>
         <text className= {styles.title}>LET’S GET STARTED</text>
+        
         <div className={styles.text}>
             <text  >We need a few information before diving into the rotation design</text>
         </div>
@@ -25,7 +38,7 @@ export default function FirstStep(){
             <label>Enter the number of students in each group:</label>
             <input className={styles.questionBox3} type = "text" />
         </div>
-        <NextButton></NextButton>
+        <NextButton/>
         </div>
     )
 }
