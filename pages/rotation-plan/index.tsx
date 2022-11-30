@@ -9,8 +9,8 @@ export default function RouteToRotationView() {
   return (
     <>
       <Navbar />
-      <>
-        <Sidebar />
+      <div style={{position:"relative"}}>
+        <Sidebar highlight={2} />
         <div className={styles.calendarContainer}>
           <div className={styles.calendarHeader}>ROTATION PLAN</div>
           <div className={styles.calendarSubheader}>
@@ -24,7 +24,7 @@ export default function RouteToRotationView() {
             />
           </div>
         </div>
-      </>
+      </div>
     </>
   );
 }

@@ -32,7 +32,6 @@
   width: 100%;
   height: calc(100% - 160px);
   display: grid;
-  grid-gap: 5px;
   grid-template: repeat(10, 1fr) / repeat(1, 1fr);
   grid-auto-flow: row dense;
 }

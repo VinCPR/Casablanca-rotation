@@ -7,8 +7,8 @@ export default function RouteToViewSchedule() {
   return (
     <>
       <Navbar />
-      <>
-        <Sidebar />
+      <div style={{position:"relative"}}>
+        <Sidebar highlight={2}/>
         <div className={styles.scheduleContainer}>
           <div className={styles.scheduleHeader}>ROTATION SCHEDULE</div>
           <div className={styles.scheduleDate}>Date: November 10, 2022</div>
@@ -16,7 +16,7 @@ export default function RouteToViewSchedule() {
                 <ScheduleContainer/>
           </div>
         </div>
-      </>
+      </div>
     </>
   );
 }
