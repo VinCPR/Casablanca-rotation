@@ -107,6 +107,9 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+.background{
+  background: #F8F9FD;
+}
 
 @media (max-width: 600px) {
   .grid {
