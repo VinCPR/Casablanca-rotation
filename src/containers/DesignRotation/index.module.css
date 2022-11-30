@@ -1,5 +1,5 @@
-.pageContain{
-    display: flex;
-    width: 100%;
-    position: relative;
+.pageContain {
+  display: flex;
+  height: calc(100vh - 70px);
+  position: relative;
 }

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/containers/DesignRotation/index.js", "src/containers/DesignRotation/MainLayout/index.js", "src/containers/DesignRotation/MainLayout/FirstStep/index.js", "src/containers/DesignRotation/MainLayout/index.js", "pages/login/design-rotation/index.js", "src/containers/DesignRotation/MainLayout.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],src/containers/DesignRotation/components/MainLayout/RotationDesign/index.js
   "exclude": ["node_modules"]
 }

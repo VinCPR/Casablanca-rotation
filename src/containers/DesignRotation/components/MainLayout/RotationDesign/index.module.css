@@ -1,0 +1,142 @@
+.mainLayout {
+  position: relative;
+  margin-left: 300px;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fd;
+  flex-direction: column;
+  display: flex;
+}
+.firstText {
+  color: #3bacb6;
+  margin-left: 20px;
+}
+
+.container {
+  padding: 70px;
+  position: relative;
+}
+
+.title {
+  font-weight: bold;
+  display: flex;
+  font-size: 55px;
+  margin-top: 30px;
+  color: #3bacb6;
+  justify-content: center;
+}
+
+.parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.stepNormal {
+  width: 495px;
+  height: 70px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  display: flex;
+  padding-left: 20px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stepActive {
+  width: 495px;
+  height: 70px;
+  border-radius: 12px;
+  background-color: #f5fbff;
+  display: flex;
+  padding-left: 20px;
+  border: 1px solid #7dabf8;
+  box-shadow: 0px 1px 2px rgba(55, 65, 81, 0.08);
+  border-radius: 4px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stepActive + .stepNormal {
+  margin-left: 20px;
+}
+
+.stepNormal + .stepActive {
+  margin-left: 20px;
+}
+
+.stepName {
+  color: #3d4eac;
+  font-weight: 500;
+}
+
+.desc {
+  font-size: 14px;
+  color: #3d4eac;
+}
+
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.text {
+  font-size: 20px;
+  margin-left: 20%;
+  justify-content: center;
+  align-items: center;
+  color: #898989;
+}
+.backButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  color: #3bacb6;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.questionBox {
+  width: 100%;
+}
+
+.backheading {
+  display: flex;
+  align-items: center;
+}
+
+.questionBox + .questionBox {
+  margin-top: 25px;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  background-color: rgb(238, 238, 238);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  margin-top: 5px;
+  font-weight: 16px;
+}
+
+.nextButton {
+  padding: 15px 30px;
+  border-radius: 40px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #3bacb6;
+  font-weight: 700;
+  color: white;
+  position: absolute;
+  right: 100px;
+  margin-top: 100px;
+}
