@@ -16,7 +16,7 @@ export default function SideBar({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconDesignRotation isActive={highlight === 1} />
-          <div className={styles.text}>Rotation Plan</div>
+          <div className={styles.text}>Design rotation</div>
         </div>
       </button>
       <button className={highlight !== 2 ? styles.button : styles.highlight}>
