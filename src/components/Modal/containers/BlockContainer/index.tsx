@@ -18,7 +18,14 @@ export default function BlockContainer() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}></div>
+      <div className={styles.header}>
+        <div className={styles.centerItems}>Departments</div>
+        <div className={styles.centerItems}>#Wks</div>
+        <div className={styles.centerItems}>Services</div>
+        <div className={styles.centerItems}>#Wks</div>
+        <div className={styles.centerItems}>Hospitals</div>
+        <div className={styles.centerItems}>#Wks</div>
+      </div>
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
@@ -62,8 +69,8 @@ export default function BlockContainer() {
           {departments.map((value) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton value={value} />
-                <Checkbox />
+                <SelectionButton label={value} />
+                <Checkbox label={value}/>
               </div>
             );
           })}
@@ -76,8 +83,8 @@ export default function BlockContainer() {
           {services.map((value) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton value={value} />
-                <Checkbox />
+                <SelectionButton label={value} />
+                <Checkbox label={value}/>
               </div>
             );
           })}
@@ -90,8 +97,8 @@ export default function BlockContainer() {
           {hospitals.map((value) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton value={value} />
-                <Checkbox />
+                <SelectionButton label={value} />
+                <Checkbox label={value}/>
               </div>
             );
           })}

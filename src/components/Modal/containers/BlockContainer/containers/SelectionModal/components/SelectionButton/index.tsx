@@ -1,10 +1,10 @@
 import styles from "./index.module.css";
 
 interface Props {
-  value: string;
+  label: string;
   background?: string;
 }
 
-export default function SelectionButton({ value = "", background = "" }: Props) {
-  return <button style = {{background: background}} className={styles.selectionBtn}>{value}</button>;
+export default function SelectionButton({ label = "", background = "" }: Props) {
+  return <button style = {{background: background}} className={styles.selectionBtn}>{label}</button>;
 }

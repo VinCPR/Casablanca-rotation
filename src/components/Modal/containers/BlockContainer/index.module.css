@@ -9,6 +9,8 @@
 }
 
 .header {
+  display: grid;
+  grid-template-columns: [line1]23%[line2]10.3%[line3]23%[line4]10.3%[line5]23%[line6]10.3%;
   position: absolute;
   top: -2px;
   left: -2px;
@@ -17,7 +19,15 @@
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   height: 25%;
   background: #3bacb6;
+  color: #fff;
+  font-weight: 500;
+  font-family: "Roboto";
+  font-size: 20px;
   border: 3px solid #3bacb6;
+}
+
+.centerItems{
+  place-self:center;
 }
 
 .selectionContainer{

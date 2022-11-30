@@ -4,7 +4,7 @@ export default function data(){
         "Internal Medicine",
         "Pediatrics",
         "Neurology",
-        "Obgyn",
+        "OB-GYN",
         "Psychiatry",
         "Surgery",
     ];
