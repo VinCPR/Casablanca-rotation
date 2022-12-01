@@ -1,0 +1,344 @@
+.LandingPage{
+    background-color:#FFFFFF;
+}
+.NavBarItems {
+    position: absolute;
+    width: 100%;
+    background-color: #FFFFFF;
+    height: 77px;
+    align-items: center;
+    display: flex;
+    padding: 0 30px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,.1); 
+    border-radius: 13px;
+}
+.NavBarText {
+    position: absolute;
+    left: 122px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #3BACB6;
+}
+.NavBarItems button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 32px;
+    gap: 10px;
+    position: absolute;
+
+    left: 1179px;
+    top: 13px;
+    width: 146px;
+    height: 49px;
+
+    background: #3BACB6;
+
+    border-radius: 11px;
+    border: none;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.NavBarItems button:hover{
+    background: #22b8c6;
+}
+/*Home.tsx CSS*/
+.Hero{
+    width:100%;
+}
+.herodisplay{
+    position:absolute;
+
+    top:40%;
+    left:25%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+}
+
+.herodisplay h1{
+    display:flex;
+    flex-direction: column;
+    font-size: 3rem;
+    text-align: left;
+}
+
+.herodisplay p {
+    display:flex;
+    flex-direction: column;
+
+    margin-top: 2rem;
+    font-size:18px; 
+    text-align: left;
+}
+.herodisplay button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 4rem;
+
+    padding: 3px 28px;
+    position: absolute;
+
+    width: 146px;
+    height: 46px;
+
+    background: #3BACB6;
+    border-radius: 11px;
+    border: none;
+
+    font-family: 'Roboto';
+    font-style: Italic;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+.herodisplay Button:hover{
+    background: #22b8c6;
+}
+.ManImage img{
+    width: 50%;
+}
+.ManImage{
+    position: absolute;
+    width: 50%;
+    top: 15%;
+    left: 60%;
+   
+}
+.Vector{
+    position: absolute;
+    width: 644.07px;
+    height: 518.75px;
+    left: 30%;
+    top: 15%;
+    background: #C7EEFF;
+    transform: rotate(105deg);
+}
+/*Feature css*/
+.FeatureBackground{
+    position: absolute;
+    top:82%;
+    width: 1440px;
+    height: 702px;
+
+    background: #3BACB6;
+}
+
+.FeatureBlock{
+    position: absolute;
+    top:40%;
+    left:10%;
+    display: inline-flex;
+}
+
+.FeatureTitle h1{
+    width: 427px;
+    height: 112px;
+
+    position: absolute;
+    top:15%;
+    left:35%;
+
+    margin-left: auto;
+
+    font-family: 'Roboto';
+    font-style: bold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+.Feature{
+    display:grid;
+    grid-gap:10px;
+    list-style: none;
+    align-items:left;
+}
+.Text h1{
+    position: relative;
+    font-family: 'Roboto';
+    font-style: Bold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: left;
+
+    color: #FAFAFA;
+}
+
+.Text p{
+
+    position: relative;
+
+    text-decoration: none;
+    color: #FAFAFA;
+    font-family:"Roboto";
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    
+    margin: 2rem 0rem;
+    text-align: left;
+}
+.Feature img{
+    margin:2rem 0rem;
+    display: flex;
+    position: relative;
+
+}
+.Text{
+    width: 70%;
+}
+/*Contact css*/
+.Contactcontainer{
+    position: absolute;
+    top: 180%;
+    margin: 2rem 20rem;
+    
+}
+.Contactcontainer h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 55px;
+    text-align: center;
+}
+.Contactcontainer h3{
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    width: 811px;
+    height: 100px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 40px;
+    /* or 143% */
+    text-align: center;
+    color: #374754;
+}
+.Contactcontainer form{
+    padding-top: 2rem;
+    display:flex;
+    flex-direction: column;
+
+    width:50%;
+    height: 600px;
+
+    margin:auto;
+    margin-bottom: 10rem; 
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    /* SHADOW */
+    shadow: 0px 13px 19px;
+    align-items: center;
+
+}
+.Contactcontainer input{
+    display: flex;
+    padding: 19px 20px;
+    gap: 47px;
+
+    width: 353px;
+    height: 54px;
+
+    background: #F5F5F5;
+    border: 1px solid #E8E8E8;
+    border-radius: 39px;
+    
+    margin-left: auto;
+    margin: 1rem;
+
+}
+.Contactcontainer textarea{
+    display: flex;
+    padding: 19px 20px;
+    gap: 47px;
+
+    width: 353px;
+    height: 200px;
+    background: #F5F5F5;
+    border: 1px solid #E8E8E8;
+    
+    margin-left: auto;
+    margin: 1rem;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+    text-color: #18171D;
+
+}
+.Contactcontainer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 3px 28px;
+    position: relative;
+
+    width: 146px;
+    height: 46px;
+
+    background: #3BACB6;
+    border-radius: 35px;
+    border: none;
+
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-style: Bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+}
+.Contactcontainer Button:hover{
+    background: #22b8c6;
+}
+@media screen and(max-width: 850px){
+    .form-container{
+        margin:4rem 2rem;
+    }
+    .form-container form{
+        padding-top:2rem;
+        width:90%;
+    }
+}
