@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@syncfusion/ej2-base": "^20.3.56",
+    "@syncfusion/ej2-react-navigations": "^20.3.58",
+    "@syncfusion/ej2-react-schedule": "^20.3.58",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
