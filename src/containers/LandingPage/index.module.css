@@ -33,12 +33,6 @@
   align-items: center;
   padding: 18px 32px;
   gap: 10px;
-  position: absolute;
-
-  left: 1179px;
-  top: 13px;
-  width: 146px;
-  height: 49px;
 
   background: #3bacb6;
 
@@ -65,11 +59,9 @@
 }
 /*Home.tsx CSS*/
 .Hero {
-  width: 100%;
+  margin-top: 100px;
 }
 .herodisplay {
-  position: absolute;
-
   top: 40%;
   left: 25%;
   transform: translate(-50%, -50%);
@@ -124,12 +116,6 @@
 }
 .ManImage img {
   width: 50%;
-}
-.ManImage {
-  position: absolute;
-  width: 50%;
-  top: 15%;
-  left: 60%;
 }
 .Vector {
   position: absolute;
