@@ -9,6 +9,8 @@
 }
 
 .header {
+  display: grid;
+  grid-template-columns: [line1] 23% [line2] 10.3% [line3] 23% [line4] 10.3% [line5] 23% [line6] 10.3%;
   position: absolute;
   top: -2px;
   left: -2px;
@@ -17,7 +19,30 @@
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   height: 25%;
   background: #3bacb6;
+  color: #fff;
+  font-weight: 500;
+  font-family: "Roboto";
+  font-size: 20px;
   border: 3px solid #3bacb6;
+}
+
+.centerItems {
+  place-self: center;
+}
+
+.selectionContainer {
+  position: absolute;
+  padding-top: 125px;
+  height: 82.5%;
+  width: 101%;
+  border-bottom: 3px solid #3bacb6;
+  left: -2px;
+}
+
+.deptContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .blockContainer {
@@ -38,28 +63,29 @@
   border-right: none;
 }
 
-.addBtn{
+.addBtn {
   position: absolute;
   bottom: 2.65%;
   left: 7.5%;
   width: 180px;
   height: 50px;
-  background:#3BACB6;
+  background: #3bacb6;
   color: #fff;
   font-size: 20px;
   font-weight: 500;
   border: none;
-  border-radius: 12px; 
+  border-radius: 12px;
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
-.addBtn:hover{
+.addBtn:hover {
   box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
   transform: translateY(-5px);
   background: rgb(59, 172, 182);
 }
 
-.totalBox{
+.totalBox {
   position: absolute;
   bottom: 2.65%;
   right: 7.5%;
@@ -72,6 +98,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-
