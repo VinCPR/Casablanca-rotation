@@ -1,7 +1,7 @@
 /*Feature css*/
 .FeatureBackground{
-    width: 1440px;
-    height: 702px;
+    width: 100vw;
+    height: 90vh;
     position: relative;
     background: #3BACB6;
 }
@@ -13,7 +13,7 @@
 }
 
 .FeatureTitle h1{
-    width: 427px;
+    width: 40vw;
     height: 112px;
     position: absolute;
 

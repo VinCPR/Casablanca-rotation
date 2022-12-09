@@ -121,5 +121,7 @@
     .form-container input{
         width:90%;
     }
-
+    .form-container h3{
+        font-size:15px;
+    }
 }
