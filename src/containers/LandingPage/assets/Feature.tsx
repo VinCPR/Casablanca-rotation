@@ -1,6 +1,6 @@
 import { IMAGES_MANIFEST } from "next/dist/shared/lib/constants";
 import Image from "next/image";
-import styles from "../index.module.css";
+import styles from "./Feature.module.css";
 export default function Feature() {
     return (
         <>

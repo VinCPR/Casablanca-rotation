@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Styles from "../index.module.css";
+import Styles from "./Home.module.css";
 export default function Home() {
     return (
         <>
@@ -11,8 +11,7 @@ export default function Home() {
                 </div>
                 <div className={Styles.ManImage}>
                     {/*<vector className="Vector"> </vector> */}
-                    <Image src="/images/man.png" alt="logo"  width={550} height={600}/>
-                    
+                    <img src="/images/man.png" alt="Man"/>
                 </div>
             </div>  
         </>

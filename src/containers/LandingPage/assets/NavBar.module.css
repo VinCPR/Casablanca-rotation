@@ -2,8 +2,7 @@
     background-color:#FFFFFF;
 }
 .NavBarItems {
-    position: absolute;
-    width: 100%;
+    width: 100vw;
     background-color: #FFFFFF;
     height: 77px;
     align-items: center;
@@ -13,30 +12,23 @@
     border-radius: 13px;
 }
 .NavBarText {
-    position: absolute;
     left: 122px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
-    line-height: 23px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    margin: 2rem;
     color: #3BACB6;
 }
 .NavBarItems button{
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 18px 32px;
-    gap: 10px;
-    position: absolute;
-
-    left: 1179px;
-    top: 13px;
+    margin-left: 65vw;
     width: 146px;
     height: 49px;
 
@@ -56,13 +48,8 @@
 
     color: #FFFFFF;
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+ 
 }
 .NavBarItems button:hover{
     background: #22b8c6;
 }
-
-
-
