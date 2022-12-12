@@ -4,6 +4,7 @@ import IconDesignRotation from "./containers/IconDesignRotation";
 import IconRotationPlan from "./containers/IconRotationPlan";
 import IconStudentList from "./containers/IconStudentList";
 import IconFacultyList from "./containers/IconFacultyList";
+import Link from 'next/link'
 
 type Props = {
   highlight: number;
@@ -16,15 +17,21 @@ export default function SideBar({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconDesignRotation isActive={highlight === 1} />
+          <Link href="/design-rotation">
           <div className={styles.text}>Design rotation</div>
+          </Link>
         </div>
       </button>
       <button className={highlight !== 2 ? styles.button : styles.highlight}>
+        
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconRotationPlan isActive={highlight === 2} />
+          <Link href="/rotation-plan">
           <div className={styles.text}>Rotation Plan</div>
+          </Link>
         </div>
+  
       </button>
       <button className={highlight !== 3 ? styles.button : styles.highlight}>
         <div className={styles.line} />
