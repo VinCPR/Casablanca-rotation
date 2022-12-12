@@ -1,8 +1,8 @@
 /*Contact css*/
-.Contactcontainer{
+.contactContainer{
     margin: 2rem 20rem;
 }
-.Contactcontainer h1{
+.contactContainer h1{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -10,7 +10,7 @@
     line-height: 55px;
     text-align: center;
 }
-.Contactcontainer h3{
+.contactContainer h3{
     margin: 2rem;
     display: flex;
     flex-direction: row;
@@ -25,7 +25,7 @@
     text-align: center;
     color: #374754;
 }
-.Contactcontainer form{
+.contactContainer form{
     padding-top: 2rem;
     display:flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     align-items: center;
 
 }
-.Contactcontainer input{
+.contactContainer input{
     display: flex;
     flex-direction:column;
     padding: 19px 20px;
@@ -59,7 +59,7 @@
     margin: 1rem;
 
 }
-.Contactcontainer textarea{
+.contactContainer textarea{
     display: flex;
     padding: 19px 20px;
     gap: 47px;
@@ -80,7 +80,7 @@
     text-color: #18171D;
 
 }
-.Contactcontainer button {
+.contactContainer button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +107,7 @@
     color: #FFFFFF;
 
 }
-.Contactcontainer Button:hover{
+.contactContainer Button:hover{
     background: #22b8c6;
 }
 @media screen and(max-width: 850px){

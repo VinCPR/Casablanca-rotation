@@ -1,7 +1,7 @@
-.LandingPage{
+.landingPage{
     background-color:#FFFFFF;
 }
-.NavBarItems {
+.navBarItems {
     width: 100vw;
     background-color: #FFFFFF;
     height: 77px;
@@ -11,7 +11,7 @@
     box-shadow: 0 5px 15px 0 rgba(0,0,0,.1); 
     border-radius: 13px;
 }
-.NavBarText {
+.navBarText {
     left: 122px;
     font-family: 'Roboto';
     font-style: normal;
@@ -24,7 +24,7 @@
     margin: 2rem;
     color: #3BACB6;
 }
-.NavBarItems button{
+.navBarItems button{
     justify-content: center;
     align-items: center;
     padding: 18px 32px;
@@ -50,6 +50,6 @@
 
  
 }
-.NavBarItems button:hover{
+.navBarItems button:hover{
     background: #22b8c6;
 }

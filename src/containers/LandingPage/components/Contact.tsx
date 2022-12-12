@@ -2,7 +2,7 @@ import styles from "./Contact.module.css";
 export default function Contact() {
     return (
         <>
-            <div className={styles.Contactcontainer}>
+            <div className={styles.contactContainer}>
                 <h1>Contact Us</h1>
                 <h3>C-Rotation is designed for medical program. Build a better educational experience for medical practitioners.</h3>
                 <form>

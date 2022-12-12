@@ -1,22 +1,22 @@
 /*Home.tsx CSS*/
-.Hero{
+.hero{
     width:100vw;
     display: flex;
 }
-.herodisplay{
+.heroDisplay{
     position: relative;
     margin:10vh 0vw 0vh 10vw;
     width: 40vw;
 }
 
-.herodisplay h1{
+.heroDisplay h1{
     display:flex;
     flex-direction: column;
     font-size: 3rem;
     text-align: left;
 }
 
-.herodisplay p {
+.heroDisplay p {
     display:flex;
     flex-direction: column;
 
@@ -24,7 +24,7 @@
     font-size:18px; 
     text-align: left;
 }
-.herodisplay button {
+.heroDisplay button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -51,10 +51,10 @@
 
     color: #FFFFFF;
 }
-.herodisplay Button:hover{
+.heroDisplay button:hover{
     background: #22b8c6;
 }
-.ManImage {
+.manImage {
     position: relative;
     margin-left: 10vw;
 }

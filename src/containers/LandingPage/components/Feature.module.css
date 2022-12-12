@@ -1,25 +1,25 @@
 /*Feature css*/
-.FeatureBackground{
+.featureBackground{
     width: 100vw;
     height: 90vh;
     position: relative;
     background: #3BACB6;
 }
 
-.FeatureBlock{
+.featureBlock{
     display: inline-flex;
     margin-top:20vw;
     margin-left: 7vw;
 }
 
-.FeatureTitle h1{
+.featureTitle h1{
     width: 40vw;
     height: 112px;
     position: absolute;
 
     top: 100px;
 
-    margin-left: 35vw;
+    margin-left: 30vw;
     margin-top: 0;
     font-family: 'Roboto';
     font-style: bold;
@@ -30,13 +30,13 @@
 
     color: #FFFFFF;
 }
-.Feature{
+.feature{
     display:grid;
     grid-gap:10px;
     list-style: none;
     align-items:left;
 }
-.Text h1{
+.text h1{
     position: relative;
     font-family: 'Roboto';
     font-style: Bold;
@@ -48,7 +48,7 @@
     color: #FAFAFA;
 }
 
-.Text p{
+.text p{
 
     position: relative;
 
@@ -62,11 +62,11 @@
     margin: 2rem 0rem;
     text-align: left;
 }
-.Feature img{
+.feature img{
     margin:2rem 0rem;
     display: flex;
 
 }
-.Text{
+.text{
     width: 70%;
 }
