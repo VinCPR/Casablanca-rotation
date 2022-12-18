@@ -24,7 +24,7 @@ export default function SelectionModal({
               <div className={styles.modalHeader}>{heading}</div>
               <div className={styles.modalContainer}>{children}</div>
               <div className={styles.actionsContainer}>
-                <button className={styles.addBtn}>Add</button>
+                <button className={styles.addBtn} onClick={() => toggle()}>Add</button>
                 <button className={styles.closeBtn} onClick={() => toggle()}>
                   Close
                 </button>

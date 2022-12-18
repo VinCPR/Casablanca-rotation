@@ -37,7 +37,16 @@
   width: 101%;
   border-bottom: 3px solid #3bacb6;
   left: -2px;
+  display: grid;
+  grid-template: repeat(4, 1fr)/ repeat(1, 1fr);
+  grid-auto-flow: column dense;
 }
+
+/* .selection {
+  display: grid;
+  grid-template: repeat(4, 1fr)/repeat(1,1fr);
+  grid-auto-flow: row dense;
+} */
 
 .deptContainer {
   display: flex;

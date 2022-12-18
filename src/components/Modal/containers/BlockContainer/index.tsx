@@ -1,4 +1,5 @@
 import useModal from "../../useModal";
+import useSelectedComponents from "./useSelectedComponents";
 import SelectionModal from "./containers/SelectionModal";
 import Checkbox from "./containers/SelectionModal/components/Checkbox";
 import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
@@ -16,10 +17,11 @@ export default function BlockContainer() {
   const [departments, services, hospitals] = data();
   const colors = ["#18A0FB", "#9747FF", "#9D7E2F", "#7DABF8", "#FF4747", "#453BB6", "#FF9620", "#F46B6B", "#6EB5FF", "#FF9CEE"];
 
-  function onClick(event:any):void{
-     const target = event.target as HTMLInputElement;
-     console.log(target.value);
-  }
+  const optionSelector = {
+    department: useSelectedComponents(),
+    service: useSelectedComponents(),
+    hospital: useSelectedComponents(),
+  };
 
   return (
     <div className={styles.container}>
@@ -34,7 +36,15 @@ export default function BlockContainer() {
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}></div>
+          <div className={styles.selectionContainer}>
+          {optionSelector.department.selectedComponents.map((value) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton label={value} />
+              </div>
+            );
+          })}
+          </div>
           <button
             className={styles.addBtn}
             onClick={modalSelector.department.toggle}
@@ -45,7 +55,15 @@ export default function BlockContainer() {
         </div>
         {/* Container for Services */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}></div>
+          <div className={styles.selectionContainer}>
+          {optionSelector.service.selectedComponents.map((value) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton label={value} />
+              </div>
+            );
+          })}
+          </div>
           <button
             className={styles.addBtn}
             onClick={modalSelector.service.toggle}
@@ -56,7 +74,15 @@ export default function BlockContainer() {
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}></div>
+          <div className={styles.selectionContainer}>
+          {optionSelector.hospital.selectedComponents.map((value) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton label={value} />
+              </div>
+            );
+          })}
+          </div>
           <button
             className={styles.addBtn}
             onClick={modalSelector.hospital.toggle}
@@ -75,7 +101,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox onClick={onClick} label={value}/>
+                <Checkbox onClick={optionSelector.department.handleClick} label={value}/>
               </div>
             );
           })}
@@ -89,7 +115,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox onClick={onClick} label={value}/>
+                <Checkbox onClick={optionSelector.service.handleClick} label={value}/>
               </div>
             );
           })}
@@ -103,7 +129,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox onClick={onClick} label={value}/>
+                <Checkbox onClick={optionSelector.hospital.handleClick} label={value}/>
               </div>
             );
           })}
