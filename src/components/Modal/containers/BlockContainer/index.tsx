@@ -5,7 +5,7 @@ import Checkbox from "./containers/SelectionModal/components/Checkbox";
 import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
 import styles from "./index.module.css";
 import data from "./data"
-import React, { useState } from "react";
+import React from "react";
 
 export default function BlockContainer() {
   const counters = { department: 0, service: 0, hospital: 0 };
@@ -60,7 +60,8 @@ export default function BlockContainer() {
           {optionSelector.service.selectedComponents.map((obj) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton label={obj.name} />
+                <SelectionButton label={obj.name} width={220} />
+                <input type="number" id={obj.name} value={obj.numOfWeeks} onChange={optionSelector.service.handleChange} className={styles.inputField}/>
               </div>
             );
           })}
@@ -71,7 +72,7 @@ export default function BlockContainer() {
           >
             +
           </button>
-          <div className={styles.totalBox}>{counters.service}</div>
+          <div className={styles.totalBox}>{optionSelector.service.totalNum}</div>
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
@@ -79,7 +80,8 @@ export default function BlockContainer() {
           {optionSelector.hospital.selectedComponents.map((obj) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton label={obj.name} />
+                <SelectionButton label={obj.name} width = {220}/>
+                <input type="number" id={obj.name} value={obj.numOfWeeks} onChange={optionSelector.hospital.handleChange} className={styles.inputField}/>
               </div>
             );
           })}
@@ -90,7 +92,7 @@ export default function BlockContainer() {
           >
             +
           </button>
-          <div className={styles.totalBox}>{counters.hospital}</div>
+          <div className={styles.totalBox}>{optionSelector.hospital.totalNum}</div>
         </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
         <SelectionModal
