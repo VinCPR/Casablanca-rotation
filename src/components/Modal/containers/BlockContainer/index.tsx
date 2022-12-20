@@ -37,10 +37,11 @@ export default function BlockContainer() {
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
           <div className={styles.selectionContainer}>
-          {optionSelector.department.selectedComponents.map((value) => {
+          {optionSelector.department.selectedComponents.map((obj) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton label={value} />
+                <SelectionButton label={obj.name} width = {220}/>
+                <input type="number" id={obj.name} value={obj.numOfWeeks} onChange={optionSelector.department.handleChange} className={styles.inputField}/>
               </div>
             );
           })}
@@ -51,15 +52,15 @@ export default function BlockContainer() {
           >
             +
           </button>
-          <div className={styles.totalBox}>{counters.department}</div>
+          <div className={styles.totalBox}>{optionSelector.department.totalNum}</div>
         </div>
         {/* Container for Services */}
         <div className={styles.btnContainer}>
           <div className={styles.selectionContainer}>
-          {optionSelector.service.selectedComponents.map((value) => {
+          {optionSelector.service.selectedComponents.map((obj) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton label={value} />
+                <SelectionButton label={obj.name} />
               </div>
             );
           })}
@@ -75,10 +76,10 @@ export default function BlockContainer() {
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
           <div className={styles.selectionContainer}>
-          {optionSelector.hospital.selectedComponents.map((value) => {
+          {optionSelector.hospital.selectedComponents.map((obj) => {
             return (
               <div className={styles.deptContainer}>
-                <SelectionButton label={value} />
+                <SelectionButton label={obj.name} />
               </div>
             );
           })}

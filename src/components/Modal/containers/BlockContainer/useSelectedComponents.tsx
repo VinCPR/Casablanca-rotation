@@ -1,16 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import SelectedComponents from "./SelectedComponents";
 
 export default function useSelectedComponents() {
-  const [selectedComponents, setSelectedComponents] = useState<string[]>([]);
+  const [selectedComponents, setSelectedComponents] = useState<SelectedComponents[]>([]);
+  var total = 0;
+  const [totalNum, setTotalNum] = useState(total);
+
+  useEffect(() => {
+    setTotalNum(() => {return sum(selectedComponents, total)}),[selectedComponents];
+  })
+
+
+  function sum(array:SelectedComponents[], total:number){
+    for (var i = 0; i < selectedComponents.length; i++){
+      total = total + selectedComponents[i].numOfWeeks;
+    }
+    return total;
+  }
+
+  function handleChange (event:any) {
+    const target = event.target as HTMLInputElement;
+    setSelectedComponents(current =>
+      current.map(obj => {
+        if (obj.name === target.id) {
+          return {...obj, numOfWeeks: target.valueAsNumber};
+        }
+        return obj;      
+      }),
+    );
+  }
 
   function handleClick(event: any): void {
     const target = event.target as HTMLInputElement;
-    console.log(selectedComponents.includes(target.value));
-    if (!selectedComponents.includes(target.value)) {
-      setSelectedComponents((arr) => [target.value, ...arr]);
-      console.log(target.value);
+    if (!selectedComponents.some(e => e.name === target.value)) {
+      const newComponent = new SelectedComponents(target.value)
+      setSelectedComponents((arr) => [newComponent, ...arr]);
     } else {
-      const index = selectedComponents.indexOf(target.value);
+      const index = selectedComponents.findIndex(e => e.name === target.value);
       removeItem(index);
     }
   }
@@ -22,5 +48,5 @@ export default function useSelectedComponents() {
     ]);
   };
 
-  return {selectedComponents, handleClick};
+  return {selectedComponents, handleClick, totalNum, handleChange};
 }
