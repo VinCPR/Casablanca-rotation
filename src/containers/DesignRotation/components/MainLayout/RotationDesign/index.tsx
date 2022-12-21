@@ -2,7 +2,7 @@ import ArrowBack from "./components/ArrowBack";
 import styles from "./index.module.css";
 import * as React from "react";
 import StepOne from "./containers/StepOne";
-import { StepTwo } from "./containers/StepTwo";
+import StepTwo from "./containers/StepTwo";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);

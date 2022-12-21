@@ -4,6 +4,7 @@ import Navbar from "../../src/components/Navbar";
 import StyledCalendar from "../../src/containers/ViewCalendarPage/containers/StyledCalendar";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
+import moment from "moment";
 
 export default function RouteToRotationView() {
   const [value, setValue] = useState(new Date());
@@ -20,9 +21,13 @@ export default function RouteToRotationView() {
           </div>
           <div className={styles.calendar}>
             <StyledCalendar
-              onClickDay={() => {
-                router.push("/rotation-plan/view-schedule");
-              }} // TODO: Display schedule on that day
+              onClickDay={(date: Date) => {
+                router.push(
+                  `rotation-plan/${moment(date).format(
+                    "MMM-Do-YY"
+                  )}/view-schedule`
+                );
+              }}
               onChange={setValue}
               value={value}
             />

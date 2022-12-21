@@ -1,0 +1,75 @@
+.title {
+  font-weight: bold;
+  display: flex;
+  font-size: 55px;
+  margin-top: 30px;
+  color: #3bacb6;
+  justify-content: center;
+}
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.appContainer table {
+  width: 100%;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.appContainer td {
+  height: 63px;
+  width: 20%;
+  text-align: center;
+  padding: 8px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.appContainer th {
+  background-color: white;
+}
+.background {
+  background-color: #fff;
+
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.blockButton {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 136px;
+  height: 34px;
+  border-radius: 5px;
+}
+
+.text {
+  font-weight: bold;
+}
+.addButton {
+  margin-left: 25px;
+}
+.generateButton {
+  color: #fff;
+  width: 217px;
+  height: 48px;
+  font-size: 16px;
+  background: #3bacb6;
+  border: 1px solid #dfe1e6;
+  border-radius: 9px;
+  text-align: center;
+  margin-left: 40%;
+}
+
+.editButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
