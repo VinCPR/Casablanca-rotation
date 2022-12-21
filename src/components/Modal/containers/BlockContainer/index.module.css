@@ -37,9 +37,22 @@
   width: 101%;
   border-bottom: 3px solid #3bacb6;
   left: -2px;
+  display: grid;
+  grid-template: repeat(4, 1fr)/ repeat(1, 1fr);
+  grid-auto-flow: column dense;
+}
+
+.inputField{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border:none;
+  font-family: "Roboto";
+  text-align: right;
 }
 
 .deptContainer {
+  margin-left: -15px;
   display: flex;
   justify-content: center;
   align-items: center;

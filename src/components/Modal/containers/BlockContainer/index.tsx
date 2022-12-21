@@ -1,10 +1,11 @@
 import useModal from "../../useModal";
+import useSelectedComponents from "./useSelectedComponents";
 import SelectionModal from "./containers/SelectionModal";
 import Checkbox from "./containers/SelectionModal/components/Checkbox";
 import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
 import styles from "./index.module.css";
 import data from "./data"
-import React, { useState } from "react";
+import React from "react";
 
 export default function BlockContainer() {
   const counters = { department: 0, service: 0, hospital: 0 };
@@ -16,10 +17,11 @@ export default function BlockContainer() {
   const [departments, services, hospitals] = data();
   const colors = ["#18A0FB", "#9747FF", "#9D7E2F", "#7DABF8", "#FF4747", "#453BB6", "#FF9620", "#F46B6B", "#6EB5FF", "#FF9CEE"];
 
-  function onClick(event:any):void{
-     const target = event.target as HTMLInputElement;
-     console.log(target.value);
-  }
+  const optionSelector = {
+    department: useSelectedComponents(),
+    service: useSelectedComponents(),
+    hospital: useSelectedComponents(),
+  };
 
   return (
     <div className={styles.container}>
@@ -34,36 +36,63 @@ export default function BlockContainer() {
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}></div>
+          <div className={styles.selectionContainer}>
+          {optionSelector.department.selectedComponents.map((obj) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton label={obj.name} width = {220}/>
+                <input type="number" id={obj.name} value={obj.numOfWeeks} onChange={optionSelector.department.handleChange} className={styles.inputField}/>
+              </div>
+            );
+          })}
+          </div>
           <button
             className={styles.addBtn}
             onClick={modalSelector.department.toggle}
           >
             +
           </button>
-          <div className={styles.totalBox}>{counters.department}</div>
+          <div className={styles.totalBox}>{optionSelector.department.totalNum}</div>
         </div>
         {/* Container for Services */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}></div>
+          <div className={styles.selectionContainer}>
+          {optionSelector.service.selectedComponents.map((obj) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton label={obj.name} width={220} />
+                <input type="number" id={obj.name} value={obj.numOfWeeks} onChange={optionSelector.service.handleChange} className={styles.inputField}/>
+              </div>
+            );
+          })}
+          </div>
           <button
             className={styles.addBtn}
             onClick={modalSelector.service.toggle}
           >
             +
           </button>
-          <div className={styles.totalBox}>{counters.service}</div>
+          <div className={styles.totalBox}>{optionSelector.service.totalNum}</div>
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}></div>
+          <div className={styles.selectionContainer}>
+          {optionSelector.hospital.selectedComponents.map((obj) => {
+            return (
+              <div className={styles.deptContainer}>
+                <SelectionButton label={obj.name} width = {220}/>
+                <input type="number" id={obj.name} value={obj.numOfWeeks} onChange={optionSelector.hospital.handleChange} className={styles.inputField}/>
+              </div>
+            );
+          })}
+          </div>
           <button
             className={styles.addBtn}
             onClick={modalSelector.hospital.toggle}
           >
             +
           </button>
-          <div className={styles.totalBox}>{counters.hospital}</div>
+          <div className={styles.totalBox}>{optionSelector.hospital.totalNum}</div>
         </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
         <SelectionModal
@@ -75,7 +104,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox onClick={onClick} label={value}/>
+                <Checkbox onClick={optionSelector.department.handleClick} label={value}/>
               </div>
             );
           })}
@@ -89,7 +118,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox onClick={onClick} label={value}/>
+                <Checkbox onClick={optionSelector.service.handleClick} label={value}/>
               </div>
             );
           })}
@@ -103,7 +132,7 @@ export default function BlockContainer() {
             return (
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
-                <Checkbox onClick={onClick} label={value}/>
+                <Checkbox onClick={optionSelector.hospital.handleClick} label={value}/>
               </div>
             );
           })}
