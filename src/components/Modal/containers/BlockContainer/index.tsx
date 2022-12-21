@@ -6,9 +6,9 @@ import SelectionButton from "./containers/SelectionModal/components/SelectionBut
 import styles from "./index.module.css";
 import data from "./data";
 import React from "react";
+import SelectedComponents from "./SelectedComponents";
 
 export default function BlockContainer() {
-  const counters = { department: 0, service: 0, hospital: 0 };
   const modalSelector = {
     department: useModal(),
     service: useModal(),
@@ -34,14 +34,22 @@ export default function BlockContainer() {
     hospital: useSelectedComponents(),
   };
 
+  function isChecked(array:SelectedComponents[], value:String){
+    if (array.some(e => e.name === value)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.centerItems}>Departments</div>
         <div className={styles.centerItems}>#Wks</div>
-        <div className={styles.centerItems}>Services</div>
-        <div className={styles.centerItems}>#Wks</div>
         <div className={styles.centerItems}>Hospitals</div>
+        <div className={styles.centerItems}>#Wks</div>
+        <div className={styles.centerItems}>Services</div>
         <div className={styles.centerItems}>#Wks</div>
       </div>
       <div className={styles.blockContainer}>
@@ -73,34 +81,6 @@ export default function BlockContainer() {
             {optionSelector.department.totalNum}
           </div>
         </div>
-        {/* Container for Services */}
-        <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}>
-            {optionSelector.service.selectedComponents.map((obj, index) => {
-              return (
-                <div className={styles.deptContainer} key={index}>
-                  <SelectionButton label={obj.name} width={220} />
-                  <input
-                    type="number"
-                    id={obj.name}
-                    value={obj.numOfWeeks}
-                    onChange={optionSelector.service.handleChange}
-                    className={styles.inputField}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            className={styles.addBtn}
-            onClick={modalSelector.service.toggle}
-          >
-            +
-          </button>
-          <div className={styles.totalBox}>
-            {optionSelector.service.totalNum}
-          </div>
-        </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
           <div className={styles.selectionContainer}>
@@ -129,6 +109,34 @@ export default function BlockContainer() {
             {optionSelector.hospital.totalNum}
           </div>
         </div>
+        {/* Container for Services */}
+        <div className={styles.btnContainer}>
+          <div className={styles.selectionContainer}>
+            {optionSelector.service.selectedComponents.map((obj, index) => {
+              return (
+                <div className={styles.deptContainer} key={index}>
+                  <SelectionButton label={obj.name} width={220} />
+                  <input
+                    type="number"
+                    id={obj.name}
+                    value={obj.numOfWeeks}
+                    onChange={optionSelector.service.handleChange}
+                    className={styles.inputField}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <button
+            className={styles.addBtn}
+            onClick={modalSelector.service.toggle}
+          >
+            +
+          </button>
+          <div className={styles.totalBox}>
+            {optionSelector.service.totalNum}
+          </div>
+        </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
         <SelectionModal
           isOpened={modalSelector.department.isOpened}
@@ -142,6 +150,9 @@ export default function BlockContainer() {
                 <Checkbox
                   onClick={optionSelector.department.handleClick}
                   label={value}
+                  checked = {isChecked(optionSelector.department.selectedComponents, value)}
+                  checkedAfterClose = {isChecked(optionSelector.department.selectedComponents, value)}
+                // {isChecked(optionSelector.department.selectedComponents, value) && }
                 />
               </div>
             );
@@ -159,6 +170,8 @@ export default function BlockContainer() {
                 <Checkbox
                   onClick={optionSelector.service.handleClick}
                   label={value}
+                  checked = {isChecked(optionSelector.service.selectedComponents, value)}
+                  checkedAfterClose = {isChecked(optionSelector.service.selectedComponents, value)}
                 />
               </div>
             );
@@ -176,6 +189,8 @@ export default function BlockContainer() {
                 <Checkbox
                   onClick={optionSelector.hospital.handleClick}
                   label={value}
+                  checked = {isChecked(optionSelector.hospital.selectedComponents, value)}
+                  checkedAfterClose = {isChecked(optionSelector.hospital.selectedComponents, value)}
                 />
               </div>
             );
