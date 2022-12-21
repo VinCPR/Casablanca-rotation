@@ -8,7 +8,7 @@ export default function DesignRotation() {
     <div>
       <Navbar />
       <div className={styles.pageContain}>
-        <SideBar highlight={0} />
+        <SideBar highlight={1} />
         <MainLayout />
       </div>
     </div>

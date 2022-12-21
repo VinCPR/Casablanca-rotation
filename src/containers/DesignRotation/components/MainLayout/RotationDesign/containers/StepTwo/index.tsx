@@ -2,12 +2,16 @@ import React from "react";
 import styles from "./index.module.css";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
+
+import "react-datepicker/dist/react-datepicker.css";
+import IconEdit from "./components/IconEdit";
+
 export default function StepTwo() {
   const [startDate, setStartDate] = useState(new Date());
+  const colors = ["#ff9620", "#05b651", "#18a0fb", "#9747ff"];
   return (
     <div>
       <div className={styles.title}>Rotation Plan</div>
-
       <div className={styles.appContainer}>
         <table>
           <thead>
@@ -26,55 +30,66 @@ export default function StepTwo() {
                 <DatePicker
                   selected={startDate}
                   onChange={(date: Date) => setStartDate(date)}
-                >
-                  {" "}
-                </DatePicker>{" "}
+                />
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
               </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
+              <td>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
+              </td>
+              <td>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
+              </td>
+              <td>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                />
+              </td>
             </tr>
 
-            <tr>
-              <div className={styles.background}>
-                <div className={styles.blockButton1}> Block 1 </div>
-                <button className={styles.addButton}> +</button>
-              </div>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-            </tr>
-            <tr>
-              <div className={styles.background}>
-                <div className={styles.blockButton2}> Block 2</div>
-                <button className={styles.addButton}> +</button>
-              </div>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-            </tr>
-            <tr>
-              <div className={styles.background}>
-                <div className={styles.blockButton3}> Block 3 </div>
-                <button className={styles.addButton}> +</button>
-              </div>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-            </tr>
-            <tr>
-              <div className={styles.background}>
-                <div className={styles.blockButton4}> Block 4 </div>
-                <button className={styles.addButton}> +</button>
-              </div>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-              <td> </td>
-            </tr>
+            {colors.map((color, index) => {
+              return (
+                <tr key={index}>
+                  <div className={styles.background}>
+                    <div
+                      className={styles.blockButton}
+                      style={{ backgroundColor: color }}
+                    >
+                      {" "}
+                      Block {index}{" "}
+                    </div>
+                    <button className={styles.editButton}>
+                      <IconEdit />
+                    </button>
+                  </div>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
