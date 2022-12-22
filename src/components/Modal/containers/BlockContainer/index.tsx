@@ -34,21 +34,21 @@ export default function BlockContainer() {
     hospital: useSelectedComponents(),
   };
 
-  function isChecked(array:SelectedComponents[], value:String){
-    if (array.some(e => e.name === value)) {
+  function isChecked(array: SelectedComponents[], value: String) {
+    if (array.some((e) => e.name === value)) {
       return true;
     } else {
       return false;
     }
   }
 
-  function divideSpace(array:SelectedComponents[]){
-    var output = ""
-    for (var i = 0; i < array.length; i++){
-      if (array[i].numOfWeeks < 2){
-        output += "2fr "
+  function divideSpace(array: SelectedComponents[]) {
+    var output = "";
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].numOfWeeks < 2) {
+        output += "2fr ";
       } else {
-      output += String(array[i].numOfWeeks) + "fr "
+        output += String(array[i].numOfWeeks) + "fr ";
       }
     }
     return output;
@@ -67,20 +67,34 @@ export default function BlockContainer() {
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
-          <div style={{gridTemplateRows: divideSpace(optionSelector.department.selectedComponents)}} className={styles.selectionContainer}>
+          <div
+            style={{
+              gridTemplateRows: divideSpace(
+                optionSelector.department.selectedComponents
+              ),
+            }}
+            className={styles.selectionContainer}
+          >
             {optionSelector.department.selectedComponents.map((obj, index) => {
               return (
                 <div className={styles.deptContainer} key={index}>
-                  <SelectionButton label={obj.name} width={220} height= {90} alignSelf="center"/>
+                  <SelectionButton
+                    label={obj.name}
+                    width={220}
+                    height={90}
+                    alignSelf="center"
+                  />
                   <input
-                    style = {{height: 90 + "%", alignSelf: "center"}}
+                    style={{ height: 90 + "%", alignSelf: "center" }}
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
                     onChange={optionSelector.department.handleChange}
                     className={styles.inputField}
-                    min = "0"
-                    max = {10 - optionSelector.department.totalNum + obj.numOfWeeks}
+                    min="0"
+                    max={
+                      10 - optionSelector.department.totalNum + obj.numOfWeeks
+                    }
                   />
                 </div>
               );
@@ -98,19 +112,32 @@ export default function BlockContainer() {
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
-          <div style={{gridTemplateRows: divideSpace(optionSelector.department.selectedComponents)}} className={styles.selectionContainer}>
+          <div
+            style={{
+              gridTemplateRows: divideSpace(
+                optionSelector.hospital.selectedComponents
+              ),
+            }}
+            className={styles.selectionContainer}
+          >
             {optionSelector.hospital.selectedComponents.map((obj) => {
               return (
                 <div className={styles.deptContainer}>
-                  <SelectionButton label={obj.name} width={220}/>
+                  <SelectionButton
+                    label={obj.name}
+                    width={220}
+                    height={90}
+                    alignSelf="center"
+                  />
                   <input
+                    style={{ height: 90 + "%", alignSelf: "center" }}
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
                     onChange={optionSelector.hospital.handleChange}
                     className={styles.inputField}
-                    min = "0"
-                    max = {10 - optionSelector.hospital.totalNum + obj.numOfWeeks}
+                    min="0"
+                    max={10 - optionSelector.hospital.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -128,19 +155,32 @@ export default function BlockContainer() {
         </div>
         {/* Container for Services */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}>
+          <div
+            style={{
+              gridTemplateRows: divideSpace(
+                optionSelector.service.selectedComponents
+              ),
+            }}
+            className={styles.selectionContainer}
+          >
             {optionSelector.service.selectedComponents.map((obj, index) => {
               return (
                 <div className={styles.deptContainer} key={index}>
-                  <SelectionButton label={obj.name} width={220} />
+                  <SelectionButton
+                    label={obj.name}
+                    width={220}
+                    height={90}
+                    alignSelf="center"
+                  />
                   <input
+                    style={{ height: 90 + "%", alignSelf: "center" }}
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
                     onChange={optionSelector.service.handleChange}
                     className={styles.inputField}
-                    min = "0"
-                    max = "10"
+                    min="0"
+                    max={10 - optionSelector.service.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -169,9 +209,14 @@ export default function BlockContainer() {
                 <Checkbox
                   onClick={optionSelector.department.handleClick}
                   label={value}
-                  checked = {isChecked(optionSelector.department.selectedComponents, value)}
-                  checkedAfterClose = {isChecked(optionSelector.department.selectedComponents, value)}
-                // {isChecked(optionSelector.department.selectedComponents, value) && }
+                  checked={isChecked(
+                    optionSelector.department.selectedComponents,
+                    value
+                  )}
+                  checkedAfterClose={isChecked(
+                    optionSelector.department.selectedComponents,
+                    value
+                  )}
                 />
               </div>
             );
@@ -189,8 +234,14 @@ export default function BlockContainer() {
                 <Checkbox
                   onClick={optionSelector.service.handleClick}
                   label={value}
-                  checked = {isChecked(optionSelector.service.selectedComponents, value)}
-                  checkedAfterClose = {isChecked(optionSelector.service.selectedComponents, value)}
+                  checked={isChecked(
+                    optionSelector.service.selectedComponents,
+                    value
+                  )}
+                  checkedAfterClose={isChecked(
+                    optionSelector.service.selectedComponents,
+                    value
+                  )}
                 />
               </div>
             );
@@ -208,8 +259,14 @@ export default function BlockContainer() {
                 <Checkbox
                   onClick={optionSelector.hospital.handleClick}
                   label={value}
-                  checked = {isChecked(optionSelector.hospital.selectedComponents, value)}
-                  checkedAfterClose = {isChecked(optionSelector.hospital.selectedComponents, value)}
+                  checked={isChecked(
+                    optionSelector.hospital.selectedComponents,
+                    value
+                  )}
+                  checkedAfterClose={isChecked(
+                    optionSelector.hospital.selectedComponents,
+                    value
+                  )}
                 />
               </div>
             );
