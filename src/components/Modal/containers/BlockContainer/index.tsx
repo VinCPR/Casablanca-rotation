@@ -42,6 +42,18 @@ export default function BlockContainer() {
     }
   }
 
+  function divideSpace(array:SelectedComponents[]){
+    var output = ""
+    for (var i = 0; i < array.length; i++){
+      if (array[i].numOfWeeks < 2){
+        output += "2fr "
+      } else {
+      output += String(array[i].numOfWeeks) + "fr "
+      }
+    }
+    return output;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -55,17 +67,20 @@ export default function BlockContainer() {
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}>
+          <div style={{gridTemplateRows: divideSpace(optionSelector.department.selectedComponents)}} className={styles.selectionContainer}>
             {optionSelector.department.selectedComponents.map((obj, index) => {
               return (
                 <div className={styles.deptContainer} key={index}>
-                  <SelectionButton label={obj.name} width={220} />
+                  <SelectionButton label={obj.name} width={220} height= {90} alignSelf="center"/>
                   <input
+                    style = {{height: 90 + "%", alignSelf: "center"}}
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
                     onChange={optionSelector.department.handleChange}
                     className={styles.inputField}
+                    min = "0"
+                    max = {10 - optionSelector.department.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -83,17 +98,19 @@ export default function BlockContainer() {
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
-          <div className={styles.selectionContainer}>
+          <div style={{gridTemplateRows: divideSpace(optionSelector.department.selectedComponents)}} className={styles.selectionContainer}>
             {optionSelector.hospital.selectedComponents.map((obj) => {
               return (
                 <div className={styles.deptContainer}>
-                  <SelectionButton label={obj.name} width={220} />
+                  <SelectionButton label={obj.name} width={220}/>
                   <input
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
                     onChange={optionSelector.hospital.handleChange}
                     className={styles.inputField}
+                    min = "0"
+                    max = {10 - optionSelector.hospital.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -122,6 +139,8 @@ export default function BlockContainer() {
                     value={obj.numOfWeeks}
                     onChange={optionSelector.service.handleChange}
                     className={styles.inputField}
+                    min = "0"
+                    max = "10"
                   />
                 </div>
               );
