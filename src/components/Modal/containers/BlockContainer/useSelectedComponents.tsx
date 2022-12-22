@@ -12,8 +12,8 @@ export default function useSelectedComponents() {
 
 
   function sum(array:SelectedComponents[], total:number){
-    for (var i = 0; i < selectedComponents.length; i++){
-      total = total + selectedComponents[i].numOfWeeks;
+    for (var i = 0; i < array.length; i++){
+      total = total + array[i].numOfWeeks;
     }
     return total;
   }
