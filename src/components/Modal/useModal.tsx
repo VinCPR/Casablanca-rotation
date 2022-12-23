@@ -4,7 +4,7 @@ export default function useModal() {
   const [isOpened, setIsOpened] = useState(false);
 
   const toggle = () => {
-    setIsOpened(!isOpened);
+    setIsOpened((prev) => !prev);
   };
 
   return { isOpened, toggle };

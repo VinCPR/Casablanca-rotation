@@ -7,6 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import IconEdit from "./components/IconEdit";
 import Modal from "../../../../../../../components/Modal";
 import BlockContainer from "../../../../../../../components/Modal/containers/BlockContainer";
+import useSelectedComponents from "../../../../../../../components/Modal/containers/BlockContainer/useSelectedComponents";
+import OptionSelector from "../../../../../../../components/Modal/containers/BlockContainer/OptionSelector";
 
 export default function StepTwo() {
   const [startDate, setStartDate] = useState(new Date());
@@ -24,6 +26,14 @@ export default function StepTwo() {
       : x === 2
       ? setIsModal3Opened(true)
       : setIsModal4Opened(true);
+  }
+  const optionSelector:OptionSelector[] = [];
+  for (var i = 0; i < 4; i++){
+    optionSelector.push({
+      department: useSelectedComponents(),
+      service: useSelectedComponents(),
+      hospital: useSelectedComponents(),
+    });
   }
   /**TODO: define a function onRotationChange that take the value the block information and pass it to the state */
   /**pass the function to the component Modal */
@@ -120,28 +130,28 @@ export default function StepTwo() {
         isOpened={isModal1Opened}
         toggle={() => setIsModal1Opened(false)}
       >
-        <BlockContainer />
+        <BlockContainer input={optionSelector[0]}/>
       </Modal>
       <Modal
         heading={"Design Rotation for Block 2"}
         isOpened={isModal2Opened}
         toggle={() => setIsModal2Opened(false)}
       >
-        <BlockContainer />
+        <BlockContainer input={optionSelector[1]}/>
       </Modal>
       <Modal
         heading={"Design Rotation for Block 3"}
         isOpened={isModal3Opened}
         toggle={() => setIsModal3Opened(false)}
       >
-        <BlockContainer />
+        <BlockContainer input={optionSelector[2]}/>
       </Modal>
       <Modal
         heading={"Design Rotation for Block 4"}
         isOpened={isModal4Opened}
         toggle={() => setIsModal4Opened(false)}
       >
-        <BlockContainer />
+        <BlockContainer input={optionSelector[3]}/>
       </Modal>
     </div>
   );
