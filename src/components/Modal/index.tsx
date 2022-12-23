@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
+import OptionSelector from "./containers/BlockContainer/OptionSelector";
+import Output from "./containers/BlockContainer/Output";
 import styles from "./index.module.css";
 
 interface Props {
   children?: ReactNode;
   isOpened: boolean;
+  handlePreview?: () => void;
   toggle: () => void;
   heading: string;
 }
@@ -11,6 +14,7 @@ interface Props {
 export default function Modal({
   children,
   isOpened,
+  handlePreview,
   toggle,
   heading = "",
 }: Props) {
@@ -24,7 +28,7 @@ export default function Modal({
               <div className={styles.modalHeader}>{heading}</div>
               <div className={styles.modalContainer}>{children}</div>
               <div className={styles.actionsContainer}>
-                <button className={styles.previewBtn}>Preview</button>
+                <button className={styles.previewBtn} onClick={handlePreview}>Preview</button>
                 <button className={styles.closeBtn} onClick={() => toggle()}>
                   Close
                 </button>

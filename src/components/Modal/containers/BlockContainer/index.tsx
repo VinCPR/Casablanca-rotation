@@ -1,5 +1,4 @@
 import useModal from "../../useModal";
-import useSelectedComponents from "./useSelectedComponents";
 import SelectionModal from "./containers/SelectionModal";
 import Checkbox from "./containers/SelectionModal/components/Checkbox";
 import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
@@ -7,25 +6,30 @@ import styles from "./index.module.css";
 import data from "./data";
 import React from "react";
 import SelectedComponents from "./SelectedComponents";
+import OptionSelector from "./OptionSelector";
+import Output from "./Output";
 
-interface Props{
+interface Props {
   input: OptionSelector;
 }
 
-type OptionSelector = {
-  department: Branch;
-  hospital: Branch;
-  service: Branch;
+function getOutput(input: OptionSelector):Output{
+  const department:{[id:string]:number} = {}
+  const hospital:{[id:string]:number} = {}
+  const service:{[id:string]:number} = {}
+  for (var i = 0; i < input.department.selectedComponents.length; i++){
+    department[input.department.selectedComponents[i].name] = input.department.selectedComponents[i].numOfWeeks;
+  }
+  for (var i = 0; i < input.hospital.selectedComponents.length; i++){
+    hospital[input.hospital.selectedComponents[i].name] = input.hospital.selectedComponents[i].numOfWeeks;
+  }
+  for (var i = 0; i < input.service.selectedComponents.length; i++){
+    service[input.service.selectedComponents[i].name] = input.service.selectedComponents[i].numOfWeeks;
+  }
+  return {department, hospital, service};
 }
 
-type Branch = {
-  selectedComponents: SelectedComponents[];
-  handleClick: (event:any) => void;
-  totalNum: number;
-  handleChange: (event:any) => void;
-}
-
-export default function BlockContainer({input}: Props) {
+export default function BlockContainer({ input }: Props) {
   const modalSelector = {
     department: useModal(),
     service: useModal(),
@@ -44,12 +48,6 @@ export default function BlockContainer({input}: Props) {
     "#6EB5FF",
     "#FF9CEE",
   ];
-
-  // const input = {
-  //   department: useSelectedComponents(),
-  //   service: useSelectedComponents(),
-  //   hospital: useSelectedComponents(),
-  // };
 
   function isChecked(array: SelectedComponents[], value: String) {
     if (array.some((e) => e.name === value)) {
@@ -109,9 +107,7 @@ export default function BlockContainer({input}: Props) {
                     onChange={input.department.handleChange}
                     className={styles.inputField}
                     min="0"
-                    max={
-                      10 - input.department.totalNum + obj.numOfWeeks
-                    }
+                    max={10 - input.department.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -123,17 +119,13 @@ export default function BlockContainer({input}: Props) {
           >
             +
           </button>
-          <div className={styles.totalBox}>
-            {input.department.totalNum}
-          </div>
+          <div className={styles.totalBox}>{input.department.totalNum}</div>
         </div>
         {/* Container for Hospitals */}
         <div className={styles.btnContainer}>
           <div
             style={{
-              gridTemplateRows: divideSpace(
-                input.hospital.selectedComponents
-              ),
+              gridTemplateRows: divideSpace(input.hospital.selectedComponents),
             }}
             className={styles.selectionContainer}
           >
@@ -166,17 +158,13 @@ export default function BlockContainer({input}: Props) {
           >
             +
           </button>
-          <div className={styles.totalBox}>
-            {input.hospital.totalNum}
-          </div>
+          <div className={styles.totalBox}>{input.hospital.totalNum}</div>
         </div>
         {/* Container for Services */}
         <div className={styles.btnContainer}>
           <div
             style={{
-              gridTemplateRows: divideSpace(
-                input.service.selectedComponents
-              ),
+              gridTemplateRows: divideSpace(input.service.selectedComponents),
             }}
             className={styles.selectionContainer}
           >
@@ -209,9 +197,7 @@ export default function BlockContainer({input}: Props) {
           >
             +
           </button>
-          <div className={styles.totalBox}>
-            {input.service.totalNum}
-          </div>
+          <div className={styles.totalBox}>{input.service.totalNum}</div>
         </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
         <SelectionModal
@@ -251,10 +237,7 @@ export default function BlockContainer({input}: Props) {
                 <Checkbox
                   onClick={input.service.handleClick}
                   label={value}
-                  checked={isChecked(
-                    input.service.selectedComponents,
-                    value
-                  )}
+                  checked={isChecked(input.service.selectedComponents, value)}
                   checkedAfterClose={isChecked(
                     input.service.selectedComponents,
                     value
@@ -276,10 +259,7 @@ export default function BlockContainer({input}: Props) {
                 <Checkbox
                   onClick={input.hospital.handleClick}
                   label={value}
-                  checked={isChecked(
-                    input.hospital.selectedComponents,
-                    value
-                  )}
+                  checked={isChecked(input.hospital.selectedComponents, value)}
                   checkedAfterClose={isChecked(
                     input.hospital.selectedComponents,
                     value
