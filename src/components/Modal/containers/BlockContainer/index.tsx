@@ -8,7 +8,24 @@ import data from "./data";
 import React from "react";
 import SelectedComponents from "./SelectedComponents";
 
-export default function BlockContainer() {
+interface Props{
+  input: OptionSelector;
+}
+
+type OptionSelector = {
+  department: Branch;
+  hospital: Branch;
+  service: Branch;
+}
+
+type Branch = {
+  selectedComponents: SelectedComponents[];
+  handleClick: (event:any) => void;
+  totalNum: number;
+  handleChange: (event:any) => void;
+}
+
+export default function BlockContainer({input}: Props) {
   const modalSelector = {
     department: useModal(),
     service: useModal(),
@@ -28,11 +45,11 @@ export default function BlockContainer() {
     "#FF9CEE",
   ];
 
-  const optionSelector = {
-    department: useSelectedComponents(),
-    service: useSelectedComponents(),
-    hospital: useSelectedComponents(),
-  };
+  // const input = {
+  //   department: useSelectedComponents(),
+  //   service: useSelectedComponents(),
+  //   hospital: useSelectedComponents(),
+  // };
 
   function isChecked(array: SelectedComponents[], value: String) {
     if (array.some((e) => e.name === value)) {
@@ -70,12 +87,12 @@ export default function BlockContainer() {
           <div
             style={{
               gridTemplateRows: divideSpace(
-                optionSelector.department.selectedComponents
+                input.department.selectedComponents
               ),
             }}
             className={styles.selectionContainer}
           >
-            {optionSelector.department.selectedComponents.map((obj, index) => {
+            {input.department.selectedComponents.map((obj, index) => {
               return (
                 <div className={styles.deptContainer} key={index}>
                   <SelectionButton
@@ -89,11 +106,11 @@ export default function BlockContainer() {
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
-                    onChange={optionSelector.department.handleChange}
+                    onChange={input.department.handleChange}
                     className={styles.inputField}
                     min="0"
                     max={
-                      10 - optionSelector.department.totalNum + obj.numOfWeeks
+                      10 - input.department.totalNum + obj.numOfWeeks
                     }
                   />
                 </div>
@@ -107,7 +124,7 @@ export default function BlockContainer() {
             +
           </button>
           <div className={styles.totalBox}>
-            {optionSelector.department.totalNum}
+            {input.department.totalNum}
           </div>
         </div>
         {/* Container for Hospitals */}
@@ -115,12 +132,12 @@ export default function BlockContainer() {
           <div
             style={{
               gridTemplateRows: divideSpace(
-                optionSelector.hospital.selectedComponents
+                input.hospital.selectedComponents
               ),
             }}
             className={styles.selectionContainer}
           >
-            {optionSelector.hospital.selectedComponents.map((obj) => {
+            {input.hospital.selectedComponents.map((obj) => {
               return (
                 <div className={styles.deptContainer}>
                   <SelectionButton
@@ -134,10 +151,10 @@ export default function BlockContainer() {
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
-                    onChange={optionSelector.hospital.handleChange}
+                    onChange={input.hospital.handleChange}
                     className={styles.inputField}
                     min="0"
-                    max={10 - optionSelector.hospital.totalNum + obj.numOfWeeks}
+                    max={10 - input.hospital.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -150,7 +167,7 @@ export default function BlockContainer() {
             +
           </button>
           <div className={styles.totalBox}>
-            {optionSelector.hospital.totalNum}
+            {input.hospital.totalNum}
           </div>
         </div>
         {/* Container for Services */}
@@ -158,12 +175,12 @@ export default function BlockContainer() {
           <div
             style={{
               gridTemplateRows: divideSpace(
-                optionSelector.service.selectedComponents
+                input.service.selectedComponents
               ),
             }}
             className={styles.selectionContainer}
           >
-            {optionSelector.service.selectedComponents.map((obj, index) => {
+            {input.service.selectedComponents.map((obj, index) => {
               return (
                 <div className={styles.deptContainer} key={index}>
                   <SelectionButton
@@ -177,10 +194,10 @@ export default function BlockContainer() {
                     type="number"
                     id={obj.name}
                     value={obj.numOfWeeks}
-                    onChange={optionSelector.service.handleChange}
+                    onChange={input.service.handleChange}
                     className={styles.inputField}
                     min="0"
-                    max={10 - optionSelector.service.totalNum + obj.numOfWeeks}
+                    max={10 - input.service.totalNum + obj.numOfWeeks}
                   />
                 </div>
               );
@@ -193,7 +210,7 @@ export default function BlockContainer() {
             +
           </button>
           <div className={styles.totalBox}>
-            {optionSelector.service.totalNum}
+            {input.service.totalNum}
           </div>
         </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
@@ -207,14 +224,14 @@ export default function BlockContainer() {
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
                 <Checkbox
-                  onClick={optionSelector.department.handleClick}
+                  onClick={input.department.handleClick}
                   label={value}
                   checked={isChecked(
-                    optionSelector.department.selectedComponents,
+                    input.department.selectedComponents,
                     value
                   )}
                   checkedAfterClose={isChecked(
-                    optionSelector.department.selectedComponents,
+                    input.department.selectedComponents,
                     value
                   )}
                 />
@@ -232,14 +249,14 @@ export default function BlockContainer() {
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
                 <Checkbox
-                  onClick={optionSelector.service.handleClick}
+                  onClick={input.service.handleClick}
                   label={value}
                   checked={isChecked(
-                    optionSelector.service.selectedComponents,
+                    input.service.selectedComponents,
                     value
                   )}
                   checkedAfterClose={isChecked(
-                    optionSelector.service.selectedComponents,
+                    input.service.selectedComponents,
                     value
                   )}
                 />
@@ -257,14 +274,14 @@ export default function BlockContainer() {
               <div className={styles.deptContainer}>
                 <SelectionButton label={value} />
                 <Checkbox
-                  onClick={optionSelector.hospital.handleClick}
+                  onClick={input.hospital.handleClick}
                   label={value}
                   checked={isChecked(
-                    optionSelector.hospital.selectedComponents,
+                    input.hospital.selectedComponents,
                     value
                   )}
                   checkedAfterClose={isChecked(
-                    optionSelector.hospital.selectedComponents,
+                    input.hospital.selectedComponents,
                     value
                   )}
                 />
