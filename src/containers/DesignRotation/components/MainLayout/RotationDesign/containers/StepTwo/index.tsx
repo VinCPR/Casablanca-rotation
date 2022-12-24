@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import styles from "./index.module.css";
 import DatePicker from "react-datepicker";
@@ -11,7 +12,14 @@ import useSelectedComponents from "../../../../../../../components/Modal/contain
 import OptionSelector from "../../../../../../../components/Modal/containers/BlockContainer/OptionSelector";
 
 export default function StepTwo() {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate1, setStartDate1] = useState(new Date());
+  const [startDate2, setStartDate2] = useState(new Date());
+  const [startDate3, setStartDate3] = useState(new Date());
+  const [startDate4, setStartDate4] = useState(new Date());
+  const [endDate1, setEndDate1] = useState(new Date());
+  const [endDate2, setEndDate2] = useState(new Date());
+  const [endDate3, setEndDate3] = useState(new Date());
+  const [endDate4, setEndDate4] = useState(new Date());
   //** TODO: define a state/states that will store the value of block information  */
   const colors = ["#ff9620", "#05b651", "#18a0fb", "#9747ff"];
   const [isModal1Opened, setIsModal1Opened] = React.useState(false);
@@ -27,8 +35,8 @@ export default function StepTwo() {
       ? setIsModal3Opened(true)
       : setIsModal4Opened(true);
   }
-  const optionSelector:OptionSelector[] = [];
-  for (var i = 0; i < 4; i++){
+  const optionSelector: OptionSelector[] = [];
+  for (var i = 0; i < 4; i++) {
     optionSelector.push({
       department: useSelectedComponents(),
       service: useSelectedComponents(),
@@ -56,42 +64,42 @@ export default function StepTwo() {
               <td className={styles.text}>StartDate - EndDate</td>
               <td>
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  selected={startDate1}
+                  onChange={(date: Date) => setStartDate1(date)}
                 />
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
-                />
-              </td>
-              <td>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
-                />
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  selected={endDate1}
+                  onChange={(date: Date) => setEndDate1(date)}
                 />
               </td>
               <td>
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  selected={startDate2}
+                  onChange={(date: Date) => setStartDate2(date)}
                 />
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  selected={endDate2}
+                  onChange={(date: Date) => setEndDate2(date)}
                 />
               </td>
               <td>
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  selected={startDate3}
+                  onChange={(date: Date) => setStartDate3(date)}
                 />
                 <DatePicker
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
+                  selected={endDate3}
+                  onChange={(date: Date) => setEndDate3(date)}
+                />
+              </td>
+              <td>
+                <DatePicker
+                  selected={startDate4}
+                  onChange={(date: Date) => setStartDate4(date)}
+                />
+                <DatePicker
+                  selected={endDate4}
+                  onChange={(date: Date) => setEndDate4(date)}
                 />
               </td>
             </tr>
@@ -129,29 +137,33 @@ export default function StepTwo() {
         heading={"Design Rotation for Block 1"}
         isOpened={isModal1Opened}
         toggle={() => setIsModal1Opened(false)}
+        data={optionSelector[0]}
       >
-        <BlockContainer input={optionSelector[0]}/>
+        <BlockContainer input={optionSelector[0]} />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 2"}
         isOpened={isModal2Opened}
         toggle={() => setIsModal2Opened(false)}
+        data={optionSelector[1]}
       >
-        <BlockContainer input={optionSelector[1]}/>
+        <BlockContainer input={optionSelector[1]} />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 3"}
         isOpened={isModal3Opened}
         toggle={() => setIsModal3Opened(false)}
+        data={optionSelector[2]}
       >
-        <BlockContainer input={optionSelector[2]}/>
+        <BlockContainer input={optionSelector[2]} />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 4"}
         isOpened={isModal4Opened}
         toggle={() => setIsModal4Opened(false)}
+        data={optionSelector[3]}
       >
-        <BlockContainer input={optionSelector[3]}/>
+        <BlockContainer input={optionSelector[3]} />
       </Modal>
     </div>
   );
