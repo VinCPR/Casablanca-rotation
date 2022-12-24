@@ -96,3 +96,9 @@
   transform: translateY(-5px);
   background: rgb(59, 172, 182);
 }
+
+.previewContainer {
+  color: black;
+  display: flex;
+  align-items: center;
+}

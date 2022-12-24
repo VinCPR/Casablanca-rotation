@@ -1,12 +1,9 @@
-export default class SelectedComponents{
+export default class SelectedComponents {
+  name: string;
+  numOfWeeks: number;
 
-    name: string;
-    numOfWeeks: number;
-
-    constructor(name: string) {
-        this.name = name;
-        this.numOfWeeks = 0;
-    }
-
-
+  constructor(name: string) {
+    this.name = name;
+    this.numOfWeeks = 0;
+  }
 }
