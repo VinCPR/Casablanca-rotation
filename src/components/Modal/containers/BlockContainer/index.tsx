@@ -68,6 +68,7 @@ export default function BlockContainer({ input }: Props) {
     }
     return output;
   }
+  // console.log(typeof(input.department.selectedComponents))
 
   return (
     <div className={styles.container}>
