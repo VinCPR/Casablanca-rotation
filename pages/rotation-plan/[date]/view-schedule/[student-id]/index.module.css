@@ -1,0 +1,8 @@
+.profileContainer{
+    background-color: #fff;
+    height: 100vh;
+    left: 264px;
+    width: calc(100vw - 264px);
+    justify-content: center;
+    position: relative;
+}
