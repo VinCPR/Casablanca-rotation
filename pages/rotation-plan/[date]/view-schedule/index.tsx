@@ -27,7 +27,7 @@ export default function RouteToViewSchedule() {
             Date: {date != null ? (date as string).replaceAll("-", " ") : null}
           </div>
           <div className={styles.schedule}>
-            <ScheduleContainer />
+            <ScheduleContainer/>
           </div>
         </div>
       </div>
