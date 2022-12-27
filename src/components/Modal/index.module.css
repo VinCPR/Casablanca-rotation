@@ -27,7 +27,7 @@
   border: 3px solid #3bacb6;
 }
 
-.text{
+.text {
   margin-left: 20px;
 }
 
@@ -50,15 +50,12 @@
   margin-right: 8px;
 }
 
-
-
 .line {
   flex-grow: 1;
   border-left: 3px solid #3bacb6;
   position: relative;
   height: 183px;
   z-index: 1;
-
 }
 
 .line2 {
@@ -68,7 +65,6 @@
   position: absolute;
   width: 100%;
   z-index: 1;
-
 }
 .line3 {
   flex-grow: 1;
@@ -77,9 +73,7 @@
   position: absolute;
   width: 100%;
   z-index: 1;
-
 }
-
 
 .centerItems {
   place-self: center;
@@ -228,14 +222,12 @@
   color: #fff;
   background: #3bacb6;
   transition: all 0.25s ease;
-  
 }
 
 .previewBtn:hover {
   box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
   transform: translateY(-5px);
   background: rgb(59, 172, 182);
-  
 }
 
 .previewContainer {
@@ -243,5 +235,4 @@
   color: black;
   display: flex;
   align-items: center;
-  
 }

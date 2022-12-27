@@ -66,6 +66,8 @@
   border-radius: 9px;
   text-align: center;
   margin-left: 40%;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .editButton {

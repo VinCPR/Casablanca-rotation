@@ -7,7 +7,7 @@ export default function ViewStudentList() {
   const headerItems = ["Student ID", "Name", "College", "Email", "Detail"];
   const data = [
     ["V202100453", "Vu Duc Trung", "CHS", "21trung.vd@vinuni.edu.vn"],
-    ["V202100341", "Tran Tien Len", "CHS", "20.len.tt@vinuni.edu.vn"],
+    ["V202100341", "Tran Tien Len", "CHS", "20len.tt@vinuni.edu.vn"],
   ];
   const router = useRouter();
   const { date } = router.query;

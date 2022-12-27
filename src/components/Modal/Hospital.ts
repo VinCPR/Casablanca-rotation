@@ -1,6 +1,6 @@
 type Hospital = {
-    name: string;
-    numOfWeeks: number;
-  }
+  name: string;
+  numOfWeeks: number;
+};
 
 export default Hospital;
