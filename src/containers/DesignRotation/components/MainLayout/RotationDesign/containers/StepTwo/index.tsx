@@ -26,7 +26,7 @@ export default function StepTwo() {
   const [isModal2Opened, setIsModal2Opened] = React.useState(false);
   const [isModal3Opened, setIsModal3Opened] = React.useState(false);
   const [isModal4Opened, setIsModal4Opened] = React.useState(false);
-  const [isGenerate, setIsGenerate] = React.useState(false);
+  const [isGenerated, setIsGenerated] = React.useState(false);
   function onClick(x: number) {
     return x === 0
       ? setIsModal1Opened(true)
@@ -108,25 +108,78 @@ export default function StepTwo() {
             {colors.map((color, index) => {
               return (
                 <tr key={index}>
-                  <div className={styles.background}>
-                    <div
-                      className={styles.blockButton}
-                      style={{ backgroundColor: color }}
-                    >
-                      {" "}
-                      Block {index+1}{" "}
+                  <td>
+                    <div className={styles.background}>
+                      <div
+                        className={styles.blockButton}
+                        style={{ backgroundColor: color }}
+                      >
+                        {" "}
+                        Block {index + 1}{" "}
+                      </div>
+                      <button
+                        className={styles.editButton}
+                        onClick={() => onClick(index)}
+                      >
+                        <IconEdit />
+                      </button>
                     </div>
-                    <button
-                      className={styles.editButton}
-                      onClick={() => onClick(index)}
-                    >
-                      <IconEdit />
-                    </button>
-                  </div>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
+                  </td>
+                  {!isGenerated ? (
+                    <>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </>
+                  ) : (
+                    <>
+                      <td>
+                        <div className={styles.background}>
+                          <div
+                            className={styles.blockButton}
+                            style={{ backgroundColor: color }}
+                          >
+                            {" "}
+                            Block {index + 1}{" "}
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className={styles.background}>
+                          <div
+                            className={styles.blockButton}
+                            style={{ backgroundColor: colors[(index + 1) % 4] }}
+                          >
+                            {" "}
+                            Block {((index + 1) % 4) + 1}{" "}
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className={styles.background}>
+                          <div
+                            className={styles.blockButton}
+                            style={{ backgroundColor: colors[(index + 2) % 4] }}
+                          >
+                            {" "}
+                            Block {((index + 2) % 4) + 1}{" "}
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className={styles.background}>
+                          <div
+                            className={styles.blockButton}
+                            style={{ backgroundColor: colors[(index + 3) % 4] }}
+                          >
+                            {" "}
+                            Block {((index + 3) % 4) + 1}{" "}
+                          </div>
+                        </div>
+                      </td>
+                    </>
+                  )}
                 </tr>
               );
             })}
@@ -134,11 +187,11 @@ export default function StepTwo() {
         </table>
       </div>
       <button
-                      className={styles.generateButton}
-                      onClick={() => setIsGenerate(true)}
-                    >
-                      Generate
-                    </button>
+        className={styles.generateButton}
+        onClick={() => setIsGenerated(true)}
+      >
+        Generate
+      </button>
       <Modal
         heading={"Design Rotation for Block 1"}
         isOpened={isModal1Opened}
