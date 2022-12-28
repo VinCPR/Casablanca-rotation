@@ -23,59 +23,39 @@ export default function Modal({
   heading = "",
 }: Props) {
   const [showPreview, setShowPreview] = React.useState(false);
-  const rotation:Rotation[] = [
+  const rotation: Rotation[] = [
     {
       departments: [
-        {name: "Pediatrics", 
-         numOfWeeks: 7},
-        {name: "Neurology",
-         numOfWeeks: 3}
+        { name: "Pediatrics", numOfWeeks: 7 },
+        { name: "Neurology", numOfWeeks: 3 },
       ],
       hospitals: [
-        {name: "Vinmec", 
-         numOfWeeks: 4,},
-        {name: "108 Hospital",
-         numOfWeeks: 3},
-         {name: "Vinmec", 
-         numOfWeeks: 3},
+        { name: "Vinmec", numOfWeeks: 4 },
+        { name: "108 Hospital", numOfWeeks: 3 },
+        { name: "Vinmec", numOfWeeks: 3 },
       ],
       services: [
-        {name: "Impatient", 
-        numOfWeeks: 4},
-       {name: "Outpatient",
-        numOfWeeks: 3},
-        {name: "Neurology",
-        numOfWeeks: 3}
+        { name: "Impatient", numOfWeeks: 4 },
+        { name: "Outpatient", numOfWeeks: 3 },
+        { name: "Neurology", numOfWeeks: 3 },
       ],
     },
     {
       departments: [
-        {name: "Neurology", 
-         numOfWeeks: 3,},
-        {name: "Pediatrics",
-         numOfWeeks: 7}
-
+        { name: "Neurology", numOfWeeks: 3 },
+        { name: "Pediatrics", numOfWeeks: 7 },
       ],
       hospitals: [
-        {name: "Vinmec", 
-         numOfWeeks: 3,},
-        {name: "Vinmec",
-         numOfWeeks: 4},
-        {name: "108 Hospital",
-         numOfWeeks: 3}
-
+        { name: "Vinmec", numOfWeeks: 3 },
+        { name: "Vinmec", numOfWeeks: 4 },
+        { name: "108 Hospital", numOfWeeks: 3 },
       ],
       services: [
-        {name: "Neurology", 
-         numOfWeeks: 3,},
-        {name: "Impatient",
-         numOfWeeks: 4},
-        {name: "Outpatient",
-         numOfWeeks: 3}
+        { name: "Neurology", numOfWeeks: 3 },
+        { name: "Impatient", numOfWeeks: 4 },
+        { name: "Outpatient", numOfWeeks: 3 },
       ],
     },
-  
-    
   ];
 
   function getOutput(input: OptionSelector): Rotation {
@@ -130,13 +110,13 @@ export default function Modal({
                 <>
                   {/**TODO: draw the preview */}
                   <div className={styles.modalHeader}>Preview</div>
-                  
+
                   {rotation.map((rotation, index) => {
-                    console.log(rotation.departments)
+                    console.log(rotation.departments);
                     return (
                       <div key={index} className={styles.previewContainer}>
                         <div className={styles.text}>
-                          <h3>Group{index+1}</h3> 
+                          <h3>Group{index + 1}</h3>
                         </div>
                         <div className={styles.container}>
                           <div className={styles.header}>
@@ -153,91 +133,78 @@ export default function Modal({
                           </div>
 
                           <div className={styles.blockContainer}>
-                            <div style={{marginLeft: "89px"}} className={styles.line}>
-                            </div>
-                           
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line}>
-                            </div>
-                            <div className={styles.line2}>
-                            </div>
-                            <div className={styles.line3}>
-                            </div>
+                            <div
+                              style={{ marginLeft: "89px" }}
+                              className={styles.line}
+                            ></div>
+
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line}></div>
+                            <div className={styles.line2}></div>
+                            <div className={styles.line3}></div>
                           </div>
                           <div>
-                          <div className={styles.selectionContainer1}>
-            {rotation.departments.map((obj, index1) => {
-              return (
-                <div key={index1}>
-                  <DisplayRotation
-                    label={obj.name}
-                    width={87.5*(obj.numOfWeeks-1)+77}
-                    height={148}
-                    marginLeft = {3}
-                  />
-                  
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.selectionContainer2}>
-            {rotation.services.map((obj, index1) => {
-              return (
-                <div key={index1}>
-                  <DisplayRotation
-                    label={obj.name}
-                    width={87.5*(obj.numOfWeeks-1)+77}
-                    height={148}
-                    marginLeft = {3}
-                    
-                  />
-                  
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.selectionContainer3}>
-            {rotation.hospitals.map((obj, index1) => {
-              return (
-                <div key={index1}>
-                  <DisplayRotation
-                    label={obj.name}
-                    width={87.5*(obj.numOfWeeks-1)+77}
-                    height={148}
-                    marginLeft = {3}
-                  />
-                  
-                </div>
-              );
-            })}
-          </div>
+                            <div className={styles.selectionContainer1}>
+                              {rotation.departments.map((obj, index1) => {
+                                return (
+                                  <div key={index1}>
+                                    <DisplayRotation
+                                      label={obj.name}
+                                      width={87.5 * (obj.numOfWeeks - 1) + 77}
+                                      height={148}
+                                      marginLeft={3}
+                                    />
+                                  </div>
+                                );
+                              })}
+                            </div>
+                            <div className={styles.selectionContainer2}>
+                              {rotation.services.map((obj, index1) => {
+                                return (
+                                  <div key={index1}>
+                                    <DisplayRotation
+                                      label={obj.name}
+                                      width={87.5 * (obj.numOfWeeks - 1) + 77}
+                                      height={148}
+                                      marginLeft={3}
+                                    />
+                                  </div>
+                                );
+                              })}
+                            </div>
+                            <div className={styles.selectionContainer3}>
+                              {rotation.hospitals.map((obj, index1) => {
+                                return (
+                                  <div key={index1}>
+                                    <DisplayRotation
+                                      label={obj.name}
+                                      width={87.5 * (obj.numOfWeeks - 1) + 77}
+                                      height={148}
+                                      marginLeft={3}
+                                    />
+                                  </div>
+                                );
+                              })}
+                            </div>
                           </div>
-                          
-                          </div>
+                        </div>
                       </div>
                     );
                   })}
-                  
+
                   <div className={styles.actionsContainer}>
                     <button
-                      style = {{marginTop: "30px"}}
+                      style={{ marginTop: "30px" }}
                       className={styles.closeBtn}
                       onClick={() => setShowPreview(false)}
                     >
-                      Close
+                      Back
                     </button>
                   </div>
                 </>

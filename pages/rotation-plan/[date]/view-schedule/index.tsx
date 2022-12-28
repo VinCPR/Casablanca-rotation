@@ -9,8 +9,6 @@ import { useRouter } from "next/router";
 export default function RouteToViewSchedule() {
   const router = useRouter();
   const { date } = router.query;
-  const [id, choosenId] = React.useState(0);
-  console.log("HEHEH", date);
   return (
     <>
       <Navbar />

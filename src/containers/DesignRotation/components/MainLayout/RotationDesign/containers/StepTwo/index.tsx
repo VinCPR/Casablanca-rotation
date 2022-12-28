@@ -26,6 +26,7 @@ export default function StepTwo() {
   const [isModal2Opened, setIsModal2Opened] = React.useState(false);
   const [isModal3Opened, setIsModal3Opened] = React.useState(false);
   const [isModal4Opened, setIsModal4Opened] = React.useState(false);
+  const [isGenerate, setIsGenerate] = React.useState(false);
   function onClick(x: number) {
     return x === 0
       ? setIsModal1Opened(true)
@@ -113,7 +114,7 @@ export default function StepTwo() {
                       style={{ backgroundColor: color }}
                     >
                       {" "}
-                      Block {index}{" "}
+                      Block {index+1}{" "}
                     </div>
                     <button
                       className={styles.editButton}
@@ -132,7 +133,12 @@ export default function StepTwo() {
           </tbody>
         </table>
       </div>
-      <button className={styles.generateButton}>Generate</button>
+      <button
+                      className={styles.generateButton}
+                      onClick={() => setIsGenerate(true)}
+                    >
+                      Generate
+                    </button>
       <Modal
         heading={"Design Rotation for Block 1"}
         isOpened={isModal1Opened}

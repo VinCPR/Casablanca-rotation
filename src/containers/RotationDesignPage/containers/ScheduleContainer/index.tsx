@@ -25,7 +25,7 @@ export default function ScheduleContainer() {
 
   return (
     <>
-      {showContainer && (
+      {showContainer ? (
         <div className={styles.container}>
           <>
             <div className={styles.header}>
@@ -61,8 +61,9 @@ export default function ScheduleContainer() {
             </div>
           </>
         </div>
+      ) : (
+        <ViewStudentList />
       )}
-      {!showContainer && <ViewStudentList />}
     </>
   );
 }

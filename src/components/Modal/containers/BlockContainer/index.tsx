@@ -13,20 +13,23 @@ interface Props {
   input: OptionSelector;
 }
 
-function getOutput(input: OptionSelector):Output{
-  const department:{[id:string]:number} = {}
-  const hospital:{[id:string]:number} = {}
-  const service:{[id:string]:number} = {}
-  for (var i = 0; i < input.department.selectedComponents.length; i++){
-    department[input.department.selectedComponents[i].name] = input.department.selectedComponents[i].numOfWeeks;
+function getOutput(input: OptionSelector): Output {
+  const department: { [id: string]: number } = {};
+  const hospital: { [id: string]: number } = {};
+  const service: { [id: string]: number } = {};
+  for (var i = 0; i < input.department.selectedComponents.length; i++) {
+    department[input.department.selectedComponents[i].name] =
+      input.department.selectedComponents[i].numOfWeeks;
   }
-  for (var i = 0; i < input.hospital.selectedComponents.length; i++){
-    hospital[input.hospital.selectedComponents[i].name] = input.hospital.selectedComponents[i].numOfWeeks;
+  for (var i = 0; i < input.hospital.selectedComponents.length; i++) {
+    hospital[input.hospital.selectedComponents[i].name] =
+      input.hospital.selectedComponents[i].numOfWeeks;
   }
-  for (var i = 0; i < input.service.selectedComponents.length; i++){
-    service[input.service.selectedComponents[i].name] = input.service.selectedComponents[i].numOfWeeks;
+  for (var i = 0; i < input.service.selectedComponents.length; i++) {
+    service[input.service.selectedComponents[i].name] =
+      input.service.selectedComponents[i].numOfWeeks;
   }
-  return {department, hospital, service};
+  return { department, hospital, service };
 }
 
 export default function BlockContainer({ input }: Props) {

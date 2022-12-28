@@ -8,6 +8,24 @@ interface Props {
   marginLeft?: number;
 }
 
-export default function DisplayRotation({ label = "", background = "", width, height, marginLeft }: Props) {
-  return <button style = {{background: background, width: width + "px", height: (height + "%"), marginLeft: marginLeft+ "px" }} className={styles.selectionBtn}>{label}</button>;
+export default function DisplayRotation({
+  label = "",
+  background = "",
+  width,
+  height,
+  marginLeft,
+}: Props) {
+  return (
+    <button
+      style={{
+        background: background,
+        width: width + "px",
+        height: height + "%",
+        marginLeft: marginLeft + "px",
+      }}
+      className={styles.selectionBtn}
+    >
+      {label}
+    </button>
+  );
 }
