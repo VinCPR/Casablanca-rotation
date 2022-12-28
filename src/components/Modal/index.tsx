@@ -62,24 +62,31 @@ export default function Modal({
     const departments: Department[] = [];
     const hospitals: Hospital[] = [];
     const services: Service[] = [];
-    
+
     for (var i = 0; i < input.department.selectedComponents.length; i++) {
-      const new_dept: Department = {name: input.department.selectedComponents[i].name, numOfWeeks: input.department.selectedComponents[i].numOfWeeks};
-      departments.push(new_dept)
+      const new_dept: Department = {
+        name: input.department.selectedComponents[i].name,
+        numOfWeeks: input.department.selectedComponents[i].numOfWeeks,
+      };
+      departments.push(new_dept);
     }
     for (var i = 0; i < input.hospital.selectedComponents.length; i++) {
-      const new_hospital: Hospital = {name: input.hospital.selectedComponents[i].name, numOfWeeks: input.hospital.selectedComponents[i].numOfWeeks};
-      hospitals.push(new_hospital)
+      const new_hospital: Hospital = {
+        name: input.hospital.selectedComponents[i].name,
+        numOfWeeks: input.hospital.selectedComponents[i].numOfWeeks,
+      };
+      hospitals.push(new_hospital);
     }
     for (var i = 0; i < input.service.selectedComponents.length; i++) {
-      const new_service: Service = {name: input.service.selectedComponents[i].name, numOfWeeks: input.service.selectedComponents[i].numOfWeeks};
-      services.push(new_service)
+      const new_service: Service = {
+        name: input.service.selectedComponents[i].name,
+        numOfWeeks: input.service.selectedComponents[i].numOfWeeks,
+      };
+      services.push(new_service);
     }
-    console.log({ departments, hospitals, services });
     return { departments, hospitals, services };
   }
 
-  // console.log(rotation[0])
   return (
     <>
       {isOpened && (
@@ -112,7 +119,6 @@ export default function Modal({
                   <div className={styles.modalHeader}>Preview</div>
 
                   {rotation.map((rotation, index) => {
-                    console.log(rotation.departments);
                     return (
                       <div key={index} className={styles.previewContainer}>
                         <div className={styles.text}>
