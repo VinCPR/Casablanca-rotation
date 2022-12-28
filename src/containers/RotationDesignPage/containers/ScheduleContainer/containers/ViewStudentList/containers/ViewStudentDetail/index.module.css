@@ -8,7 +8,7 @@
 .splitRight {
   position: relative;
   left: 50%;
-  width: 100%;
+  width: 30%;
   height: 120px;
 }
 
@@ -28,7 +28,7 @@
   font-size: 30px;
   color: #2f8f9d;
   margin-left: 15px;
-  margin-top: 10px;
+  margin-top: 250px;
 }
 
 .studentPhoto {
@@ -110,10 +110,12 @@
 }
 
 .containerTop {
+  background-color: blue;
   height: 50vh;
 }
 
 .containerBottom {
+  background-color: red;
   height: 50vh;
 }
 
@@ -130,4 +132,10 @@
   border: 1px solid black;
   box-sizing: border-box;
   display: block;
+}
+
+.contentBottom {
+  top: 60px;
+  left: 23px;
+  position: inherit;
 }

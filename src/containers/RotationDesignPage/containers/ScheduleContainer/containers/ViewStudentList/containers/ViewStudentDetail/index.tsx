@@ -62,7 +62,7 @@ export default function ViewStudentDetail() {
 
   return (
     <div>
-      <div className={styles.containerTop}>
+      <div>
         <div className={styles.splitLeft}>
           <div className={styles.infoHeader}>PERSONAL INFO</div>
           <div className={styles.studentPhoto}>
@@ -267,7 +267,7 @@ export default function ViewStudentDetail() {
           </div>
         </div>
       </div>
-      <div className={styles.containerBottom}>
+      <div>
         <div className={styles.headerBottom}>BIOGRAPHY</div>
 
         {!isEditBiography ? (
