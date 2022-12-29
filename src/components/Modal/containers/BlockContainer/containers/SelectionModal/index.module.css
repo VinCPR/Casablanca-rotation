@@ -1,0 +1,102 @@
+.darkBG {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  border: 5px solid #3bacb6;
+  width: 900px;
+  height: 500px;
+  left: 300px;
+  top: 247px;
+  background: white;
+  color: white;
+  z-index: 10;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+.modalHeader {
+  height: 60px;
+  background: white;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  margin: 0;
+  padding-top: 30px;
+  color: #2c3e50;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+}
+
+.modalContainer {
+  padding: 20px 40px;
+  height: 75%;
+  display: grid;
+  grid-template: repeat(5, 1fr)/ repeat(2, 1fr);
+  grid-auto-flow: row dense;
+}
+
+.actionsContainer {
+  padding: 0px 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.addBtn {
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-family: "Roboto";
+  font-size: 16px;
+  border: none;
+  color: #fff;
+  background: #3bacb6;
+  transition: all 0.25s ease;
+}
+
+.addBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
+  transform: translateY(-5px);
+  background: rgb(59, 172, 182);
+}
+
+.closeBtn {
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: "Roboto";
+  border: none;
+  color: #fff;
+  background: #ff3e4e;
+  transition: all 0.25s ease;
+}
+
+.closeBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
+  transform: translateY(-5px);
+  background: #ff3e4e;
+}
