@@ -11,8 +11,9 @@ export default function New() {
   const optionSelector = {
     department: useSelectedComponents(),
     service: useSelectedComponents(),
-    hospital: useSelectedComponents(),
+    hospital: [useSelectedComponents(), useSelectedComponents()],
   };
+  
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function New() {
         isOpened={isOpened}
         toggle={toggle}
       >
-        <BlockContainer input={optionSelector} />
+        <BlockContainer input={optionSelector}/>
       </Modal>
     </>
   );

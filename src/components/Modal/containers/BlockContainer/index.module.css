@@ -78,6 +78,28 @@
   border-right: none;
 }
 
+.wrapper{
+  display: grid;
+  padding-top: 5px;
+  height: 274.45px
+}
+
+.wrapper .addBtn{
+  position: relative;
+  align-self: center;
+  left: 20%;
+  width: 180px;
+  height: 50px;
+  background: #3bacb6;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
 .addBtn {
   position: absolute;
   bottom: 2.65%;

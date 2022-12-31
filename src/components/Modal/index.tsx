@@ -70,13 +70,13 @@ export default function Modal({
       };
       departments.push(new_dept);
     }
-    for (var i = 0; i < input.hospital.selectedComponents.length; i++) {
-      const new_hospital: Hospital = {
-        name: input.hospital.selectedComponents[i].name,
-        numOfWeeks: input.hospital.selectedComponents[i].numOfWeeks,
-      };
-      hospitals.push(new_hospital);
-    }
+    // for (var i = 0; i < input.hospital.selectedComponents.length; i++) {
+    //   const new_hospital: Hospital = {
+    //     name: input.hospital.selectedComponents[i].name,
+    //     numOfWeeks: input.hospital.selectedComponents[i].numOfWeeks,
+    //   };
+    //   hospitals.push(new_hospital);
+    // }
     for (var i = 0; i < input.service.selectedComponents.length; i++) {
       const new_service: Service = {
         name: input.service.selectedComponents[i].name,

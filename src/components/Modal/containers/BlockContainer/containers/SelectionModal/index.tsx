@@ -6,6 +6,7 @@ interface Props {
   isOpened: boolean;
   toggle: () => void;
   heading: string;
+  id?: number;
 }
 
 export default function SelectionModal({
@@ -13,6 +14,7 @@ export default function SelectionModal({
   isOpened,
   toggle,
   heading = "",
+  id
 }: Props) {
   return (
     <>
