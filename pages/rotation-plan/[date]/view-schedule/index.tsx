@@ -10,7 +10,7 @@ export default function RouteToViewSchedule() {
   const router = useRouter();
   const { date } = router.query;
   return (
-    <>
+    <div>
       <Navbar />
       <div style={{ position: "relative" }}>
         <Sidebar highlight={2} />
@@ -31,6 +31,6 @@ export default function RouteToViewSchedule() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

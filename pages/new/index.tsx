@@ -15,7 +15,7 @@ export default function New() {
   };
 
   return (
-    <>
+    <div>
       <button className={styles.primaryBtn} onClick={toggle}>
         Open Modal
       </button>
@@ -26,6 +26,6 @@ export default function New() {
       >
         <BlockContainer input={optionSelector} />
       </Modal>
-    </>
+    </div>
   );
 }

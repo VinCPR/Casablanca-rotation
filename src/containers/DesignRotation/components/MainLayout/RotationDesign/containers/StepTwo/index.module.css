@@ -75,3 +75,19 @@
   border: none;
   cursor: pointer;
 }
+
+.backheading {
+  display: flex;
+  align-items: center;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  color: #3bacb6;
+  background-color: transparent;
+  font-weight: 700;
+}

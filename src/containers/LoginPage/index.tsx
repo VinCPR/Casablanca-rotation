@@ -1,4 +1,5 @@
 import { url } from "inspector";
+import router from "next/router";
 import Navbar from "../../components/Navbar";
 import IconEmail from "./assets/IconEmail";
 import IconPassword from "./assets/IconPassword";
@@ -24,7 +25,12 @@ export default function LoginPage() {
               placeholder="PASSWORD"
             />
             <button className={styles.forgotPassword}>Forgot password?</button>
-            <button className={styles.loginButton}>Login</button>
+            <button
+              className={styles.loginButton}
+              onClick={() => router.push("/design-rotation")}
+            >
+              Login
+            </button>
             <button className={styles.newAccount}>Create account</button>
           </div>
         </div>

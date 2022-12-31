@@ -6,14 +6,9 @@ import StepTwo from "./containers/StepTwo";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);
+  const [numOfBlock, setNumOfBlock] = React.useState(0);
   return (
     <div className={styles.container}>
-      <div className={styles.backheading}>
-        <button className={styles.backButton}>
-          <ArrowBack />
-          BACK
-        </button>
-      </div>
       <div className={styles.parent}>
         <div
           className={currentStep == 1 ? styles.stepActive : styles.stepNormal}
@@ -28,8 +23,18 @@ export default function RotationDesign() {
           <div className={styles.desc}>Design rotation requirements</div>
         </div>
       </div>
-      {currentStep == 1 && <StepOne setCurrentStep={() => setCurrentStep(2)} />}
-      {currentStep == 2 && <StepTwo />}
+      {currentStep == 1 && (
+        <StepOne
+          setCurrentStep={() => setCurrentStep(2)}
+          setNumOfBlock={(i) => setNumOfBlock(i)}
+        />
+      )}
+      {currentStep == 2 && (
+        <StepTwo
+          setCurrentStep={() => setCurrentStep(1)}
+          numOfBlock={numOfBlock}
+        />
+      )}
     </div>
   );
 }

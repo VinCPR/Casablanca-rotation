@@ -1,13 +1,13 @@
-import NavBar from "./assets/NavBar";
-import Home from "./assets/Home";
-import Feature from "./assets/Feature";
-import Contact from "./assets/Contact";
+import Navbar from "../../components/Navbar";
+import Home from "./containers/Home";
+import Feature from "./containers/Feature";
+import Contact from "./containers/Contact";
 import styles from "./index.module.css";
 export default function LandingPage() {
   return (
     <>
       <div className={styles.LandingPage}>
-        <NavBar />
+        <Navbar />
         <Home />
         <Feature />
         <Contact />
