@@ -14,6 +14,8 @@ interface Props {
   toggle: () => void;
   heading: string;
   data?: OptionSelector;
+  showPreview: boolean;
+  close: boolean;
 }
 
 export default function Modal({
@@ -21,8 +23,10 @@ export default function Modal({
   isOpened,
   toggle,
   heading = "",
+  showPreview,
+  close,
 }: Props) {
-  const [showPreview, setShowPreview] = React.useState(false);
+  const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const rotation: Rotation[] = [
     {
       departments: [
@@ -88,20 +92,20 @@ export default function Modal({
   }
 
   return (
-    <>
+    <div>
       {isOpened && (
-        <>
+        <div>
           <div className={styles.darkBG} onClick={() => toggle()} />
           <div className={styles.centered}>
             <div className={styles.modal}>
-              {!showPreview ? (
+              {!isShowPreview ? (
                 <>
                   <div className={styles.modalHeader}>{heading}</div>
                   <div className={styles.modalContainer}>{children}</div>
                   <div className={styles.actionsContainer}>
                     <button
                       className={styles.previewBtn}
-                      onClick={() => setShowPreview(true)}
+                      onClick={() => setIsShowPreview(true)}
                     >
                       Preview
                     </button>
@@ -205,20 +209,30 @@ export default function Modal({
                   })}
 
                   <div className={styles.actionsContainer}>
-                    <button
-                      style={{ marginTop: "30px" }}
-                      className={styles.closeBtn}
-                      onClick={() => setShowPreview(false)}
-                    >
-                      Back
-                    </button>
+                    {close ? (
+                      <button
+                        style={{ marginTop: "30px" }}
+                        className={styles.closeBtn}
+                        onClick={() => toggle()}
+                      >
+                        Close
+                      </button>
+                    ) : (
+                      <button
+                        style={{ marginTop: "30px" }}
+                        className={styles.closeBtn}
+                        onClick={() => setIsShowPreview(false)}
+                      >
+                        Back
+                      </button>
+                    )}
                   </div>
                 </>
               )}
             </div>
           </div>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 }

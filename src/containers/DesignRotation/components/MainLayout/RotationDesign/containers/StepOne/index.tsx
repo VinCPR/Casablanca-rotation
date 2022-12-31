@@ -2,9 +2,15 @@ import styles from "./index.module.css";
 
 type Props = {
   setCurrentStep: () => void;
+  setNumOfBlock: (i: number) => void;
 };
 
-export default function StepOne({ setCurrentStep }: Props) {
+export default function StepOne({ setCurrentStep, setNumOfBlock }: Props) {
+  const changeNumOfBlock = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setNumOfBlock(Number(event.target.value));
+  };
   return (
     <>
       <div className={styles.title}>LET’S GET STARTED</div>
@@ -14,7 +20,11 @@ export default function StepOne({ setCurrentStep }: Props) {
       </div>
       <div className={styles.questionBox}>
         <div className={styles.heading}>Enter the number of blocks:</div>
-        <input className={styles.input} type="text" />
+        <input
+          className={styles.input}
+          type="text"
+          onChange={changeNumOfBlock}
+        />
       </div>
       <div className={styles.questionBox}>
         <div className={styles.heading}>
