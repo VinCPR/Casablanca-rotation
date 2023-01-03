@@ -2,7 +2,7 @@
   background-color: #ffffff;
 }
 .NavBarItems {
-  position: absolute;
+  position: relative;
   width: 100%;
   background-color: #ffffff;
   height: 77px;
