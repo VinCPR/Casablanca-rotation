@@ -151,26 +151,6 @@ export default function BlockContainer({ input }: Props) {
     return output;
   }
 
-  function divideDepartmentSpace(array: SelectedComponents[]) {
-    var output = "";
-    for (var i = 0; i < array.length; i++) {
-      if (array[i].numOfWeeks < 2) {
-        output += "2fr ";
-      } else {
-        output += String(array[i].numOfWeeks) + "fr ";
-      }
-    }
-    return output;
-  }
-
-  function sumArr(array: SelectedComponents[]) {
-    var output = 0;
-    for (var i = 0; i < array.length; i++) {
-      output += array[i].numOfWeeks;
-    }
-    return output;
-  }
-
   function isDepartmentSelected(): boolean {
     return input.department.selectedComponents.length > 0 ? true : false;
   }
@@ -366,7 +346,8 @@ export default function BlockContainer({ input }: Props) {
                                     className={styles.inputField}
                                     min="0"
                                     max={
-                                      10 -
+                                      input.department.selectedComponents[index]
+                                        .numOfWeeks -
                                       input.hospital[index].totalNum +
                                       obj.numOfWeeks
                                     }
@@ -495,7 +476,7 @@ export default function BlockContainer({ input }: Props) {
                                                         index2
                                                       ].selectedComponents
                                                         .length),
-                                                  30
+                                                  10
                                                 )}
                                               />
                                               <input
@@ -528,7 +509,7 @@ export default function BlockContainer({ input }: Props) {
                                                             index2
                                                           ].selectedComponents
                                                             .length),
-                                                      30
+                                                      10
                                                     ) + "px",
                                                   alignSelf: "center",
                                                 }}
@@ -542,7 +523,9 @@ export default function BlockContainer({ input }: Props) {
                                                 className={styles.inputField}
                                                 min="0"
                                                 max={
-                                                  10 -
+                                                  input.hospital[index1]
+                                                    .selectedComponents[index2]
+                                                    .numOfWeeks -
                                                   input.service[index1][index2]
                                                     .totalNum +
                                                   obj.numOfWeeks

@@ -56,7 +56,6 @@ export default function StepTwo({ setCurrentStep, numOfBlock }: Props) {
   const [isModal12Opened, setIsModal12Opened] = React.useState(false);
   const [isGenerated, setIsGenerated] = React.useState(false);
   const [isShowPreview, setIsShowPreview] = React.useState(false);
-  // console.log("num: " + Number(numOfBlock));
 
   function onClick(x: number) {
     return x === 0
@@ -87,8 +86,88 @@ export default function StepTwo({ setCurrentStep, numOfBlock }: Props) {
   for (var i = 0; i < numOfBlock; i++) {
     optionSelector.push({
       department: useSelectedComponents(),
-      service: useSelectedComponents(),
-      hospital: useSelectedComponents(),
+      service: [
+        [
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+        ],
+        [
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+        ],
+        [
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+        ],
+        [
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+        ],
+        [
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+        ],
+        [
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+          useSelectedComponents(),
+        ],
+      ],
+      hospital: [
+        useSelectedComponents(),
+        useSelectedComponents(),
+        useSelectedComponents(),
+        useSelectedComponents(),
+        useSelectedComponents(),
+        useSelectedComponents(),
+      ],
     });
     count[i] = 1;
   }
