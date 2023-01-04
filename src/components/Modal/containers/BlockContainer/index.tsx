@@ -8,6 +8,8 @@ import React from "react";
 import SelectedComponents from "./SelectedComponents";
 import OptionSelector from "./OptionSelector";
 import Column from "./Column";
+import IconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/IconEdit";
+import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
 
 interface Props {
   input: OptionSelector;
@@ -57,7 +59,80 @@ export default function BlockContainer({ input }: Props) {
       useModal(),
       useModal(),
     ],
-    service: useModal(),
+    service: [
+      [
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+      ],
+      [
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+      ],
+      [
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+      ],
+      [
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+      ],
+      [
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+      ],
+      [
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+        useModal(),
+      ],
+    ],
   };
 
   function isChecked(array: SelectedComponents[], value: String) {
@@ -71,29 +146,18 @@ export default function BlockContainer({ input }: Props) {
   function divideSpace(array: SelectedComponents[]) {
     var output = "";
     for (var i = 0; i < array.length; i++) {
-      if (array[i].numOfWeeks < 2) {
-        output += "2fr ";
-      } else {
-        output += String(array[i].numOfWeeks) + "fr ";
-      }
+      output += "1fr ";
     }
     return output;
   }
 
-  function divideInnerSpace(dept: Column, array: Column[]) {
+  function divideDepartmentSpace(array: SelectedComponents[]) {
     var output = "";
     for (var i = 0; i < array.length; i++) {
-      for (var j = 0; j < array[i].selectedComponents.length; j++) {
-        if (array[i].selectedComponents[j].numOfWeeks < 2) {
-          output += "2fr ";
-        } else {
-          output +=
-            String(
-              (array[i].selectedComponents[j].numOfWeeks *
-                dept.selectedComponents[i].numOfWeeks) /
-                sumArr(array[i].selectedComponents)
-            ) + "fr ";
-        }
+      if (array[i].numOfWeeks < 2) {
+        output += "2fr ";
+      } else {
+        output += String(array[i].numOfWeeks) + "fr ";
       }
     }
     return output;
@@ -107,10 +171,21 @@ export default function BlockContainer({ input }: Props) {
     return output;
   }
 
+  function isDepartmentSelected(): boolean {
+    return input.department.selectedComponents.length > 0 ? true : false;
+  }
+
   function isHospitalSelected(index: number): boolean {
     return input.hospital[index].selectedComponents.length > 0 ? true : false;
   }
 
+  function isServiceSelected(index1: number, index2: number): boolean {
+    return input.service[index1][index2].selectedComponents.length > 0
+      ? true
+      : false;
+  }
+
+  console.log(input);
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -124,144 +199,386 @@ export default function BlockContainer({ input }: Props) {
       <div className={styles.blockContainer}>
         {/* Container for Departments */}
         <div className={styles.btnContainer}>
-          <div
-            style={{
-              gridTemplateRows: divideSpace(
-                input.department.selectedComponents
-              ),
-            }}
-            className={styles.selectionContainer}
-          >
-            {input.department.selectedComponents.map((obj, index) => {
-              return (
-                <div className={styles.deptContainer} key={index}>
-                  <SelectionButton
-                    label={obj.name}
-                    width={220}
-                    height={90}
-                    alignSelf="center"
-                  />
-                  <input
-                    style={{ height: 90 + "%", alignSelf: "center" }}
-                    type="number"
-                    id={obj.name}
-                    value={obj.numOfWeeks}
-                    onChange={input.department.handleChange}
-                    className={styles.inputField}
-                    min="0"
-                    max={10 - input.department.totalNum + obj.numOfWeeks}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            className={styles.addBtn}
-            onClick={modalSelector.department.toggle}
-          >
-            +
-          </button>
-          <div className={styles.totalBox}>{input.department.totalNum}</div>
-        </div>
-        {/* Container for Hospitals */}
-        <div className={styles.btnContainer}>
-          <div
-            style={{
-              gridTemplateRows: divideSpace(
-                input.department.selectedComponents
-              ),
-            }}
-            className={styles.selectionContainer}
-          >
-            <div
-              style={{
-                gridTemplateRows: divideInnerSpace(
-                  input.department,
-                  input.hospital
-                ),
-              }}
-              className={styles.wrapper}
+          {!isDepartmentSelected() && (
+            <button
+              className={styles.addBtn}
+              onClick={modalSelector.department.toggle}
             >
-              {input.department.selectedComponents.map((obj, index) => {
-                return !isHospitalSelected(index) ? (
-                  <button
-                    className={styles.addBtn}
-                    onClick={modalSelector.hospital[index].toggle}
-                    key={index}
-                  >
-                    +
-                  </button>
-                ) : null;
-              })}
-
-              {input.department.selectedComponents.map((obj, index) => {
-                return input.hospital[index].selectedComponents.map((obj) => {
+              +
+            </button>
+          )}
+          {isDepartmentSelected() && (
+            <div className={styles.selectionContainer}>
+              <div
+                className={styles.wrapper}
+                style={{
+                  gridTemplateRows: divideSpace(
+                    input.department.selectedComponents
+                  ),
+                  marginLeft: "14px",
+                  width: "95%",
+                }}
+              >
+                {input.department.selectedComponents.map((obj, index) => {
                   return (
-                    <div className={styles.deptContainer}>
+                    <div
+                      className={styles.deptContainer}
+                      key={index}
+                      style={{
+                        borderBottom: "1px solid #3bacb6",
+                      }}
+                    >
                       <SelectionButton
                         label={obj.name}
-                        width={220}
+                        width={190}
                         height={90}
                         alignSelf="center"
+                        fontSize={Math.min(
+                          80 / input.department.selectedComponents.length,
+                          16
+                        )}
                       />
                       <input
                         style={{ height: 90 + "%", alignSelf: "center" }}
                         type="number"
                         id={obj.name}
                         value={obj.numOfWeeks}
-                        onChange={input.hospital[index].handleChange}
+                        onChange={input.department.handleChange}
                         className={styles.inputField}
                         min="0"
-                        max={
-                          10 - input.hospital[index].totalNum + obj.numOfWeeks
-                        }
+                        max={10 - input.department.totalNum + obj.numOfWeeks}
                       />
                     </div>
                   );
-                });
+                })}
+              </div>
+              <button
+                onClick={modalSelector.department.toggle}
+                className={styles.editBtn}
+                style={{ top: "60%", marginLeft: "275px" }}
+              >
+                <IconEdit />
+              </button>
+            </div>
+          )}
+        </div>
+        {/* Container for Hospitals */}
+        <div className={styles.btnContainer}>
+          <div className={styles.selectionContainer}>
+            <div
+              className={styles.wrapper}
+              style={{
+                gridTemplateRows: divideSpace(
+                  input.department.selectedComponents
+                ),
+                marginLeft: "2px",
+                width: "100%",
+              }}
+            >
+              {input.department.selectedComponents.map((obj, index) => {
+                return (
+                  <div
+                    style={{
+                      borderBottom: "1px solid #3bacb6",
+                    }}
+                  >
+                    {!isHospitalSelected(index) && (
+                      <button
+                        className={styles.addBtn}
+                        onClick={modalSelector.hospital[index].toggle}
+                        key={index}
+                      >
+                        +
+                      </button>
+                    )}
+
+                    {isHospitalSelected(index) && (
+                      <div className={styles.btnContainer1}>
+                        <div
+                          style={{
+                            gridTemplateRows: divideSpace(
+                              input.hospital[index].selectedComponents
+                            ),
+                          }}
+                          className={styles.selectionContainer1}
+                        >
+                          {input.hospital[index].selectedComponents.map(
+                            (obj) => {
+                              return (
+                                <div
+                                  style={{
+                                    borderBottom: "1px solid #3bacb6",
+                                    marginBottom: "-1px",
+                                    marginLeft: "2px",
+                                  }}
+                                  className={styles.deptContainer}
+                                  // style={{ backgroundColor: colors[index] }}
+                                >
+                                  <SelectionButton
+                                    label={obj.name}
+                                    width={190}
+                                    height={Math.min(
+                                      2000 /
+                                        (input.department.selectedComponents
+                                          .length *
+                                          input.hospital[index]
+                                            .selectedComponents.length),
+                                      90
+                                    )}
+                                    alignSelf="center"
+                                    fontSize={Math.min(
+                                      120 /
+                                        (input.department.selectedComponents
+                                          .length *
+                                          input.hospital[index]
+                                            .selectedComponents.length),
+                                      10
+                                    )}
+                                  />
+                                  <input
+                                    style={{
+                                      height:
+                                        Math.min(
+                                          2000 /
+                                            (input.department.selectedComponents
+                                              .length *
+                                              input.hospital[index]
+                                                .selectedComponents.length),
+                                          90
+                                        ) + "%",
+                                      fontSize:
+                                        Math.min(
+                                          120 /
+                                            (input.department.selectedComponents
+                                              .length *
+                                              input.hospital[index]
+                                                .selectedComponents.length),
+                                          10
+                                        ) + "px",
+                                      alignSelf: "center",
+                                    }}
+                                    type="number"
+                                    id={obj.name}
+                                    value={obj.numOfWeeks}
+                                    onChange={
+                                      input.hospital[index].handleChange
+                                    }
+                                    className={styles.inputField}
+                                    min="0"
+                                    max={
+                                      10 -
+                                      input.hospital[index].totalNum +
+                                      obj.numOfWeeks
+                                    }
+                                  />
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                        <button
+                          onClick={modalSelector.hospital[index].toggle}
+                          key={index}
+                          className={styles.editBtn}
+                          style={{ marginLeft: "275px", top: "40%" }}
+                        >
+                          <SmallIconEdit />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
               })}
             </div>
           </div>
-          <div className={styles.totalBox}>{input.hospital[0].totalNum}</div>
         </div>
-        {/* Container for Services */}
         <div className={styles.btnContainer}>
-          <div
-            style={{
-              gridTemplateRows: divideSpace(input.service.selectedComponents),
-            }}
-            className={styles.selectionContainer}
-          >
-            {input.service.selectedComponents.map((obj, index) => {
-              return (
-                <div className={styles.deptContainer} key={index}>
-                  <SelectionButton
-                    label={obj.name}
-                    width={220}
-                    height={90}
-                    alignSelf="center"
-                  />
-                  <input
-                    style={{ height: 90 + "%", alignSelf: "center" }}
-                    type="number"
-                    id={obj.name}
-                    value={obj.numOfWeeks}
-                    onChange={input.service.handleChange}
-                    className={styles.inputField}
-                    min="0"
-                    max={10 - input.service.totalNum + obj.numOfWeeks}
-                  />
-                </div>
-              );
-            })}
+          <div className={styles.selectionContainer}>
+            <div
+              className={styles.wrapper}
+              style={{
+                gridTemplateRows: divideSpace(
+                  input.department.selectedComponents
+                ),
+              }}
+            >
+              {input.department.selectedComponents.map((obj, index1) => {
+                return (
+                  <div
+                    style={{
+                      borderBottom: "1px solid #3bacb6",
+                      position: "sticky",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    {isHospitalSelected(index1) && (
+                      <div className={styles.btnContainer1}>
+                        <div
+                          style={{
+                            gridTemplateRows: divideSpace(
+                              input.hospital[index1].selectedComponents
+                            ),
+                          }}
+                          className={styles.selectionContainer1}
+                        >
+                          {input.hospital[index1].selectedComponents.map(
+                            (obj, index2) => {
+                              return (
+                                <div
+                                  style={{
+                                    borderBottom: "1px solid #3bacb6",
+                                    marginBottom: "-1px",
+                                    marginLeft: "2px",
+                                    width: "100%",
+                                    position: "sticky",
+                                  }}
+                                >
+                                  {!isServiceSelected(index1, index2) && (
+                                    <button
+                                      className={styles.addBtn1}
+                                      onClick={
+                                        modalSelector.service[index1][index2]
+                                          .toggle
+                                      }
+                                      key={index2}
+                                    >
+                                      +
+                                    </button>
+                                  )}
+
+                                  {isServiceSelected(index1, index2) && (
+                                    <div className={styles.btnContainer2}>
+                                      <div
+                                        style={{
+                                          gridTemplateRows: divideSpace(
+                                            input.service[index1][index2]
+                                              .selectedComponents
+                                          ),
+                                        }}
+                                        className={styles.selectionContainer2}
+                                      >
+                                        {input.service[index1][
+                                          index2
+                                        ].selectedComponents.map((obj) => {
+                                          return (
+                                            <div
+                                              className={styles.deptContainer}
+                                              // style={{ backgroundColor: colors[index] }}
+                                            >
+                                              <SelectionButton
+                                                label={obj.name}
+                                                width={190}
+                                                height={Math.min(
+                                                  2200 /
+                                                    (input.department
+                                                      .selectedComponents
+                                                      .length *
+                                                      input.hospital[index1]
+                                                        .selectedComponents
+                                                        .length *
+                                                      input.service[index1][
+                                                        index2
+                                                      ].selectedComponents
+                                                        .length),
+                                                  90
+                                                )}
+                                                alignSelf="center"
+                                                fontSize={Math.min(
+                                                  180 /
+                                                    (input.department
+                                                      .selectedComponents
+                                                      .length *
+                                                      input.hospital[index1]
+                                                        .selectedComponents
+                                                        .length *
+                                                      input.service[index1][
+                                                        index2
+                                                      ].selectedComponents
+                                                        .length),
+                                                  30
+                                                )}
+                                              />
+                                              <input
+                                                style={{
+                                                  height:
+                                                    Math.min(
+                                                      2200 /
+                                                        (input.department
+                                                          .selectedComponents
+                                                          .length *
+                                                          input.hospital[index1]
+                                                            .selectedComponents
+                                                            .length *
+                                                          input.service[index1][
+                                                            index2
+                                                          ].selectedComponents
+                                                            .length),
+                                                      90
+                                                    ) + "%",
+                                                  fontSize:
+                                                    Math.min(
+                                                      180 /
+                                                        (input.department
+                                                          .selectedComponents
+                                                          .length *
+                                                          input.hospital[index1]
+                                                            .selectedComponents
+                                                            .length *
+                                                          input.service[index1][
+                                                            index2
+                                                          ].selectedComponents
+                                                            .length),
+                                                      30
+                                                    ) + "px",
+                                                  alignSelf: "center",
+                                                }}
+                                                type="number"
+                                                id={obj.name}
+                                                value={obj.numOfWeeks}
+                                                onChange={
+                                                  input.service[index1][index2]
+                                                    .handleChange
+                                                }
+                                                className={styles.inputField}
+                                                min="0"
+                                                max={
+                                                  10 -
+                                                  input.service[index1][index2]
+                                                    .totalNum +
+                                                  obj.numOfWeeks
+                                                }
+                                              />
+                                            </div>
+                                          );
+                                        })}
+                                      </div>
+                                      <button
+                                        onClick={
+                                          modalSelector.service[index1][index2]
+                                            .toggle
+                                        }
+                                        className={styles.editBtn}
+                                        style={{
+                                          marginLeft: "275px",
+                                          top: "30%",
+                                        }}
+                                      >
+                                        <SmallIconEdit />
+                                      </button>
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <button
-            className={styles.addBtn}
-            // onClick={modalSelector.service[0].toggle}
-          >
-            +
-          </button>
-          <div className={styles.totalBox}>{input.service.totalNum}</div>
         </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
         <SelectionModal
@@ -289,33 +606,38 @@ export default function BlockContainer({ input }: Props) {
             );
           })}
         </SelectionModal>
-        {input.hospital[0].selectedComponents.map((obj, index) => {
-          return (
-            <SelectionModal
-              isOpened={modalSelector.service.isOpened}
-              toggle={modalSelector.service.toggle}
-              heading={"Please select the services for this block"}
-            >
-              {services.map((value) => {
-                return (
-                  <div className={styles.deptContainer}>
-                    <SelectionButton label={value} />
-                    <Checkbox
-                      onClick={input.service.handleClick}
-                      label={value}
-                      checked={isChecked(
-                        input.service.selectedComponents,
-                        value
-                      )}
-                      checkedAfterClose={isChecked(
-                        input.service.selectedComponents,
-                        value
-                      )}
-                    />
-                  </div>
-                );
-              })}
-            </SelectionModal>
+        {input.department.selectedComponents.map((obj, index1) => {
+          return input.hospital[index1].selectedComponents.map(
+            (obj, index2) => {
+              return (
+                <SelectionModal
+                  isOpened={modalSelector.service[index1][index2].isOpened}
+                  toggle={modalSelector.service[index1][index2].toggle}
+                  heading={"Please select the service for hospital " + obj.name}
+                  id={index2}
+                >
+                  {services.map((value) => {
+                    return (
+                      <div className={styles.deptContainer}>
+                        <SelectionButton label={value} />
+                        <Checkbox
+                          onClick={input.service[index1][index2].handleClick}
+                          label={value}
+                          checked={isChecked(
+                            input.service[index1][index2].selectedComponents,
+                            value
+                          )}
+                          checkedAfterClose={isChecked(
+                            input.service[index1][index2].selectedComponents,
+                            value
+                          )}
+                        />
+                      </div>
+                    );
+                  })}
+                </SelectionModal>
+              );
+            }
           );
         })}
 
@@ -324,7 +646,7 @@ export default function BlockContainer({ input }: Props) {
             <SelectionModal
               isOpened={modalSelector.hospital[index].isOpened}
               toggle={modalSelector.hospital[index].toggle}
-              heading={"Please select the hospitals for this block" + { index }}
+              heading={"Please select the hospitals for department " + obj.name}
               id={index}
             >
               {hospitals.map((value) => {
