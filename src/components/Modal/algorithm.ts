@@ -191,12 +191,18 @@ export function designRotation(data: Rotation, x: number) {
   const results = generateRotationDesign(deptServices, x);
   return results.map((result: Service[][]) => {
     const services = result.flat();
-    const hospitals = services.map(
-      (service: Service) => mapServicesHospitals[service.name]
-    );
-    const departments = services.map(
-      (service: Service) => mapServicesDepartments[service.name]
-    );
+    const hospitals: Hospital[] = services.map((service: Service) => {
+      return {
+        name: mapServicesHospitals[service.name].name,
+        numOfWeeks: service.numOfWeeks,
+      };
+    });
+    const departments: Department[] = services.map((service: Service) => {
+      return {
+        name: mapServicesDepartments[service.name].name,
+        numOfWeeks: service.numOfWeeks,
+      };
+    });
     return {
       departments,
       hospitals,
