@@ -1,16 +1,10 @@
+import Column from "./Column";
 import SelectedComponents from "./SelectedComponents";
 
 type OptionSelector = {
   department: Column;
-  hospital: Column;
-  service: Column;
-};
-
-type Column = {
-  selectedComponents: SelectedComponents[];
-  handleClick: (event: any) => void;
-  totalNum: number;
-  handleChange: (event: any) => void;
+  hospital: Column[];
+  service: Column[][];
 };
 
 export default OptionSelector;

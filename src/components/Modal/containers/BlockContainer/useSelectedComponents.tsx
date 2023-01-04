@@ -38,7 +38,7 @@ export default function useSelectedComponents() {
     const target = event.target as HTMLInputElement;
     if (!selectedComponents.some((e) => e.name === target.value)) {
       const newComponent = new SelectedComponents(target.value);
-      setSelectedComponents((arr) => [newComponent, ...arr]);
+      setSelectedComponents((arr) => [...arr, newComponent]);
     } else {
       const index = selectedComponents.findIndex(
         (e) => e.name === target.value

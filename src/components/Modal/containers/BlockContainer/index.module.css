@@ -10,7 +10,7 @@
 
 .header {
   display: grid;
-  grid-template-columns: [line1] 23% [line2] 10.3% [line3] 23% [line4] 10.3% [line5] 23% [line6] 10.3%;
+  grid-template-columns: [line1] 27% [line2] 0.3% [line3] 34% [line4] 0% [line5] 32% [line6] 0%;
   position: absolute;
   top: -2px;
   left: -2px;
@@ -30,23 +30,8 @@
   place-self: center;
 }
 
-.selectionContainer {
-  position: absolute;
-  padding-top: 125px;
-  padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
-  border-bottom: 3px solid #3bacb6;
-  left: -2px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-flow: column dense;
-  justify-content: center;
-}
-
 .inputField {
   width: 40px;
-  height: 40px;
   border-radius: 12px;
   border: none;
   font-family: "Roboto";
@@ -74,19 +59,103 @@
   border-right: 3px solid #3bacb6;
 }
 
+.btnContainer1 {
+  height: 100%;
+  position: relative;
+}
+
+.btnContainer2 {
+  height: 100%;
+  position: relative;
+}
+
+.selectionContainer {
+  position: absolute;
+  padding-top: 125px;
+  height: 100%;
+  width: 100%;
+  left: -2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column dense;
+  justify-content: center;
+}
+
+.selectionContainer1 {
+  position: relative;
+  height: 100%;
+  width: 101%;
+  left: -2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column dense;
+  justify-content: center;
+}
+
+.selectionContainer2 {
+  position: relative;
+  height: 100%;
+  width: 101%;
+  left: -2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column dense;
+  justify-content: center;
+}
+
 .btnContainer:last-of-type {
   border-right: none;
 }
 
-.addBtn {
-  position: absolute;
-  bottom: 2.65%;
-  left: 7.5%;
-  width: 180px;
-  height: 50px;
+.wrapper {
+  display: grid;
+  height: 100%;
+  margin-top: 2.6px;
+}
+
+.wrapper .addBtn {
+  position: relative;
+  align-self: center;
+  margin-top: 7%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
   background: #3bacb6;
   color: #fff;
   font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.addBtn {
+  position: relative;
+  align-self: center;
+  margin-top: 85%;
+  left: 25%;
+  width: 50%;
+  height: 10%;
+  background: #3bacb6;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.addBtn1 {
+  position: absolute;
+  align-self: center;
+  margin-top: 1%;
+  left: 25%;
+  width: 50%;
+  height: 70%;
+  background: #3bacb6;
+  color: #fff;
+  font-size: 10px;
   font-weight: 500;
   border: none;
   border-radius: 12px;
@@ -113,4 +182,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.editBtn {
+  position: absolute;
+  align-self: center;
+  background: #b3e8e5;
+  border: none;
+  border-radius: 1px;
+  transition: all 0.25s ease;
+  cursor: pointer;
 }
