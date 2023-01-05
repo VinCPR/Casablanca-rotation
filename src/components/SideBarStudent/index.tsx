@@ -35,7 +35,7 @@ export default function SideBarStudent({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconStudentList isActive={mouseEnter === 2 || highlight === 2} />
-          <Link href="/rotation-plan">
+          <Link href="/student/profile">
             <div className={styles.text}>My Profile</div>
           </Link>
         </div>

@@ -2,20 +2,12 @@ import styles from "./index.module.css";
 import { useRouter } from "next/router";
 
 type Props = {
-  startDate?: string;
-  endDate?: string;
   department?: string;
   hospital?: string;
   service?: string;
 };
 
-export default function StudentList({
-  startDate,
-  endDate,
-  department,
-  hospital,
-  service,
-}: Props) {
+export default function StudentList({ department, hospital, service }: Props) {
   const headerAttending = [
     "Student ID",
     "Name",
@@ -42,10 +34,8 @@ export default function StudentList({
   const { date } = router.query;
   return (
     <>
-      <div className={styles.secondLayoutHeader}>
-        Group List {department} {service} {hospital} {startDate} - {endDate}
-      </div>
-
+      <div className={styles.secondLayoutHeader}>Group List </div>
+      {/* The Group name must have the syntax " Group List + Name of Hospital + Date " but I can not recall the information from previous page */}
       <div className={styles.subHeader}>Attending List</div>
       <div className={styles.container}>
         <>
