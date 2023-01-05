@@ -17,6 +17,7 @@ export default function StudentList() {
     return (
         <>
             <div className={styles.secondLayoutHeader}>Group List </div>
+{/* The Group name must have the syntax " Group List + Name of Hospital + Date " but I can not recall the information from previous page */}
             <div className={styles.subHeader}>Attending List</div>
             <div className={styles.container}>
                 <>
