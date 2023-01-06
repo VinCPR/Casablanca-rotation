@@ -65,7 +65,7 @@ export default function StepOne({
       </div>
       <div className={styles.questionBox}>
         <div className={styles.heading}>
-          Enter the duration of each block (weeks):
+          Enter the duration of each block (#weeks):
         </div>
         <input
           className={styles.input}
