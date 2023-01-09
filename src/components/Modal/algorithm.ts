@@ -192,28 +192,48 @@ export function designRotation(data: Rotation, x: number) {
   const results = generateRotationDesign(tuples, x);
   return results.map((result: Tuple[][]) => {
     const tuples = result.flat();
-    const services: Service[] = tuples.map((tuple) => {
-      return {
-        name: tuple.service,
-        numOfWeeks: tuple.numOfWeeks,
-      };
-    });
-    const hospitals: Hospital[] = tuples.map((tuple) => {
-      return {
-        name: tuple.hospital,
-        numOfWeeks: tuple.numOfWeeks,
-      };
-    });
-    const departments: Department[] = tuples.map((tuple) => {
-      return {
-        name: tuple.department,
-        numOfWeeks: tuple.numOfWeeks,
-      };
-    });
+    const services: Service[] = clean(
+      tuples.map((tuple) => {
+        return {
+          name: tuple.service,
+          numOfWeeks: tuple.numOfWeeks,
+        };
+      })
+    );
+    const hospitals: Hospital[] = clean(
+      tuples.map((tuple) => {
+        return {
+          name: tuple.hospital,
+          numOfWeeks: tuple.numOfWeeks,
+        };
+      })
+    );
+    const departments: Department[] = clean(
+      tuples.map((tuple) => {
+        return {
+          name: tuple.department,
+          numOfWeeks: tuple.numOfWeeks,
+        };
+      })
+    );
     return {
       departments,
       hospitals,
       services,
     };
   });
+}
+
+export function clean(
+  lists: Hospital[] | Department[] | Service[]
+): Hospital[] | Department[] | Service[] {
+  let res: typeof lists = [];
+  for (let i = 0; i < lists.length; i++) {
+    if (res.length == 0 || res[res.length - 1].name !== lists[i].name) {
+      res.push(lists[i]);
+    } else {
+      res[res.length - 1].numOfWeeks += lists[i].numOfWeeks;
+    }
+  }
+  return res;
 }
