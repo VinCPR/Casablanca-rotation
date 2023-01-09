@@ -1,7 +1,4 @@
-import Department from "./Department";
-import Hospital from "./Hospital";
-import Rotation from "./Rotation";
-import Service from "./Service";
+import { Service, Rotation, Department, Hospital, Tuple } from "./types";
 
 /** Given an array, generate all possible permutation of the array
  * For example: permute([1, 2]) = [[1, 2], [2, 1]]
@@ -36,15 +33,15 @@ function permute<T>(permutation: T[]) {
  */
 
 function generateRotationServices(
-  perm: Service[][],
-  current: Service[][],
+  perm: Tuple[][],
+  current: Tuple[][],
   id: number
 ) {
   if (id === perm.length) {
     return [current];
   }
   const permServices = permute(perm[id]);
-  let res: Service[][][] = [];
+  let res: Tuple[][][] = [];
   const ans = permServices.map((p) => {
     const rotationServices = generateRotationServices(
       perm,
@@ -60,7 +57,7 @@ function generateRotationServices(
  * Calculate the number of weeks that have the
  * same service between two services permutation
  */
-function diffRot(perm1: Service[][], perm2: Service[][]) {
+function diffRot(perm1: Tuple[][], perm2: Tuple[][]) {
   let id1i = 0,
     id2i = 0,
     id1j = 0,
@@ -93,7 +90,11 @@ function diffRot(perm1: Service[][], perm2: Service[][]) {
       id2j = 0;
       id1j++;
     }
-    if (perm1[id1i][id2i].name === perm2[id1j][id2j].name) {
+    if (
+      perm1[id1i][id2i].service === perm2[id1j][id2j].service &&
+      perm1[id1i][id2i].hospital === perm2[id1j][id2j].hospital &&
+      perm1[id1i][id2i].department === perm2[id1j][id2j].department
+    ) {
       ans++;
     }
   }
@@ -104,7 +105,7 @@ function diffRot(perm1: Service[][], perm2: Service[][]) {
  * Given a list of services permutation, calculate the `diffRot` between every pair of services permutations
  * In the problem, we will try to minimize this calculation
  */
-function calculateLoss(list: number[], totalPerms: Service[][][]) {
+function calculateLoss(list: number[], totalPerms: Tuple[][][]) {
   let ans = 0;
   for (let i = 0; i < list.length; i++) {
     for (let j = i + 1; j < list.length; j++) {
@@ -117,7 +118,7 @@ function calculateLoss(list: number[], totalPerms: Service[][][]) {
 /**
  * Generate all possible `x` valid services permutation, and calculate the `loss` of that instance and took the one with minimum loss
  */
-function backtrack(x: number, list: number[], totalPerms: Service[][][]) {
+function backtrack(x: number, list: number[], totalPerms: Tuple[][][]) {
   if (list.length === x) {
     return {
       loss: calculateLoss(list, totalPerms),
@@ -139,9 +140,9 @@ function backtrack(x: number, list: number[], totalPerms: Service[][][]) {
   };
 }
 
-function generateRotationDesign(deptServices: Service[][], x: number) {
+function generateRotationDesign(deptServices: Tuple[][], x: number) {
   const perms = permute(deptServices);
-  let totalPerms: Service[][][] = [];
+  let totalPerms: Tuple[][][] = [];
   for (let i = 0; i < perms.length; i++) {
     totalPerms = totalPerms.concat(generateRotationServices(perms[i], [], 0));
   }
@@ -156,51 +157,57 @@ function generateRotationDesign(deptServices: Service[][], x: number) {
  */
 
 export function designRotation(data: Rotation, x: number) {
-  let deptServices = [],
+  let curTuple: Tuple[] = [],
+    tuples: Tuple[][] = [],
     sum = 0,
     sum2 = 0,
-    curServices: Service[] = [],
     idDepartments = 0,
-    idHospitals = 0,
-    mapServicesDepartments: Record<string, Department> = {},
-    mapServicesHospitals: Record<string, Hospital> = {};
+    idHospitals = 0;
   for (let i = 0; i < data.services.length; i++) {
     sum += data.services[i].numOfWeeks;
-    curServices = [...curServices, data.services[i]];
-    mapServicesDepartments = {
-      ...mapServicesDepartments,
-      [data.services[i].name]: data.departments[idDepartments],
-    };
+
+    sum2 += data.services[i].numOfWeeks;
+
+    curTuple = [
+      ...curTuple,
+      {
+        department: data.departments[idDepartments].name,
+        hospital: data.hospitals[idHospitals].name,
+        service: data.services[i].name,
+        numOfWeeks: data.services[i].numOfWeeks,
+      },
+    ];
+
     if (sum === data.departments[idDepartments].numOfWeeks) {
       idDepartments++;
-      deptServices.push(curServices);
-      curServices = [];
+      tuples = [...tuples, curTuple];
+      curTuple = [];
       sum = 0;
     }
-    // calculate servicesHospitals
-    sum2 += data.services[i].numOfWeeks;
-    mapServicesHospitals = {
-      ...mapServicesHospitals,
-      [data.services[i].name]: data.hospitals[idHospitals],
-    };
     if (sum2 === data.hospitals[idHospitals].numOfWeeks) {
       idHospitals++;
       sum2 = 0;
     }
   }
-  const results = generateRotationDesign(deptServices, x);
-  return results.map((result: Service[][]) => {
-    const services = result.flat();
-    const hospitals: Hospital[] = services.map((service: Service) => {
+  const results = generateRotationDesign(tuples, x);
+  return results.map((result: Tuple[][]) => {
+    const tuples = result.flat();
+    const services: Service[] = tuples.map((tuple) => {
       return {
-        name: mapServicesHospitals[service.name].name,
-        numOfWeeks: service.numOfWeeks,
+        name: tuple.service,
+        numOfWeeks: tuple.numOfWeeks,
       };
     });
-    const departments: Department[] = services.map((service: Service) => {
+    const hospitals: Hospital[] = tuples.map((tuple) => {
       return {
-        name: mapServicesDepartments[service.name].name,
-        numOfWeeks: service.numOfWeeks,
+        name: tuple.hospital,
+        numOfWeeks: tuple.numOfWeeks,
+      };
+    });
+    const departments: Department[] = tuples.map((tuple) => {
+      return {
+        name: tuple.department,
+        numOfWeeks: tuple.numOfWeeks,
       };
     });
     return {
