@@ -3,7 +3,6 @@
   left: 0;
   width: 100%;
   height: 120px;
-  background-color: red;
 }
 
 .splitRight {
@@ -11,7 +10,6 @@
   left: 50%;
   width: 30%;
   height: 120px;
-  background-color: blue;
 }
 
 .infoHeader {

@@ -6,6 +6,7 @@ interface Props {
   width?: number;
   height?: number;
   marginLeft?: number;
+  fontSize?: number;
 }
 
 export default function DisplayRotation({
@@ -14,6 +15,7 @@ export default function DisplayRotation({
   width,
   height,
   marginLeft,
+  fontSize,
 }: Props) {
   return (
     <button
@@ -22,6 +24,8 @@ export default function DisplayRotation({
         width: width + "px",
         height: height + "%",
         marginLeft: marginLeft + "px",
+        alignSelf: "center",
+        fontSize: fontSize + "px",
       }}
       className={styles.selectionBtn}
     >
