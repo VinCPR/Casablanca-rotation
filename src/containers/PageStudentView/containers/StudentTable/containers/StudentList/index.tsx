@@ -7,6 +7,7 @@ type Props = {
   department?: string;
   hospital?: string;
   service?: string;
+  role?: string;
 };
 
 export default function StudentList({
@@ -15,16 +16,17 @@ export default function StudentList({
   department,
   hospital,
   service,
+  role,
 }: Props) {
   const headerAttending = [
-    "Student ID",
+    "Faculty ID",
     "Name",
     "College",
     "Email",
     "Personal Info",
   ];
   const headerStudent = [
-    "Faculty ID",
+    "Student ID",
     "Name",
     "College",
     "Email",
@@ -73,7 +75,7 @@ export default function StudentList({
                   <button
                     onClick={() =>
                       router.push(
-                        `/rotation-plan/${date}/view-schedule/${row[0]}`
+                        `${role}/attending-profile/${dataAttending[index][0]}`
                       )
                     }
                     className={styles.detailsBtn}
@@ -113,7 +115,7 @@ export default function StudentList({
                   <button
                     onClick={() =>
                       router.push(
-                        `/rotation-plan/${date}/view-schedule/${row[0]}`
+                        `${role}/student-profile/${dataStudent[index][0]}`
                       )
                     }
                     className={styles.detailsBtn}

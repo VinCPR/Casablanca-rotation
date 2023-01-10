@@ -1,5 +1,6 @@
 import Navbar from "../../src/components/Navbar";
-import SideBarStudent from "../../src/components/SideBarStudent";
+import SideBarAttending from "../../src/components/SideBarAttending";
+import PageStudentView from "../../src/containers/PageStudentView";
 import StudentTable from "../../src/containers/PageStudentView/containers/StudentTable";
 import styles from "./index.module.css";
 export default function StudentView() {
@@ -7,10 +8,10 @@ export default function StudentView() {
     <>
       <Navbar />
       <div style={{ position: "relative" }}>
-        <SideBarStudent highlight={1} />
+        <SideBarAttending highlight={1} />
         <div className={styles.scheduleContainer}>
           <div className={styles.schedule}>
-            <StudentTable role={"student"} />
+            <StudentTable role={"attending"} />
           </div>
         </div>
       </div>

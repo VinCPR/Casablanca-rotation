@@ -6,16 +6,25 @@ type Props = {
   isEdit?: boolean;
 };
 
-export default function ViewStudentDetail({ isEdit }: Props) {
+export default function ViewAttendingDetail({ isEdit }: Props) {
   const [name, setName] = React.useState("Do My Dieu Linh");
   const [DOB, setDOB] = React.useState("23/09/2004");
   const [email, setEmail] = React.useState("22linh.dmd@vinuni.edu.vn");
-  const [program, setProgram] = React.useState("Business Administration");
-  const [cohort, setCohort] = React.useState("Cohort 3");
+  const [position, setPosition] = React.useState("CBM Ungraduated Student");
   const [phone, setPhone] = React.useState("0904291212");
-
+  const [officeHours, setOfficeHours] = React.useState(
+    "3p.m->5 p.m, Tuesday (room I310)"
+  );
+  const [contactMethod, setContactMethod] = React.useState("email or teams");
+  const [biography, setBiography] = React.useState(
+    "Hi, I am Vu Duc Viet - a faculty of CHS. I completed my residency in Intensive Care in 1995 and PhD in 2011 from Hanoi Medical University, residency (FFI) in France (1997-1998 and 2004); attended training courses at International Medical Center of Japan (IMCJ) and Royal North Shore Hospital Sydney (Australia) -2009; visiting physician at St Anthony Hospital, Colorado and Mayo Clinic, Rochester, Minnesota (US)."
+  );
   const [isEditProfile, setIsEditProfile] = React.useState(false);
+  const [isEditContactInfo, setIsEditContactInfo] = React.useState(false);
+  const [isEditBiography, setIsEditBiography] = React.useState(false);
   const [editProfile, setEditProfile] = React.useState("EDIT");
+  const [editContactInfo, setEditContactInfo] = React.useState("EDIT");
+  const [editBiography, setEditBiography] = React.useState("EDIT");
 
   function onClickProfile() {
     setIsEditProfile(!isEditProfile);
@@ -26,6 +35,30 @@ export default function ViewStudentDetail({ isEdit }: Props) {
 
     if (!isEditProfile) {
       setEditProfile("ENTER");
+    }
+  }
+
+  function onClickContactInfo() {
+    setIsEditContactInfo(!isEditContactInfo);
+
+    if (isEditContactInfo) {
+      setEditContactInfo("EDIT");
+    }
+
+    if (!isEditContactInfo) {
+      setEditContactInfo("ENTER");
+    }
+  }
+
+  function onClickBiography() {
+    setIsEditBiography(!isEditBiography);
+
+    if (isEditBiography) {
+      setEditBiography("EDIT");
+    }
+
+    if (!isEditBiography) {
+      setEditBiography("ENTER");
     }
   }
 
@@ -44,20 +77,30 @@ export default function ViewStudentDetail({ isEdit }: Props) {
   }) => {
     setEmail(event.target.value);
   };
-  const changeProgram = (event: {
+  const changePosition = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    setProgram(event.target.value);
-  };
-  const changeCohort = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setCohort(event.target.value);
+    setPosition(event.target.value);
   };
   const changePhone = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setPhone(event.target.value);
+  };
+  const changeOfficeHours = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setOfficeHours(event.target.value);
+  };
+  const changeContactMethod = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setContactMethod(event.target.value);
+  };
+  const changeBiography = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setBiography(event.target.value);
   };
 
   return (
@@ -107,23 +150,13 @@ export default function ViewStudentDetail({ isEdit }: Props) {
                   </div>
                 </div>
                 <div className={styles.boldText}>
-                  Program:
+                  Position:
                   <div
                     className={styles.text}
-                    style={{ top: "-21.5px", left: "85px" }}
+                    style={{ top: "-22.5px", left: "79px" }}
                   >
                     {" "}
-                    {program}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Cohort:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22.5px", left: "71px" }}
-                  >
-                    {" "}
-                    {cohort}{" "}
+                    {position}{" "}
                   </div>
                 </div>
                 <div className={styles.boldText}>
@@ -170,20 +203,10 @@ export default function ViewStudentDetail({ isEdit }: Props) {
                   ></input>
                 </div>
                 <div className={styles.boldText1}>
-                  Program:
+                  Position:
                   <input
-                    onChange={changeProgram}
-                    value={program}
-                    type="text"
-                    id="fposition"
-                    name="fposition"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Cohort:
-                  <input
-                    onChange={changeCohort}
-                    value={cohort}
+                    onChange={changePosition}
+                    value={position}
                     type="text"
                     id="fposition"
                     name="fposition"
@@ -203,16 +226,106 @@ export default function ViewStudentDetail({ isEdit }: Props) {
             )}
           </div>
         </div>
-      </div>
 
+        <div className={styles.splitRight}>
+          <div className={styles.infoHeader} style={{ marginLeft: "28px" }}>
+            CONTACT INFO
+          </div>
+          <div className={styles.contactInfo}>
+            {!isEditContactInfo ? (
+              <div>
+                <div className={styles.boldText}>
+                  Office Hours:
+                  <div
+                    className={styles.text}
+                    style={{ top: "-22px", left: "122px" }}
+                  >
+                    {" "}
+                    {officeHours}{" "}
+                  </div>
+                </div>
+                <div className={styles.boldText}>
+                  Contact method:
+                  <div
+                    className={styles.text}
+                    style={{ top: "-22.5px", left: "150px" }}
+                  >
+                    {" "}
+                    {contactMethod}{" "}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className={styles.boldText1} style={{ marginTop: "10px" }}>
+                  Office Hours:
+                  <input
+                    onChange={changeOfficeHours}
+                    value={officeHours}
+                    type="text"
+                    id="fofficehours"
+                    name="fofficehours"
+                  ></input>
+                </div>
+                <div className={styles.boldText1}>
+                  Contact method:
+                  <input
+                    onChange={changeContactMethod}
+                    value={contactMethod}
+                    type="text"
+                    id="fcontactmethod"
+                    name="fcontactmethod"
+                  ></input>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className={styles.headerBottom}>BIOGRAPHY</div>
+
+        {!isEditBiography ? (
+          <div>
+            <div className={styles.text} style={{ top: "10px", left: "15px" }}>
+              {" "}
+              {biography}{" "}
+            </div>
+          </div>
+        ) : (
+          <div className={styles.create}>
+            <form>
+              <textarea onChange={changeBiography} value={biography}>
+                {" "}
+              </textarea>
+            </form>
+          </div>
+        )}
+      </div>
       {isEdit && (
         <>
           <button
             className={styles.editBtn}
             onClick={() => onClickProfile()}
-            style={{ left: "350px", top: "390px" }}
+            style={{ left: "350px", top: "320px" }}
           >
             {editProfile}
+          </button>
+
+          <button
+            className={styles.editBtn}
+            style={{ left: "720px", top: "150px" }}
+            onClick={() => onClickContactInfo()}
+          >
+            {editContactInfo}
+          </button>
+
+          <button
+            className={styles.editBtn}
+            style={{ top: "510px", left: "15px" }}
+            onClick={() => onClickBiography()}
+          >
+            {editBiography}
           </button>
         </>
       )}

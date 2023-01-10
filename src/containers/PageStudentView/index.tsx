@@ -15,7 +15,7 @@ export default function RouteToViewSchedule() {
         <SideBarStudent highlight={1} />
         <div className={styles.scheduleContainer}>
           <div className={styles.schedule}>
-            <StudentTable/>
+            <StudentTable />
           </div>
         </div>
       </div>
