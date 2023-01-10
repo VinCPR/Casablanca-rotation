@@ -51,12 +51,6 @@ export default function Modal({
     setRotation(
       designRotation({ departments, hospitals, services }, numberOfGroup)
     );
-
-    console.log("input formatted", inputFormated);
-    console.log(
-      "design rotation",
-      designRotation({ departments, hospitals, services }, 3)
-    );
   }
 
   function onClickBack() {
@@ -153,9 +147,9 @@ export default function Modal({
                           </div>
                           <div>
                             <div className={styles.selectionContainer1}>
-                              {rotation.departments.map((obj, index1) => {
+                              {rotation.departments.map((obj, index) => {
                                 return (
-                                  <div key={index1}>
+                                  <div key={index}>
                                     <DisplayRotation
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
@@ -172,9 +166,9 @@ export default function Modal({
                               })}
                             </div>
                             <div className={styles.selectionContainer2}>
-                              {rotation.hospitals.map((obj, index1) => {
+                              {rotation.hospitals.map((obj, index) => {
                                 return (
-                                  <div key={index1}>
+                                  <div key={index}>
                                     <DisplayRotation
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
@@ -191,9 +185,9 @@ export default function Modal({
                               })}
                             </div>
                             <div className={styles.selectionContainer3}>
-                              {rotation.services.map((obj, index1) => {
+                              {rotation.services.map((obj, index) => {
                                 return (
-                                  <div key={index1}>
+                                  <div key={index}>
                                     <DisplayRotation
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
