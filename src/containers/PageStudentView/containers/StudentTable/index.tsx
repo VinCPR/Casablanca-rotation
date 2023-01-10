@@ -4,7 +4,11 @@ import styles from "./index.module.css";
 import ViewStudentList from "../../../RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList";
 import StudentList from "./containers/StudentList";
 
-export default function StudentTable() {
+type Props = {
+  role?: string;
+};
+
+export default function StudentTable({ role }: Props) {
   const router = useRouter();
   const [showContainer, setShowContainer] = React.useState(true);
   const [index, setIndex] = React.useState(0);
@@ -75,6 +79,7 @@ export default function StudentTable() {
           department={data[index][2]}
           hospital={data[index][3]}
           service={data[index][4]}
+          role={role}
         />
       )}
     </div>

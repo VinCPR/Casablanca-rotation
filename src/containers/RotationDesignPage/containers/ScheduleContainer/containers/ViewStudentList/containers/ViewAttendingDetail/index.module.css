@@ -110,10 +110,12 @@
 }
 
 .containerTop {
+  background-color: blue;
   height: 50vh;
 }
 
 .containerBottom {
+  background-color: red;
   height: 50vh;
 }
 
