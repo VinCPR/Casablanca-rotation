@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import IconEdit from "./components/IconEdit";
 import Modal from "../../../../../../../components/Modal";
 import BlockContainer from "../../../../../../../components/Modal/containers/BlockContainer";
-import useSelectedComponents from "../../../../../../../components/Modal/containers/BlockContainer/useSelectedComponents";
+import useSelectedComponents from "../../../../../../../components/Modal/containers/BlockContainer/hooks/useSelectedComponents";
 import OptionSelector from "../../../../../../../components/Modal/containers/BlockContainer/OptionSelector";
 import ArrowBack from "../../components/ArrowBack";
 import moment from "moment";
