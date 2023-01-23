@@ -1,12 +1,11 @@
 import * as React from "react";
-import OptionSelector from "./containers/BlockContainer/OptionSelector";
+import { OptionSelector } from "./containers/BlockContainer/types";
 import styles from "./index.module.css";
-import SelectedComponents from "./containers/BlockContainer/SelectedComponents";
-import DisplayRotation from "./DisplayRotation";
 import { designRotation } from "./algorithm";
 import { Department, Hospital, Rotation, Service } from "./types";
+import RotationCard from "./containers/RotationCard";
 
-interface Props {
+type Props = {
   children?: React.ReactNode;
   isOpened: boolean;
   toggle: () => void;
@@ -15,7 +14,7 @@ interface Props {
   data?: OptionSelector;
   showPreview: boolean;
   numberOfGroup: number;
-}
+};
 
 export default function Modal({
   children,
@@ -32,7 +31,7 @@ export default function Modal({
   const [isPreview, setIsPreview1] = React.useState(showPreview);
   const [isShowBack, setIsShowBack] = React.useState(false);
 
-  function onclick() {
+  function onClick() {
     const departments = data?.department.selectedComponents as Department[];
     setIsShowPreview(true);
     setIsShowBack(true);
@@ -80,7 +79,7 @@ export default function Modal({
 
   return (
     <div>
-      {isOpened && (
+      {isOpened ? (
         <div>
           <div className={styles.darkBG} onClick={() => toggle()} />
           <div className={styles.centered}>
@@ -90,16 +89,10 @@ export default function Modal({
                   <div className={styles.modalHeader}>{heading}</div>
                   <div className={styles.modalContainer}>{children}</div>
                   <div className={styles.actionsContainer}>
-                    <button
-                      className={styles.previewBtn}
-                      onClick={() => onclick()}
-                    >
+                    <button className={styles.previewBtn} onClick={onClick}>
                       Preview
                     </button>
-                    <button
-                      className={styles.closeBtn}
-                      onClick={() => toggle()}
-                    >
+                    <button className={styles.closeBtn} onClick={toggle}>
                       Close
                     </button>
                   </div>
@@ -134,23 +127,23 @@ export default function Modal({
                               className={styles.line}
                             ></div>
 
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line}></div>
-                            <div className={styles.line2}></div>
-                            <div className={styles.line3}></div>
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line} />
+                            <div className={styles.line2} />
+                            <div className={styles.line3} />
                           </div>
                           <div>
                             <div className={styles.selectionContainer1}>
                               {rotation.departments.map((obj, index) => {
                                 return (
                                   <div key={index}>
-                                    <DisplayRotation
+                                    <RotationCard
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
                                       height={148}
@@ -169,7 +162,7 @@ export default function Modal({
                               {rotation.hospitals.map((obj, index) => {
                                 return (
                                   <div key={index}>
-                                    <DisplayRotation
+                                    <RotationCard
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
                                       height={148}
@@ -188,7 +181,7 @@ export default function Modal({
                               {rotation.services.map((obj, index) => {
                                 return (
                                   <div key={index}>
-                                    <DisplayRotation
+                                    <RotationCard
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
                                       height={148}
@@ -210,7 +203,7 @@ export default function Modal({
                   })}
 
                   <div className={styles.actionsContainer}>
-                    {isShowBack && (
+                    {isShowBack ? (
                       <button
                         style={{ marginTop: "30px" }}
                         className={styles.closeBtn}
@@ -218,13 +211,13 @@ export default function Modal({
                       >
                         Back
                       </button>
-                    )}
+                    ) : null}
                     <div>
                       {isPreview ? (
                         <button
                           style={{ marginTop: "30px" }}
                           className={styles.closeBtn}
-                          onClick={() => preview()}
+                          onClick={preview}
                         >
                           Preview
                         </button>
@@ -232,7 +225,7 @@ export default function Modal({
                         <button
                           style={{ marginTop: "30px" }}
                           className={styles.closeBtn}
-                          onClick={() => toggle()}
+                          onClick={toggle}
                         >
                           Close
                         </button>
@@ -244,7 +237,7 @@ export default function Modal({
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -9,7 +9,7 @@ interface Props {
   fontSize?: number;
 }
 
-export default function DisplayRotation({
+export default function RotationCard({
   label = "",
   background = "",
   width,
@@ -21,11 +21,11 @@ export default function DisplayRotation({
     <button
       style={{
         background: background,
-        width: width + "px",
-        height: height + "%",
-        marginLeft: marginLeft + "px",
+        width: `${width} px`,
+        height: `${height} %`,
+        marginLeft: `${marginLeft} px`,
         alignSelf: "center",
-        fontSize: fontSize + "px",
+        fontSize: `${fontSize} px`,
       }}
       className={styles.selectionBtn}
     >

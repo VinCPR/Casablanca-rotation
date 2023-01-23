@@ -2,7 +2,7 @@ import Modal from "../../src/components/Modal";
 import BlockContainer from "../../src/components/Modal/containers/BlockContainer";
 import useModal from "../../src/components/Modal/useModal";
 import styles from "./index.module.css";
-import useSelectedComponents from "../../src/components/Modal/containers/BlockContainer/useSelectedComponents";
+import useSelectedComponents from "../../src/components/Modal/containers/BlockContainer/hooks/useSelectedComponents";
 import OptionSelector from "../../src/components/Modal/containers/BlockContainer/OptionSelector";
 import { useState } from "react";
 
