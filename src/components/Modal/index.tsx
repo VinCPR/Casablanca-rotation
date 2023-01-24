@@ -1,10 +1,9 @@
 import * as React from "react";
-import OptionSelector from "./containers/BlockContainer/OptionSelector";
 import styles from "./index.module.css";
-import SelectedComponents from "./containers/BlockContainer/SelectedComponents";
-import DisplayRotation from "./DisplayRotation";
+import RotationCard from "./containers/RotationCard";
 import { designRotation } from "./algorithm";
 import { Department, Hospital, Rotation, Service } from "./types";
+import { OptionSelector } from "./containers/BlockContainer/types";
 
 interface Props {
   children?: React.ReactNode;
@@ -150,7 +149,7 @@ export default function Modal({
                               {rotation.departments.map((obj, index) => {
                                 return (
                                   <div key={index}>
-                                    <DisplayRotation
+                                    <RotationCard
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
                                       height={148}
@@ -169,7 +168,7 @@ export default function Modal({
                               {rotation.hospitals.map((obj, index) => {
                                 return (
                                   <div key={index}>
-                                    <DisplayRotation
+                                    <RotationCard
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
                                       height={148}
@@ -188,7 +187,7 @@ export default function Modal({
                               {rotation.services.map((obj, index) => {
                                 return (
                                   <div key={index}>
-                                    <DisplayRotation
+                                    <RotationCard
                                       label={obj.name}
                                       width={87.5 * (obj.numOfWeeks - 1) + 77}
                                       height={148}

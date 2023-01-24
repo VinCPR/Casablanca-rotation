@@ -9,7 +9,7 @@ import IconEdit from "./components/IconEdit";
 import Modal from "../../../../../../../components/Modal";
 import BlockContainer from "../../../../../../../components/Modal/containers/BlockContainer";
 import useSelectedComponents from "../../../../../../../components/Modal/containers/BlockContainer/useSelectedComponents";
-import OptionSelector from "../../../../../../../components/Modal/containers/BlockContainer/OptionSelector";
+import { OptionSelector } from "../../../../../../../components/Modal/containers/BlockContainer/types";
 import ArrowBack from "../../components/ArrowBack";
 import moment from "moment";
 
@@ -413,7 +413,7 @@ export default function StepTwo({
               <>
                 <th>Period</th>
                 {count.map((count, index) => {
-                  return <th>Period {index + 1}</th>;
+                  return <th key={index}>Period {index + 1}</th>;
                 })}
               </>
             </tr>
@@ -428,7 +428,7 @@ export default function StepTwo({
 
                 {count.map((count, index) => {
                   return (
-                    <td>
+                    <td key={index}>
                       <DatePicker
                         selected={startDate(index)}
                         onChange={(date: Date) => setPeriod(index, date)}
@@ -463,14 +463,14 @@ export default function StepTwo({
                   {!isGenerated ? (
                     <>
                       {count2.map((count2, index2) => {
-                        return <td></td>;
+                        return <td key={index2} />;
                       })}
                     </>
                   ) : (
                     <>
                       {count2.map((count2, index2) => {
                         return (
-                          <td>
+                          <td key={index2}>
                             <div className={styles.background}>
                               <div
                                 className={styles.blockButton}

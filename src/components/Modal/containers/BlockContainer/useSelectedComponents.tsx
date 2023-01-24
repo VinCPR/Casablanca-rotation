@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SelectedComponents from "./SelectedComponents";
+import { SelectedComponents } from "./types";
 
 export default function useSelectedComponents() {
   const [selectedComponents, setSelectedComponents] = useState<

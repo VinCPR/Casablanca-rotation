@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 
 interface Props {
   label: string;
@@ -9,7 +9,7 @@ interface Props {
   fontSize?: number;
 }
 
-export default function DisplayRotation({
+export default function RotationCard({
   label = "",
   background = "",
   width,

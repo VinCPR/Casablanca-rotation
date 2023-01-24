@@ -1,5 +1,5 @@
 import LandingPage from "../src/containers/LandingPage";
 
-export default () => {
+export default function RouteToLandingPage() {
   return <LandingPage />;
-};
+}
