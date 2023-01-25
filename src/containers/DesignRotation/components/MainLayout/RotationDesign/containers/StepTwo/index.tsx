@@ -76,8 +76,10 @@ export default function StepTwo({
 
   const optionSelector: OptionSelector[] = Array(numOfBlock).fill({
     department: useSelectedComponents(),
-    service: Array(6).fill(Array(10).fill(useSelectedComponents())),
-    hospital: Array(6).fill(useSelectedComponents()),
+    service: Array.from({ length: 6 }, (e) =>
+      Array.from({ length: 10 }, (e) => useSelectedComponents())
+    ),
+    hospital: Array.from({length: 6}, (e) => useSelectedComponents()),
   });
 
   return (

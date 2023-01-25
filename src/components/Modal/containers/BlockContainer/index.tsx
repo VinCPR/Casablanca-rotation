@@ -608,7 +608,7 @@ export default function BlockContainer({ input }: Props) {
                   key={index2}
                   isOpened={modalSelector.service[index1][index2].isOpened}
                   toggle={modalSelector.service[index1][index2].toggle}
-                  heading={"Please select the service for hospital " + obj.name}
+                  heading={"Please select the services for " + obj.name}
                   id={index2}
                 >
                   {services.map((value, index3) => {
@@ -642,7 +642,7 @@ export default function BlockContainer({ input }: Props) {
               key={index}
               isOpened={modalSelector.hospital[index].isOpened}
               toggle={modalSelector.hospital[index].toggle}
-              heading={"Please select the hospitals for department " + obj.name}
+              heading={"Please select the hospitals for " + obj.name}
               id={index}
             >
               {hospitals.map((value, index2) => {
