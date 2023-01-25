@@ -16,7 +16,7 @@
   position: absolute;
   top: 20px;
   font-weight: 800;
-  font-family: "Roboto";
+
   font-size: 30px;
   color: #2f8f9d;
   left: 20px;
@@ -24,7 +24,7 @@
 
 .headerBottom {
   font-weight: 800;
-  font-family: "Roboto";
+
   font-size: 30px;
   color: #2f8f9d;
   margin-left: 15px;
@@ -59,7 +59,7 @@
   font-weight: 500;
   padding: 11px 28px;
   border-radius: 12px;
-  font-family: "Roboto";
+
   font-size: 16px;
   border: none;
   color: #fff;
@@ -70,7 +70,7 @@
 .boldText {
   top: 20px;
   font-weight: 800;
-  font-family: "Roboto";
+
   font-size: 20px;
   color: black;
   left: 20px;
@@ -79,7 +79,7 @@
 
 .boldText1 {
   font-weight: 800;
-  font-family: "Roboto";
+
   font-size: 20px;
   color: black;
   left: 20px;
@@ -89,7 +89,7 @@
 .text {
   position: relative;
   font-weight: 300;
-  font-family: "Roboto";
+
   font-size: 20px;
   color: black;
 }
@@ -136,7 +136,7 @@
   height: 90px;
   border: 1px solid black;
   margin: 10px 0;
-  font-family: "Roboto";
+
   font-style: normal;
   font-weight: 400;
   font-size: 15px;

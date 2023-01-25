@@ -15,7 +15,7 @@
 .NavBarText {
   position: absolute;
   left: 122px;
-  font-family: "Roboto";
+
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -39,7 +39,6 @@
   border-radius: 11px;
   border: none;
 
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -101,7 +100,6 @@
   border-radius: 11px;
   border: none;
 
-  font-family: "Roboto";
   font-style: Italic;
   font-weight: 600;
   font-size: 18px;
@@ -153,7 +151,6 @@
 
   margin-left: auto;
 
-  font-family: "Roboto";
   font-style: bold;
   font-weight: 700;
   font-size: 48px;
@@ -170,7 +167,7 @@
 }
 .Text h1 {
   position: relative;
-  font-family: "Roboto";
+
   font-style: Bold;
   font-weight: 700;
   font-size: 24px;
@@ -185,7 +182,7 @@
 
   text-decoration: none;
   color: #fafafa;
-  font-family: "Roboto";
+
   font-style: normal;
   font-size: 16px;
   font-weight: 400;
@@ -211,7 +208,6 @@
   align-items: center;
 }
 .Contactcontainer h1 {
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -225,7 +221,6 @@
   width: 811px;
   height: 100px;
 
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
@@ -278,7 +273,6 @@
   margin-left: auto;
   margin: 1rem;
 
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -301,7 +295,6 @@
   border-radius: 35px;
   border: none;
 
-  font-family: "Roboto";
   font-weight: 600;
   font-style: Bold;
   font-size: 18px;
@@ -366,7 +359,6 @@
   border-radius: 11px;
   border: none;
 
-  font-family: "Roboto";
   font-style: Italic;
   font-weight: 600;
   font-size: 18px;
@@ -407,7 +399,7 @@
 
   margin-left: 35vw;
   margin-top: 0;
-  font-family: "Roboto";
+
   font-style: bold;
   font-weight: 700;
   font-size: 48px;
@@ -424,7 +416,7 @@
 }
 .Text h1 {
   position: relative;
-  font-family: "Roboto";
+
   font-style: Bold;
   font-weight: 700;
   font-size: 24px;
@@ -439,7 +431,7 @@
 
   text-decoration: none;
   color: #fafafa;
-  font-family: "Roboto";
+
   font-style: normal;
   font-size: 16px;
   font-weight: 400;

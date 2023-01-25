@@ -8,7 +8,9 @@ export default function RotationDesign() {
   const [numOfBlock, setNumOfBlock] = React.useState(0);
   const [numOfGroup, setNumOfGroup] = React.useState(0);
   const [numOfStudent, setNumOfStudent] = React.useState(0);
-  const [durationOfBlock, setDurationOfBlock] = React.useState(0);
+  const [blockDuration, setBlockDuration] = React.useState(0);
+  const [startDate, setStartDate] = React.useState<number[]>([]);
+  const [endDate, setEndDate] = React.useState<number[]>([]);
   return (
     <div className={styles.container}>
       <div className={styles.parent}>
@@ -27,24 +29,46 @@ export default function RotationDesign() {
       </div>
       {currentStep == 1 && (
         <StepOne
-          setCurrentStep={() => setCurrentStep(2)}
-          setNumOfBlock={(i) => setNumOfBlock(i)}
-          setNumOfGroup={(i) => setNumOfGroup(i)}
-          setNumOfStudent={(i) => setNumOfStudent(i)}
-          setDurationOfBlock={(i) => setDurationOfBlock(i)}
+          proceedNextStep={() => {
+            setStartDate(Array(numOfBlock).fill(Date.now()));
+            setEndDate(Array(numOfBlock).fill(Date.now()));
+            setCurrentStep(2);
+          }}
+          onChangeNumOfBlock={(i) => setNumOfBlock(i)}
+          onChangeNumOfGroup={(i) => setNumOfGroup(i)}
+          onChangeNumOfStudent={(i) => setNumOfStudent(i)}
+          onChangeBlockDuration={(i) => setBlockDuration(i)}
           numOfBlock={numOfBlock}
           numOfGroup={numOfGroup}
           numOfStudent={numOfStudent}
-          durationOfBlock={durationOfBlock}
+          blockDuration={blockDuration}
         />
       )}
       {currentStep == 2 && (
         <StepTwo
-          setCurrentStep={() => setCurrentStep(1)}
+          startDate={startDate}
+          endDate={endDate}
+          onChangeStartDate={(date, indexChange) => {
+            setStartDate(
+              startDate.map((value, index) => {
+                if (indexChange === index) return date;
+                return value;
+              })
+            );
+          }}
+          onChangeEndDate={(date, indexChange) => {
+            setEndDate(
+              endDate.map((value, index) => {
+                if (indexChange === index) return date;
+                return value;
+              })
+            );
+          }}
+          backStep={() => setCurrentStep(1)}
           numOfBlock={numOfBlock}
           numOfGroup={numOfGroup}
-          numOfStudent={numOfStudent}
-          durationOfBlock={durationOfBlock}
+          // numOfStudent={numOfStudent}
+          durationOfBlock={blockDuration}
         />
       )}
     </div>

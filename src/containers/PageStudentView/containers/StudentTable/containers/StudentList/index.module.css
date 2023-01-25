@@ -1,6 +1,6 @@
 .secondLayoutHeader {
   text-align: center;
-  font-family: "Roboto";
+
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
@@ -10,7 +10,7 @@
 .subHeader {
   text-align: center;
   margin: 19px 0px 19px 0px;
-  font-family: "Roboto";
+
   font-style: normal;
   font-weight: bold;
   font-size: 28px;
@@ -40,14 +40,14 @@
   background: #2f8f9d;
   color: #fff;
   font-weight: 500;
-  font-family: "Roboto";
+
   font-size: 20px;
   border: 3px solid #3bacb6;
 }
 
 .headerItems {
   font-weight: 500;
-  font-family: "Roboto";
+
   font-size: 20px;
   place-self: center;
 }
@@ -71,7 +71,7 @@
 
 .item {
   font-weight: bold;
-  font-family: "Roboto";
+
   place-self: center;
 }
 
@@ -80,7 +80,7 @@
   border: none;
   background: #2f8f9d;
   font-weight: 500;
-  font-family: "Roboto";
+
   color: #fff;
   width: 80%;
   height: 80%;

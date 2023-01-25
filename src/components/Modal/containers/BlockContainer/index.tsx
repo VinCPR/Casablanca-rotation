@@ -1,4 +1,4 @@
-import useModal from "../../useModal";
+import useModal from "../../hooks/useModal";
 import SelectionModal from "./containers/SelectionModal";
 import Checkbox from "./containers/SelectionModal/components/Checkbox";
 import SelectionButton from "./containers/SelectionModal/components/SelectionButton";
