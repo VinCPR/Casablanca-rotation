@@ -18,7 +18,7 @@ export default function SelectionButton({
   fontSize,
 }: Props) {
   return (
-    <button
+    <div
       style={{
         background: background,
         width: width + "px",
@@ -29,6 +29,6 @@ export default function SelectionButton({
       className={styles.selectionBtn}
     >
       {label}
-    </button>
+    </div>
   );
 }

@@ -2,8 +2,8 @@ import * as React from "react";
 import styles from "./index.module.css";
 import RotationCard from "./containers/RotationCard";
 import { designRotation } from "./algorithm";
-import { Department, Hospital, Rotation, Service } from "./types";
 import { OptionSelector } from "./containers/BlockContainer/types";
+import { Department, Hospital, Rotation, Service } from "./types";
 
 interface Props {
   children?: React.ReactNode;

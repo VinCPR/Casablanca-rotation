@@ -120,6 +120,7 @@ function calculateLoss(list: number[], totalPerms: Tuple[][][]) {
  */
 function backtrack(x: number, list: number[], totalPerms: Tuple[][][]) {
   if (list.length === x) {
+    console.log("VAI", x, "ThAT", list, totalPerms);
     return {
       loss: calculateLoss(list, totalPerms),
       res: list,

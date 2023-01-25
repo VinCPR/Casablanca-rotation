@@ -6,6 +6,9 @@
   border: none;
   color: #fff;
   font-weight: 500;
-  font-family: "Roboto";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin-right: 10px;
 }
