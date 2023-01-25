@@ -26,6 +26,15 @@
   justify-content: center;
 }
 
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
 .parent {
   width: 100%;
   display: flex;
@@ -74,15 +83,6 @@
 .desc {
   font-size: 14px;
   color: #3d4eac;
-}
-
-.div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  font-size: 20px;
 }
 
 .text {

@@ -395,8 +395,7 @@ export default function StepTwo({
       setPeriod10(date);
     }
   }
-  /**TODO: define a function onRotationChange that take the value the block information and pass it to the state */
-  /**pass the function to the component Modal */
+
   return (
     <div>
       <div className={styles.backheading}>
@@ -513,8 +512,12 @@ export default function StepTwo({
         data={optionSelector[0]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[0]} />
+        <BlockContainer
+          input={optionSelector[0]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 2"}
@@ -524,8 +527,12 @@ export default function StepTwo({
         data={optionSelector[1]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[1]} />
+        <BlockContainer
+          input={optionSelector[1]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 3"}
@@ -535,8 +542,12 @@ export default function StepTwo({
         data={optionSelector[2]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[2]} />
+        <BlockContainer
+          input={optionSelector[2]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 4"}
@@ -546,8 +557,12 @@ export default function StepTwo({
         data={optionSelector[3]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[3]} />
+        <BlockContainer
+          input={optionSelector[3]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 5"}
@@ -557,8 +572,12 @@ export default function StepTwo({
         data={optionSelector[4]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[4]} />
+        <BlockContainer
+          input={optionSelector[4]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 6"}
@@ -568,8 +587,12 @@ export default function StepTwo({
         data={optionSelector[5]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[5]} />
+        <BlockContainer
+          input={optionSelector[5]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 7"}
@@ -579,8 +602,12 @@ export default function StepTwo({
         data={optionSelector[6]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[6]} />
+        <BlockContainer
+          input={optionSelector[6]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
 
       <Modal
@@ -591,8 +618,12 @@ export default function StepTwo({
         data={optionSelector[7]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[7]} />
+        <BlockContainer
+          input={optionSelector[7]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
 
       <Modal
@@ -603,8 +634,12 @@ export default function StepTwo({
         data={optionSelector[8]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[8]} />
+        <BlockContainer
+          input={optionSelector[8]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <Modal
         heading={"Design Rotation for Block 10"}
@@ -614,8 +649,12 @@ export default function StepTwo({
         data={optionSelector[9]}
         showPreview={false}
         numberOfGroup={numOfGroup}
+        durationOfBlock={durationOfBlock}
       >
-        <BlockContainer input={optionSelector[9]} />
+        <BlockContainer
+          input={optionSelector[9]}
+          durationOfBlock={durationOfBlock}
+        />
       </Modal>
       <>
         <Modal
@@ -626,8 +665,12 @@ export default function StepTwo({
           data={optionSelector[0]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[0]} />
+          <BlockContainer
+            input={optionSelector[0]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -638,8 +681,12 @@ export default function StepTwo({
           data={optionSelector[1]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[1]} />
+          <BlockContainer
+            input={optionSelector[1]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -650,8 +697,12 @@ export default function StepTwo({
           data={optionSelector[2]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[2]} />
+          <BlockContainer
+            input={optionSelector[2]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -662,8 +713,12 @@ export default function StepTwo({
           data={optionSelector[3]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[3]} />
+          <BlockContainer
+            input={optionSelector[3]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -674,8 +729,12 @@ export default function StepTwo({
           data={optionSelector[4]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[4]} />
+          <BlockContainer
+            input={optionSelector[4]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -686,8 +745,12 @@ export default function StepTwo({
           data={optionSelector[5]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[5]} />
+          <BlockContainer
+            input={optionSelector[5]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -698,8 +761,12 @@ export default function StepTwo({
           data={optionSelector[6]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[6]} />
+          <BlockContainer
+            input={optionSelector[6]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -710,8 +777,12 @@ export default function StepTwo({
           data={optionSelector[7]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[7]} />
+          <BlockContainer
+            input={optionSelector[7]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -722,8 +793,12 @@ export default function StepTwo({
           data={optionSelector[8]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[8]} />
+          <BlockContainer
+            input={optionSelector[8]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
 
         <Modal
@@ -734,8 +809,12 @@ export default function StepTwo({
           data={optionSelector[9]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          durationOfBlock={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[9]} />
+          <BlockContainer
+            input={optionSelector[9]}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
       </>
     </div>

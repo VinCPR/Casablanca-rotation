@@ -12,7 +12,6 @@
 
 .header {
   display: grid;
-  grid-template-columns: [line1] 10% [line2] 10% [line3] 10% [line4] 10% [line5] 10% [line6] 10% [line7] 10% [line8] 10%[line9] 10% [line10] 10%;
   border-radius: 12px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   height: 25%;

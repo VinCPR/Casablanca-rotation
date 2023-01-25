@@ -26,7 +26,10 @@ export default function ScheduleContainer() {
   return (
     <>
       {showContainer ? (
-        <div className={styles.container}>
+        <div
+          className={styles.container}
+          style={{ height: data.length * 62 + 91 + "px" }}
+        >
           <>
             <div className={styles.header}>
               {headerItems.map((value, index) => {

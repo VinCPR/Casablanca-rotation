@@ -5,15 +5,15 @@
   height: 120px;
 }
 
-.splitRight {
+/* .splitRight {
   position: relative;
   left: 50%;
   width: 30%;
   height: 120px;
-}
+} */
 
 .infoHeader {
-  position: absolute;
+  position: relative;
   top: 20px;
   font-weight: 800;
   font-family: "Roboto";
@@ -46,7 +46,7 @@
 .contactInfo {
   position: inherit;
   top: 60px;
-  left: 50px;
+  left: 300px;
 }
 
 .editBtn {

@@ -225,16 +225,78 @@ export default function ViewAttendingDetail({ isEdit }: Props) {
               </div>
             )}
           </div>
+
+          <div
+            className={styles.infoHeader}
+            style={{ marginLeft: "678px", marginTop: "-34px" }}
+          >
+            {"CONTACT INFO"}
+          </div>
+          <div className={styles.contactInfo} style={{ marginLeft: "400px" }}>
+            <div>
+              {!isEditContactInfo ? (
+                <div>
+                  <div className={styles.boldText}>
+                    Office Hours:
+                    <div
+                      className={styles.text}
+                      style={{ top: "-22px", left: "120px" }}
+                    >
+                      {" "}
+                      {officeHours}{" "}
+                    </div>
+                  </div>
+                  <div className={styles.boldText}>
+                    Contact method:
+                    <div
+                      className={styles.text}
+                      style={{ top: "-22.5px", left: "147px" }}
+                    >
+                      {" "}
+                      {contactMethod}{" "}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div
+                    className={styles.boldText1}
+                    style={{ marginTop: "10px" }}
+                  >
+                    Office Hours:
+                    <input
+                      onChange={changeOfficeHours}
+                      value={officeHours}
+                      type="text"
+                      id="fofficehours"
+                      name="fofficehours"
+                    ></input>
+                  </div>
+                  <div className={styles.boldText1}>
+                    Contact method:
+                    <input
+                      onChange={changeContactMethod}
+                      value={contactMethod}
+                      type="text"
+                      id="fcontactmethod"
+                      name="fcontactmethod"
+                    ></input>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className={styles.splitRight}>
-          <div className={styles.infoHeader} style={{ marginLeft: "28px" }}>
-            CONTACT INFO
-          </div>
+        {/* <div style={{ marginLeft: "700px" }}>
+          <div className={styles.infoHeader}>{"CONTACT INFO"}</div>
           <div className={styles.contactInfo}>
             {!isEditContactInfo ? (
               <div>
-                <div className={styles.boldText}>
+                <div
+                  className={styles.boldText}
+                  style={{ marginTop: "37px", marginLeft: "52px" }}
+                >
                   Office Hours:
                   <div
                     className={styles.text}
@@ -280,9 +342,9 @@ export default function ViewAttendingDetail({ isEdit }: Props) {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
-      <div>
+      {/* <div>
         <div className={styles.headerBottom}>BIOGRAPHY</div>
 
         {!isEditBiography ? (
@@ -301,7 +363,7 @@ export default function ViewAttendingDetail({ isEdit }: Props) {
             </form>
           </div>
         )}
-      </div>
+      </div> */}
       {isEdit && (
         <>
           <button
@@ -314,7 +376,7 @@ export default function ViewAttendingDetail({ isEdit }: Props) {
 
           <button
             className={styles.editBtn}
-            style={{ left: "720px", top: "150px" }}
+            style={{ left: "750px", top: "170px" }}
             onClick={() => onClickContactInfo()}
           >
             {editContactInfo}

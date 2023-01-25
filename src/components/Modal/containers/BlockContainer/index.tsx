@@ -7,34 +7,15 @@ import data from "./data";
 import React from "react";
 import SelectedComponents from "./SelectedComponents";
 import OptionSelector from "./OptionSelector";
-import Column from "./Column";
 import IconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/IconEdit";
 import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
 
 interface Props {
   input: OptionSelector;
+  durationOfBlock: number;
 }
 
-// function getOutput(input: OptionSelector): Output {
-//   const department: { [id: string]: number } = {};
-//   const hospital: { [id: string]: number } = {};
-//   const service: { [id: string]: number } = {};
-//   for (var i = 0; i < input.department.selectedComponents.length; i++) {
-//     department[input.department.selectedComponents[i].name] =
-//       input.department.selectedComponents[i].numOfWeeks;
-//   }
-//   for (var i = 0; i < input.hospital.selectedComponents.length; i++) {
-//     hospital[input.hospital.selectedComponents[i].name] =
-//       input.hospital.selectedComponents[i].numOfWeeks;
-//   }
-//   for (var i = 0; i < input.service.selectedComponents.length; i++) {
-//     service[input.service.selectedComponents[i].name] =
-//       input.service.selectedComponents[i].numOfWeeks;
-//   }
-//   return { department, hospital, service };
-// }
-
-export default function BlockContainer({ input }: Props) {
+export default function BlockContainer({ input, durationOfBlock }: Props) {
   const [departments, services, hospitals] = data();
   const colors = [
     "#18A0FB",
@@ -225,7 +206,11 @@ export default function BlockContainer({ input }: Props) {
                         onChange={input.department.handleChange}
                         className={styles.inputField}
                         min="0"
-                        max={10 - input.department.totalNum + obj.numOfWeeks}
+                        max={
+                          durationOfBlock -
+                          input.department.totalNum +
+                          obj.numOfWeeks
+                        }
                       />
                     </div>
                   );
