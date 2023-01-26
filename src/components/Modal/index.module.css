@@ -113,12 +113,11 @@
 }
 
 .selectionContainer1 {
-  margin-top: -306px;
+  top: 35px;
   position: absolute;
-  padding-top: 125px;
   padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
+  height: 22%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: column dense;
@@ -126,12 +125,10 @@
 }
 
 .selectionContainer2 {
-  margin-top: -243px;
   position: absolute;
-  padding-top: 125px;
-  padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
+  top: 92px;
+  height: 22%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: column dense;
@@ -140,12 +137,11 @@
 }
 
 .selectionContainer3 {
-  margin-top: -181px;
+  bottom: 5px; 
   position: absolute;
-  padding-top: 125px;
   padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
+  height: 22%;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: column dense;

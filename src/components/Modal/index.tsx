@@ -77,6 +77,18 @@ export default function Modal({
     );
   }
 
+  function getGridArea(rotationList: any){
+    var sum = 0;
+    for (var i = 1; i <= rotationList.length; i++){
+      sum += rotationList[i-1].numOfWeeks
+    }
+    var output = ""
+    for (var i = 1; i <= rotationList.length; i++){
+      output += "[line" + i + "] " + (rotationList[i-1].numOfWeeks/sum*100) + "%"
+    }
+    return output
+  }
+
   return (
     <div>
       {isOpened && (
@@ -145,15 +157,14 @@ export default function Modal({
                             <div className={styles.line3}></div>
                           </div>
                           <div>
-                            <div className={styles.selectionContainer1}>
+                            <div style={{gridTemplateColumns:getGridArea(rotation.departments)}} className={styles.selectionContainer1}>
                               {rotation.departments.map((obj, index) => {
                                 return (
-                                  <div key={index}>
+                                  <div style={{justifySelf: "center", width:"100%", display:"grid"}} key={index}>
                                     <RotationCard
                                       label={obj.name}
-                                      width={87.5 * (obj.numOfWeeks - 1) + 77}
-                                      height={148}
-                                      marginLeft={3}
+                                      width={95}
+                                      height={100}
                                       fontSize={Math.min(
                                         (150 * obj.numOfWeeks) /
                                           obj.name.length,
@@ -164,15 +175,14 @@ export default function Modal({
                                 );
                               })}
                             </div>
-                            <div className={styles.selectionContainer2}>
+                            <div style={{gridTemplateColumns:getGridArea(rotation.hospitals)}} className={styles.selectionContainer2}>
                               {rotation.hospitals.map((obj, index) => {
                                 return (
-                                  <div key={index}>
+                                  <div style={{justifySelf: "center", width:"100%", display:"grid"}} key={index}>
                                     <RotationCard
                                       label={obj.name}
-                                      width={87.5 * (obj.numOfWeeks - 1) + 77}
-                                      height={148}
-                                      marginLeft={3}
+                                      width = {95}
+                                      height={100}
                                       fontSize={Math.min(
                                         (150 * obj.numOfWeeks) /
                                           obj.name.length,
@@ -189,9 +199,8 @@ export default function Modal({
                                   <div key={index}>
                                     <RotationCard
                                       label={obj.name}
-                                      width={87.5 * (obj.numOfWeeks - 1) + 77}
-                                      height={148}
-                                      marginLeft={3}
+                                      width={95}
+                                      height={120}
                                       fontSize={Math.min(
                                         (150 * obj.numOfWeeks) /
                                           obj.name.length,

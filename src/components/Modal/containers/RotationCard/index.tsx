@@ -5,7 +5,6 @@ interface Props {
   background?: string;
   width?: number;
   height?: number;
-  marginLeft?: number;
   fontSize?: number;
 }
 
@@ -14,17 +13,15 @@ export default function RotationCard({
   background = "",
   width,
   height,
-  marginLeft,
   fontSize,
 }: Props) {
   return (
     <button
       style={{
         background: background,
-        width: width + "px",
+        width: width + "%",
         height: height + "%",
-        marginLeft: marginLeft + "px",
-        alignSelf: "center",
+        justifySelf: "center",
         fontSize: fontSize + "px",
       }}
       className={styles.selectionBtn}
