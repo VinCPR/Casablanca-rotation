@@ -29,14 +29,23 @@
 
 .text {
   margin-left: 20px;
+  width: 90px;
+}
+
+.mainContentContainer {
+  margin-top: 20px;
+  height: 450px;
+  overflow: auto;
 }
 
 .blockContainer {
+  grid-template-columns: [line1] 10% [line2] 10% [line3] 10% [line4] 10% [line5] 10% [line6] 10% [line7] 10% [line8] 10%[line9] 10% [line10] 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
+
 .selectionBtn {
   border-radius: 10px;
   background-color: #3bacb6;
