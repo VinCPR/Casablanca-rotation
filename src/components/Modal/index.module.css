@@ -113,13 +113,12 @@
 }
 
 .selectionContainer1 {
-  top: 35px;
+  top: 33px;
   position: absolute;
   padding-bottom: 10px;
   height: 22%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   grid-auto-flow: column dense;
   z-index: 3;
 }
@@ -130,20 +129,18 @@
   height: 22%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   grid-auto-flow: column dense;
 
   z-index: 3;
 }
 
 .selectionContainer3 {
-  bottom: 5px; 
+  bottom: 5px;
   position: absolute;
   padding-bottom: 10px;
   height: 22%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   grid-auto-flow: column dense;
 
   z-index: 3;

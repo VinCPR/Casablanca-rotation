@@ -29,12 +29,10 @@ export default function Modal({
   const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const [rotation, setRotation] = React.useState<Rotation[]>([]);
   const [isPreview, setIsPreview1] = React.useState(showPreview);
-  const [isShowBack, setIsShowBack] = React.useState(false);
 
   function onclick() {
     const departments = data?.department.selectedComponents as Department[];
     setIsShowPreview(true);
-    setIsShowBack(true);
     const hospitals = data?.hospital
       .map((value) => value.selectedComponents)
       .flat() as Hospital[];
@@ -53,7 +51,6 @@ export default function Modal({
   }
 
   function onClickBack() {
-    setIsShowBack(false);
     setIsShowPreview(false);
   }
 
@@ -77,16 +74,17 @@ export default function Modal({
     );
   }
 
-  function getGridArea(rotationList: any){
+  function getGridTemplateCol(rotationList: any) {
     var sum = 0;
-    for (var i = 1; i <= rotationList.length; i++){
-      sum += rotationList[i-1].numOfWeeks
+    for (var i = 1; i <= rotationList.length; i++) {
+      sum += rotationList[i - 1].numOfWeeks;
     }
-    var output = ""
-    for (var i = 1; i <= rotationList.length; i++){
-      output += "[line" + i + "] " + (rotationList[i-1].numOfWeeks/sum*100) + "%"
+    var output = "";
+    for (var i = 1; i <= rotationList.length; i++) {
+      output +=
+        "[line" + i + "] " + (rotationList[i - 1].numOfWeeks / sum) * 100 + "%";
     }
-    return output
+    return output;
   }
 
   return (
@@ -123,7 +121,7 @@ export default function Modal({
                     return (
                       <div key={index} className={styles.previewContainer}>
                         <div className={styles.text}>
-                          <h3>Group{index + 1}</h3>
+                          <h3>Group {index + 1}</h3>
                         </div>
                         <div className={styles.container}>
                           <div className={styles.header}>
@@ -157,14 +155,26 @@ export default function Modal({
                             <div className={styles.line3}></div>
                           </div>
                           <div>
-                            <div style={{gridTemplateColumns:getGridArea(rotation.departments)}} className={styles.selectionContainer1}>
+                            <div
+                              style={{
+                                gridTemplateColumns: getGridTemplateCol(
+                                  rotation.departments
+                                ),
+                              }}
+                              className={styles.selectionContainer1}
+                            >
                               {rotation.departments.map((obj, index) => {
                                 return (
-                                  <div style={{justifySelf: "center", width:"100%", display:"grid"}} key={index}>
+                                  <div
+                                    style={{
+                                      justifySelf: "center",
+                                      width: "100%",
+                                      display: "grid",
+                                    }}
+                                    key={index}
+                                  >
                                     <RotationCard
                                       label={obj.name}
-                                      width={95}
-                                      height={100}
                                       fontSize={Math.min(
                                         (150 * obj.numOfWeeks) /
                                           obj.name.length,
@@ -175,14 +185,26 @@ export default function Modal({
                                 );
                               })}
                             </div>
-                            <div style={{gridTemplateColumns:getGridArea(rotation.hospitals)}} className={styles.selectionContainer2}>
+                            <div
+                              style={{
+                                gridTemplateColumns: getGridTemplateCol(
+                                  rotation.hospitals
+                                ),
+                              }}
+                              className={styles.selectionContainer2}
+                            >
                               {rotation.hospitals.map((obj, index) => {
                                 return (
-                                  <div style={{justifySelf: "center", width:"100%", display:"grid"}} key={index}>
+                                  <div
+                                    style={{
+                                      justifySelf: "center",
+                                      width: "100%",
+                                      display: "grid",
+                                    }}
+                                    key={index}
+                                  >
                                     <RotationCard
                                       label={obj.name}
-                                      width = {95}
-                                      height={100}
                                       fontSize={Math.min(
                                         (150 * obj.numOfWeeks) /
                                           obj.name.length,
@@ -193,14 +215,26 @@ export default function Modal({
                                 );
                               })}
                             </div>
-                            <div className={styles.selectionContainer3}>
+                            <div
+                              style={{
+                                gridTemplateColumns: getGridTemplateCol(
+                                  rotation.services
+                                ),
+                              }}
+                              className={styles.selectionContainer3}
+                            >
                               {rotation.services.map((obj, index) => {
                                 return (
-                                  <div key={index}>
+                                  <div
+                                    style={{
+                                      justifySelf: "center",
+                                      width: "100%",
+                                      display: "grid",
+                                    }}
+                                    key={index}
+                                  >
                                     <RotationCard
                                       label={obj.name}
-                                      width={95}
-                                      height={120}
                                       fontSize={Math.min(
                                         (150 * obj.numOfWeeks) /
                                           obj.name.length,
@@ -218,15 +252,6 @@ export default function Modal({
                   })}
 
                   <div className={styles.actionsContainer}>
-                    {isShowBack && (
-                      <button
-                        style={{ marginTop: "30px" }}
-                        className={styles.closeBtn}
-                        onClick={() => onClickBack()}
-                      >
-                        Back
-                      </button>
-                    )}
                     <div>
                       {isPreview ? (
                         <button
@@ -240,7 +265,7 @@ export default function Modal({
                         <button
                           style={{ marginTop: "30px" }}
                           className={styles.closeBtn}
-                          onClick={() => toggle()}
+                          onClick={() => onClickBack()}
                         >
                           Close
                         </button>
