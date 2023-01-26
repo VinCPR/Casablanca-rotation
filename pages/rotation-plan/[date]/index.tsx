@@ -15,10 +15,7 @@ export default function RouteToViewSchedule() {
       <div style={{ position: "relative" }}>
         <Sidebar highlight={2} />
         <div className={styles.scheduleContainer}>
-          <button
-            onClick={() => router.push("/rotation-plan")}
-            className={styles.backButton}
-          >
+          <button onClick={() => history.back()} className={styles.backButton}>
             <ArrowBack />
             BACK
           </button>

@@ -36,7 +36,10 @@ export default function StudentTable({ role }: Props) {
       {showContainer ? (
         <div className={styles.firstLayout}>
           <div className={styles.scheduleHeader}>ROTATION SCHEDULE</div>
-          <div className={styles.container}>
+          <div
+            className={styles.container}
+            style={{ height: data.length * 62 + 91 + "px" }}
+          >
             <>
               <div className={styles.header}>
                 {headerItems.map((value, index) => {
@@ -74,6 +77,7 @@ export default function StudentTable({ role }: Props) {
         </div>
       ) : (
         <StudentList
+          showContainer={() => setShowContainer(true)}
           startDate={data[index][0]}
           endDate={data[index][1]}
           department={data[index][2]}

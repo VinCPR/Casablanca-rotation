@@ -10,9 +10,7 @@ export default function RouteToViewAttedningProfileNoEdit() {
       <Navbar />
       <div style={{ position: "relative" }}>
         <SideBarStudent highlight={1} />
-        <div className={styles.profileContainer}>
-          <ViewAttendingDetail isEdit={false} />
-        </div>
+        <ViewAttendingDetail isEdit={false} />
       </div>
     </>
   );

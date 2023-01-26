@@ -15,13 +15,13 @@
   font-weight: bold;
   font-size: 28px;
   line-height: 32px;
+  color: #2f8f9d;
 }
 
 .container {
   position: relative;
   border-radius: 12px;
   width: 75vw;
-  height: 40vh;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   background: #b3e8e5;
   border: 3px solid #3bacb6;
@@ -30,10 +30,10 @@
 .header {
   display: grid;
   grid-template-columns: [line1] 20% [line2] 20% [line3] 20% [line4] 20% [line5] 20%;
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
+  position: relative;
+  top: -3px;
+  left: -3px;
+  width: 100.6%;
   border-radius: 12px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   height: 90px;
@@ -53,8 +53,6 @@
 }
 
 .scheduleContainer {
-  position: absolute;
-  top: 100px;
   width: 100%;
   height: calc(100% - 100px);
   display: grid;
@@ -63,6 +61,7 @@
 }
 
 .rowContainer {
+  height: 60px;
   display: grid;
   grid-template: repeat(5, 1fr);
   grid-template-columns: [line1] 20% [line2] 20% [line3] 20% [line4] 20% [line5] 20%;
@@ -70,7 +69,7 @@
 }
 
 .item {
-  font-weight: bold;
+  font-weight: 500;
   font-family: "Roboto";
   place-self: center;
 }
@@ -93,4 +92,15 @@
   box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
   transform: translateY(-1px);
   background: rgb(59, 172, 182);
+}
+
+.backButton {
+  margin-top: 10px;
+  display: flex;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  color: #3bacb6;
+  background-color: transparent;
+  font-weight: 700;
 }

@@ -40,9 +40,7 @@ export default function ViewStudentList() {
                   })}
                   <button
                     onClick={() =>
-                      router.push(
-                        `/rotation-plan/${date}/view-schedule/${row[0]}`
-                      )
+                      router.push(`/rotation-plan/${date}/profile/${row[0]}`)
                     }
                     className={styles.detailsBtn}
                   >
