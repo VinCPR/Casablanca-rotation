@@ -29,14 +29,23 @@
 
 .text {
   margin-left: 20px;
+  width: 90px;
+}
+
+.mainContentContainer {
+  margin-top: 20px;
+  height: 450px;
+  overflow: auto;
 }
 
 .blockContainer {
+  grid-template-columns: [line1] 10% [line2] 10% [line3] 10% [line4] 10% [line5] 10% [line6] 10% [line7] 10% [line8] 10%[line9] 10% [line10] 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
+
 .selectionBtn {
   border-radius: 10px;
   background-color: #3bacb6;
@@ -113,41 +122,34 @@
 }
 
 .selectionContainer1 {
-  margin-top: -306px;
+  top: 33px;
   position: absolute;
-  padding-top: 125px;
   padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
+  height: 22%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   grid-auto-flow: column dense;
   z-index: 3;
 }
 
 .selectionContainer2 {
-  margin-top: -243px;
   position: absolute;
-  padding-top: 125px;
-  padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
+  top: 92px;
+  height: 22%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   grid-auto-flow: column dense;
 
   z-index: 3;
 }
 
 .selectionContainer3 {
-  margin-top: -181px;
+  bottom: 5px;
   position: absolute;
-  padding-top: 125px;
   padding-bottom: 10px;
-  height: 82.5%;
-  width: 101%;
+  height: 22%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   grid-auto-flow: column dense;
 
   z-index: 3;

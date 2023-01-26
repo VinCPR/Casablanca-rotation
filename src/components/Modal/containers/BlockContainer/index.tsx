@@ -591,10 +591,6 @@ export default function BlockContainer({ input }: Props) {
                     input.department.selectedComponents,
                     value
                   )}
-                  checkedAfterClose={isChecked(
-                    input.department.selectedComponents,
-                    value
-                  )}
                 />
               </div>
             );
@@ -619,10 +615,6 @@ export default function BlockContainer({ input }: Props) {
                           onClick={input.service[index1][index2].handleClick}
                           label={value}
                           checked={isChecked(
-                            input.service[index1][index2].selectedComponents,
-                            value
-                          )}
-                          checkedAfterClose={isChecked(
                             input.service[index1][index2].selectedComponents,
                             value
                           )}
@@ -653,10 +645,6 @@ export default function BlockContainer({ input }: Props) {
                       onClick={input.hospital[index].handleClick}
                       label={value}
                       checked={isChecked(
-                        input.hospital[index].selectedComponents,
-                        value
-                      )}
-                      checkedAfterClose={isChecked(
                         input.hospital[index].selectedComponents,
                         value
                       )}
