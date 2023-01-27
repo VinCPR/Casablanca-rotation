@@ -126,7 +126,7 @@ export default function Modal({
   }
 
   function getMarginLeft(numOfWeeks: number) {
-    return 1055.7 / numOfWeeks + "px";
+    return 1254.3 / numOfWeeks + "px";
   }
 
   return (
@@ -158,7 +158,7 @@ export default function Modal({
               </>
             ) : (
               <>
-                <div style={{ width: "1200px" }} className={styles.modal}>
+                <div style={{ width: "1400px" }} className={styles.modal}>
                   <div className={styles.modalHeader}>{subHeading}</div>
                   <div className={styles.mainContentContainer}>
                     {rotation.map((rotation, index) => {
@@ -202,7 +202,7 @@ export default function Modal({
                                       <RotationCard
                                         label={obj.name}
                                         fontSize={Math.min(
-                                          (150 * obj.numOfWeeks) /
+                                          (250 * obj.numOfWeeks) /
                                             obj.name.length,
                                           20
                                         )}
@@ -232,7 +232,7 @@ export default function Modal({
                                       <RotationCard
                                         label={obj.name}
                                         fontSize={Math.min(
-                                          (150 * obj.numOfWeeks) /
+                                          (250 * obj.numOfWeeks) /
                                             obj.name.length,
                                           20
                                         )}
@@ -262,7 +262,7 @@ export default function Modal({
                                       <RotationCard
                                         label={obj.name}
                                         fontSize={Math.min(
-                                          (150 * obj.numOfWeeks) /
+                                          (250 * obj.numOfWeeks) /
                                             obj.name.length,
                                           20
                                         )}
