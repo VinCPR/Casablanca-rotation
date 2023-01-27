@@ -4,6 +4,7 @@ import RotationCard from "./containers/RotationCard";
 import { designRotation } from "./algorithm";
 import { OptionSelector } from "./containers/BlockContainer/types";
 import { Department, Hospital, Rotation, Service } from "./types";
+import data from "./containers/BlockContainer/data";
 
 interface Props {
   children?: React.ReactNode;
@@ -16,6 +17,8 @@ interface Props {
   numberOfGroup: number;
   blockDuration: number;
 }
+
+const [allDepartments, allServices, allHospitals] = data();
 
 export default function Modal({
   children,
@@ -31,6 +34,20 @@ export default function Modal({
   const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const [rotation, setRotation] = React.useState<Rotation[]>([]);
   const [isPreview, setIsPreview1] = React.useState(showPreview);
+
+  const colors = [
+    "#18A0FB",
+    "#b6453b",
+    "#b6833b",
+    // "#7DABF8",
+    // "#9D7E2F",
+    "#9747FF",
+    "#453BB6",
+    "#FFA347",
+    // "#8c7df8",
+    // "#7de8f8",
+    "#F46B6B",
+  ];
 
   function onclick() {
     const departments = data?.department.selectedComponents as Department[];
@@ -200,6 +217,7 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
+                                        background={colors[allDepartments.indexOf(obj.name)]}
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
@@ -230,6 +248,7 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
+                                        background={colors[allHospitals.indexOf(obj.name)]}
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
@@ -260,6 +279,7 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
+                                        background={colors[allServices.indexOf(obj.name)]}
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
