@@ -9,33 +9,30 @@
 }
 
 .header {
+  position: relative;
   display: grid;
-  grid-template-columns: [line1] 10% [line2] 10% [line3] 25% [line4] 25% [line5] 20%;
-  position: absolute;
+  grid-template-columns: [line1] 20% [line2] 10% [line3] 25% [line4] 25% [line5] 20%;
+  width: 100.1%;
   top: -2px;
-  left: -2px;
-  right: -2px;
   border-radius: 12px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   height: 90px;
   background: #3bacb6;
   color: #fff;
   font-weight: 500;
-
+  font-family: "Roboto";
   font-size: 20px;
   border: 3px solid #3bacb6;
 }
 
 .headerItems {
   font-weight: 500;
-
+  font-family: "Roboto";
   font-size: 20px;
   place-self: center;
 }
 
 .scheduleContainer {
-  position: absolute;
-  top: 100px;
   width: 100%;
   height: calc(100% - 100px);
   display: grid;
@@ -44,24 +41,25 @@
 }
 
 .rowContainer {
+  height: 60px;
   display: grid;
   grid-template: repeat(5, 1fr);
-  grid-template-columns: [line1] 10% [line2] 10% [line3] 25% [line4] 25% [line5] 20%;
+  grid-template-columns: [line1] 20% [line2] 10% [line3] 25% [line4] 25% [line5] 20%;
   grid-auto-flow: column dense;
 }
 
 .item {
   font-weight: 500;
-
+  font-family: "Roboto";
   place-self: center;
 }
 
-.detailsBtn {
+.detailsBtn{
   border-radius: 8px;
   border: none;
   background: #3bacb6;
   font-weight: 500;
-
+  font-family: "Roboto";
   color: #fff;
   width: 80%;
   height: 60%;
@@ -69,7 +67,7 @@
   transition: all 0.25 ease;
 }
 
-.detailsBtn:hover {
+.detailsBtn:hover{
   cursor: pointer;
   box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
   transform: translateY(-1px);

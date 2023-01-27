@@ -1,10 +1,11 @@
 import * as React from "react";
 import styles from "./index.module.css";
-import Navbar from "../../../../src/components/Navbar";
-import Sidebar from "../../../../src/components/Sidebar";
-import ScheduleContainer from "../../../../src/containers/RotationDesignPage/containers/ScheduleContainer";
-import ArrowBack from "../../../../src/containers/DesignRotation/components/MainLayout/RotationDesign/components/ArrowBack";
+import Navbar from "../../../../../src/components/Navbar";
+import Sidebar from "../../../../../src/components/Sidebar";
+import ScheduleContainer from "../../../../../src/containers/RotationDesignPage/containers/ScheduleContainer";
+import ArrowBack from "../../../../../src/containers/DesignRotation/components/MainLayout/RotationDesign/components/ArrowBack";
 import { useRouter } from "next/router";
+import ViewStudentList from "../../../../../src/containers/RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList";
 
 export default function RouteToViewSchedule() {
   const router = useRouter();
@@ -15,10 +16,7 @@ export default function RouteToViewSchedule() {
       <div style={{ position: "relative" }}>
         <Sidebar highlight={2} />
         <div className={styles.scheduleContainer}>
-          <button
-            onClick={() => router.push("/rotation-plan")}
-            className={styles.backButton}
-          >
+          <button onClick={() => history.back()} className={styles.backButton}>
             <ArrowBack />
             BACK
           </button>
@@ -27,7 +25,7 @@ export default function RouteToViewSchedule() {
             Date: {date != null ? (date as string).replaceAll("-", " ") : null}
           </div>
           <div className={styles.schedule}>
-            <ScheduleContainer />
+            <ViewStudentList />
           </div>
         </div>
       </div>

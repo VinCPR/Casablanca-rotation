@@ -105,8 +105,9 @@ export default function ViewAttendingDetail({ isEdit }: Props) {
 
   return (
     <div>
-      <div>
-        <div className={styles.splitLeft}>
+      <div className={styles.profileContainer}>
+        <div className={styles.info}>
+          {" "}
           <div className={styles.infoHeader}>PERSONAL INFO</div>
           <div className={styles.studentPhoto}>
             <Image
@@ -116,219 +117,191 @@ export default function ViewAttendingDetail({ isEdit }: Props) {
               height={299}
             />
           </div>
-          <div className={styles.personalnfo}>
-            {!isEditProfile ? (
-              <div>
-                <div className={styles.boldText}>
-                  Name:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22px", left: "61px" }}
-                  >
-                    {" "}
-                    {name}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  DOB:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22.5px", left: "53px" }}
-                  >
-                    {" "}
-                    {DOB}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Email:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-23px", left: "61px" }}
-                  >
-                    {" "}
-                    {email}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Position:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22.5px", left: "79px" }}
-                  >
-                    {" "}
-                    {position}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Phone:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22px", left: "63px" }}
-                  >
-                    {" "}
-                    {phone}{" "}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div>
-                <div className={styles.boldText1} style={{ marginTop: "10px" }}>
-                  Name:
-                  <input
-                    onChange={changeName}
-                    value={name}
-                    type="text"
-                    id="fname"
-                    name="fname"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  DOB:
-                  <input
-                    onChange={changeDOB}
-                    value={DOB}
-                    type="text"
-                    id="fdob"
-                    name="fdob"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Email:
-                  <input
-                    onChange={changeEmail}
-                    value={email}
-                    type="text"
-                    id="femail"
-                    name="femail"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Position:
-                  <input
-                    onChange={changePosition}
-                    value={position}
-                    type="text"
-                    id="fposition"
-                    name="fposition"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Phone:
-                  <input
-                    onChange={changePhone}
-                    value={phone}
-                    type="text"
-                    id="fphone"
-                    name="fphone"
-                  ></input>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
-
-        <div className={styles.splitRight}>
-          <div className={styles.infoHeader} style={{ marginLeft: "28px" }}>
-            CONTACT INFO
-          </div>
-          <div className={styles.contactInfo}>
-            {!isEditContactInfo ? (
-              <div>
-                <div className={styles.boldText}>
-                  Office Hours:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22px", left: "122px" }}
-                  >
-                    {" "}
-                    {officeHours}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Contact method:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22.5px", left: "150px" }}
-                  >
-                    {" "}
-                    {contactMethod}{" "}
-                  </div>
-                </div>
+        <div className={styles.personalnfo}>
+          {!isEditProfile ? (
+            <div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Name:</div>
+                <div className={styles.text}> {name} </div>
               </div>
-            ) : (
-              <div>
-                <div className={styles.boldText1} style={{ marginTop: "10px" }}>
-                  Office Hours:
-                  <input
-                    onChange={changeOfficeHours}
-                    value={officeHours}
-                    type="text"
-                    id="fofficehours"
-                    name="fofficehours"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Contact method:
-                  <input
-                    onChange={changeContactMethod}
-                    value={contactMethod}
-                    type="text"
-                    id="fcontactmethod"
-                    name="fcontactmethod"
-                  ></input>
-                </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>DOB:</div>
+                <div className={styles.text}> {DOB} </div>
               </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className={styles.headerBottom}>BIOGRAPHY</div>
-
-        {!isEditBiography ? (
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Email:</div>
+                <div className={styles.text}> {email} </div>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Position:</div>
+                <div className={styles.text}> {position} </div>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Phone:</div>
+                <div className={styles.text}> {phone} </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Name:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeName}
+                  value={name}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>DOB:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeDOB}
+                  value={DOB}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Email:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeEmail}
+                  value={email}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Position:</div>
+                <input
+                  className={styles.input}
+                  onChange={changePosition}
+                  value={position}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Phone:</div>
+                <input
+                  className={styles.input}
+                  onChange={changePhone}
+                  value={phone}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+            </div>
+          )}
           <div>
-            <div className={styles.text} style={{ top: "10px", left: "15px" }}>
+            {isEdit && (
+              <button
+                className={styles.editBtn}
+                onClick={() => onClickProfile()}
+              >
+                {editProfile}
+              </button>
+            )}
+          </div>
+        </div>
+        <div className={styles.contactlnfo}>
+          <div className={styles.infoHeader}>CONTACT INFO</div>
+          {!isEditContactInfo ? (
+            <div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Office Hours:</div>
+                <div className={styles.text}> {officeHours} </div>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Contact Method:</div>
+                <div className={styles.text}> {contactMethod} </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Office Hours:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeOfficeHours}
+                  value={officeHours}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Contact Method:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeContactMethod}
+                  value={contactMethod}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+            </div>
+          )}
+          <div>
+            {isEdit && (
+              <button
+                className={styles.editBtn}
+                onClick={() => onClickContactInfo()}
+              >
+                {editContactInfo}
+              </button>
+            )}
+          </div>
+        </div>
+        <div className={styles.biography}>
+          <div className={styles.infoHeader}>BIOGRAPHY</div>
+          {!isEditBiography ? (
+            <div
+              className={styles.text}
+              style={{ marginLeft: "0px", marginTop: "10px" }}
+            >
               {" "}
               {biography}{" "}
             </div>
-          </div>
-        ) : (
-          <div className={styles.create}>
+          ) : (
             <form>
-              <textarea onChange={changeBiography} value={biography}>
+              <textarea
+                onChange={changeBiography}
+                value={biography}
+                className={styles.input}
+                style={{
+                  width: "1150px",
+                  height: "100px",
+                  display: "flex",
+                  marginLeft: "0px",
+                  marginTop: "10px",
+                }}
+              >
                 {" "}
               </textarea>
             </form>
-          </div>
-        )}
+          )}
+
+          {isEdit && (
+            <button
+              style={{ marginLeft: "0px" }}
+              className={styles.editBtn}
+              onClick={() => onClickBiography()}
+            >
+              {editBiography}
+            </button>
+          )}
+        </div>
       </div>
-      {isEdit && (
-        <>
-          <button
-            className={styles.editBtn}
-            onClick={() => onClickProfile()}
-            style={{ left: "350px", top: "320px" }}
-          >
-            {editProfile}
-          </button>
-
-          <button
-            className={styles.editBtn}
-            style={{ left: "720px", top: "150px" }}
-            onClick={() => onClickContactInfo()}
-          >
-            {editContactInfo}
-          </button>
-
-          <button
-            className={styles.editBtn}
-            style={{ top: "510px", left: "15px" }}
-            onClick={() => onClickBiography()}
-          >
-            {editBiography}
-          </button>
-        </>
-      )}
     </div>
   );
 }
