@@ -2,6 +2,7 @@ import styles from "./index.module.css";
 import * as React from "react";
 import StepOne from "./containers/StepOne";
 import StepTwo from "./containers/StepTwo";
+import { Rotation } from "../../../../../components/Modal/types";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);
@@ -11,6 +12,10 @@ export default function RotationDesign() {
   const [blockDuration, setBlockDuration] = React.useState(0);
   const [startDate, setStartDate] = React.useState<number[]>([]);
   const [endDate, setEndDate] = React.useState<number[]>([]);
+  const [rotationsDesign, setRotationsDesign] = React.useState<Rotation[][]>(
+    []
+  );
+  console.log(rotationsDesign);
   return (
     <div className={styles.container}>
       <div className={styles.parent}>
@@ -30,8 +35,9 @@ export default function RotationDesign() {
       {currentStep == 1 && (
         <StepOne
           proceedNextStep={() => {
-            setStartDate(Array(numOfBlock).fill(Date.now()));
-            setEndDate(Array(numOfBlock).fill(Date.now()));
+            setStartDate(Array.from({ length: numOfBlock }, (_) => Date.now()));
+            setEndDate(Array.from({ length: numOfBlock }, (_) => Date.now()));
+            setRotationsDesign(Array.from({ length: numOfBlock }, (_) => []));
             setCurrentStep(2);
           }}
           onChangeNumOfBlock={(i) => setNumOfBlock(i)}
@@ -61,6 +67,17 @@ export default function RotationDesign() {
               endDate.map((value, index) => {
                 if (indexChange === index) return date;
                 return value;
+              })
+            );
+          }}
+          onChangeRotationDesign={(rotationChange, indexChange) => {
+            console.log(rotationChange);
+            setRotationsDesign(
+              rotationsDesign.map((rotation, index) => {
+                if (index === indexChange) {
+                  return rotationChange;
+                }
+                return rotation;
               })
             );
           }}

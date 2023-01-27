@@ -120,7 +120,6 @@ function calculateLoss(list: number[], totalPerms: Tuple[][][]) {
  */
 function backtrack(x: number, list: number[], totalPerms: Tuple[][][]) {
   if (list.length === x) {
-    console.log("VAI", x, "ThAT", list, totalPerms);
     return {
       loss: calculateLoss(list, totalPerms),
       res: list,
@@ -191,7 +190,7 @@ export function designRotation(data: Rotation, x: number) {
     }
   }
   const results = generateRotationDesign(tuples, x);
-  return results.map((result: Tuple[][]) => {
+  const returnValue = results.map((result: Tuple[][]) => {
     const tuples = result.flat();
     const services: Service[] = clean(
       tuples.map((tuple) => {
@@ -217,12 +216,14 @@ export function designRotation(data: Rotation, x: number) {
         };
       })
     );
-    return {
+    const rotation: Rotation = {
       departments,
       hospitals,
       services,
     };
+    return rotation;
   });
+  return returnValue;
 }
 
 export function clean(

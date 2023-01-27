@@ -10,10 +10,12 @@ import BlockContainer from "../../../../../../../components/Modal/containers/Blo
 import useSelectedComponents from "../../../../../../../components/Modal/containers/BlockContainer/useSelectedComponents";
 import { OptionSelector } from "../../../../../../../components/Modal/containers/BlockContainer/types";
 import ArrowBack from "../../components/ArrowBack";
+import { Rotation } from "../../../../../../../components/Modal/types";
 
 type Props = {
   startDate: number[];
   endDate: number[];
+  onChangeRotationDesign: (rotation: Rotation[], index: number) => void;
   backStep: () => void;
   numOfBlock: number;
   numOfGroup: number;
@@ -30,6 +32,7 @@ export default function StepTwo({
   numOfBlock,
   numOfGroup,
   durationOfBlock,
+  onChangeRotationDesign,
   backStep,
 }: Props) {
   const colors = [
@@ -47,11 +50,11 @@ export default function StepTwo({
     "#f3fa74",
   ];
   const [showModalEdit, setShowModalEdit] = React.useState<boolean[]>(
-    Array(10).fill(false)
+    Array.from({ length: 10 }, (_) => false)
   );
   const [isGenerated, setIsGenerated] = React.useState(false);
   const [showPreview, setShowPreview] = React.useState<boolean[]>(
-    Array(10).fill(false)
+    Array.from({ length: 10 }, (_) => false)
   );
 
   const rangeNumOfBlock = Array.from(Array(numOfBlock).keys());
@@ -74,13 +77,16 @@ export default function StepTwo({
     );
   };
 
-  const optionSelector: OptionSelector[] = Array(numOfBlock).fill({
-    department: useSelectedComponents(),
-    service: Array.from({ length: 6 }, (e) =>
-      Array.from({ length: 10 }, (e) => useSelectedComponents())
-    ),
-    hospital: Array.from({length: 6}, (e) => useSelectedComponents()),
-  });
+  const optionSelector: OptionSelector[] = Array.from(
+    { length: numOfBlock },
+    (_) => ({
+      department: useSelectedComponents(),
+      service: Array.from({ length: 6 }, (e) =>
+        Array.from({ length: 10 }, (e) => useSelectedComponents())
+      ),
+      hospital: Array.from({ length: 6 }, (e) => useSelectedComponents()),
+    })
+  );
 
   return (
     <div>
@@ -205,15 +211,21 @@ export default function StepTwo({
           </tbody>
         </table>
       </div>
-      <button
-        className={styles.generateButton}
-        onClick={() => setIsGenerated(true)}
-      >
-        Generate
-      </button>
+      <div className={styles.buttons}>
+        <button
+          className={styles.generateButton}
+          onClick={() => setIsGenerated(true)}
+        >
+          Generate
+        </button>
+        <button className={styles.submitButton}>Submit</button>
+      </div>
       {showModalEdit.map((_, index) => (
         <Modal
           key={index}
+          onChangeRotationDesign={(rotation) =>
+            onChangeRotationDesign(rotation, index)
+          }
           heading={`Design Rotation for Block ${index + 1}`}
           subHeading={`Preview of Block ${index + 1}`}
           isOpened={showModalEdit[index]}
@@ -223,12 +235,15 @@ export default function StepTwo({
           numberOfGroup={numOfGroup}
           blockDuration={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[0]} />
+          <BlockContainer input={optionSelector[index]} />
         </Modal>
       ))}
       {showPreview.map((_, index) => (
         <Modal
           key={index}
+          onChangeRotationDesign={(rotation) =>
+            onChangeRotationDesign(rotation, index)
+          }
           heading={`Design Rotation for Block ${index + 1}`}
           subHeading={`Preview of Block ${index + 1}`}
           isOpened={showPreview[index]}
@@ -238,7 +253,7 @@ export default function StepTwo({
           numberOfGroup={numOfGroup}
           blockDuration={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[0]} />
+          <BlockContainer input={optionSelector[index]} />
         </Modal>
       ))}
     </div>

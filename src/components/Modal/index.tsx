@@ -10,6 +10,7 @@ interface Props {
   children?: React.ReactNode;
   isOpened: boolean;
   toggle: () => void;
+  onChangeRotationDesign: (rotation: Rotation[]) => void;
   heading: string;
   subHeading: string;
   data?: OptionSelector;
@@ -26,6 +27,7 @@ export default function Modal({
   toggle,
   heading = "",
   subHeading = "",
+  onChangeRotationDesign,
   data,
   showPreview,
   numberOfGroup,
@@ -63,10 +65,9 @@ export default function Modal({
       hospitals,
       services,
     };
-
-    setRotation(
-      designRotation({ departments, hospitals, services }, numberOfGroup)
-    );
+    const blockDesign = designRotation(inputFormated, numberOfGroup);
+    onChangeRotationDesign(blockDesign);
+    setRotation(blockDesign);
   }
 
   function onClickBack() {
@@ -87,6 +88,7 @@ export default function Modal({
       hospitals,
       services,
     };
+    const blockDesign = designRotation(inputFormated, numberOfGroup);
 
     setRotation(
       designRotation({ departments, hospitals, services }, numberOfGroup)
