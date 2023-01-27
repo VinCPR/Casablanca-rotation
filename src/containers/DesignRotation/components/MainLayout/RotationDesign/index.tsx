@@ -3,6 +3,9 @@ import * as React from "react";
 import StepOne from "./containers/StepOne";
 import StepTwo from "./containers/StepTwo";
 import { Rotation } from "../../../../../components/Modal/types";
+import submitRotation from "@/modules/http/submit-rotation";
+import convertBlockDesign from "@/modules/utils/block-design-converter";
+import moment from "moment";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);
@@ -15,7 +18,6 @@ export default function RotationDesign() {
   const [rotationsDesign, setRotationsDesign] = React.useState<Rotation[][]>(
     []
   );
-  console.log(rotationsDesign);
   return (
     <div className={styles.container}>
       <div className={styles.parent}>
@@ -86,6 +88,7 @@ export default function RotationDesign() {
           numOfGroup={numOfGroup}
           // numOfStudent={numOfStudent}
           durationOfBlock={blockDuration}
+          rotationDesign={rotationsDesign}
         />
       )}
     </div>

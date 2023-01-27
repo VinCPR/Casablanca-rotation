@@ -11,6 +11,7 @@ import useSelectedComponents from "../../../../../../../components/Modal/contain
 import { OptionSelector } from "../../../../../../../components/Modal/containers/BlockContainer/types";
 import ArrowBack from "../../components/ArrowBack";
 import { Rotation } from "../../../../../../../components/Modal/types";
+import submitRotation from "@/modules/http/submit-rotation";
 
 type Props = {
   startDate: number[];
@@ -22,6 +23,7 @@ type Props = {
   durationOfBlock: number;
   onChangeStartDate: (date: number, index: number) => void;
   onChangeEndDate: (date: number, index: number) => void;
+  rotationDesign: Rotation[][];
 };
 
 export default function StepTwo({
@@ -34,6 +36,7 @@ export default function StepTwo({
   durationOfBlock,
   onChangeRotationDesign,
   backStep,
+  rotationDesign,
 }: Props) {
   const colors = [
     "#ff9620",
@@ -214,11 +217,26 @@ export default function StepTwo({
       <div className={styles.buttons}>
         <button
           className={styles.generateButton}
-          onClick={() => setIsGenerated(true)}
+          onClick={() => {
+            setIsGenerated(true);
+          }}
         >
           Generate
         </button>
-        <button className={styles.submitButton}>Submit</button>
+        <button
+          className={styles.submitButton}
+          onClick={() =>
+            submitRotation({
+              groupsPerBlock: numOfGroup,
+              numberOfPeriod: numOfBlock,
+              weeksPerPeriod: durationOfBlock,
+              startDates: startDate,
+              rotation: rotationDesign,
+            })
+          }
+        >
+          Submit
+        </button>
       </div>
       {showModalEdit.map((_, index) => (
         <Modal

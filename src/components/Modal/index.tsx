@@ -121,7 +121,9 @@ export default function Modal({
     const weekNums = Array.from(Array(numOfWeeks).keys());
 
     const weekHeaders = weekNums.map((num) => (
-      <div className={styles.centerItems}>Week {num + 1}</div>
+      <div key={num} className={styles.centerItems}>
+        Week {num + 1}
+      </div>
     ));
 
     return (
@@ -138,7 +140,7 @@ export default function Modal({
     const weekNums = Array.from(Array(numOfWeeks - 2).keys());
 
     const tableLines = weekNums.map((num) => (
-      <div className={styles.line}></div>
+      <div key={num} className={styles.line} />
     ));
 
     return <>{tableLines}</>;
@@ -219,7 +221,11 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
-                                        background={colors[allDepartments.indexOf(obj.name)]}
+                                        background={
+                                          colors[
+                                            allDepartments.indexOf(obj.name)
+                                          ]
+                                        }
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
@@ -250,7 +256,9 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
-                                        background={colors[allHospitals.indexOf(obj.name)]}
+                                        background={
+                                          colors[allHospitals.indexOf(obj.name)]
+                                        }
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
@@ -281,7 +289,9 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
-                                        background={colors[allServices.indexOf(obj.name)]}
+                                        background={
+                                          colors[allServices.indexOf(obj.name)]
+                                        }
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
