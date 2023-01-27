@@ -36,15 +36,16 @@ export default function BlockContainer({ input }: Props) {
   const [departments, services, hospitals] = data();
   const colors = [
     "#18A0FB",
+    "#b6453b",
+    "#b6833b",
+    // "#7DABF8",
+    // "#9D7E2F",
     "#9747FF",
-    "#9D7E2F",
-    "#7DABF8",
-    "#FF4747",
     "#453BB6",
-    "#FF9620",
+    "#FFA347",
+    // "#8c7df8",
+    // "#7de8f8",
     "#F46B6B",
-    "#6EB5FF",
-    "#FF9CEE",
   ];
 
   const modalSelector = {
@@ -206,6 +207,7 @@ export default function BlockContainer({ input }: Props) {
                       }}
                     >
                       <SelectionButton
+                        background = {colors[departments.indexOf(obj.name)]}
                         label={obj.name}
                         width={190}
                         height={90}
@@ -294,6 +296,8 @@ export default function BlockContainer({ input }: Props) {
                                   // style={{ backgroundColor: colors[index] }}
                                 >
                                   <SelectionButton
+
+                                    background={colors[hospitals.indexOf(obj.name)]}
                                     label={obj.name}
                                     width={190}
                                     height={Math.min(
@@ -450,6 +454,7 @@ export default function BlockContainer({ input }: Props) {
                                                 // style={{ backgroundColor: colors[index] }}
                                               >
                                                 <SelectionButton
+                                                  background = {colors[services.indexOf(obj.name)]}
                                                   label={obj.name}
                                                   width={190}
                                                   height={Math.min(
@@ -583,7 +588,7 @@ export default function BlockContainer({ input }: Props) {
           {departments.map((value, index) => {
             return (
               <div className={styles.deptContainer} key={index}>
-                <SelectionButton label={value} />
+                <SelectionButton background={colors[index]} label={value} />
                 <Checkbox
                   onClick={input.department.handleClick}
                   label={value}
@@ -610,7 +615,7 @@ export default function BlockContainer({ input }: Props) {
                   {services.map((value, index3) => {
                     return (
                       <div className={styles.deptContainer} key={index3}>
-                        <SelectionButton label={value} />
+                        <SelectionButton background = {colors[index3]} label={value} />
                         <Checkbox
                           onClick={input.service[index1][index2].handleClick}
                           label={value}
@@ -640,7 +645,7 @@ export default function BlockContainer({ input }: Props) {
               {hospitals.map((value, index2) => {
                 return (
                   <div className={styles.deptContainer} key={index2}>
-                    <SelectionButton label={value} />
+                    <SelectionButton background={colors[index2]} label={value} />
                     <Checkbox
                       onClick={input.hospital[index].handleClick}
                       label={value}
