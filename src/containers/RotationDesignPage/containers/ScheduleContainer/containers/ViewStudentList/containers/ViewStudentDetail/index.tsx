@@ -62,8 +62,9 @@ export default function ViewStudentDetail({ isEdit }: Props) {
 
   return (
     <div>
-      <div>
-        <div className={styles.splitLeft}>
+      <div className={styles.profileContainer}>
+        <div className={styles.info}>
+          {" "}
           <div className={styles.infoHeader}>PERSONAL INFO</div>
           <div className={styles.studentPhoto}>
             <Image
@@ -73,149 +74,117 @@ export default function ViewStudentDetail({ isEdit }: Props) {
               height={299}
             />
           </div>
-          <div className={styles.personalnfo}>
-            {!isEditProfile ? (
-              <div>
-                <div className={styles.boldText}>
-                  Name:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22px", left: "61px" }}
-                  >
-                    {" "}
-                    {name}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  DOB:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22.5px", left: "53px" }}
-                  >
-                    {" "}
-                    {DOB}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Email:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-23px", left: "61px" }}
-                  >
-                    {" "}
-                    {email}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Program:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-21.5px", left: "85px" }}
-                  >
-                    {" "}
-                    {program}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Cohort:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22.5px", left: "71px" }}
-                  >
-                    {" "}
-                    {cohort}{" "}
-                  </div>
-                </div>
-                <div className={styles.boldText}>
-                  Phone:
-                  <div
-                    className={styles.text}
-                    style={{ top: "-22px", left: "63px" }}
-                  >
-                    {" "}
-                    {phone}{" "}
-                  </div>
-                </div>
+        </div>
+        <div className={styles.personalnfo}>
+          {!isEditProfile ? (
+            <div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Name:</div>
+                <div className={styles.text}> {name} </div>
               </div>
-            ) : (
-              <div>
-                <div className={styles.boldText1} style={{ marginTop: "10px" }}>
-                  Name:
-                  <input
-                    onChange={changeName}
-                    value={name}
-                    type="text"
-                    id="fname"
-                    name="fname"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  DOB:
-                  <input
-                    onChange={changeDOB}
-                    value={DOB}
-                    type="text"
-                    id="fdob"
-                    name="fdob"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Email:
-                  <input
-                    onChange={changeEmail}
-                    value={email}
-                    type="text"
-                    id="femail"
-                    name="femail"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Program:
-                  <input
-                    onChange={changeProgram}
-                    value={program}
-                    type="text"
-                    id="fposition"
-                    name="fposition"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Cohort:
-                  <input
-                    onChange={changeCohort}
-                    value={cohort}
-                    type="text"
-                    id="fposition"
-                    name="fposition"
-                  ></input>
-                </div>
-                <div className={styles.boldText1}>
-                  Phone:
-                  <input
-                    onChange={changePhone}
-                    value={phone}
-                    type="text"
-                    id="fphone"
-                    name="fphone"
-                  ></input>
-                </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>DOB:</div>
+                <div className={styles.text}> {DOB} </div>
               </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Email:</div>
+                <div className={styles.text}> {email} </div>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Program:</div>
+                <div className={styles.text}> {program} </div>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Cohort:</div>
+                <div className={styles.text}> {cohort} </div>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Phone:</div>
+                <div className={styles.text}> {phone} </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Name:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeName}
+                  value={name}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>DOB:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeDOB}
+                  value={DOB}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Email:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeEmail}
+                  value={email}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Program:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeProgram}
+                  value={program}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Cohort:</div>
+                <input
+                  className={styles.input}
+                  onChange={changeCohort}
+                  value={cohort}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+              <div className={styles.inLine}>
+                <div className={styles.boldText}>Phone:</div>
+                <input
+                  className={styles.input}
+                  onChange={changePhone}
+                  value={phone}
+                  type="text"
+                  id="fname"
+                  name="fname"
+                ></input>
+              </div>
+            </div>
+          )}
+          <div>
+            {isEdit && (
+              <button
+                className={styles.editBtn}
+                onClick={() => onClickProfile()}
+              >
+                {editProfile}
+              </button>
             )}
           </div>
         </div>
       </div>
-
-      {isEdit && (
-        <>
-          <button
-            className={styles.editBtn}
-            onClick={() => onClickProfile()}
-            style={{ left: "350px", top: "390px" }}
-          >
-            {editProfile}
-          </button>
-        </>
-      )}
     </div>
   );
 }

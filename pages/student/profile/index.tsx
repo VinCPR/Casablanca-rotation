@@ -9,9 +9,7 @@ export default function RouteToViewStudentProfile() {
       <Navbar />
       <div style={{ position: "relative" }}>
         <SideBarStudent highlight={2} />
-        <div className={styles.profileContainer}>
-          <ViewStudentDetail isEdit={true} />
-        </div>
+        <ViewStudentDetail isEdit={true} />
       </div>
     </>
   );

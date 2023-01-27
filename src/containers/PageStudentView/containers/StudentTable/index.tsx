@@ -15,6 +15,9 @@ export default function StudentTable({ role }: Props) {
   const data = [
     ["13/5/2022", "20/5/2022", "Pediatrics", "Vinmec", "OutPatient"],
     ["20/5/2022", "26/6/2022", "Neurology", "Vinmec", "OutPatient"],
+    ["26/5/2022", "30/7/2022", "Neurology", "108 Hospital", "OutPatient"],
+    ["30/7/2022", "5/9/2022", "Pediatrics", "108 Hospital", "OutPatient"],
+    ["5/9/2022", "15/10/2022", "Neurology", "Vinmec", "OutPatient"],
   ];
 
   function onClick(x: number) {
@@ -36,7 +39,10 @@ export default function StudentTable({ role }: Props) {
       {showContainer ? (
         <div className={styles.firstLayout}>
           <div className={styles.scheduleHeader}>ROTATION SCHEDULE</div>
-          <div className={styles.container}>
+          <div
+            className={styles.container}
+            style={{ height: data.length * 62 + 91 + "px" }}
+          >
             <>
               <div className={styles.header}>
                 {headerItems.map((value, index) => {
@@ -74,6 +80,7 @@ export default function StudentTable({ role }: Props) {
         </div>
       ) : (
         <StudentList
+          showContainer={() => setShowContainer(true)}
           startDate={data[index][0]}
           endDate={data[index][1]}
           department={data[index][2]}

@@ -1,11 +1,10 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import ViewStudentList from "./containers/ViewStudentList";
 
 export default function ScheduleContainer() {
   const router = useRouter();
-  const [showContainer, setShowContainer] = React.useState(true);
+  const { date } = router.query;
   const data = [
     ["1", "1", "Vinmec", "Pediatrics", "Alice"],
     ["2", "2", "Vinmec", "Neurology", "Bob"],
@@ -21,49 +20,49 @@ export default function ScheduleContainer() {
     "Hospital",
     "Department",
     "Faculty",
+    "Detail",
   ];
 
   return (
-    <>
-      {showContainer ? (
-        <div className={styles.container}>
-          <>
-            <div className={styles.header}>
-              {headerItems.map((value, index) => {
-                return (
-                  <div key={index} className={styles.headerItems}>
-                    {value}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className={styles.scheduleContainer}>
-              {data.map((row, index) => {
-                return (
-                  <div className={styles.rowContainer} key={index}>
-                    {row.map((value, index) => {
-                      return (
-                        <div className={styles.item} key={index}>
-                          {value}
-                        </div>
-                      );
-                    })}
-                    <button
-                      className={styles.detailsBtn}
-                      onClick={() => setShowContainer(false)}
-                    >
-                      Details
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </>
+    <div
+      className={styles.container}
+      style={{ height: data.length * 62 + 91 + "px" }}
+    >
+      <>
+        <div className={styles.header}>
+          {headerItems.map((value, index) => {
+            return (
+              <div key={index} className={styles.headerItems}>
+                {value}
+              </div>
+            );
+          })}
         </div>
-      ) : (
-        <ViewStudentList />
-      )}
-    </>
+
+        <div className={styles.scheduleContainer}>
+          {data.map((row, index) => {
+            return (
+              <div className={styles.rowContainer} key={index}>
+                {row.map((value, index) => {
+                  return (
+                    <div className={styles.item} key={index}>
+                      {value}
+                    </div>
+                  );
+                })}
+                <button
+                  className={styles.detailsBtn}
+                  onClick={() =>
+                    router.push(`/rotation-plan/${date}/${row[2]}/${row[3]}`)
+                  }
+                >
+                  Details
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </>
+    </div>
   );
 }

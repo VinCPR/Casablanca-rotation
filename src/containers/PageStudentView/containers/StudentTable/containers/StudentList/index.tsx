@@ -1,7 +1,9 @@
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
+import ArrowBack from "../../../../../DesignRotation/components/MainLayout/RotationDesign/components/ArrowBack";
 
 type Props = {
+  showContainer?: () => void;
   startDate?: string;
   endDate?: string;
   department?: string;
@@ -11,6 +13,7 @@ type Props = {
 };
 
 export default function StudentList({
+  showContainer,
   startDate,
   endDate,
   department,
@@ -44,12 +47,19 @@ export default function StudentList({
   const { date } = router.query;
   return (
     <>
+      <button onClick={showContainer} className={styles.backButton}>
+        <ArrowBack />
+        BACK
+      </button>
       <div className={styles.secondLayoutHeader}>
         Group List {department} {service} {hospital} {startDate} - {endDate}
       </div>
 
       <div className={styles.subHeader}>Attending List</div>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{ height: dataAttending.length * 62 + 91 + "px" }}
+      >
         <>
           <div className={styles.header}>
             {headerAttending.map((value, index) => {
@@ -89,7 +99,10 @@ export default function StudentList({
         </>
       </div>
       <div className={styles.subHeader}>Student List</div>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{ height: dataStudent.length * 62 + 91 + "px" }}
+      >
         <>
           <div className={styles.header}>
             {headerStudent.map((value, index) => {
