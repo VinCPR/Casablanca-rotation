@@ -23,7 +23,7 @@ export default function SideBar({ highlight }: Props) {
         <div className={styles.textfield}>
           <IconDesignRotation isActive={mouseEnter === 1 || highlight === 1} />
           <Link href="/design-rotation">
-            <div className={styles.text}>Design rotation</div>
+            <div className={styles.text}>Design Rotation</div>
           </Link>
         </div>
       </button>
@@ -48,7 +48,9 @@ export default function SideBar({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconStudentList isActive={mouseEnter === 3 || highlight === 3} />
-          <div className={styles.text}>Student List</div>
+          <Link href="/student-list">
+            <div className={styles.text}>Student List</div>
+          </Link>
         </div>
       </button>
       <button
