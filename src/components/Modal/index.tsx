@@ -14,6 +14,7 @@ interface Props {
   data?: OptionSelector;
   showPreview: boolean;
   numberOfGroup: number;
+  blockDuration: number;
 }
 
 export default function Modal({
@@ -25,6 +26,7 @@ export default function Modal({
   data,
   showPreview,
   numberOfGroup,
+  blockDuration,
 }: Props) {
   const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const [rotation, setRotation] = React.useState<Rotation[]>([]);
@@ -87,6 +89,46 @@ export default function Modal({
     return output;
   }
 
+  function getHeaderGridTemplateCol(numOfWeeks: number) {
+    var output = "";
+    for (var i = 1; i <= numOfWeeks; i++) {
+      output += "[line" + i + "] " + (1 / numOfWeeks) * 100 + "%";
+    }
+
+    return output;
+  }
+
+  function getWeekHeaders(numOfWeeks: number) {
+    const weekNums = Array.from(Array(numOfWeeks).keys());
+
+    const weekHeaders = weekNums.map((num) => (
+      <div className={styles.centerItems}>Week {num + 1}</div>
+    ));
+
+    return (
+      <div
+        style={{ gridTemplateColumns: getHeaderGridTemplateCol(numOfWeeks) }}
+        className={styles.header}
+      >
+        {weekHeaders}
+      </div>
+    );
+  }
+
+  function getTableLine(numOfWeeks: number) {
+    const weekNums = Array.from(Array(numOfWeeks - 2).keys());
+
+    const tableLines = weekNums.map((num) => (
+      <div className={styles.line}></div>
+    ));
+
+    return <>{tableLines}</>;
+  }
+
+  function getMarginLeft(numOfWeeks: number) {
+    return 1055.7 / numOfWeeks + "px";
+  }
+
   return (
     <div>
       {isOpened && (
@@ -126,33 +168,15 @@ export default function Modal({
                             <h3>Group {index + 1}</h3>
                           </div>
                           <div className={styles.container}>
-                            <div className={styles.header}>
-                              <div className={styles.centerItems}>Week 1</div>
-                              <div className={styles.centerItems}>Week 2</div>
-                              <div className={styles.centerItems}>Week 3</div>
-                              <div className={styles.centerItems}>Week 4</div>
-                              <div className={styles.centerItems}>Week 5</div>
-                              <div className={styles.centerItems}>Week 6</div>
-                              <div className={styles.centerItems}>Week 7</div>
-                              <div className={styles.centerItems}>Week 8</div>
-                              <div className={styles.centerItems}>Week 9</div>
-                              <div className={styles.centerItems}>Week 10</div>
-                            </div>
-
+                            {getWeekHeaders(blockDuration)}
                             <div className={styles.blockContainer}>
                               <div
-                                style={{ marginLeft: "107px" }}
+                                style={{
+                                  marginLeft: getMarginLeft(blockDuration),
+                                }}
                                 className={styles.line}
                               ></div>
-
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
-                              <div className={styles.line}></div>
+                              {getTableLine(blockDuration)}
                               <div className={styles.line2}></div>
                               <div className={styles.line3}></div>
                             </div>
@@ -257,7 +281,7 @@ export default function Modal({
                     <div>
                       {isPreview ? (
                         <button
-                          style={{ marginTop: "30px" }}
+                          style={{ marginTop: "15px" }}
                           className={styles.closeBtn}
                           onClick={() => preview()}
                         >
@@ -265,7 +289,7 @@ export default function Modal({
                         </button>
                       ) : (
                         <button
-                          style={{ marginTop: "30px" }}
+                          style={{ marginTop: "15px" }}
                           className={styles.closeBtn}
                           onClick={() => onClickBack()}
                         >

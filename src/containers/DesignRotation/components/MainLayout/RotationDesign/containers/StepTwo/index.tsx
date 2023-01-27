@@ -221,6 +221,7 @@ export default function StepTwo({
           data={optionSelector[index]}
           showPreview={false}
           numberOfGroup={numOfGroup}
+          blockDuration={durationOfBlock}
         >
           <BlockContainer input={optionSelector[0]} />
         </Modal>
@@ -235,6 +236,7 @@ export default function StepTwo({
           data={optionSelector[index]}
           showPreview={true}
           numberOfGroup={numOfGroup}
+          blockDuration={durationOfBlock}
         >
           <BlockContainer input={optionSelector[0]} />
         </Modal>
