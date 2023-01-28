@@ -1,10 +1,15 @@
 import * as React from "react";
 import Navbar from "../../components/Navbar";
 import SideBar from "../../components/Sidebar";
-import FacultyListMainContent from "./FacultyListMainContent";
+import Table from "../../components/Table";
 import styles from "./index.module.css";
 
 export default function FacultyListPage() {
+  const headerItems = ["Student ID", "Name", "College", "Email", "Detail"];
+  const data = [
+    ["V202100453", "Vu Duc Trung", "CHS", "21trung.vd@vinuni.edu.vn"],
+    ["V202100341", "Tran Tien Len", "CHS", "20len.tt@vinuni.edu.vn"],
+  ];
   return (
     <>
       <Navbar />
@@ -12,7 +17,12 @@ export default function FacultyListPage() {
         <SideBar highlight={4} />
         <div className={styles.mainContainer}>
           <div className={styles.header}>FACULTY LIST</div>
-          <FacultyListMainContent />
+          <Table
+            headerItems={headerItems}
+            data={data}
+            gridTemplateCol={[15, 25, 10, 30, 20]}
+            showDetails = {true}
+          />
         </div>
       </div>
     </>
