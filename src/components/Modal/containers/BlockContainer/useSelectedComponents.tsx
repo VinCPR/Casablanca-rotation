@@ -5,7 +5,7 @@ export default function useSelectedComponents() {
   const [selectedComponents, setSelectedComponents] = useState<
     SelectedComponents[]
   >([]);
-  var total = 0;
+  let total = 0;
   const [totalNum, setTotalNum] = useState(total);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function useSelectedComponents() {
   }, [selectedComponents, total]);
 
   function sum(array: SelectedComponents[], total: number) {
-    for (var i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       total = total + array[i].numOfWeeks;
     }
     return total;

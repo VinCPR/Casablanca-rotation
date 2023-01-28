@@ -1,0 +1,19 @@
+.mainContainer {
+  left: 264px;
+  width: calc(100vw - 284px);
+  height: 100vh;
+  position: relative;
+  padding-left: 80px;
+  padding-top: 50px;
+}
+
+.header {
+  color: #2f8f9d;
+  font-size: 40px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  width: calc(100vw - 384px);
+}
