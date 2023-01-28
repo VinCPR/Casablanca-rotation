@@ -27,8 +27,7 @@ export default function FacultyListPage() {
     "first_name",
     "last_name",
     "email",
-    "mobile",
-    "detail",
+    "mobile"
   ];
   return (
     <>
