@@ -10,7 +10,7 @@ type RotationDetailsInput = {
   rotation: Rotation[][];
 };
 
-export default async function submitRotation({
+export default async function httpPostSubmitRotation({
   groupsPerBlock,
   numberOfPeriod,
   weeksPerPeriod,

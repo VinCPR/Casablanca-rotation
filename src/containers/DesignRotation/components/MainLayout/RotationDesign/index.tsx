@@ -3,9 +3,6 @@ import * as React from "react";
 import StepOne from "./containers/StepOne";
 import StepTwo from "./containers/StepTwo";
 import { Rotation } from "../../../../../components/Modal/types";
-import submitRotation from "@/modules/http/submit-rotation";
-import convertBlockDesign from "@/modules/utils/block-design-converter";
-import moment from "moment";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);

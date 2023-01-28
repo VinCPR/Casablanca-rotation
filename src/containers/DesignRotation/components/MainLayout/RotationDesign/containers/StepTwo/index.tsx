@@ -11,7 +11,7 @@ import useSelectedComponents from "../../../../../../../components/Modal/contain
 import { OptionSelector } from "../../../../../../../components/Modal/containers/BlockContainer/types";
 import ArrowBack from "../../components/ArrowBack";
 import { Rotation } from "../../../../../../../components/Modal/types";
-import submitRotation from "@/modules/http/submit-rotation";
+import httpPostSubmitRotation from "@/modules/http/httpPostSubmitRotation";
 
 type Props = {
   startDate: number[];
@@ -226,7 +226,7 @@ export default function StepTwo({
         <button
           className={styles.submitButton}
           onClick={() =>
-            submitRotation({
+            httpPostSubmitRotation({
               groupsPerBlock: numOfGroup,
               numberOfPeriod: numOfBlock,
               weeksPerPeriod: durationOfBlock,
