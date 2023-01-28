@@ -38,6 +38,7 @@ export default async function httpPostSubmitRotation({
       },
       body: JSON.stringify(data),
     });
+    alert("You have designed the rotation successfully");
   } catch (error) {
     alert(error);
   }
