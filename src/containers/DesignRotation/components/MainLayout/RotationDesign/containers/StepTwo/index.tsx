@@ -12,6 +12,7 @@ import { OptionSelector } from "../../../../../../../components/Modal/containers
 import ArrowBack from "../../components/ArrowBack";
 import { Rotation } from "../../../../../../../components/Modal/types";
 import httpPostSubmitRotation from "@/modules/http/httpPostSubmitRotation";
+import { AllServiceResponse } from "@/modules/utils/type";
 
 type Props = {
   startDate: number[];
@@ -23,6 +24,7 @@ type Props = {
   durationOfBlock: number;
   onChangeStartDate: (date: number, index: number) => void;
   onChangeEndDate: (date: number, index: number) => void;
+  data: AllServiceResponse;
   rotationDesign: Rotation[][];
 };
 
@@ -37,6 +39,7 @@ export default function StepTwo({
   onChangeRotationDesign,
   backStep,
   rotationDesign,
+  data,
 }: Props) {
   const colors = [
     "#ff9620",
@@ -225,7 +228,7 @@ export default function StepTwo({
         </button>
         <button
           className={styles.submitButton}
-          onClick={() =>
+          onClick={async () =>
             httpPostSubmitRotation({
               groupsPerBlock: numOfGroup,
               numberOfPeriod: numOfBlock,
@@ -253,7 +256,7 @@ export default function StepTwo({
           numberOfGroup={numOfGroup}
           blockDuration={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[index]} />
+          <BlockContainer input={optionSelector[index]} data={data} />
         </Modal>
       ))}
       {showPreview.map((_, index) => (
@@ -271,7 +274,7 @@ export default function StepTwo({
           numberOfGroup={numOfGroup}
           blockDuration={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[index]} />
+          <BlockContainer input={optionSelector[index]} data={data} />
         </Modal>
       ))}
     </div>

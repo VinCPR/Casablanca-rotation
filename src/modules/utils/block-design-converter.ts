@@ -20,6 +20,7 @@ export default function convertBlockDesign(blocks: Rotation[][]) {
             service_name: rotation.services[curService].name,
             duration_in_week: rotation.services[curService].numOfWeeks,
           });
+          sumServices += rotation.services[curService].numOfWeeks;
           curService++;
         }
         hospitals.push({
@@ -34,6 +35,7 @@ export default function convertBlockDesign(blocks: Rotation[][]) {
           sumHospitals + rotation.hospitals[curHospital].numOfWeeks
         ) {
           tempArr.push(hospitals[curHospital]);
+          sumHospitals += rotation.hospitals[curHospital].numOfWeeks;
           curHospital++;
         }
         departments.push({

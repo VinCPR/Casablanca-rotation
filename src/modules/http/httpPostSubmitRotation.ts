@@ -1,6 +1,7 @@
 import moment from "moment";
 import { Rotation } from "../../components/Modal/types";
 import convertBlockDesign from "../utils/block-design-converter";
+import httpPostResetRotation from "./httpPostResetRotation";
 
 type RotationDetailsInput = {
   groupsPerBlock: number;
@@ -29,6 +30,7 @@ export default async function httpPostSubmitRotation({
       })),
       blocks: convertBlockDesign(rotation),
     };
+    await httpPostResetRotation("2023-2024 MD Program");
     await fetch("https://api.vincpr.com/v1/rotation/design", {
       method: "POST",
       headers: {
@@ -37,6 +39,6 @@ export default async function httpPostSubmitRotation({
       body: JSON.stringify(data),
     });
   } catch (error) {
-    console.log(error);
+    alert(error);
   }
 }

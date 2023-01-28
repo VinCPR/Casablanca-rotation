@@ -8,9 +8,11 @@ import React from "react";
 import { OptionSelector, SelectedComponents } from "./types";
 import IconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/IconEdit";
 import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
+import { AllServiceResponse } from "@/modules/utils/type";
 
 type Props = {
   input: OptionSelector;
+  data: AllServiceResponse;
 };
 
 // function getOutput(input: OptionSelector): Output {
@@ -24,16 +26,9 @@ type Props = {
 //   for (let i = 0; i < input.hospital.selectedComponents.length; i++) {
 //     hospital[input.hospital.selectedComponents[i].name] =
 //       input.hospital.selectedComponents[i].numOfWeeks;
-//   }
-//   for (let i = 0; i < input.service.selectedComponents.length; i++) {
-//     service[input.service.selectedComponents[i].name] =
-//       input.service.selectedComponents[i].numOfWeeks;
-//   }
-//   return { department, hospital, service };
-// }
+//   }<Modal
 
-export default function BlockContainer({ input }: Props) {
-  const [departments, services, hospitals] = data();
+export default function BlockContainer({ input, data }: Props) {
   const colors = [
     "#18A0FB",
     "#b6453b",
@@ -47,92 +42,63 @@ export default function BlockContainer({ input }: Props) {
     // "#7de8f8",
     "#F46B6B",
   ];
+  const [departmentSelector, setDepartmentSelector] = React.useState(false);
+  const [hospitalSelector, setHospitalSelector] = React.useState(
+    Array.from({ length: 10 }, (_) => false)
+  );
+  const [serviceSelector, setServiceSelector] = React.useState<boolean[][]>(
+    Array.from({ length: 10 }, (_) => Array.from({ length: 10 }, (_) => false))
+  );
 
-  const modalSelector = {
-    department: useModal(),
-    hospital: [
-      useModal(),
-      useModal(),
-      useModal(),
-      useModal(),
-      useModal(),
-      useModal(),
-    ],
-    service: [
-      [
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-      ],
-      [
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-      ],
-      [
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-      ],
-      [
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-      ],
-      [
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-      ],
-      [
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-        useModal(),
-      ],
-    ],
+  const onChangeHospitalSelector = (indexChange: number, value: boolean) => {
+    setHospitalSelector(
+      hospitalSelector.map((hospital, index) => {
+        if (index === indexChange) {
+          return value;
+        }
+        return hospital;
+      })
+    );
   };
+
+  const onChangeServiceSelector = (
+    indexChange: number,
+    indexChange1: number,
+    value: boolean
+  ) => {
+    setServiceSelector(
+      serviceSelector.map((service, index) => {
+        if (index === indexChange) {
+          return service.map((service1, index1) => {
+            if (index1 === indexChange1) {
+              return value;
+            }
+            return service1;
+          });
+        }
+        return service;
+      })
+    );
+  };
+
+  const departments = data != null ? Object.keys(data) : [];
+  const services = [
+    "Cardiology",
+    "Pulmonology",
+    "Gastroenterology",
+    "Inpatient",
+    "Outpatient",
+    "Neurology",
+    "Psychiatry",
+  ];
+
+  const hospitals = [
+    "108 Hospital",
+    "Vinmec",
+    "National Women's Hospital",
+    "HN Psychiatric Hospital",
+    "National Children's Hospital",
+  ];
 
   function isChecked(array: SelectedComponents[], value: String) {
     if (array.some((e) => e.name === value)) {
@@ -180,7 +146,7 @@ export default function BlockContainer({ input }: Props) {
           {!isDepartmentSelected() && (
             <button
               className={styles.addBtn}
-              onClick={modalSelector.department.toggle}
+              onClick={() => setDepartmentSelector(true)}
             >
               +
             </button>
@@ -232,7 +198,7 @@ export default function BlockContainer({ input }: Props) {
                 })}
               </div>
               <button
-                onClick={modalSelector.department.toggle}
+                onClick={() => setDepartmentSelector(true)}
                 className={styles.editBtn}
                 style={{ top: "60%", marginLeft: "275px" }}
               >
@@ -265,7 +231,7 @@ export default function BlockContainer({ input }: Props) {
                     {!isHospitalSelected(index) && (
                       <button
                         className={styles.addBtn}
-                        onClick={modalSelector.hospital[index].toggle}
+                        onClick={() => onChangeHospitalSelector(index, true)}
                         key={index}
                       >
                         +
@@ -362,7 +328,7 @@ export default function BlockContainer({ input }: Props) {
                           )}
                         </div>
                         <button
-                          onClick={modalSelector.hospital[index].toggle}
+                          onClick={() => onChangeHospitalSelector(index, true)}
                           key={index}
                           className={styles.editBtn}
                           style={{ marginLeft: "275px", top: "40%" }}
@@ -423,9 +389,12 @@ export default function BlockContainer({ input }: Props) {
                                   {!isServiceSelected(index1, index2) && (
                                     <button
                                       className={styles.addBtn1}
-                                      onClick={
-                                        modalSelector.service[index1][index2]
-                                          .toggle
+                                      onClick={() =>
+                                        onChangeServiceSelector(
+                                          index1,
+                                          index2,
+                                          true
+                                        )
                                       }
                                       key={index2}
                                     >
@@ -557,9 +526,12 @@ export default function BlockContainer({ input }: Props) {
                                         )}
                                       </div>
                                       <button
-                                        onClick={
-                                          modalSelector.service[index1][index2]
-                                            .toggle
+                                        onClick={() =>
+                                          onChangeServiceSelector(
+                                            index1,
+                                            index2,
+                                            true
+                                          )
                                         }
                                         className={styles.editBtn}
                                         style={{
@@ -586,8 +558,8 @@ export default function BlockContainer({ input }: Props) {
         </div>
         {/* Modals for Adding Depts, Services, and Hospitals */}
         <SelectionModal
-          isOpened={modalSelector.department.isOpened}
-          toggle={modalSelector.department.toggle}
+          isOpened={departmentSelector}
+          toggle={() => setDepartmentSelector(false)}
           heading={"Please select the departments for this block"}
         >
           {departments.map((value, index) => {
@@ -612,29 +584,33 @@ export default function BlockContainer({ input }: Props) {
               return (
                 <SelectionModal
                   key={index2}
-                  isOpened={modalSelector.service[index1][index2].isOpened}
-                  toggle={modalSelector.service[index1][index2].toggle}
+                  isOpened={serviceSelector[index1][index2]}
+                  toggle={() => onChangeServiceSelector(index1, index2, false)}
                   heading={"Please select the services for " + obj.name}
                   id={index2}
                 >
-                  {services.map((value, index3) => {
-                    return (
-                      <div className={styles.deptContainer} key={index3}>
-                        <SelectionButton
-                          background={colors[index3]}
-                          label={value}
-                        />
-                        <Checkbox
-                          onClick={input.service[index1][index2].handleClick}
-                          label={value}
-                          checked={isChecked(
-                            input.service[index1][index2].selectedComponents,
-                            value
-                          )}
-                        />
-                      </div>
-                    );
-                  })}
+                  {data[input.department.selectedComponents[index1].name][
+                    input.hospital[index1].selectedComponents[index2].name
+                  ]
+                    .map((object) => object.name)
+                    .map((value, index3) => {
+                      return (
+                        <div className={styles.deptContainer} key={index3}>
+                          <SelectionButton
+                            background={colors[index3]}
+                            label={value}
+                          />
+                          <Checkbox
+                            onClick={input.service[index1][index2].handleClick}
+                            label={value}
+                            checked={isChecked(
+                              input.service[index1][index2].selectedComponents,
+                              value
+                            )}
+                          />
+                        </div>
+                      );
+                    })}
                 </SelectionModal>
               );
             }
@@ -645,12 +621,14 @@ export default function BlockContainer({ input }: Props) {
           return (
             <SelectionModal
               key={index}
-              isOpened={modalSelector.hospital[index].isOpened}
-              toggle={modalSelector.hospital[index].toggle}
+              isOpened={hospitalSelector[index]}
+              toggle={() => onChangeHospitalSelector(index, false)}
               heading={"Please select the hospitals for " + obj.name}
               id={index}
             >
-              {hospitals.map((value, index2) => {
+              {Object.keys(
+                data[input.department.selectedComponents[index].name]
+              ).map((value, index2) => {
                 return (
                   <div className={styles.deptContainer} key={index2}>
                     <SelectionButton

@@ -3,6 +3,9 @@ import * as React from "react";
 import StepOne from "./containers/StepOne";
 import StepTwo from "./containers/StepTwo";
 import { Rotation } from "../../../../../components/Modal/types";
+import useSWR from "swr";
+import httpGet from "@/modules/http/httpGet";
+import { AllServiceResponse } from "@/modules/utils/type";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);
@@ -15,79 +18,100 @@ export default function RotationDesign() {
   const [rotationsDesign, setRotationsDesign] = React.useState<Rotation[][]>(
     []
   );
+  const allServices = useSWR(
+    "https://api.vincpr.com/v1/service/get_all",
+    httpGet
+  );
+  const data: AllServiceResponse = allServices?.data;
   return (
-    <div className={styles.container}>
-      <div className={styles.parent}>
-        <div
-          className={currentStep == 1 ? styles.stepActive : styles.stepNormal}
-        >
-          <div className={styles.stepName}>Step 1</div>
-          <div className={styles.desc}>Specify rotation requirements</div>
+    <>
+      {allServices.data ? (
+        <div className={styles.container}>
+          <div className={styles.parent}>
+            <div
+              className={
+                currentStep == 1 ? styles.stepActive : styles.stepNormal
+              }
+            >
+              <div className={styles.stepName}>Step 1</div>
+              <div className={styles.desc}>Specify rotation requirements</div>
+            </div>
+            <div
+              className={
+                currentStep == 2 ? styles.stepActive : styles.stepNormal
+              }
+            >
+              <div className={styles.stepName}>Step 2</div>
+              <div className={styles.desc}>Design rotation requirements</div>
+            </div>
+          </div>
+          {currentStep == 1 && (
+            <StepOne
+              proceedNextStep={() => {
+                setStartDate(
+                  Array.from({ length: numOfBlock }, (_) => Date.now())
+                );
+                setEndDate(
+                  Array.from({ length: numOfBlock }, (_) => Date.now())
+                );
+                setRotationsDesign(
+                  Array.from({ length: numOfBlock }, (_) => [])
+                );
+                setCurrentStep(2);
+              }}
+              onChangeNumOfBlock={(i) => setNumOfBlock(i)}
+              onChangeNumOfGroup={(i) => setNumOfGroup(i)}
+              onChangeNumOfStudent={(i) => setNumOfStudent(i)}
+              onChangeBlockDuration={(i) => setBlockDuration(i)}
+              numOfBlock={numOfBlock}
+              numOfGroup={numOfGroup}
+              numOfStudent={numOfStudent}
+              blockDuration={blockDuration}
+            />
+          )}
+          {currentStep == 2 && (
+            <StepTwo
+              startDate={startDate}
+              endDate={endDate}
+              onChangeStartDate={(date, indexChange) => {
+                setStartDate(
+                  startDate.map((value, index) => {
+                    if (indexChange === index) return date;
+                    return value;
+                  })
+                );
+              }}
+              onChangeEndDate={(date, indexChange) => {
+                setEndDate(
+                  endDate.map((value, index) => {
+                    if (indexChange === index) return date;
+                    return value;
+                  })
+                );
+              }}
+              onChangeRotationDesign={(rotationChange, indexChange) => {
+                setRotationsDesign(
+                  rotationsDesign.map((rotation, index) => {
+                    if (index === indexChange) {
+                      return rotationChange;
+                    }
+                    return rotation;
+                  })
+                );
+              }}
+              backStep={() => setCurrentStep(1)}
+              numOfBlock={numOfBlock}
+              numOfGroup={numOfGroup}
+              // numOfStudent={numOfStudent}
+              durationOfBlock={blockDuration}
+              rotationDesign={rotationsDesign}
+              data={data}
+            />
+          )}
         </div>
-        <div
-          className={currentStep == 2 ? styles.stepActive : styles.stepNormal}
-        >
-          <div className={styles.stepName}>Step 2</div>
-          <div className={styles.desc}>Design rotation requirements</div>
-        </div>
-      </div>
-      {currentStep == 1 && (
-        <StepOne
-          proceedNextStep={() => {
-            setStartDate(Array.from({ length: numOfBlock }, (_) => Date.now()));
-            setEndDate(Array.from({ length: numOfBlock }, (_) => Date.now()));
-            setRotationsDesign(Array.from({ length: numOfBlock }, (_) => []));
-            setCurrentStep(2);
-          }}
-          onChangeNumOfBlock={(i) => setNumOfBlock(i)}
-          onChangeNumOfGroup={(i) => setNumOfGroup(i)}
-          onChangeNumOfStudent={(i) => setNumOfStudent(i)}
-          onChangeBlockDuration={(i) => setBlockDuration(i)}
-          numOfBlock={numOfBlock}
-          numOfGroup={numOfGroup}
-          numOfStudent={numOfStudent}
-          blockDuration={blockDuration}
-        />
+      ) : (
+        "Loading..."
       )}
-      {currentStep == 2 && (
-        <StepTwo
-          startDate={startDate}
-          endDate={endDate}
-          onChangeStartDate={(date, indexChange) => {
-            setStartDate(
-              startDate.map((value, index) => {
-                if (indexChange === index) return date;
-                return value;
-              })
-            );
-          }}
-          onChangeEndDate={(date, indexChange) => {
-            setEndDate(
-              endDate.map((value, index) => {
-                if (indexChange === index) return date;
-                return value;
-              })
-            );
-          }}
-          onChangeRotationDesign={(rotationChange, indexChange) => {
-            console.log(rotationChange);
-            setRotationsDesign(
-              rotationsDesign.map((rotation, index) => {
-                if (index === indexChange) {
-                  return rotationChange;
-                }
-                return rotation;
-              })
-            );
-          }}
-          backStep={() => setCurrentStep(1)}
-          numOfBlock={numOfBlock}
-          numOfGroup={numOfGroup}
-          // numOfStudent={numOfStudent}
-          durationOfBlock={blockDuration}
-          rotationDesign={rotationsDesign}
-        />
-      )}
-    </div>
+    </>
   );
 }
