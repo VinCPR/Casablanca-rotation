@@ -17,15 +17,15 @@ type Props = {
 //   const department: { [id: string]: number } = {};
 //   const hospital: { [id: string]: number } = {};
 //   const service: { [id: string]: number } = {};
-//   for (var i = 0; i < input.department.selectedComponents.length; i++) {
+//   for (let i = 0; i < input.department.selectedComponents.length; i++) {
 //     department[input.department.selectedComponents[i].name] =
 //       input.department.selectedComponents[i].numOfWeeks;
 //   }
-//   for (var i = 0; i < input.hospital.selectedComponents.length; i++) {
+//   for (let i = 0; i < input.hospital.selectedComponents.length; i++) {
 //     hospital[input.hospital.selectedComponents[i].name] =
 //       input.hospital.selectedComponents[i].numOfWeeks;
 //   }
-//   for (var i = 0; i < input.service.selectedComponents.length; i++) {
+//   for (let i = 0; i < input.service.selectedComponents.length; i++) {
 //     service[input.service.selectedComponents[i].name] =
 //       input.service.selectedComponents[i].numOfWeeks;
 //   }
@@ -143,8 +143,8 @@ export default function BlockContainer({ input }: Props) {
   }
 
   function divideSpace(array: SelectedComponents[]) {
-    var output = "";
-    for (var i = 0; i < array.length; i++) {
+    let output = "";
+    for (let i = 0; i < array.length; i++) {
       output += "1fr ";
     }
     return output;
@@ -207,7 +207,7 @@ export default function BlockContainer({ input }: Props) {
                       }}
                     >
                       <SelectionButton
-                        background = {colors[departments.indexOf(obj.name)]}
+                        background={colors[departments.indexOf(obj.name)]}
                         label={obj.name}
                         width={190}
                         height={90}
@@ -296,8 +296,9 @@ export default function BlockContainer({ input }: Props) {
                                   // style={{ backgroundColor: colors[index] }}
                                 >
                                   <SelectionButton
-
-                                    background={colors[hospitals.indexOf(obj.name)]}
+                                    background={
+                                      colors[hospitals.indexOf(obj.name)]
+                                    }
                                     label={obj.name}
                                     width={190}
                                     height={Math.min(
@@ -454,7 +455,11 @@ export default function BlockContainer({ input }: Props) {
                                                 // style={{ backgroundColor: colors[index] }}
                                               >
                                                 <SelectionButton
-                                                  background = {colors[services.indexOf(obj.name)]}
+                                                  background={
+                                                    colors[
+                                                      services.indexOf(obj.name)
+                                                    ]
+                                                  }
                                                   label={obj.name}
                                                   width={190}
                                                   height={Math.min(
@@ -615,7 +620,10 @@ export default function BlockContainer({ input }: Props) {
                   {services.map((value, index3) => {
                     return (
                       <div className={styles.deptContainer} key={index3}>
-                        <SelectionButton background = {colors[index3]} label={value} />
+                        <SelectionButton
+                          background={colors[index3]}
+                          label={value}
+                        />
                         <Checkbox
                           onClick={input.service[index1][index2].handleClick}
                           label={value}
@@ -645,7 +653,10 @@ export default function BlockContainer({ input }: Props) {
               {hospitals.map((value, index2) => {
                 return (
                   <div className={styles.deptContainer} key={index2}>
-                    <SelectionButton background={colors[index2]} label={value} />
+                    <SelectionButton
+                      background={colors[index2]}
+                      label={value}
+                    />
                     <Checkbox
                       onClick={input.hospital[index].handleClick}
                       label={value}

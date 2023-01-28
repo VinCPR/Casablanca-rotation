@@ -17,13 +17,13 @@ export default function Table({
     gridTemplateCol: number[],
     headerItems: string[]
   ) {
-    var output = "";
+    let output = "";
     if (gridTemplateCol.length == 0) {
-      for (var i = 1; i <= headerItems.length; i++) {
+      for (let i = 1; i <= headerItems.length; i++) {
         output += "[line" + i + "] " + 1 / headerItems.length + "%";
       }
     } else if (gridTemplateCol.length > 0) {
-      for (var i = 1; i <= headerItems.length; i++) {
+      for (let i = 1; i <= headerItems.length; i++) {
         output += "[line" + i + "] " + gridTemplateCol[i] + "%";
       }
       return output;

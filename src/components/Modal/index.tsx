@@ -94,12 +94,12 @@ export default function Modal({
   }
 
   function getGridTemplateCol(rotationList: any) {
-    var sum = 0;
-    for (var i = 1; i <= rotationList.length; i++) {
+    let sum = 0;
+    for (let i = 1; i <= rotationList.length; i++) {
       sum += rotationList[i - 1].numOfWeeks;
     }
-    var output = "";
-    for (var i = 1; i <= rotationList.length; i++) {
+    let output = "";
+    for (let i = 1; i <= rotationList.length; i++) {
       output +=
         "[line" + i + "] " + (rotationList[i - 1].numOfWeeks / sum) * 100 + "%";
     }
@@ -107,8 +107,8 @@ export default function Modal({
   }
 
   function getHeaderGridTemplateCol(numOfWeeks: number) {
-    var output = "";
-    for (var i = 1; i <= numOfWeeks; i++) {
+    let output = "";
+    for (let i = 1; i <= numOfWeeks; i++) {
       output += "[line" + i + "] " + (1 / numOfWeeks) * 100 + "%";
     }
 
@@ -217,7 +217,11 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
-                                        background={colors[allDepartments.indexOf(obj.name)]}
+                                        background={
+                                          colors[
+                                            allDepartments.indexOf(obj.name)
+                                          ]
+                                        }
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
@@ -248,7 +252,9 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
-                                        background={colors[allHospitals.indexOf(obj.name)]}
+                                        background={
+                                          colors[allHospitals.indexOf(obj.name)]
+                                        }
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
@@ -279,7 +285,9 @@ export default function Modal({
                                       key={index}
                                     >
                                       <RotationCard
-                                        background={colors[allServices.indexOf(obj.name)]}
+                                        background={
+                                          colors[allServices.indexOf(obj.name)]
+                                        }
                                         label={obj.name}
                                         fontSize={Math.min(
                                           (250 * obj.numOfWeeks) /
