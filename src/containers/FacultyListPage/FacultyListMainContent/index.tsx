@@ -1,15 +1,11 @@
-import * as React from "react";
-import styles from "./index.module.scss";
-import { useRouter } from "next/router";
+import styles from "./index.module.css";
 
-export default function ViewStudentList() {
+export default function StudentListMainContent() {
   const headerItems = ["Student ID", "Name", "College", "Email", "Detail"];
   const data = [
     ["V202100453", "Vu Duc Trung", "CHS", "21trung.vd@vinuni.edu.vn"],
     ["V202100341", "Tran Tien Len", "CHS", "20len.tt@vinuni.edu.vn"],
   ];
-  const router = useRouter();
-  const { date } = router.query;
   return (
     <>
       <div className={styles.container}>
@@ -35,16 +31,7 @@ export default function ViewStudentList() {
                       </div>
                     );
                   })}
-                  <button
-                    onClick={() =>
-                      router.push(
-                        `/rotation-plan/${date}/view-schedule/${row[0]}`
-                      )
-                    }
-                    className={styles.detailsBtn}
-                  >
-                    Details
-                  </button>
+                  <button className={styles.detailsBtn}>Details</button>
                 </div>
               );
             })}

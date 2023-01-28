@@ -1,18 +1,18 @@
 import * as React from "react";
 import Navbar from "../../components/Navbar";
 import SideBar from "../../components/Sidebar";
-import StudentListMainContent from "./StudentListMainContent";
+import FacultyListMainContent from "./FacultyListMainContent";
 import styles from "./index.module.css";
 
-export default function StudentListPage() {
+export default function FacultyListPage() {
   return (
     <>
       <Navbar />
       <div style={{ position: "relative" }}>
-        <SideBar highlight={3} />
+        <SideBar highlight={4} />
         <div className={styles.mainContainer}>
-          <div className={styles.header}>STUDENT LIST</div>
-          <StudentListMainContent />
+          <div className={styles.header}>FACULTY LIST</div>
+          <FacultyListMainContent />
         </div>
       </div>
     </>
