@@ -1,10 +1,15 @@
 import styles from "./index.module.css";
 
+interface Student {
+  [key: string]: string;
+}
+
 interface Props {
   headerItems: string[];
-  data: string[][];
+  data: Student[];
   gridTemplateCol: number[];
   showDetails: boolean;
+  keys: string[];
 }
 
 export default function Table({
@@ -12,6 +17,7 @@ export default function Table({
   data,
   gridTemplateCol,
   showDetails,
+  keys,
 }: Props) {
   function getGridTemplateCol(
     gridTemplateCol: number[],
@@ -22,12 +28,13 @@ export default function Table({
       for (let i = 1; i <= headerItems.length; i++) {
         output += "[line" + i + "] " + 1 / headerItems.length + "%";
       }
-    } else if (gridTemplateCol.length > 0) {
-      for (let i = 1; i <= headerItems.length; i++) {
-        output += "[line" + i + "] " + gridTemplateCol[i] + "%";
-      }
-      return output;
     }
+    if (gridTemplateCol.length > 0) {
+      for (let i = 1; i <= headerItems.length; i++) {
+        output += "[line" + i + "] " + gridTemplateCol[i - 1] + "%";
+      }
+    }
+    return output;
   }
 
   return (
@@ -55,11 +62,20 @@ export default function Table({
           <div className={styles.scheduleContainer}>
             {data.map((row, index) => {
               return (
-                <div className={styles.rowContainer} key={index}>
-                  {row.map((value, index) => {
+                <div
+                  style={{
+                    gridTemplateColumns: getGridTemplateCol(
+                      gridTemplateCol,
+                      headerItems
+                    ),
+                  }}
+                  className={styles.rowContainer}
+                  key={index}
+                >
+                  {keys.map((value, index) => {
                     return (
                       <div className={styles.item} key={index}>
-                        {value}
+                        {row[value]}
                       </div>
                     );
                   })}
