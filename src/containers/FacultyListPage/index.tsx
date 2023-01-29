@@ -3,12 +3,31 @@ import Navbar from "../../components/Navbar";
 import SideBar from "../../components/Sidebar";
 import Table from "../../components/Table";
 import styles from "./index.module.css";
+import useSWR from "swr";
+import httpGetFaculty from "@/modules/http/httpGetFaculty";
 
 export default function FacultyListPage() {
-  const headerItems = ["Student ID", "Name", "College", "Email", "Detail"];
-  const data = [
-    ["V202100453", "Vu Duc Trung", "CHS", "21trung.vd@vinuni.edu.vn"],
-    ["V202100341", "Tran Tien Len", "CHS", "20len.tt@vinuni.edu.vn"],
+  const { data, error } = useSWR("getFacultyList", httpGetFaculty);
+
+  if (error) return <div>An error has occured!</div>;
+  if (!data) return <div>Loading...</div>;
+
+  const headerItems = [
+    "Faculty ID",
+    "First Name",
+    "Last Name",
+    "Email",
+    "Mobile",
+    "Detail",
+  ];
+
+  const gridTemplateCol = [10, 15, 20, 25, 15, 15];
+  const keys = [
+    "attending_id",
+    "first_name",
+    "last_name",
+    "email",
+    "mobile"
   ];
   return (
     <>
@@ -20,8 +39,9 @@ export default function FacultyListPage() {
           <Table
             headerItems={headerItems}
             data={data}
-            gridTemplateCol={[15, 25, 10, 30, 20]}
-            showDetails = {true}
+            keys={keys}
+            gridTemplateCol={gridTemplateCol}
+            showDetails={true}
           />
         </div>
       </div>
