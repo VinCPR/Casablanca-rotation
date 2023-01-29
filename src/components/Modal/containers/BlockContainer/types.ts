@@ -12,7 +12,7 @@ export type Column = {
   selectedComponents: SelectedComponents[];
   handleClick: (event: any) => void;
   totalNum: number;
-  handleChange: (event: any) => void;
+  handleChange: (name: string, value: number) => void;
 };
 
 export type OptionSelector = {

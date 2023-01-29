@@ -13,10 +13,11 @@ import ArrowBack from "../../components/ArrowBack";
 import { Rotation } from "../../../../../../../components/Modal/types";
 import httpPostSubmitRotation from "@/modules/http/httpPostSubmitRotation";
 import { AllServiceResponse } from "@/modules/utils/type";
+import moment from "moment";
+import IconEditDate from "./components/IconEditDate";
 
 type Props = {
   startDate: number[];
-  endDate: number[];
   onChangeRotationDesign: (rotation: Rotation[], index: number) => void;
   backStep: () => void;
   numOfBlock: number;
@@ -26,11 +27,11 @@ type Props = {
   onChangeEndDate: (date: number, index: number) => void;
   data: AllServiceResponse;
   rotationDesign: Rotation[][];
+  academicCalendar: string;
 };
 
 export default function StepTwo({
   startDate,
-  endDate,
   onChangeStartDate,
   onChangeEndDate,
   numOfBlock,
@@ -40,6 +41,7 @@ export default function StepTwo({
   backStep,
   rotationDesign,
   data,
+  academicCalendar,
 }: Props) {
   const colors = [
     "#ff9620",
@@ -125,13 +127,16 @@ export default function StepTwo({
                 {rangeNumOfBlock.map((key) => {
                   return (
                     <td key={key}>
-                      <DatePicker
-                        className={styles.datePicker}
-                        selected={new Date(startDate[key])}
-                        onChange={(date: Date) =>
-                          onChangeStartDate(date.valueOf(), key)
-                        }
-                      />
+                      <div className={styles.datePickerContainer}>
+                        <DatePicker
+                          className={styles.datePicker}
+                          selected={new Date(startDate[key])}
+                          onChange={(date: Date) =>
+                            onChangeStartDate(date.valueOf(), key)
+                          }
+                        />
+                        <IconEditDate className={styles.iconEditDate} />
+                      </div>
                     </td>
                   );
                 })}
@@ -140,19 +145,17 @@ export default function StepTwo({
             <tr>
               <>
                 <td className={styles.text}>
-                  <div>End date</div>
+                  <div>End Date</div>
                 </td>
 
                 {rangeNumOfBlock.map((key) => {
                   return (
                     <td key={key}>
-                      <DatePicker
-                        className={styles.datePicker}
-                        selected={new Date(endDate[key])}
-                        onChange={(date: Date) =>
-                          onChangeEndDate(date.valueOf(), key)
-                        }
-                      />
+                      <div className={styles.endDate}>
+                        {moment(
+                          startDate[key] + durationOfBlock * 604800000
+                        ).format("MM/DD/YYYY")}
+                      </div>
                     </td>
                   );
                 })}
@@ -218,28 +221,33 @@ export default function StepTwo({
         </table>
       </div>
       <div className={styles.buttons}>
-        <button
-          className={styles.generateButton}
-          onClick={() => {
-            setIsGenerated(true);
-          }}
-        >
-          Generate
-        </button>
-        <button
-          className={styles.submitButton}
-          onClick={async () =>
-            httpPostSubmitRotation({
-              groupsPerBlock: numOfGroup,
-              numberOfPeriod: numOfBlock,
-              weeksPerPeriod: durationOfBlock,
-              startDates: startDate,
-              rotation: rotationDesign,
-            })
-          }
-        >
-          Submit
-        </button>
+        {!isGenerated ? (
+          <button
+            className={styles.generateButton}
+            onClick={() => {
+              setIsGenerated(true);
+            }}
+          >
+            Generate
+          </button>
+        ) : null}
+        {isGenerated ? (
+          <button
+            className={styles.submitButton}
+            onClick={async () =>
+              httpPostSubmitRotation({
+                academicYearName: academicCalendar,
+                groupsPerBlock: numOfGroup,
+                numberOfPeriod: numOfBlock,
+                weeksPerPeriod: durationOfBlock,
+                startDates: startDate,
+                rotation: rotationDesign,
+              })
+            }
+          >
+            Submit
+          </button>
+        ) : null}
       </div>
       {showModalEdit.map((_, index) => (
         <Modal

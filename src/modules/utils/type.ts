@@ -9,3 +9,10 @@ export type AllServiceResponse = {
     }[];
   };
 };
+
+export type AcademicCalendar = {
+  created_at: string;
+  end_date: string;
+  name: string;
+  start_date: string;
+}[];

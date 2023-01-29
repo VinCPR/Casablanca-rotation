@@ -4,6 +4,7 @@ import convertBlockDesign from "../utils/block-design-converter";
 import httpPostResetRotation from "./httpPostResetRotation";
 
 type RotationDetailsInput = {
+  academicYearName: string;
   groupsPerBlock: number;
   numberOfPeriod: number;
   weeksPerPeriod: number;
@@ -12,6 +13,7 @@ type RotationDetailsInput = {
 };
 
 export default async function httpPostSubmitRotation({
+  academicYearName,
   groupsPerBlock,
   numberOfPeriod,
   weeksPerPeriod,
@@ -20,7 +22,7 @@ export default async function httpPostSubmitRotation({
 }: RotationDetailsInput) {
   try {
     const data = {
-      academic_year_name: "2023-2024 MD Program",
+      academic_year_name: academicYearName,
       groups_per_block: groupsPerBlock,
       number_of_period: numberOfPeriod,
       weeks_per_period: weeksPerPeriod,
