@@ -116,7 +116,7 @@
 .wrapper .addBtn {
   position: relative;
   align-self: center;
-  margin-top: 7%;
+  margin-top: 14%;
   left: 25%;
   width: 50%;
   height: 50%;
@@ -146,10 +146,11 @@
   transition: all 0.25s ease;
   cursor: pointer;
 }
+
 .addBtn1 {
   position: absolute;
   align-self: center;
-  margin-top: 1%;
+  margin-top: 7%;
   left: 25%;
   width: 50%;
   height: 70%;
@@ -164,6 +165,12 @@
 }
 
 .addBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
+  transform: translateY(-5px);
+  background: rgb(59, 172, 182);
+}
+
+.addBtn1:hover {
   box-shadow: 0 10px 20px -10px rgba(59, 172, 182, 0.6);
   transform: translateY(-5px);
   background: rgb(59, 172, 182);
