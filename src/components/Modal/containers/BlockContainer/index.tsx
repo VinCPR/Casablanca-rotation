@@ -7,7 +7,11 @@ import React from "react";
 import { OptionSelector, SelectedComponents } from "./types";
 import IconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/IconEdit";
 import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
-import { AllServiceResponse } from "@/modules/utils/type";
+import { AllServiceResponse, ServiceInfo } from "@/modules/utils/type";
+import useSWR from 'swr';
+import httpGet from "@/modules/http/httpGet";
+import { HospitalInfo } from "@/modules/utils/type";
+import getFacilityNames from "@/modules/utils/getFacilityNames";
 
 type Props = {
   input: OptionSelector;
@@ -81,23 +85,8 @@ export default function BlockContainer({ input, data }: Props) {
   };
 
   const departments = data != null ? Object.keys(data) : [];
-  const services = [
-    "Cardiology",
-    "Pulmonology",
-    "Gastroenterology",
-    "Inpatient",
-    "Outpatient",
-    "Neurology",
-    "Psychiatry",
-  ];
-
-  const hospitals = [
-    "108 Hospital",
-    "Vinmec",
-    "National Women's Hospital",
-    "HN Psychiatric Hospital",
-    "National Children's Hospital",
-  ];
+  
+  const [__, hospitals, services] = getFacilityNames();
 
   function isChecked(array: SelectedComponents[], value: String) {
     if (array.some((e) => e.name === value)) {
@@ -425,7 +414,7 @@ export default function BlockContainer({ input, data }: Props) {
                                                 <SelectionButton
                                                   background={
                                                     colors[
-                                                      services.indexOf(obj.name)
+                                                      services.indexOf(obj.name) % 7
                                                     ]
                                                   }
                                                   label={obj.name}
@@ -596,7 +585,7 @@ export default function BlockContainer({ input, data }: Props) {
                       return (
                         <div className={styles.deptContainer} key={index3}>
                           <SelectionButton
-                            background={colors[index3]}
+                            background={colors[services.indexOf(value) % 7]}
                             label={value}
                           />
                           <Checkbox
@@ -631,7 +620,7 @@ export default function BlockContainer({ input, data }: Props) {
                 return (
                   <div className={styles.deptContainer} key={index2}>
                     <SelectionButton
-                      background={colors[index2]}
+                      background={colors[hospitals.indexOf(value)]}
                       label={value}
                     />
                     <Checkbox

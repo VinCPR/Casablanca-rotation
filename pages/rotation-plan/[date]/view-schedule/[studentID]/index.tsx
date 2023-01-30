@@ -12,7 +12,7 @@ export default function RouteToViewStudentProfile() {
       <div style={{ position: "relative" }}>
         <Sidebar highlight={2} />
         <div className={styles.profileContainer}>
-          <ViewStudentDetail/>
+          <ViewStudentDetail email={"kimthy_duong%40gmail.com"}/>
         </div>
       </div>
     </>

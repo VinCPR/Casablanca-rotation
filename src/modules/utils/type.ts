@@ -20,3 +20,24 @@ export type StudentInfo = {
   mobile: string;
   student_id: string;
 }
+
+export type DepartmentInfo = {
+  name: string;
+  description: string;
+  created_at: string;
+}
+
+export type HospitalInfo = {
+  name: string;
+  description: string;
+  address: string;
+  created_at: string;
+}
+
+export type ServiceInfo = {
+  name: string;
+  description: string;
+  hospital: string;
+  specialty: string;
+  created_at: string;
+}
