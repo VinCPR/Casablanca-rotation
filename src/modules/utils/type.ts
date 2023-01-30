@@ -9,3 +9,14 @@ export type AllServiceResponse = {
     }[];
   };
 };
+
+export type StudentInfo = {
+  biography: string;
+  created_at: string;
+  email: string;
+  first_name: string;
+  image: string;
+  last_name: string;
+  mobile: string;
+  student_id: string;
+}

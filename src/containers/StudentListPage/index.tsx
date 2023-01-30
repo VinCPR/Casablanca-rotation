@@ -3,11 +3,11 @@ import Navbar from "../../components/Navbar";
 import SideBar from "../../components/Sidebar";
 import styles from "./index.module.css";
 import Table from "../../components/Table";
-import httpGetStudents from "@/modules/http/httpGetStudents";
 import useSWR from "swr";
+import httpGet from "@/modules/http/httpGet";
 
 export default function StudentListPage() {
-  const { data, error } = useSWR("getStudentList", httpGetStudents);
+  const { data, error } = useSWR("https://api.vincpr.com/v1/student/list/name?pageNumber=1&pageSize=200", httpGet);
 
   if (error) return <div>An error has occured!</div>;
   if (!data) return <div>Loading...</div>;
