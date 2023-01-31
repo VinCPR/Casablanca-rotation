@@ -3,12 +3,12 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import ViewStudentList from "../../../RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList";
 import StudentList from "./containers/StudentList";
-import { StudentCalendarEvent } from "@/modules/utils/type";
+import { CalendarEvent } from "@/modules/utils/type";
 
 type Props = {
   role?: string;
-  data?: StudentCalendarEvent[];
-  keys?: string[]
+  data?: CalendarEvent[];
+  keys?: string[];
 };
 
 export default function StudentTable({ role, data, keys }: Props) {
@@ -58,7 +58,7 @@ export default function StudentTable({ role, data, keys }: Props) {
                       {keys?.map((value, index) => {
                         return (
                           <div className={styles.item} key={index}>
-                            {row[value as keyof StudentCalendarEvent]}
+                            {row[value as keyof CalendarEvent]}
                           </div>
                         );
                       })}
@@ -77,12 +77,12 @@ export default function StudentTable({ role, data, keys }: Props) {
         </div>
       ) : (
         <StudentList
-          // startDate={data[index][0]}
-          // endDate={data[index][1]}
-          // department={data[index][2]}
-          // hospital={data[index][3]}
-          // service={data[index][4]}
-          // role={role}
+        // startDate={data[index][0]}
+        // endDate={data[index][1]}
+        // department={data[index][2]}
+        // hospital={data[index][3]}
+        // service={data[index][4]}
+        // role={role}
         />
       )}
     </div>

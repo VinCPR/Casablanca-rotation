@@ -1,23 +1,23 @@
 import * as React from "react";
 import styles from "./index.module.css";
 import Navbar from "../../components/Navbar";
-import SideBarStudent from "../../components/SideBarStudent";
 import httpGet from "@/modules/http/httpGet";
 import useSWR from "swr";
 import { CalendarEvent } from "@/modules/utils/type";
 import Table from "../../components/Table";
+import SideBarAttending from "../../components/SideBarAttending";
 
 export default function RouteToViewSchedule() {
-  let studentID: string | null = "V026";
+  let attendingID: string | null = "V026";
   if (typeof window !== "undefined") {
-    studentID = localStorage.getItem("id");
+    attendingID = localStorage.getItem("id");
   }
 
-  const studentEventResponse = useSWR(
-    `https://api.vincpr.com/v1/rotation/student?academicYearName=2023-2024%20MD%20Program&studentID=${studentID}`,
+  const attendingEventResponse = useSWR(
+    `https://api.vincpr.com/v1/rotation/attending?academicYearName=2023-2024%20MD%20Program&attendingID=${attendingID}`,
     httpGet
   );
-  const studentEvent: CalendarEvent[] = studentEventResponse?.data;
+  const attendingEvent: CalendarEvent[] = attendingEventResponse?.data;
 
   function getDateFromISO(date: string) {
     if (date.includes("-")) {
@@ -28,7 +28,7 @@ export default function RouteToViewSchedule() {
     }
   }
 
-  studentEvent?.map((event: CalendarEvent) => {
+  attendingEvent?.map((event: CalendarEvent) => {
     event.start_date = getDateFromISO(event.start_date);
     event.end_date = getDateFromISO(event.end_date);
   });
@@ -54,13 +54,13 @@ export default function RouteToViewSchedule() {
     <>
       <Navbar />
       <div style={{ position: "relative" }}>
-        <SideBarStudent highlight={1} />
+        <SideBarAttending highlight={1} />
         <div className={styles.scheduleContainer}>
           <div className={styles.header}>ROTATION SCHEDULE</div>
           <div className={styles.schedule}>
             <Table
               headerItems={headerItems}
-              data={studentEvent}
+              data={attendingEvent}
               keys={keys}
               gridTemplateCol={gridTemplateCol}
               showDetails={true}
