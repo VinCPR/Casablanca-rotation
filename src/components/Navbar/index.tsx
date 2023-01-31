@@ -15,12 +15,13 @@ export default function Navbar() {
     if (localStorage.getItem("role_name")) {
       setIsLogin(true);
     }
+    if (localStorage.getItem("role_name") != "admin") {
+      const lastName = localStorage.getItem("last_name");
+      const firstName = localStorage.getItem("first_name");
+      setName(lastName + " " + firstName);
+    }
   }, []);
-  if (localStorage.getItem("role_name") != "admin") {
-    const lastName = localStorage.getItem("last_name");
-    const firstName = localStorage.getItem("first_name");
-    setName(lastName + " " + firstName);
-  }
+
   return (
     <div className={styles.navbarContainer}>
       <Image
@@ -29,12 +30,12 @@ export default function Navbar() {
         width={45}
         height={45}
         onClick={() => router.push("/")}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", position: "absolute", left: "20px" }}
       />
       <div
         className={styles.title}
         onClick={() => router.push("/")}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", position: "absolute", left: "50px" }}
       >
         C-Rotation
       </div>

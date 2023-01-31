@@ -7,6 +7,7 @@
   height: 70px;
   background: transparent;
   border-bottom: 1px solid #dfe1e6;
+  flex-direction: row-reverse;
 }
 
 .title {
@@ -17,10 +18,10 @@
 }
 
 .loginBtn {
+  position: relative;
   width: 100px;
   height: 40px;
   cursor: pointer;
-  margin-left: 80%;
   display: flex;
   justify-content: center;
   background: #3bacb6;
@@ -31,9 +32,9 @@
 }
 
 .logoutBtn {
+  position: relative;
   width: 100px;
   height: 40px;
-  margin-left: 10px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -53,11 +54,11 @@
 
 .nameArea {
   display: flex;
-  margin-left: 70%;
 }
 
 .name {
   font-weight: 600;
   font-size: 17px;
   margin-top: 7px;
+  margin-right: 10px;
 }
