@@ -11,6 +11,7 @@ interface Props {
   gridTemplateCol: number[];
   showDetails: boolean;
   keys: string[];
+  detailsRoute: string;
 }
 
 export default function Table({
@@ -19,6 +20,7 @@ export default function Table({
   gridTemplateCol,
   showDetails,
   keys,
+  detailsRoute
 }: Props) {
   const router = useRouter();
 
@@ -85,10 +87,7 @@ export default function Table({
                   {showDetails && (
                     <button
                       onClick={() =>
-                        router.push(
-                          "/student-view/student-profile/" +
-                            encodeURIComponent(row.email)
-                        )
+                        router.push(detailsRoute + encodeURIComponent(row.email))
                       }
                       className={styles.detailsBtn}
                     >

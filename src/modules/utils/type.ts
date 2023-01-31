@@ -21,6 +21,17 @@ export type StudentInfo = {
   student_id: string;
 }
 
+export type AttendingInfo = {
+  email: string;
+  attending_id: string;
+  first_name: string;
+  last_name: string;
+  mobile: string;
+  biography: string;
+  image: string;
+  created_at: string;
+}
+
 export type DepartmentInfo = {
   name: string;
   description: string;

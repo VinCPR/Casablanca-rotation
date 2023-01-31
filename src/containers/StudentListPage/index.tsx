@@ -21,7 +21,7 @@ export default function StudentListPage() {
     "Detail",
   ];
 
-  const gridTemplateCol = [10, 15, 20, 25, 15, 15];
+  const gridTemplateCol = [15, 15, 15, 25, 15, 15];
   const keys = ["student_id", "first_name", "last_name", "email", "mobile"];
 
   return (
@@ -37,6 +37,7 @@ export default function StudentListPage() {
             keys={keys}
             gridTemplateCol={gridTemplateCol}
             showDetails={true}
+            detailsRoute={"/student-view/student-profile/"}
           />
         </div>
       </div>
