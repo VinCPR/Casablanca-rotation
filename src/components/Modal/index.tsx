@@ -5,6 +5,7 @@ import { designRotation } from "./algorithm";
 import { OptionSelector } from "./containers/BlockContainer/types";
 import { Department, Hospital, Rotation, Service } from "./types";
 import data from "./containers/BlockContainer/data";
+import getFacilityNames from "@/modules/utils/getFacilityNames";
 
 interface Props {
   children?: React.ReactNode;
@@ -19,7 +20,7 @@ interface Props {
   blockDuration: number;
 }
 
-const [allDepartments, allServices, allHospitals] = data();
+// const [allDepartments, allServices, allHospitals] = data();
 
 export default function Modal({
   children,
@@ -36,6 +37,8 @@ export default function Modal({
   const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const [rotation, setRotation] = React.useState<Rotation[]>([]);
   const [isPreview, setIsPreview1] = React.useState(showPreview);
+  
+  const [allDepartments, allHospitals, allServices] = getFacilityNames();
 
   const colors = [
     "#18A0FB",
@@ -290,7 +293,7 @@ export default function Modal({
                                     >
                                       <RotationCard
                                         background={
-                                          colors[allServices.indexOf(obj.name)]
+                                          colors[allServices.indexOf(obj.name) % 7]
                                         }
                                         label={obj.name}
                                         fontSize={Math.min(

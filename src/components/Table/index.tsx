@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import styles from "./index.module.css";
 
 interface Student {
@@ -19,6 +20,8 @@ export default function Table({
   showDetails,
   keys,
 }: Props) {
+  const router = useRouter();
+
   function getGridTemplateCol(
     gridTemplateCol: number[],
     headerItems: string[]
@@ -80,7 +83,17 @@ export default function Table({
                     );
                   })}
                   {showDetails && (
-                    <button className={styles.detailsBtn}>Details</button>
+                    <button
+                      onClick={() =>
+                        router.push(
+                          "/student-view/student-profile/" +
+                            encodeURIComponent(row.email)
+                        )
+                      }
+                      className={styles.detailsBtn}
+                    >
+                      Details
+                    </button>
                   )}
                 </div>
               );
