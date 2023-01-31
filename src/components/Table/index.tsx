@@ -11,7 +11,7 @@ interface Props {
   gridTemplateCol: number[];
   showDetails: boolean;
   keys: string[];
-  detailsRoute: string;
+  detailsRoute?: string;
 }
 
 export default function Table({
