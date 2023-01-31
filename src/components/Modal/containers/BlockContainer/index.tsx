@@ -85,7 +85,7 @@ export default function BlockContainer({ input, data }: Props) {
   };
 
   const departments = data != null ? Object.keys(data) : [];
-  
+
   const [__, hospitals, services] = getFacilityNames();
 
   function isChecked(array: SelectedComponents[], value: String) {

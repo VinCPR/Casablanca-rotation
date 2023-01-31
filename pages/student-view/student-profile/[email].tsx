@@ -5,13 +5,10 @@ import SideBar from "../../../src/components/Sidebar";
 import ViewStudentDetail from "../../../src/containers/RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList/containers/ViewStudentDetail";
 import { StudentInfo } from "@/modules/utils/type";
 import { GetStaticPaths, GetStaticProps } from "next";
-import httpGet from "@/modules/http/httpGet";
-import useSWR from "swr";
 
 export default function RouteToViewStudentProfile(props: {
   student: StudentInfo;
 }) {
-  getData();
   return (
     <>
       <Navbar />
@@ -25,47 +22,29 @@ export default function RouteToViewStudentProfile(props: {
   );
 }
 
-function getData() {
-  const allStudentsResponse = useSWR(
-    "https://api.vincpr.com/v1/student/list/name?pageNumber=1&pageSize=200",
-    httpGet
-  );
-  const data = allStudentsResponse?.data;
-  console.log(data);
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allStudentsResponse = useSWR(
-    "https://api.vincpr.com/v1/student/list/name?pageNumber=1&pageSize=200",
-    httpGet
-  );
-  const students: StudentInfo[] = allStudentsResponse?.data;
+  const students: StudentInfo[] = await fetch(
+    "https://api.vincpr.com/v1/student/list/name?pageNumber=1&pageSize=200"
+  ).then((r) => r.json());
 
   const pathWithParams = students?.map((student) => ({
-    params: { email: student?.email.replace("@", "%40") },
+    params: { email: encodeURIComponent(student?.email) },
   }));
 
   return {
     paths: pathWithParams,
-    fallback: false,
+    fallback: true,
   };
 };
 
-
-export const getStaticProps: GetStaticProps = (context) => {
-  const email = context.params?.email;
-  const studentInfoResponse = useSWR(
-    `https://api.vincpr.com/v1/student/list/name?email=${email}`,
-    httpGet
-  );
-  const student = studentInfoResponse?.data;
-  console.log(student);
-
-  // if (!student) {
-  //   return {
-  //     props: { hasError: true },
-  //   };
-  // }
+export const getStaticProps: GetStaticProps = async (context) => {
+  let email = context.params?.email;
+  if (typeof email === "string") {
+    email = encodeURIComponent(email);
+  }
+  const student: StudentInfo = await fetch(
+    `https://api.vincpr.com/v1/student/info?email=${email}`
+  ).then((r) => r.json());
 
   return {
     props: {

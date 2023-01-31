@@ -31,7 +31,7 @@ export default function getFacilityNames() {
   }
 
   // Filter the unique values of all services
-  let allServices = allnonUniqueServices.filter(unique);
+  let allServices = allnonUniqueServices?.filter(unique);
 
   return [allDepartments, allHospitals, allServices];
 }
