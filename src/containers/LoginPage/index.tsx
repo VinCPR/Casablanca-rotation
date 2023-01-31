@@ -16,10 +16,10 @@ export default function LoginPage() {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
   async function onClickLogin() {
-    httpPostLogin({ email: email, password: password });
-    while (!localStorage.getItem("role_name")) {
-      await delay(1000);
-    }
+    // await httpPostLogin({ email: email, password: password });
+    // while (!localStorage.getItem("role_name")) {
+    //   await delay(50);
+    // }
     router.push(`/`);
   }
 

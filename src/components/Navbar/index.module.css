@@ -33,8 +33,8 @@
 .logoutBtn {
   width: 100px;
   height: 40px;
+  margin-left: 10px;
   cursor: pointer;
-  margin-left: 80%;
   display: flex;
   justify-content: center;
   background: DFE1E6;
@@ -49,4 +49,15 @@
   font-size: 16px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.nameArea {
+  display: flex;
+  margin-left: 70%;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 17px;
+  margin-top: 7px;
 }

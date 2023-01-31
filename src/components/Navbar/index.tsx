@@ -5,10 +5,8 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [isLogin, setIsLogin] = useState(false);
-  function delay(time: number) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
-  async function onClick() {
+  const [name, setName] = useState("");
+  async function onClickLogout() {
     localStorage.clear();
     router.push(`/login`);
     setIsLogin(false);
@@ -18,6 +16,11 @@ export default function Navbar() {
       setIsLogin(true);
     }
   }, []);
+  if (localStorage.getItem("role_name") != "admin") {
+    const lastName = localStorage.getItem("last_name");
+    const firstName = localStorage.getItem("first_name");
+    setName(lastName + " " + firstName);
+  }
   return (
     <div className={styles.navbarContainer}>
       <Image
@@ -43,9 +46,12 @@ export default function Navbar() {
           <div className={styles.text}>LOGIN</div>
         </button>
       ) : (
-        <button onClick={() => onClick()} className={styles.logoutBtn}>
-          <div className={styles.text}>LOGOUT</div>
-        </button>
+        <div className={styles.nameArea}>
+          <div className={styles.name}>{name}</div>
+          <button onClick={() => onClickLogout()} className={styles.logoutBtn}>
+            <div className={styles.text}>LOGOUT</div>
+          </button>
+        </div>
       )}
     </div>
   );

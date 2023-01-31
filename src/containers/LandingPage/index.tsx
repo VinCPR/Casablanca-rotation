@@ -12,7 +12,6 @@ export default function LandingPage() {
   const [role, setRole] = useState<String | null>("");
 
   useEffect(() => {
-    console.log("Cuong");
     if (localStorage.getItem("role_name")) {
       setRole(localStorage.getItem("role_name"));
     } else {
