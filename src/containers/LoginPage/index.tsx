@@ -12,15 +12,10 @@ export default function LoginPage() {
 
   const [password, setPassword] = useState("");
   const router = useRouter();
-  function delay(time: number) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
   async function onClickLogin() {
-    httpPostLogin({ email: email, password: password });
-    await delay(1000);
-    if (localStorage.getItem("role_name")) {
-      router.push(`/`);
-    }
+    await httpPostLogin({ email: email, password: password });
+
+    router.push(`/`);
   }
 
   return (

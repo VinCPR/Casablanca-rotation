@@ -62,7 +62,7 @@ export default function SideBar({ highlight }: Props) {
         <div className={styles.textfield}>
           <IconFacultyList isActive={mouseEnter === 4 || highlight === 4} />
           <Link href="/faculty-list">
-            <div className={styles.text}>Faculty List</div>
+            <div className={styles.text}>Attending List</div>
           </Link>
         </div>
       </button>
