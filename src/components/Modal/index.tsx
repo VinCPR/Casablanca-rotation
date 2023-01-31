@@ -5,13 +5,6 @@ import { designRotation } from "./algorithm";
 import { OptionSelector } from "./containers/BlockContainer/types";
 import { Department, Hospital, Rotation, Service } from "./types";
 import data from "./containers/BlockContainer/data";
-import {
-  DepartmentInfo,
-  HospitalInfo,
-  ServiceInfo,
-} from "@/modules/utils/type";
-import httpGet from "@/modules/http/httpGet";
-import useSWR from "swr";
 import getFacilityNames from "@/modules/utils/getFacilityNames";
 
 interface Props {

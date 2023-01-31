@@ -7,10 +7,7 @@ import React from "react";
 import { OptionSelector, SelectedComponents } from "./types";
 import IconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/IconEdit";
 import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
-import { AllServiceResponse, ServiceInfo } from "@/modules/utils/type";
-import useSWR from 'swr';
-import httpGet from "@/modules/http/httpGet";
-import { HospitalInfo } from "@/modules/utils/type";
+import { AllServiceResponse } from "@/modules/utils/type";
 import getFacilityNames from "@/modules/utils/getFacilityNames";
 
 type Props = {

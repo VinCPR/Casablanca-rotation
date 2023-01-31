@@ -5,19 +5,10 @@ import httpGet from "@/modules/http/httpGet";
 import { StudentInfo } from "@/modules/utils/type";
 
 interface Props{
-  // email: string;
   data: StudentInfo;
 }
 
 export default function ViewStudentDetail({data}: Props) {
-  // const student = useSWR(
-  //   `https://api.vincpr.com/v1/student/info?email=${email}`,
-  //   httpGet
-  // );
-
-  // const data: StudentInfo = student?.data;
-
-
   function getFullName(data: StudentInfo | undefined): string {
     if (data) {
       return data.last_name + " " + data.first_name;
