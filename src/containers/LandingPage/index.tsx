@@ -3,20 +3,20 @@ import Home from "./containers/Home";
 import Feature from "./containers/Feature";
 import Contact from "./containers/Contact";
 import styles from "./index.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SideBarStudent from "../../components/SideBarStudent";
 import StudentTable from "../PageStudentView/containers/StudentTable";
 import SideBarAttending from "../../components/SideBarAttending";
 import DesignRotation from "../DesignRotation";
 export default function LandingPage() {
-  const [role, setRole] = useState<String | null>("no_login");
+  const [role, setRole] = useState<String | null>("");
 
   useEffect(() => {
-    // Perform localStorage action
     if (localStorage.getItem("role_name")) {
       setRole(localStorage.getItem("role_name"));
+    } else {
+      setRole("no_login");
     }
-    // console.log(localStorage.getItem("role_name"));
   }, []);
 
   return (

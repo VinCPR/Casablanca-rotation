@@ -22,7 +22,7 @@ export default function SideBarStudent({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconRotationPlan isActive={mouseEnter === 1 || highlight === 1} />
-          <Link href="/student">
+          <Link href="/">
             <div className={styles.text}>Rotation Schedule</div>
           </Link>
         </div>
