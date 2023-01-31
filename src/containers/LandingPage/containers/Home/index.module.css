@@ -20,7 +20,6 @@
 .herodisplay p {
   display: flex;
   flex-direction: column;
-
   margin-top: 2rem;
   font-size: 18px;
   text-align: left;
@@ -28,17 +27,10 @@
 
 .herodisplay button {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
-
   margin-top: 4rem;
-
   padding: 3px 28px;
-
-  width: 146px;
   height: 46px;
-
   background: #3bacb6;
   border-radius: 11px;
   border: none;
@@ -46,9 +38,6 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 21px;
-  align-items: center;
-  text-align: center;
-
   color: #ffffff;
 }
 
@@ -58,12 +47,13 @@
 
 .ManImage {
   position: relative;
-  margin-left: -35vw;
+  margin-left: -30vw;
 }
 
 .button {
   cursor: pointer;
   width: 150px;
+  flex-direction: column;
   height: 40px;
   font-weight: 500;
   padding: 11px 28px;

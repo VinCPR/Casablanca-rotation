@@ -17,10 +17,10 @@ export default function LoginPage() {
   }
   async function onClickLogin() {
     httpPostLogin({ email: email, password: password });
-    await delay(1000);
-    if (localStorage.getItem("role_name")) {
-      router.push(`/`);
+    while (!localStorage.getItem("role_name")) {
+      await delay(1000);
     }
+    router.push(`/`);
   }
 
   return (

@@ -16,7 +16,6 @@ export default function Home() {
         </button>
       </div>
       <div className={styles.ManImage}>
-        {/*<vector className="Vector"> </vector> */}
         <Image
           src="/images/handsome-guy.png"
           alt="handsome-guy"

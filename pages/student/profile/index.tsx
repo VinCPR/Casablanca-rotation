@@ -10,7 +10,7 @@ export default function RouteToViewStudentProfile() {
       <div style={{ position: "relative" }}>
         <SideBarStudent highlight={2} />
         <div className={styles.profileContainer}>
-          <ViewStudentDetail/>
+          <ViewStudentDetail />
         </div>
       </div>
     </>
