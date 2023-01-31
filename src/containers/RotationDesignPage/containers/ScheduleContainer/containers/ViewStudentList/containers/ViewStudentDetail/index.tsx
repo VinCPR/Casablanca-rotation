@@ -1,7 +1,5 @@
 import * as React from "react";
 import styles from "./index.module.css";
-import useSWR from "swr";
-import httpGet from "@/modules/http/httpGet";
 import { StudentInfo } from "@/modules/utils/type";
 
 interface Props{

@@ -4,16 +4,16 @@ import SideBar from "../../components/Sidebar";
 import Table from "../../components/Table";
 import styles from "./index.module.css";
 import useSWR from "swr";
-import httpGetFaculty from "@/modules/http/httpGetFaculty";
+import httpGet from "@/modules/http/httpGet";
 
 export default function FacultyListPage() {
-  const { data, error } = useSWR("getFacultyList", httpGetFaculty);
+  const { data, error } = useSWR("https://api.vincpr.com/v1/attending/list/name?pageNumber=1&pageSize=200", httpGet);
 
   if (error) return <div>An error has occured!</div>;
   if (!data) return <div>Loading...</div>;
 
   const headerItems = [
-    "Faculty ID",
+    "Attending ID",
     "First Name",
     "Last Name",
     "Email",
@@ -21,7 +21,7 @@ export default function FacultyListPage() {
     "Detail",
   ];
 
-  const gridTemplateCol = [10, 15, 20, 25, 15, 15];
+  const gridTemplateCol = [15, 15, 15, 25, 15, 15];
   const keys = [
     "attending_id",
     "first_name",
@@ -35,13 +35,14 @@ export default function FacultyListPage() {
       <div style={{ position: "relative" }}>
         <SideBar highlight={4} />
         <div className={styles.mainContainer}>
-          <div className={styles.header}>FACULTY LIST</div>
+          <div className={styles.header}>ATTENDING LIST</div>
           <Table
             headerItems={headerItems}
             data={data}
             keys={keys}
             gridTemplateCol={gridTemplateCol}
             showDetails={true}
+            detailsRoute={"/faculty-list/profile/"}
           />
         </div>
       </div>
