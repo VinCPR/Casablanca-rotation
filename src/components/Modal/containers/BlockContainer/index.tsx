@@ -7,9 +7,10 @@ import React from "react";
 import { OptionSelector, SelectedComponents } from "./types";
 import IconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/IconEdit";
 import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
-import { AllServiceResponse } from "@/modules/utils/type";
-import getFacilityNames from "@/modules/utils/getFacilityNames";
+import { AllServiceResponse, DepartmentInfo, HospitalInfo, ServiceInfo } from "@/modules/utils/type";
 import cx from "classnames";
+import useSWR from 'swr';
+import httpGet from "@/modules/http/httpGet";
 
 type Props = {
   input: OptionSelector;
@@ -43,6 +44,18 @@ export default function BlockContainer({ input, data }: Props) {
     // "#7de8f8",
     "#F46B6B",
   ];
+  const deptResponse = useSWR(
+    "https://api.vincpr.com/v1/specialty/list?pageNumber=1&pageSize=10",
+    httpGet
+  );
+  const hospitalResponse = useSWR(
+    "https://api.vincpr.com/v1/hospital/list?pageNumber=1&pageSize=200",
+    httpGet
+  );
+  const serviceResponse = useSWR(
+    "https://api.vincpr.com/v1/service/list/hospital?pageNumber=1&pageSize=200",
+    httpGet
+  );
   const [departmentSelector, setDepartmentSelector] = React.useState(false);
   const [hospitalSelector, setHospitalSelector] = React.useState(
     Array.from({ length: 10 }, (_) => false)
@@ -50,6 +63,20 @@ export default function BlockContainer({ input, data }: Props) {
   const [serviceSelector, setServiceSelector] = React.useState<boolean[][]>(
     Array.from({ length: 10 }, (_) => Array.from({ length: 10 }, (_) => false))
   );
+  const deptArr: DepartmentInfo[] = deptResponse?.data;
+  const hospitalArr: HospitalInfo[] = hospitalResponse?.data;
+  const serviceArr: ServiceInfo[] = serviceResponse?.data;
+  // let departments = deptArr?.map((obj) => obj.name);
+  let hospitals = hospitalArr?.map((obj) => obj.name);
+  let allnonUniqueServices = serviceArr?.map((obj) => obj.name);
+
+  // This function returns unique values of an array
+  function unique(value: string, index: number, self: string[]) {
+    return self.indexOf(value) === index;
+  }
+
+  // Filter the unique values of all services
+  let services = allnonUniqueServices?.filter(unique);
 
   const onChangeHospitalSelector = (indexChange: number, value: boolean) => {
     setHospitalSelector(
@@ -83,8 +110,6 @@ export default function BlockContainer({ input, data }: Props) {
   };
 
   const departments = data != null ? Object.keys(data) : [];
-
-  const [__, hospitals, services] = getFacilityNames();
 
   function isChecked(array: SelectedComponents[], value: String) {
     if (array.some((e) => e.name === value)) {

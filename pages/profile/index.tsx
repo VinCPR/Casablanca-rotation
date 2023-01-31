@@ -21,8 +21,8 @@ export default function RouteToViewAttendingProfile() {
       <div style={{ position: "relative" }}>
         <SideBarView highlight={2} />
         <div className={styles.profileContainer}>
-          {role === "student" && <ViewStudentDetail isEdit={true} />}
-          {role === "attending" && <ViewAttendingDetail isEdit={true} />}
+          {role === "student" && <ViewStudentDetail />}
+          {role === "attending" && <ViewAttendingDetail />}
         </div>
       </div>
     </>

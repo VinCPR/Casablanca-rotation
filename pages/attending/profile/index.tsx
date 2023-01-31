@@ -11,7 +11,7 @@ export default function RouteToViewAttendingProfile() {
       <div style={{ position: "relative" }}>
         <SideBarAttending highlight={2} />
         <div className={styles.profileContainer}>
-          <ViewAttendingDetail isEdit={true} />
+          <ViewAttendingDetail />
         </div>
       </div>
     </>
