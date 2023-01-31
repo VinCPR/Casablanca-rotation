@@ -19,7 +19,7 @@ export type StudentInfo = {
   last_name: string;
   mobile: string;
   student_id: string;
-}
+};
 
 export type AttendingInfo = {
   email: string;
@@ -30,20 +30,20 @@ export type AttendingInfo = {
   biography: string;
   image: string;
   created_at: string;
-}
+};
 
 export type DepartmentInfo = {
   name: string;
   description: string;
   created_at: string;
-}
+};
 
 export type HospitalInfo = {
   name: string;
   description: string;
   address: string;
   created_at: string;
-}
+};
 
 export type ServiceInfo = {
   name: string;
@@ -51,7 +51,7 @@ export type ServiceInfo = {
   hospital: string;
   specialty: string;
   created_at: string;
-}
+};
 
 export type AcademicCalendar = {
   created_at: string;
@@ -59,3 +59,13 @@ export type AcademicCalendar = {
   name: string;
   start_date: string;
 }[];
+
+export type CalendarEvent = {
+  start_date: string;
+  end_date: string;
+  specialty_name: string;
+  hospital_name: string;
+  service_name: string;
+  event_id: string;
+  group_name: string;
+};

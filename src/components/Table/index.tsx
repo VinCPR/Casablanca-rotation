@@ -65,7 +65,7 @@ export default function Table({
           </div>
 
           <div className={styles.scheduleContainer}>
-            {data.map((row, index) => {
+            {data?.map((row, index) => {
               return (
                 <div
                   style={{

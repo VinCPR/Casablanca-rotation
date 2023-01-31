@@ -4,10 +4,9 @@ import Feature from "./containers/Feature";
 import Contact from "./containers/Contact";
 import styles from "./index.module.css";
 import { useEffect, useMemo, useState } from "react";
-import SideBarStudent from "../../components/SideBarStudent";
-import StudentTable from "../PageStudentView/containers/StudentTable";
-import SideBarAttending from "../../components/SideBarAttending";
 import DesignRotation from "../DesignRotation";
+import PageStudentView from "../PageStudentView";
+import PageAttendingView from "../PageAttendingView";
 export default function LandingPage() {
   const [role, setRole] = useState<String | null>("");
 
@@ -29,32 +28,8 @@ export default function LandingPage() {
           <Contact />
         </div>
       )}
-      {role === "student" && (
-        <>
-          <Navbar />
-          <div style={{ position: "relative" }}>
-            <SideBarStudent highlight={1} />
-            <div className={styles.scheduleContainer}>
-              <div className={styles.schedule}>
-                <StudentTable role={"student"} />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-      {role === "attending" && (
-        <>
-          <Navbar />
-          <div style={{ position: "relative" }}>
-            <SideBarAttending highlight={1} />
-            <div className={styles.scheduleContainer}>
-              <div className={styles.schedule}>
-                <StudentTable role={"attending"} />
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      {role === "student" && <PageStudentView />}
+      {role === "attending" && <PageAttendingView />}
       {role === "admin" && <DesignRotation />}
     </>
   );

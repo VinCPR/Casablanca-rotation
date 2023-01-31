@@ -36,6 +36,7 @@ export default async function httpPostLogin({ email, password }: LoginInput) {
       );
       assert(response.ok, "response not ok");
       const obj = await response.json();
+      await asyncLocalStorage.setItem("email", obj.email);
       await asyncLocalStorage.setItem("id", obj.student_id);
       await asyncLocalStorage.setItem("first_name", obj.first_name);
       await asyncLocalStorage.setItem("last_name", obj.last_name);
@@ -55,6 +56,7 @@ export default async function httpPostLogin({ email, password }: LoginInput) {
       );
       assert(response.ok, "response not ok");
       const obj = await response.json();
+      await asyncLocalStorage.setItem("email", obj.email);
       await asyncLocalStorage.setItem("id", obj.attending_id);
       await asyncLocalStorage.setItem("first_name", obj.first_name);
       await asyncLocalStorage.setItem("last_name", obj.last_name);

@@ -7,7 +7,7 @@
   padding-top: 50px;
 }
 
-.header{
+.header {
   color: #2f8f9d;
   font-size: 40px;
   font-weight: 800;
@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
-  width: calc(100vw - 384px)
+  width: calc(100vw - 384px);
 }
 
 .schedule {
