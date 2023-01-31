@@ -8,6 +8,7 @@ import SideBarStudent from "../../components/SideBarStudent";
 import StudentTable from "../PageStudentView/containers/StudentTable";
 import SideBarAttending from "../../components/SideBarAttending";
 import DesignRotation from "../DesignRotation";
+import PageStudentView from "../PageStudentView";
 export default function LandingPage() {
   const [role, setRole] = useState<String | null>("");
 
@@ -31,15 +32,7 @@ export default function LandingPage() {
       )}
       {role === "student" && (
         <>
-          <Navbar />
-          <div style={{ position: "relative" }}>
-            <SideBarStudent highlight={1} />
-            <div className={styles.scheduleContainer}>
-              <div className={styles.schedule}>
-                <StudentTable role={"student"} />
-              </div>
-            </div>
-          </div>
+          <PageStudentView/>
         </>
       )}
       {role === "attending" && (
