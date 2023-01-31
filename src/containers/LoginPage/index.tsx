@@ -1,11 +1,28 @@
 import { url } from "inspector";
-import router from "next/router";
+import { useState, useEffect } from "react";
+import router, { useRouter } from "next/router";
 import Navbar from "../../components/Navbar";
 import IconEmail from "./assets/IconEmail";
 import IconPassword from "./assets/IconPassword";
 import styles from "./index.module.css";
+import httpPostLogin from "@/modules/http/httpPostLogin";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  function delay(time: number) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+  async function onClickLogin() {
+    httpPostLogin({ email: email, password: password });
+    await delay(1000);
+    if (localStorage.getItem("role_name")) {
+      router.push(`/`);
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -18,16 +35,21 @@ export default function LoginPage() {
             <div className={styles.iconPassword}>
               <IconPassword />
             </div>
-            <input className={styles.input} placeholder="EMAIL" />
+            <input
+              className={styles.input}
+              placeholder="EMAIL"
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <input
               className={styles.input}
               type="password"
               placeholder="PASSWORD"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button className={styles.forgotPassword}>Forgot password?</button>
             <button
               className={styles.loginButton}
-              onClick={() => router.push("/design-rotation")}
+              onClick={async () => onClickLogin()}
             >
               Login
             </button>

@@ -446,3 +446,51 @@
 .Text {
   width: 70%;
 }
+
+.scheduleContainer {
+  left: 264px;
+  width: calc(100vw - 264px);
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.backButton {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  color: #3bacb6;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.scheduleHeader {
+  position: absolute;
+  top: 30px;
+  font-weight: 800;
+
+  font-size: 40px;
+  color: #2f8f9d;
+}
+
+.scheduleDate {
+  position: absolute;
+  top: 80px;
+  font-weight: 400;
+
+  font-size: 16px;
+  color: black;
+  right: 5%;
+}
+
+.schedule {
+  position: absolute;
+  top: 51px;
+}

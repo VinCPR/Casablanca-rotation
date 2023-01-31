@@ -20,7 +20,7 @@ export default function SideBarAttending({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconRotationPlan isActive={mouseEnter === 1 || highlight === 1} />
-          <Link href="/attending">
+          <Link href="/">
             <div className={styles.text}>Rotation Schedule</div>
           </Link>
         </div>
