@@ -3,19 +3,22 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import ViewStudentList from "../../../RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList";
 import StudentList from "./containers/StudentList";
+import { StudentCalendarEvent } from "@/modules/utils/type";
 
 type Props = {
   role?: string;
+  data?: StudentCalendarEvent[];
+  keys?: string[]
 };
 
-export default function StudentTable({ role }: Props) {
+export default function StudentTable({ role, data, keys }: Props) {
   const router = useRouter();
   const [showContainer, setShowContainer] = React.useState(true);
   const [index, setIndex] = React.useState(0);
-  const data = [
-    ["13/5/2022", "20/5/2022", "Pediatrics", "Vinmec", "OutPatient"],
-    ["20/5/2022", "26/6/2022", "Neurology", "Vinmec", "OutPatient"],
-  ];
+  // const data = [
+  //   ["13/5/2022", "20/5/2022", "Pediatrics", "Vinmec", "OutPatient"],
+  //   ["20/5/2022", "26/6/2022", "Neurology", "Vinmec", "OutPatient"],
+  // ];
 
   function onClick(x: number) {
     setIndex(x);
@@ -49,13 +52,13 @@ export default function StudentTable({ role }: Props) {
               </div>
 
               <div className={styles.scheduleContainer}>
-                {data.map((row, index) => {
+                {data?.map((row, index) => {
                   return (
                     <div className={styles.rowContainer} key={index}>
-                      {row.map((value, index) => {
+                      {keys?.map((value, index) => {
                         return (
                           <div className={styles.item} key={index}>
-                            {value}
+                            {row[value as keyof StudentCalendarEvent]}
                           </div>
                         );
                       })}
@@ -74,12 +77,12 @@ export default function StudentTable({ role }: Props) {
         </div>
       ) : (
         <StudentList
-          startDate={data[index][0]}
-          endDate={data[index][1]}
-          department={data[index][2]}
-          hospital={data[index][3]}
-          service={data[index][4]}
-          role={role}
+          // startDate={data[index][0]}
+          // endDate={data[index][1]}
+          // department={data[index][2]}
+          // hospital={data[index][3]}
+          // service={data[index][4]}
+          // role={role}
         />
       )}
     </div>

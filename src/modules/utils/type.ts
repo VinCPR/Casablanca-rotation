@@ -59,3 +59,13 @@ export type AcademicCalendar = {
   name: string;
   start_date: string;
 }[];
+
+export type StudentCalendarEvent = {
+  start_date: string;
+  end_date: string;
+  specialty_name: string;
+  hospital_name: string;
+  service_name: string;
+  event_id: string;
+  group_name: string;
+}
