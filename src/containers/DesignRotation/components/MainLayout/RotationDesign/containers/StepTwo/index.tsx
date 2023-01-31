@@ -264,7 +264,11 @@ export default function StepTwo({
           numberOfGroup={numOfGroup}
           blockDuration={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[index]} data={data} />
+          <BlockContainer
+            input={optionSelector[index]}
+            data={data}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
       ))}
       {showPreview.map((_, index) => (
@@ -282,7 +286,11 @@ export default function StepTwo({
           numberOfGroup={numOfGroup}
           blockDuration={durationOfBlock}
         >
-          <BlockContainer input={optionSelector[index]} data={data} />
+          <BlockContainer
+            input={optionSelector[index]}
+            data={data}
+            durationOfBlock={durationOfBlock}
+          />
         </Modal>
       ))}
     </div>
