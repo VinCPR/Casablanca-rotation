@@ -5,7 +5,9 @@ import { designRotation } from "./algorithm";
 import { OptionSelector } from "./containers/BlockContainer/types";
 import { Department, Hospital, Rotation, Service } from "./types";
 import data from "./containers/BlockContainer/data";
-import getFacilityNames from "@/modules/utils/getFacilityNames";
+import httpGet from "@/modules/http/httpGet";
+import useSWR from 'swr';
+import { DepartmentInfo, HospitalInfo, ServiceInfo } from "@/modules/utils/type";
 
 interface Props {
   children?: React.ReactNode;
@@ -34,11 +36,39 @@ export default function Modal({
   numberOfGroup,
   blockDuration,
 }: Props) {
+  const deptResponse = useSWR(
+    "https://api.vincpr.com/v1/specialty/list?pageNumber=1&pageSize=10",
+    httpGet
+  );
+  const hospitalResponse = useSWR(
+    "https://api.vincpr.com/v1/hospital/list?pageNumber=1&pageSize=200",
+    httpGet
+  );
+  const serviceResponse = useSWR(
+    "https://api.vincpr.com/v1/service/list/hospital?pageNumber=1&pageSize=200",
+    httpGet
+  );
   const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const [rotation, setRotation] = React.useState<Rotation[]>([]);
   const [isPreview, setIsPreview1] = React.useState(showPreview);
+
+  const deptArr: DepartmentInfo[] = deptResponse?.data;
+  const hospitalArr: HospitalInfo[] = hospitalResponse?.data;
+  const serviceArr: ServiceInfo[] = serviceResponse?.data;
+
+  let allDepartments = deptArr?.map((obj) => obj.name);
+  let allHospitals = hospitalArr?.map((obj) => obj.name);
+  let allnonUniqueServices = serviceArr?.map((obj) => obj.name);
+
+
+  // This function returns unique values of an array
+  function unique(value: string, index: number, self: string[]) {
+    return self.indexOf(value) === index;
+  }
+
+  // Filter the unique values of all services
+  let allServices = allnonUniqueServices?.filter(unique);
   
-  const [allDepartments, allHospitals, allServices] = getFacilityNames();
 
   const colors = [
     "#18A0FB",

@@ -5,7 +5,7 @@ import httpGet from "@/modules/http/httpGet";
 import { StudentInfo } from "@/modules/utils/type";
 
 interface Props{
-  data: StudentInfo;
+  data?: StudentInfo;
 }
 
 export default function ViewStudentDetail({data}: Props) {
