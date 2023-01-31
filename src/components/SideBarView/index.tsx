@@ -1,16 +1,14 @@
 import styles from "./index.module.css";
 import * as React from "react";
-import IconDesignRotation from "./containers/IconDesignRotation";
 import IconRotationPlan from "./containers/IconRotationPlan";
 import IconStudentList from "./containers/IconStudentList";
-import IconFacultyList from "./containers/IconFacultyList";
 import Link from "next/link";
 
 type Props = {
   highlight: number;
 };
 
-export default function SideBarStudent({ highlight }: Props) {
+export default function SideBarAttending({ highlight }: Props) {
   const [mouseEnter, setMouseEnter] = React.useState(0);
   return (
     <div className={styles.sideBarContainer}>
@@ -35,7 +33,7 @@ export default function SideBarStudent({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconStudentList isActive={mouseEnter === 2 || highlight === 2} />
-          <Link href="/student/profile">
+          <Link href="/profile">
             <div className={styles.text}>My Profile</div>
           </Link>
         </div>

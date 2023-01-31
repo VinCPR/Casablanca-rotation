@@ -22,7 +22,7 @@ export default function SideBar({ highlight }: Props) {
         <div className={styles.line} />
         <div className={styles.textfield}>
           <IconDesignRotation isActive={mouseEnter === 1 || highlight === 1} />
-          <Link href="/design-rotation">
+          <Link href="/">
             <div className={styles.text}>Design Rotation</div>
           </Link>
         </div>

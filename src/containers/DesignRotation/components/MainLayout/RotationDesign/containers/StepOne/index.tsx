@@ -1,28 +1,34 @@
+import * as React from "react";
+import { AcademicCalendar } from "@/modules/utils/type";
 import styles from "./index.module.css";
+import cx from "classnames";
 
 type Props = {
   proceedNextStep: () => void;
   onChangeNumOfBlock: (i: number) => void;
   onChangeNumOfGroup: (i: number) => void;
-  onChangeNumOfStudent: (i: number) => void;
   onChangeBlockDuration: (i: number) => void;
+  onChangeAcademicCalendar: (value: string) => void;
   numOfBlock: number;
   numOfGroup: number;
-  numOfStudent: number;
   blockDuration: number;
+  academicCalendar: string;
+  calendarData: AcademicCalendar;
 };
 
 export default function StepOne({
   proceedNextStep,
   onChangeNumOfBlock,
   onChangeNumOfGroup,
-  onChangeNumOfStudent,
   onChangeBlockDuration,
+  onChangeAcademicCalendar,
   blockDuration,
   numOfBlock,
   numOfGroup,
-  numOfStudent,
+  academicCalendar,
+  calendarData,
 }: Props) {
+  const [showDropdown, setShowDropdown] = React.useState(false);
   return (
     <div className={styles.containerWrapper}>
       <div className={styles.container}>
@@ -61,16 +67,32 @@ export default function StepOne({
             value={numOfGroup.toString()}
           />
         </div>
-        <div className={styles.questionBox}>
-          <div className={styles.heading}>
-            Enter the number of students in each group:
-          </div>
-          <input
-            className={styles.input}
-            type="text"
-            onChange={(e) => onChangeNumOfStudent(Number(e.target.value))}
-            value={numOfStudent.toString()}
-          />
+        <div className={styles.dropdownContainer}>
+          <div className={styles.heading}>Select the academic year</div>
+          <button
+            className={cx(styles.input, styles.dropdownButton)}
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            {academicCalendar}
+          </button>
+          {showDropdown ? (
+            <div className={styles.dropdown}>
+              {calendarData.map((data, index) => {
+                return (
+                  <button
+                    key={index}
+                    className={styles.dropdownItem}
+                    onClick={() => {
+                      onChangeAcademicCalendar(data.name);
+                      setShowDropdown(!showDropdown);
+                    }}
+                  >
+                    {data.name}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
         <div className={styles.nextButtonContainer}>
           <button onClick={proceedNextStep} className={styles.nextButton}>

@@ -5,27 +5,38 @@ import StepTwo from "./containers/StepTwo";
 import { Rotation } from "../../../../../components/Modal/types";
 import useSWR from "swr";
 import httpGet from "@/modules/http/httpGet";
-import { AllServiceResponse } from "@/modules/utils/type";
+import { AcademicCalendar, AllServiceResponse } from "@/modules/utils/type";
+import httpGetList from "@/modules/http/httpGetList";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);
   const [numOfBlock, setNumOfBlock] = React.useState(0);
   const [numOfGroup, setNumOfGroup] = React.useState(0);
-  const [numOfStudent, setNumOfStudent] = React.useState(0);
   const [blockDuration, setBlockDuration] = React.useState(0);
   const [startDate, setStartDate] = React.useState<number[]>([]);
   const [endDate, setEndDate] = React.useState<number[]>([]);
   const [rotationsDesign, setRotationsDesign] = React.useState<Rotation[][]>(
     []
   );
+  const [academicCalendar, setAcademicCalendar] = React.useState("");
   const allServices = useSWR(
     "https://api.vincpr.com/v1/service/get_all",
     httpGet
   );
+  const academicCalendars = useSWR(
+    "https://api.vincpr.com/v1/academic_year/list",
+    httpGetList
+  );
   const data: AllServiceResponse = allServices?.data;
+  const calendarData: AcademicCalendar = academicCalendars?.data;
+  React.useEffect(() => {
+    if (calendarData) {
+      setAcademicCalendar(calendarData[0].name);
+    }
+  }, [academicCalendars?.data, calendarData]);
   return (
     <>
-      {allServices.data ? (
+      {data && calendarData ? (
         <div className={styles.container}>
           <div className={styles.parent}>
             <div
@@ -61,18 +72,18 @@ export default function RotationDesign() {
               }}
               onChangeNumOfBlock={(i) => setNumOfBlock(i)}
               onChangeNumOfGroup={(i) => setNumOfGroup(i)}
-              onChangeNumOfStudent={(i) => setNumOfStudent(i)}
               onChangeBlockDuration={(i) => setBlockDuration(i)}
               numOfBlock={numOfBlock}
               numOfGroup={numOfGroup}
-              numOfStudent={numOfStudent}
               blockDuration={blockDuration}
+              academicCalendar={academicCalendar}
+              calendarData={calendarData}
+              onChangeAcademicCalendar={(value) => setAcademicCalendar(value)}
             />
           )}
           {currentStep == 2 && (
             <StepTwo
               startDate={startDate}
-              endDate={endDate}
               onChangeStartDate={(date, indexChange) => {
                 setStartDate(
                   startDate.map((value, index) => {
@@ -106,6 +117,7 @@ export default function RotationDesign() {
               durationOfBlock={blockDuration}
               rotationDesign={rotationsDesign}
               data={data}
+              academicCalendar={academicCalendar}
             />
           )}
         </div>

@@ -41,3 +41,10 @@ export type ServiceInfo = {
   specialty: string;
   created_at: string;
 }
+
+export type AcademicCalendar = {
+  created_at: string;
+  end_date: string;
+  name: string;
+  start_date: string;
+}[];

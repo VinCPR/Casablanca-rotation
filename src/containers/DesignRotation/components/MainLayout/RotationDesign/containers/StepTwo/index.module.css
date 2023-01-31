@@ -90,13 +90,19 @@
   font-weight: 700;
 }
 
+.datePickerContainer {
+  display: flex;
+}
+
 .datePicker {
   text-align: center;
   border: none;
   outline: none;
   font-size: 16px;
   font-weight: 600;
-  color: #dfe1e6;
+  color: #6b6b6b;
+  width: 150px;
+  font-family: "__Inter_9c9965", "__Inter_Fallback_9c9965";
 }
 
 .buttons {
@@ -117,4 +123,19 @@
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
+}
+
+.endDate {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6b6b6b;
+}
+
+.iconEditDate {
+  position: absolute;
+  right: 90px;
+}
+
+.datePickerContainer {
+  position: relative;
 }

@@ -1,0 +1,69 @@
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 264px;
+  top: 0px;
+  align-items: center;
+  border-bottom: 1px solid #dfe1e6;
+  bottom: 0px;
+}
+
+.line {
+  height: 56px;
+  width: 5px;
+  background-color: #B3E8E5;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  border: 0px;
+  position: relative;
+  background: #ffffff;
+  color: #778494;
+}
+.button:hover {
+  font-weight: bold;
+  width: 100%;
+  height: 56px;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  background: #f4f5f7;
+  color:#3bacb6;
+}
+
+.highlight {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  border: 0px;
+  position: relative;
+  background: #f4f5f7;
+  color: #3bacb6;
+}
+
+.textfield {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.title {
+  color: #3bacb6;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.text {
+  margin-left: 15px;
+  font-weight: 700;
+}

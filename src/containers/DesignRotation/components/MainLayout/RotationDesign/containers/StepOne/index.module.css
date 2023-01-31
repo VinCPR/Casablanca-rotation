@@ -166,3 +166,38 @@
   display: flex;
   justify-content: center;
 }
+
+.dropdownButton {
+  cursor: pointer;
+  background-color: white;
+  text-align: left;
+  font-size: 12px;
+}
+
+.dropdownContainer {
+  position: relative;
+  margin-top: 24px;
+}
+
+.dropdown {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdownItem {
+  border-radius: 10px;
+  height: 47px;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 12px;
+  background-color: white;
+  border: none;
+  outline: none;
+  color: #898989;
+  font-weight: 600;
+}

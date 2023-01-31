@@ -22,12 +22,11 @@ export default function useSelectedComponents() {
     return total;
   }
 
-  function handleChange(event: any) {
-    const target = event.target as HTMLInputElement;
+  function handleChange(name: string, value: number) {
     setSelectedComponents((current) =>
       current.map((obj) => {
-        if (obj.name === target.id) {
-          return { ...obj, numOfWeeks: target.valueAsNumber };
+        if (obj.name === name) {
+          return { ...obj, numOfWeeks: value };
         }
         return obj;
       })

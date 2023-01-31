@@ -9,6 +9,7 @@ import IconEdit from "../../../../containers/DesignRotation/components/MainLayou
 import SmallIconEdit from "../../../../containers/DesignRotation/components/MainLayout/RotationDesign/containers/StepTwo/components/SmallIconEdit";
 import { AllServiceResponse } from "@/modules/utils/type";
 import getFacilityNames from "@/modules/utils/getFacilityNames";
+import cx from "classnames";
 
 type Props = {
   input: OptionSelector;
@@ -169,12 +170,12 @@ export default function BlockContainer({ input, data }: Props) {
                         )}
                       />
                       <input
+                        disabled={true}
                         style={{ height: 90 + "%", alignSelf: "center" }}
                         type="number"
                         id={obj.name}
                         value={obj.numOfWeeks}
-                        onChange={input.department.handleChange}
-                        className={styles.inputField}
+                        className={cx(styles.inputField, styles.disabled)}
                         min="0"
                         max={10 - input.department.totalNum + obj.numOfWeeks}
                       />
@@ -271,6 +272,7 @@ export default function BlockContainer({ input, data }: Props) {
                                     )}
                                   />
                                   <input
+                                    disabled={true}
                                     style={{
                                       height:
                                         Math.min(
@@ -295,10 +297,10 @@ export default function BlockContainer({ input, data }: Props) {
                                     type="number"
                                     id={obj.name}
                                     value={obj.numOfWeeks}
-                                    onChange={
-                                      input.hospital[index].handleChange
-                                    }
-                                    className={styles.inputField}
+                                    className={cx(
+                                      styles.inputField,
+                                      styles.disabled
+                                    )}
                                     min="0"
                                     max={
                                       input.department.selectedComponents[index]
@@ -487,11 +489,52 @@ export default function BlockContainer({ input, data }: Props) {
                                                   type="number"
                                                   id={obj.name}
                                                   value={obj.numOfWeeks}
-                                                  onChange={
+                                                  onChange={(e) => {
+                                                    const oldService =
+                                                      input.service[index1][
+                                                        index2
+                                                      ].selectedComponents[
+                                                        index3
+                                                      ].numOfWeeks;
+                                                    const newServiceWeeks =
+                                                      Number(e.target.value);
+                                                    const newHospitalWeeks =
+                                                      input.hospital[index1]
+                                                        .selectedComponents[
+                                                        index2
+                                                      ].numOfWeeks -
+                                                      oldService +
+                                                      newServiceWeeks;
+                                                    const newDepartmentWeeks =
+                                                      input.department
+                                                        .selectedComponents[
+                                                        index1
+                                                      ].numOfWeeks -
+                                                      oldService +
+                                                      newServiceWeeks;
+                                                    input.department.handleChange(
+                                                      input.department
+                                                        .selectedComponents[
+                                                        index1
+                                                      ].name,
+                                                      newDepartmentWeeks
+                                                    );
+                                                    input.hospital[
+                                                      index1
+                                                    ].handleChange(
+                                                      input.hospital[index1]
+                                                        .selectedComponents[
+                                                        index2
+                                                      ].name,
+                                                      newHospitalWeeks
+                                                    );
                                                     input.service[index1][
                                                       index2
-                                                    ].handleChange
-                                                  }
+                                                    ].handleChange(
+                                                      obj.name,
+                                                      newServiceWeeks
+                                                    );
+                                                  }}
                                                   className={styles.inputField}
                                                   min="0"
                                                   max={

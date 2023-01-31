@@ -36,6 +36,7 @@
   border: none;
 
   text-align: right;
+  background-color: white;
 }
 
 .deptContainer {
@@ -199,4 +200,8 @@
   border-radius: 1px;
   transition: all 0.25s ease;
   cursor: pointer;
+}
+
+.disabled {
+  background-color: rgb(231, 230, 230) !important;
 }
