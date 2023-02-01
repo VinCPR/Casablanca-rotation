@@ -1,0 +1,21 @@
+.header {
+  left: 264px;
+  padding-top: 50px;
+  position: relative;
+  color: #2f8f9d;
+  font-size: 40px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.content {
+  left: 264px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
