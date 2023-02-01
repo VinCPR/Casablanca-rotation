@@ -1,66 +1,52 @@
-/*Home.tsx CSS*/
-.Hero {
-  width: 100vw;
+.container {
+  height: 700px;
   display: flex;
+  max-width: 1440px;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.herodisplay {
-  position: relative;
-  margin: 10vh 0vw 0vh 10vw;
-  width: 40vw;
-}
-
-.herodisplay h1 {
+.leftContainer {
   display: flex;
   flex-direction: column;
-  font-size: 3rem;
-  text-align: left;
-}
-
-.herodisplay p {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-  font-size: 18px;
-  text-align: left;
-}
-
-.herodisplay button {
-  display: flex;
   justify-content: center;
-  margin-top: 4rem;
-  padding: 3px 28px;
-  height: 46px;
-  background: #3bacb6;
-  border-radius: 11px;
-  border: none;
-  font-style: Italic;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-  color: #ffffff;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 auto;
+  max-width: 40%;
 }
 
-.herodisplay Button:hover {
-  background: #22b8c6;
+.heading {
+  color: #3bacb6;
+  font-weight: 700;
+  font-size: 50px;
 }
 
-.ManImage {
-  position: relative;
-  margin-left: -30vw;
+.subHeading {
+  color: #3bacb6;
+  margin-top: 20px;
+  font-weight: 500;
 }
 
 .button {
-  cursor: pointer;
-  width: 150px;
-  flex-direction: column;
-  height: 40px;
-  font-weight: 500;
-  padding: 11px 28px;
-  border-radius: 12px;
+  margin-top: 20px;
+  padding: 15px;
+  width: 120px;
   font-size: 16px;
   border: none;
-  color: #fff;
-  background: #3bacb6;
-  transition: all 0.25s ease;
+  outline: none;
+  color: white;
+  background-color: #3bacb6;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.rightContainer {
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.img {
+  margin-right: 500px;
 }

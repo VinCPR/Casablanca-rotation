@@ -3,22 +3,24 @@ import styles from "./index.module.css";
 import Image from "next/image";
 export default function Home() {
   return (
-    <div className={styles.Hero}>
-      <div className={styles.herodisplay}>
-        <h1> Don’t be patient for clinical rotation any longer</h1>
-        <p>
-          {" "}
+    <div className={styles.container}>
+      <div className={styles.leftContainer}>
+        <div className={styles.heading}>
+          Don&apos;t be patient for clinical rotation any longer
+        </div>
+        <div className={styles.subHeading}>
           Design clinical rotations for your institution easily in just a few
-          steps.{" "}
-        </p>
+          steps.
+        </div>
         <button onClick={() => router.push("/login")} className={styles.button}>
           Get Started
         </button>
       </div>
-      <div className={styles.ManImage}>
+      <div className={styles.rightContainer}>
         <Image
-          src="/images/handsome-guy.png"
-          alt="handsome-guy"
+          className={styles.img}
+          src="/images/figure.png"
+          alt="figure"
           width={1115}
           height={720}
         />
