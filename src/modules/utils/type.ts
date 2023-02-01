@@ -69,3 +69,14 @@ export type CalendarEvent = {
   event_id: string;
   group_name: string;
 };
+
+export type EventDetail = {
+  group_name: string;
+  specialty_name: string;
+  hospital_name: string;
+  service_name: string;
+  start_date: string;
+  end_date: string;
+  students: StudentInfo[];
+  attendings: AttendingInfo[];
+} 

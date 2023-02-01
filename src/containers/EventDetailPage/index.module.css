@@ -1,0 +1,52 @@
+.mainContainer {
+  left: 264px;
+  width: calc(100vw - 284px);
+  height: 100vh;
+  position: relative;
+  padding-left: 80px;
+  padding-top: 30px;
+}
+
+.header {
+  color: #2f8f9d;
+  font-size: 40px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  width: calc(100vw - 384px);
+}
+
+.header:first-of-type{
+  margin-top: 0px;
+}
+
+.eventInfoContainer{
+  display: grid;
+  grid-template-columns: 1.4fr 2fr 0.8fr;
+  background: #b3e8e5;
+  border-radius: 12px;
+  border: 4px solid #3bacb6;
+  margin-right: 20px;
+  padding: 15px;
+  row-gap: 5px;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.boldInfo {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.eventInfo{
+  margin-left: 2px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
