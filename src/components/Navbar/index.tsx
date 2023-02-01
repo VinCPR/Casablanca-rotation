@@ -3,7 +3,7 @@ import Image from "next/image";
 import router from "next/router";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function NavBar() {
   const [isLogin, setIsLogin] = useState(false);
   const [name, setName] = useState("");
   async function onClickLogout() {

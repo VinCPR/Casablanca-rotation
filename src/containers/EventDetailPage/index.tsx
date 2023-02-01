@@ -4,9 +4,10 @@ import useSWR from "swr";
 import styles from "./index.module.css";
 import Table from "../../components/Table";
 import ArrowBack from "../DesignRotation/components/MainLayout/RotationDesign/components/ArrowBack";
+import { useState } from "react";
 
 interface Props {
-  eventID: string;
+  eventID: string | string[] | undefined;
   onClickBack: () => void;
 }
 
@@ -19,6 +20,15 @@ export default function EventDetailsPage({ eventID, onClickBack }: Props) {
 
   const allStudents: StudentInfo[] = eventDetail?.students;
   const allAttendings: AttendingInfo[] = eventDetail?.attendings;
+  let heightAttending = 0;
+  let heightStudent = 0;
+  if (allAttendings) {
+    heightAttending = allAttendings.length;
+  }
+
+  if (allStudents) {
+    heightStudent = allStudents.length;
+  }
 
   const studentHeaderItems = [
     "Student ID",
@@ -67,13 +77,10 @@ export default function EventDetailsPage({ eventID, onClickBack }: Props) {
   return (
     <>
       <div className={styles.mainContainer}>
-          <button
-            onClick={onClickBack}
-            className={styles.backBtn}
-          >
-            <ArrowBack />
-            BACK
-          </button>
+        <button onClick={onClickBack} className={styles.backBtn}>
+          <ArrowBack />
+          BACK
+        </button>
         <div className={styles.header}>EVENT DETAILS</div>
         <div className={styles.eventInfoContainer}>
           <div className={styles.row}>
@@ -115,7 +122,7 @@ export default function EventDetailsPage({ eventID, onClickBack }: Props) {
           gridTemplateCol={gridTemplateCol}
           showDetails={true}
           detailsRoute={"/faculty-list/profile/"}
-          height={60}
+          height={heightAttending * 5.5 + 15.2}
         />
         <div className={styles.header}>STUDENT LIST</div>
         <Table
@@ -125,7 +132,7 @@ export default function EventDetailsPage({ eventID, onClickBack }: Props) {
           gridTemplateCol={gridTemplateCol}
           showDetails={true}
           detailsRoute={"/student-view/student-profile/"}
-          height={60}
+          height={heightStudent * 5.5 + 15.2}
         />
       </div>
     </>

@@ -23,9 +23,9 @@ export default function RouteToRotationView() {
             <StyledCalendar
               onClickDay={(date: Date) => {
                 router.push(
-                  `rotation-plan/${moment(date).format(
-                    "MMM-Do-YY"
-                  )}/view-schedule`
+                  `rotation-plan/date-detail/${moment(date).format(
+                    "YYYY-MM-DD"
+                  )}`
                 );
               }}
               onChange={setValue}
