@@ -5,12 +5,24 @@ import SideBarStudent from "../../components/SideBarStudent";
 import httpGet from "@/modules/http/httpGet";
 import useSWR from "swr";
 import { CalendarEvent } from "@/modules/utils/type";
-import Table from "../../components/Table";
+import EventDetailsPage from "../EventDetailPage";
+import EventTable from "./containers/EventTable";
 
 export default function RouteToViewSchedule() {
-  let studentID: string | null = "V026";
-  if (typeof window !== "undefined") {
-    studentID = localStorage.getItem("id");
+  const [isDetailsView, setIsDetailsView] = React.useState(false);
+  const [studentID, setStudentID] = React.useState("V026");
+  const [eventID, setEventID] = React.useState("000");
+  React.useEffect(() => {
+    setStudentID(localStorage.getItem("id") as string);
+  }, []);
+
+  const handleDetailsClick = (eventID: string) => {
+    setEventID(eventID);
+    setIsDetailsView((prev) => !prev);
+  };
+
+  const onClickBack = () => {
+    setIsDetailsView((prev) => !prev);
   }
 
   const studentEventResponse = useSWR(
@@ -55,18 +67,23 @@ export default function RouteToViewSchedule() {
       <Navbar />
       <div style={{ position: "relative" }}>
         <SideBarStudent highlight={1} />
-        <div className={styles.scheduleContainer}>
-          <div className={styles.header}>ROTATION SCHEDULE</div>
-          <div className={styles.schedule}>
-            <Table
-              headerItems={headerItems}
-              data={studentEvent}
-              keys={keys}
-              gridTemplateCol={gridTemplateCol}
-              showDetails={true}
-            />
+        {!isDetailsView ? (
+          <div className={styles.scheduleContainer}>
+            <div className={styles.header}>ROTATION SCHEDULE</div>
+            <div className={styles.schedule}>
+              <EventTable
+                headerItems={headerItems}
+                data={studentEvent}
+                keys={keys}
+                gridTemplateCol={gridTemplateCol}
+                showDetails={true}
+                handleDetailsClick={handleDetailsClick}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <EventDetailsPage onClickBack={onClickBack} eventID={eventID} />
+        )}
       </div>
     </>
   );

@@ -11,19 +11,20 @@ interface Props {
   gridTemplateCol: number[];
   showDetails: boolean;
   keys: string[];
-  detailsRoute: string;
   height?: number;
+  handleDetailsClick: (eventID: string) => void;
 }
 
-export default function Table({
+export default function EventTable({
   headerItems,
   data,
   gridTemplateCol,
   showDetails,
   keys,
-  detailsRoute,
   height,
+  handleDetailsClick
 }: Props) {
+
   const router = useRouter();
 
   function getGridTemplateCol(
@@ -89,7 +90,7 @@ export default function Table({
                   {showDetails && (
                     <button
                       onClick={() =>
-                        {row.email ? router.push(detailsRoute + encodeURIComponent(row.email)) : router.push(detailsRoute as string)}
+                        {handleDetailsClick(row.event_id)}
                       }
                       className={styles.detailsBtn}
                     >
