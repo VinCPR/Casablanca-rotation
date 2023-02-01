@@ -43,7 +43,6 @@ export default function Table({
     }
     return output;
   }
-  console.log(data);
 
   return (
     <>
