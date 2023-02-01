@@ -9,6 +9,14 @@ import Navbar from "../../../src/components/Navbar";
 export default function RouteToViewSchedule() {
   const router = useRouter();
   const { date } = router.query;
+  function getDateFromISO(date: string | string[] | undefined) {
+    if (date?.includes("-") && typeof date === "string") {
+      let dates = date.split("T")[0].split("-");
+      return dates[2] + "/" + dates[1] + "/" + dates[0];
+    } else {
+      return date;
+    }
+  }
   return (
     <div>
       <Navbar />
@@ -21,7 +29,7 @@ export default function RouteToViewSchedule() {
           </button>
           <div className={styles.scheduleHeader}>ROTATION SCHEDULE</div>
           <div className={styles.scheduleDate}>
-            Date: {date != null ? (date as string).replaceAll("-", " ") : null}
+            Date: {getDateFromISO(date)}
           </div>
           <div className={styles.schedule}>
             <ScheduleContainer />

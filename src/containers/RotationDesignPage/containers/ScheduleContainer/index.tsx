@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import useSWR from "swr";
 import httpGet from "@/modules/http/httpGet";
-import { CalendarEvent } from "@/modules/utils/type";
 
 interface DateDetail {
   [key: string]: string;
@@ -14,17 +13,26 @@ export default function ScheduleContainer() {
   const { date } = router.query;
 
   const keys = ["specialty_name", "hospital_name", "service_name"];
-
+  function getDateFromISO(date: string | string[] | undefined) {
+    if (date?.includes("-") && typeof date === "string") {
+      let dates = date.split("T")[0].split("-");
+      return dates[2] + "/" + dates[1] + "/" + dates[0];
+    } else {
+      return date;
+    }
+  }
   const { data, error } = useSWR(
     `https://api.vincpr.com/v1/rotation/list/day?academicYearName=2023-2024%20MD%20Program&day=${date}`,
     httpGet
   );
+  console.log(data);
 
   if (error) return <div>An error has occured!</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data && data !== null) return <div>Loading...</div>;
+  if (data === null)
+    return <div>No schedule for day {getDateFromISO(date)}</div>;
 
   const dataResponse: DateDetail[] = data;
-  console.log(dataResponse);
 
   const headerItems = [
     "Group ID",
@@ -69,7 +77,11 @@ export default function ScheduleContainer() {
                 <button
                   className={styles.detailsBtn}
                   onClick={() =>
-                    router.push(`/rotation-plan/${date}/schedele-detail`)
+                    router.push(
+                      `/rotation-plan/schedule-detail/${row[
+                        "event_id"
+                      ].toString()}`
+                    )
                   }
                 >
                   Details
