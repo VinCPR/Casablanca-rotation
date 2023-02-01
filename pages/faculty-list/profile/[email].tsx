@@ -5,15 +5,26 @@ import SideBar from "../../../src/components/Sidebar";
 import { AttendingInfo } from "@/modules/utils/type";
 import { GetStaticPaths, GetStaticProps } from "next";
 import ViewAttendingDetail from "../../../src/containers/RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList/containers/ViewAttendingDetail";
+import SideBarStudent from "../../../src/components/SideBarStudent";
+import SideBarAttending from "../../../src/components/SideBarAttending";
 
 export default function RouteToViewFacultyProfile(props: {
   attending: AttendingInfo;
 }) {
+  const [role, setRole] = React.useState("");
+
+  React.useEffect(() => {
+    if (localStorage.getItem("role_name")) {
+      setRole(localStorage.getItem("role_name") as string);
+    }
+  }, []);
   return (
     <>
       <Navbar />
       <div style={{ position: "relative" }}>
-        <SideBar highlight={2} />
+        {role === "admin" && <SideBar highlight={2} />}
+        {role === "student" && <SideBarStudent highlight={2} />}
+        {role === "attending" && <SideBarAttending highlight={2} />}
         <div className={styles.profileContainer}>
           <ViewAttendingDetail data={props.attending} />
         </div>
