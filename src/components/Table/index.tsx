@@ -20,7 +20,7 @@ export default function Table({
   gridTemplateCol,
   showDetails,
   keys,
-  detailsRoute
+  detailsRoute,
 }: Props) {
   const router = useRouter();
 
@@ -41,6 +41,7 @@ export default function Table({
     }
     return output;
   }
+  console.log(data);
 
   return (
     <>
@@ -87,7 +88,9 @@ export default function Table({
                   {showDetails && (
                     <button
                       onClick={() =>
-                        router.push(detailsRoute + encodeURIComponent(row.email))
+                        router.push(
+                          detailsRoute + encodeURIComponent(row.email)
+                        )
                       }
                       className={styles.detailsBtn}
                     >

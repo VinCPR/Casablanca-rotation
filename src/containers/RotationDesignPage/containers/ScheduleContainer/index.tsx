@@ -1,69 +1,84 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import ViewStudentList from "./containers/ViewStudentList";
+import useSWR from "swr";
+import httpGet from "@/modules/http/httpGet";
+import { CalendarEvent } from "@/modules/utils/type";
+
+interface DateDetail {
+  [key: string]: string;
+}
 
 export default function ScheduleContainer() {
   const router = useRouter();
-  const [showContainer, setShowContainer] = React.useState(true);
-  const data = [
-    ["1", "1", "Vinmec", "Pediatrics", "Alice"],
-    ["2", "2", "Vinmec", "Neurology", "Bob"],
-    ["3", "3", "108 Hospital", "Surgery", "Carl"],
-    ["4", "4", "Vinmec", "Psychiatry", "David"],
-    ["5", "5", "Vinmec", "Internal Medicine", "Edgar"],
-    ["6", "6", "108 Hospital", "Internal Medicine", "Frank"],
-  ];
+  const { date } = router.query;
+
+  const keys = ["specialty_name", "hospital_name", "service_name"];
+
+  const { data, error } = useSWR(
+    `https://api.vincpr.com/v1/rotation/list/day?academicYearName=2023-2024%20MD%20Program&day=${date}`,
+    httpGet
+  );
+
+  if (error) return <div>An error has occured!</div>;
+  if (!data) return <div>Loading...</div>;
+
+  const dataResponse: DateDetail[] = data;
+  console.log(dataResponse);
 
   const headerItems = [
-    "Block ID",
     "Group ID",
-    "Hospital",
+    // "Start Date",
+    // "End Date",
     "Department",
-    "Faculty",
+    "Hospital",
+    "Service",
+    "Detail",
   ];
 
   return (
-    <>
-      {showContainer ? (
-        <div className={styles.container}>
-          <>
-            <div className={styles.header}>
-              {headerItems.map((value, index) => {
-                return (
-                  <div key={index} className={styles.headerItems}>
-                    {value}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className={styles.scheduleContainer}>
-              {data.map((row, index) => {
-                return (
-                  <div className={styles.rowContainer} key={index}>
-                    {row.map((value, index) => {
-                      return (
-                        <div className={styles.item} key={index}>
-                          {value}
-                        </div>
-                      );
-                    })}
-                    <button
-                      className={styles.detailsBtn}
-                      onClick={() => setShowContainer(false)}
-                    >
-                      Details
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </>
+    <div
+      className={styles.container}
+      style={{ height: dataResponse.length * 62 + 91 + "px" }}
+    >
+      <>
+        <div className={styles.header}>
+          {headerItems.map((value, index) => {
+            return (
+              <div key={index} className={styles.headerItems}>
+                {value}
+              </div>
+            );
+          })}
         </div>
-      ) : (
-        <ViewStudentList />
-      )}
-    </>
+
+        <div className={styles.scheduleContainer}>
+          {dataResponse?.map((row, index) => {
+            return (
+              <div className={styles.rowContainer} key={index}>
+                <div className={styles.item} key={index}>
+                  {index + 1}
+                </div>
+                {keys.map((value, index) => {
+                  return (
+                    <div className={styles.item} key={index}>
+                      {row[value]}
+                    </div>
+                  );
+                })}
+                <button
+                  className={styles.detailsBtn}
+                  onClick={() =>
+                    router.push(`/rotation-plan/${date}/schedele-detail`)
+                  }
+                >
+                  Details
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </>
+    </div>
   );
 }

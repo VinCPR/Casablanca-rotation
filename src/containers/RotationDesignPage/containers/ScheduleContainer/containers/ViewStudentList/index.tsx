@@ -12,7 +12,10 @@ export default function ViewStudentList() {
   const { date } = router.query;
   return (
     <>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{ height: data.length * 62 + 91 + "px" }}
+      >
         <>
           <div className={styles.header}>
             {headerItems.map((value, index) => {
@@ -37,9 +40,7 @@ export default function ViewStudentList() {
                   })}
                   <button
                     onClick={() =>
-                      router.push(
-                        `/rotation-plan/${date}/view-schedule/${row[0]}`
-                      )
+                      router.push(`/rotation-plan/${date}/profile/${row[0]}`)
                     }
                     className={styles.detailsBtn}
                   >

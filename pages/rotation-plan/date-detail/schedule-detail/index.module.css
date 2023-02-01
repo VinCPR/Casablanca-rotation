@@ -1,0 +1,46 @@
+.scheduleContainer {
+  left: 264px;
+  width: calc(100vw - 264px);
+  height: 100vh;
+  position: relative;
+  display: flex;
+}
+
+.backButton {
+  margin-top: 10px;
+  display: flex;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  color: #3bacb6;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.scheduleHeader {
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  font-weight: 800;
+  font-family: "Roboto";
+  font-size: 40px;
+  color: #2f8f9d;
+}
+
+.scheduleDate {
+  margin-top: 30px;
+  display: flex;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-size: 16px;
+  color: black;
+  right: 5%;
+}
+
+.schedule {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 120px;
+  margin-left: 10px;
+}
