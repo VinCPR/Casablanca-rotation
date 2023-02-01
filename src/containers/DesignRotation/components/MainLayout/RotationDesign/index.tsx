@@ -7,6 +7,7 @@ import useSWR from "swr";
 import httpGet from "@/modules/http/httpGet";
 import { AcademicCalendar, AllServiceResponse } from "@/modules/utils/type";
 import httpGetList from "@/modules/http/httpGetList";
+import LoadingScreen from "../../../../LoadingScreen";
 
 export default function RotationDesign() {
   const [currentStep, setCurrentStep] = React.useState(1);
@@ -122,7 +123,7 @@ export default function RotationDesign() {
           )}
         </div>
       ) : (
-        "Loading..."
+        <LoadingScreen/>
       )}
     </>
   );

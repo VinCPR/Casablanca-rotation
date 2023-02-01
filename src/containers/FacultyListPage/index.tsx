@@ -8,6 +8,7 @@ import httpGet from "@/modules/http/httpGet";
 import { useRouter } from "next/router";
 import SideBarStudent from "../../components/SideBarStudent";
 import RestrictedAccessPage from "../RestrictedAccessPage";
+import LoadingScreen from "../LoadingScreen";
 
 export default function FacultyListPage() {
   const [role, setRole] = React.useState("");
@@ -24,7 +25,7 @@ export default function FacultyListPage() {
   );
 
   if (error) return <div>An error has occured!</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <LoadingScreen/>;
 
   const headerItems = [
     "Attending ID",
