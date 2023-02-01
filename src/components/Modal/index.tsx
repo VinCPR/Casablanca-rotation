@@ -6,8 +6,12 @@ import { OptionSelector } from "./containers/BlockContainer/types";
 import { Department, Hospital, Rotation, Service } from "./types";
 import data from "./containers/BlockContainer/data";
 import httpGet from "@/modules/http/httpGet";
-import useSWR from 'swr';
-import { DepartmentInfo, HospitalInfo, ServiceInfo } from "@/modules/utils/type";
+import useSWR from "swr";
+import {
+  DepartmentInfo,
+  HospitalInfo,
+  ServiceInfo,
+} from "@/modules/utils/type";
 
 interface Props {
   children?: React.ReactNode;
@@ -60,7 +64,6 @@ export default function Modal({
   let allHospitals = hospitalArr?.map((obj) => obj.name);
   let allnonUniqueServices = serviceArr?.map((obj) => obj.name);
 
-
   // This function returns unique values of an array
   function unique(value: string, index: number, self: string[]) {
     return self.indexOf(value) === index;
@@ -68,19 +71,18 @@ export default function Modal({
 
   // Filter the unique values of all services
   let allServices = allnonUniqueServices?.filter(unique);
-  
 
   const colors = [
     "#18A0FB",
     "#b6453b",
     "#b6833b",
-    // "#7DABF8",
-    // "#9D7E2F",
+    "#7DABF8",
+    "#9D7E2F",
     "#9747FF",
     "#453BB6",
     "#FFA347",
-    // "#8c7df8",
-    // "#7de8f8",
+    "#8c7df8",
+    "#7de8f8",
     "#F46B6B",
   ];
 
@@ -323,7 +325,9 @@ export default function Modal({
                                     >
                                       <RotationCard
                                         background={
-                                          colors[allServices.indexOf(obj.name) % 7]
+                                          colors[
+                                            allServices.indexOf(obj.name) % 7
+                                          ]
                                         }
                                         label={obj.name}
                                         fontSize={Math.min(

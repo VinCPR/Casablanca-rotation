@@ -43,10 +43,11 @@ export default function Table({
     }
     return output;
   }
+  console.log(data);
 
   return (
     <>
-      <div style={{height: height + "%"}} className={styles.container}>
+      <div style={{ height: height + "%" }} className={styles.container}>
         <>
           <div
             style={{
@@ -88,9 +89,13 @@ export default function Table({
                   })}
                   {showDetails && (
                     <button
-                      onClick={() =>
-                        {row.email ? router.push(detailsRoute + encodeURIComponent(row.email)) : router.push(detailsRoute as string)}
-                      }
+                      onClick={() => {
+                        row.email
+                          ? router.push(
+                              detailsRoute + encodeURIComponent(row.email)
+                            )
+                          : router.push(detailsRoute as string);
+                      }}
                       className={styles.detailsBtn}
                     >
                       Details

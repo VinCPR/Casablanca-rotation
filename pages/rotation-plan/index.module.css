@@ -4,29 +4,31 @@
   height: 100vh;
   left: 264px;
   width: calc(100vw - 264px);
-  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .calendarHeader {
-  position: absolute;
-  top: 30px;
+  display: flex;
   font-weight: 800;
-
+  font-family: "Roboto";
   font-size: 40px;
-  color: #2f8f9d;
+  color: #3bacb6;
+  justify-content: center;
 }
 
 .calendarSubheader {
-  position: absolute;
-  top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 400;
-
+  font-family: "Roboto";
   font-size: 22px;
   color: #d9d9d9;
 }
 
 .calendar {
-  position: absolute;
-  top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

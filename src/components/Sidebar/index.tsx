@@ -10,7 +10,7 @@ type Props = {
   highlight: number;
 };
 
-export default function SideBar({ highlight }: Props) {
+export default function Sidebar({ highlight }: Props) {
   const [mouseEnter, setMouseEnter] = React.useState(0);
   return (
     <div className={styles.sideBarContainer}>
