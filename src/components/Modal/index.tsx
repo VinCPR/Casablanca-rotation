@@ -118,12 +118,6 @@ export default function Modal({
     const services = data?.service
       .map((value) => value.map((column) => column.selectedComponents).flat())
       .flat() as Service[];
-    const inputFormated = {
-      departments,
-      hospitals,
-      services,
-    };
-    const blockDesign = designRotation(inputFormated, numberOfGroup);
 
     setRotation(
       designRotation({ departments, hospitals, services }, numberOfGroup)
@@ -199,7 +193,11 @@ export default function Modal({
                   <div className={styles.actionsContainer}>
                     <button
                       className={styles.previewBtn}
-                      onClick={() => onclick()}
+                      onClick={() => {
+                        if (data?.department.totalNum !== blockDuration) {
+                          alert("Insufficient block duration");
+                        } else onclick();
+                      }}
                     >
                       Preview
                     </button>
@@ -357,13 +355,22 @@ export default function Modal({
                           Preview
                         </button>
                       ) : (
-                        <button
-                          style={{ marginTop: "15px" }}
-                          className={styles.closeBtn}
-                          onClick={() => onClickBack()}
-                        >
-                          Close
-                        </button>
+                        <div className={styles.buttonContainer}>
+                          <button
+                            style={{ marginTop: "15px" }}
+                            className={styles.backBtn}
+                            onClick={() => onClickBack()}
+                          >
+                            Back
+                          </button>
+                          <button
+                            style={{ marginTop: "15px" }}
+                            onClick={toggle}
+                            className={styles.closeBtn}
+                          >
+                            Close
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>

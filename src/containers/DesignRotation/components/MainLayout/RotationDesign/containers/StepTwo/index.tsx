@@ -64,6 +64,7 @@ export default function StepTwo({
   const [showPreview, setShowPreview] = React.useState<boolean[]>(
     Array.from({ length: 10 }, (_) => false)
   );
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const rangeNumOfBlock = Array.from(Array(numOfBlock).keys());
 
@@ -121,7 +122,10 @@ export default function StepTwo({
             <tr>
               <>
                 <td className={styles.text}>
-                  <div>Start Date</div>
+                  <div className={styles.startDateTitle}>
+                    <span>Start Date</span>
+                    <IconEditDate />
+                  </div>
                 </td>
 
                 {rangeNumOfBlock.map((key) => {
@@ -135,7 +139,6 @@ export default function StepTwo({
                             onChangeStartDate(date.valueOf(), key)
                           }
                         />
-                        <IconEditDate className={styles.iconEditDate} />
                       </div>
                     </td>
                   );
@@ -169,7 +172,12 @@ export default function StepTwo({
                     <div className={styles.background}>
                       <div
                         className={styles.blockButton}
-                        style={{ backgroundColor: colors[key] }}
+                        style={{
+                          backgroundColor:
+                            rotationDesign[key].length === 0
+                              ? "#8b8b8b"
+                              : colors[key],
+                        }}
                       >
                         {" "}
                         Block {key + 1}{" "}
@@ -225,7 +233,9 @@ export default function StepTwo({
           <button
             className={styles.generateButton}
             onClick={() => {
-              setIsGenerated(true);
+              if (rotationDesign.some((rotation) => rotation.length === 0)) {
+                alert("All the block design must be completed!");
+              } else setIsGenerated(true);
             }}
           >
             Generate
@@ -233,8 +243,10 @@ export default function StepTwo({
         ) : null}
         {isGenerated ? (
           <button
+            disabled={isSubmitted}
             className={styles.submitButton}
-            onClick={async () =>
+            onClick={async () => {
+              setIsSubmitted(true);
               httpPostSubmitRotation({
                 academicYearName: academicCalendar,
                 groupsPerBlock: numOfGroup,
@@ -242,8 +254,8 @@ export default function StepTwo({
                 weeksPerPeriod: durationOfBlock,
                 startDates: startDate,
                 rotation: rotationDesign,
-              })
-            }
+              });
+            }}
           >
             Submit
           </button>

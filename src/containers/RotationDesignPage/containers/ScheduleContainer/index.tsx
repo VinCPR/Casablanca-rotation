@@ -25,7 +25,6 @@ export default function ScheduleContainer() {
     `https://api.vincpr.com/v1/rotation/list/day?academicYearName=2023-2024%20MD%20Program&day=${date}`,
     httpGet
   );
-  console.log(data);
 
   if (error) return <div>An error has occured!</div>;
   if (!data && data !== null) return <div>Loading...</div>;

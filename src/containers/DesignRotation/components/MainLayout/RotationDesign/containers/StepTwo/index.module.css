@@ -92,6 +92,7 @@
 
 .datePickerContainer {
   display: flex;
+  justify-content: center;
 }
 
 .datePicker {
@@ -128,7 +129,6 @@
 .endDate {
   font-size: 16px;
   font-weight: 600;
-  color: #6b6b6b;
 }
 
 .iconEditDate {
@@ -136,6 +136,10 @@
   right: 90px;
 }
 
-.datePickerContainer {
-  position: relative;
+.startDateTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+  gap: 5px;
 }
