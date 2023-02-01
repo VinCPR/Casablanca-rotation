@@ -3,12 +3,14 @@ import httpGet from "@/modules/http/httpGet";
 import useSWR from "swr";
 import styles from "./index.module.css";
 import Table from "../../components/Table";
+import ArrowBack from "../DesignRotation/components/MainLayout/RotationDesign/components/ArrowBack";
 
 interface Props {
   eventID: string;
+  onClickBack: () => void;
 }
 
-export default function EventDetailsPage({ eventID }: Props) {
+export default function EventDetailsPage({ eventID, onClickBack }: Props) {
   const eventDetailResponse = useSWR(
     `https://api.vincpr.com/v1/rotation/detail?eventID=${eventID}`,
     httpGet
@@ -65,6 +67,13 @@ export default function EventDetailsPage({ eventID }: Props) {
   return (
     <>
       <div className={styles.mainContainer}>
+          <button
+            onClick={onClickBack}
+            className={styles.backBtn}
+          >
+            <ArrowBack />
+            BACK
+          </button>
         <div className={styles.header}>EVENT DETAILS</div>
         <div className={styles.eventInfoContainer}>
           <div className={styles.row}>

@@ -18,8 +18,12 @@ export default function RouteToViewSchedule() {
 
   const handleDetailsClick = (eventID: string) => {
     setEventID(eventID);
-    setIsDetailsView(true);
+    setIsDetailsView((prev) => !prev);
   };
+
+  const onClickBack = () => {
+    setIsDetailsView((prev) => !prev);
+  }
 
   const studentEventResponse = useSWR(
     `https://api.vincpr.com/v1/rotation/student?academicYearName=2023-2024%20MD%20Program&studentID=${studentID}`,
@@ -78,7 +82,7 @@ export default function RouteToViewSchedule() {
             </div>
           </div>
         ) : (
-          <EventDetailsPage eventID={eventID} />
+          <EventDetailsPage onClickBack={onClickBack} eventID={eventID} />
         )}
       </div>
     </>

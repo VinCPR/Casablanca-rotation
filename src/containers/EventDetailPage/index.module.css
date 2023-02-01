@@ -19,11 +19,22 @@
   width: calc(100vw - 384px);
 }
 
-.header:first-of-type{
+.header:first-of-type {
   margin-top: 0px;
 }
 
-.eventInfoContainer{
+.backBtn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  color: #3bacb6;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.eventInfoContainer {
   display: grid;
   grid-template-columns: 1.4fr 2fr 0.8fr;
   background: #b3e8e5;
@@ -34,7 +45,7 @@
   row-gap: 5px;
 }
 
-.row{
+.row {
   display: flex;
   flex-direction: row;
 }
@@ -44,9 +55,8 @@
   font-weight: 800;
 }
 
-.eventInfo{
+.eventInfo {
   margin-left: 2px;
   font-size: 16px;
   font-weight: 500;
 }
-

@@ -18,6 +18,10 @@ export default function RouteToViewSchedule() {
     setIsDetailsView(true);
   };
 
+  const onClickBack = () => {
+    setIsDetailsView((prev) => !prev);
+  }
+
   React.useEffect(() => {
     setAttendingID(localStorage.getItem("id") as string);
   }, []);
@@ -79,7 +83,7 @@ export default function RouteToViewSchedule() {
             </div>
           </div>
         ) : (
-          <EventDetailsPage eventID={eventID} />
+          <EventDetailsPage onClickBack={onClickBack} eventID={eventID} />
         )}
       </div>
     </>
