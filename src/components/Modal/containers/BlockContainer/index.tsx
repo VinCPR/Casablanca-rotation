@@ -151,8 +151,6 @@ export default function BlockContainer({
       : false;
   }
 
-  console.log(input);
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
