@@ -6,6 +6,7 @@ import Table from "../../components/Table";
 import useSWR from "swr";
 import httpGet from "@/modules/http/httpGet";
 import RestrictedAccessPage from "../RestrictedAccessPage";
+import LoadingScreen from "../LoadingScreen";
 
 export default function StudentListPage() {
   const [role, setRole] = React.useState("");
@@ -22,7 +23,7 @@ export default function StudentListPage() {
   );
 
   if (error) return <div>An error has occured!</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <LoadingScreen/>;
 
   const headerItems = [
     "Student ID",

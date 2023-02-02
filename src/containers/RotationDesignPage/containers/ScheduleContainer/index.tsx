@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import useSWR from "swr";
 import httpGet from "@/modules/http/httpGet";
+import LoadingScreen from "../../../LoadingScreen";
 
 interface DateDetail {
   [key: string]: string;
@@ -27,7 +28,7 @@ export default function ScheduleContainer() {
   );
 
   if (error) return <div>An error has occured!</div>;
-  if (!data && data !== null) return <div>Loading...</div>;
+  if (!data && data !== null) return <LoadingScreen/>;
   if (data === null)
     return <div>No schedule for day {getDateFromISO(date)}</div>;
 
