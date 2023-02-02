@@ -23,7 +23,7 @@ export default function RouteToViewStudentProfile(props: {
     <>
       <Navbar />
       <div style={{ position: "relative" }}>
-        {role === "admin" && <SideBar highlight={3} />}
+        {role === "admin" && <SideBar highlight={2} />}
         {role === "student" && <SideBarStudent highlight={2} />}
         {role === "attending" && <SideBarAttending highlight={2} />}
         <div className={styles.profileContainer}>

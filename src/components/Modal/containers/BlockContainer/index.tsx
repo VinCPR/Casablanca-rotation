@@ -253,11 +253,6 @@ export default function BlockContainer({
                         className={styles.addBtn}
                         onClick={() => onChangeHospitalSelector(index, true)}
                         key={index}
-                        style={{
-                          marginTop:
-                            95 / input.department.selectedComponents.length +
-                            "px",
-                        }}
                       >
                         +
                       </button>
@@ -417,15 +412,6 @@ export default function BlockContainer({
                                         )
                                       }
                                       key={index2}
-                                      style={{
-                                        marginTop:
-                                          50 /
-                                            input.department.selectedComponents
-                                              .length /
-                                            input.hospital[index1]
-                                              .selectedComponents.length +
-                                          "px",
-                                      }}
                                     >
                                       +
                                     </button>

@@ -14,9 +14,8 @@ export default function LoginPage() {
   const router = useRouter();
   async function onClickLogin() {
     await httpPostLogin({ email: email, password: password });
-    if (localStorage.getItem("role_name")) {
-      router.push(`/`);
-    }
+
+    router.push(`/`);
   }
 
   return (
