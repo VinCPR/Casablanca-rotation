@@ -3,15 +3,22 @@ import styles from "./index.module.css";
 import Navbar from "../../components/Navbar";
 import httpGet from "@/modules/http/httpGet";
 import useSWR from "swr";
-import { CalendarEvent } from "@/modules/utils/type";
+import { AcademicCalendar, CalendarEvent } from "@/modules/utils/type";
 import SideBarAttending from "../../components/SideBarAttending";
 import EventTable from "../PageStudentView/containers/EventTable";
 import EventDetailsPage from "../EventDetailPage";
+import cx from "classnames";
+import httpGetList from "@/modules/http/httpGetList";
+import { useEffect } from "react";
 
 export default function RouteToViewSchedule() {
   const [isDetailsView, setIsDetailsView] = React.useState(false);
   const [attendingID, setAttendingID] = React.useState("V026");
   const [eventID, setEventID] = React.useState("000");
+  const [academicCalendar, setAcademicCalendar] = React.useState(
+    "2023-2024 MD Program"
+  );
+  const [showDropdown, setShowDropdown] = React.useState(false);
 
   const handleDetailsClick = (eventID: string) => {
     setEventID(eventID);
@@ -20,14 +27,19 @@ export default function RouteToViewSchedule() {
 
   const onClickBack = () => {
     setIsDetailsView((prev) => !prev);
-  }
+  };
 
   React.useEffect(() => {
     setAttendingID(localStorage.getItem("id") as string);
   }, []);
 
+  const search = new URLSearchParams();
+  search.append("academicYearName", academicCalendar);
+  search.append("attendingID", attendingID);
+  console.log(search.toString());
+
   const attendingEventResponse = useSWR(
-    `https://api.vincpr.com/v1/rotation/attending?academicYearName=2023-2024%20MD%20Program&attendingID=${attendingID}`,
+    `https://api.vincpr.com/v1/rotation/attending?${search.toString()}`,
     httpGet
   );
   const attendingEvent: CalendarEvent[] = attendingEventResponse?.data;
@@ -40,6 +52,11 @@ export default function RouteToViewSchedule() {
       return date;
     }
   }
+  const academicCalendars = useSWR(
+    "https://api.vincpr.com/v1/academic_year/list",
+    httpGetList
+  );
+  const calendarData: AcademicCalendar = academicCalendars?.data;
 
   attendingEvent?.map((event: CalendarEvent) => {
     event.start_date = getDateFromISO(event.start_date);
@@ -71,6 +88,35 @@ export default function RouteToViewSchedule() {
         {!isDetailsView ? (
           <div className={styles.scheduleContainer}>
             <div className={styles.header}>ROTATION SCHEDULE</div>
+            <div className={styles.container}>
+              <div className={styles.dropdownContainer}>
+                <div className={styles.heading}>Select the academic year</div>
+                <button
+                  className={cx(styles.input, styles.dropdownButton)}
+                  onClick={() => setShowDropdown(!showDropdown)}
+                >
+                  {academicCalendar}
+                </button>
+                {showDropdown ? (
+                  <div className={styles.dropdown}>
+                    {calendarData.map((data, index) => {
+                      return (
+                        <button
+                          key={index}
+                          className={styles.dropdownItem}
+                          onClick={() => {
+                            setAcademicCalendar(data.name);
+                            setShowDropdown(!showDropdown);
+                          }}
+                        >
+                          {data.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </div>
+            </div>
             <div className={styles.schedule}>
               <EventTable
                 headerItems={headerItems}
