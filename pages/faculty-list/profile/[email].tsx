@@ -22,7 +22,7 @@ export default function RouteToViewFacultyProfile(props: {
     <>
       <Navbar />
       <div style={{ position: "relative" }}>
-        {role === "admin" && <SideBar highlight={2} />}
+        {role === "admin" && <SideBar highlight={4} />}
         {role === "student" && <SideBarStudent highlight={2} />}
         {role === "attending" && <SideBarAttending highlight={2} />}
         <div className={styles.profileContainer}>
