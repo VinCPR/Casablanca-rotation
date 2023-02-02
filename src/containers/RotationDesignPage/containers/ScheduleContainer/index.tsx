@@ -22,13 +22,19 @@ export default function ScheduleContainer() {
       return date;
     }
   }
+  const academicCalendar = localStorage.getItem("academic_calendar") as string;
+
+  const search = new URLSearchParams();
+  search.append("academicYearName", academicCalendar);
+  search.append("day", date as string);
+
   const { data, error } = useSWR(
-    `https://api.vincpr.com/v1/rotation/list/day?academicYearName=2023-2024%20MD%20Program&day=${date}`,
+    `https://api.vincpr.com/v1/rotation/list/day?${search.toString()}`,
     httpGet
   );
 
   if (error) return <div>An error has occured!</div>;
-  if (!data && data !== null) return <LoadingScreen/>;
+  if (!data && data !== null) return <LoadingScreen />;
   if (data === null)
     return <div>No schedule for day {getDateFromISO(date)}</div>;
 
