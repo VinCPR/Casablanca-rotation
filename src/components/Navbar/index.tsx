@@ -25,7 +25,7 @@ export default function NavBar() {
   return (
     <div className={styles.navbarContainer}>
       <Image
-        src="/images/Logo.png"
+        src="/images/Logo.jpg"
         alt="logo"
         width={45}
         height={45}

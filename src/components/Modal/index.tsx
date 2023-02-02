@@ -195,7 +195,7 @@ export default function Modal({
                       className={styles.previewBtn}
                       onClick={() => {
                         if (data?.department.totalNum !== blockDuration) {
-                          alert("Incorrect block duration");
+                          alert("Insufficient block duration");
                         } else onclick();
                       }}
                     >
