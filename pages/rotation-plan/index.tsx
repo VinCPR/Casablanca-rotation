@@ -10,6 +10,7 @@ import cx from "classnames";
 import { AcademicCalendar } from "@/modules/utils/type";
 import useSWR from "swr";
 import httpGetList from "@/modules/http/httpGetList";
+import Head from "next/head";
 
 export default function RouteToRotationView() {
   const [value, setValue] = useState(new Date());
@@ -51,6 +52,10 @@ export default function RouteToRotationView() {
 
   return (
     <>
+      <Head>
+        <title>Rotation Plan</title>
+        <meta property="og:title" content="Rotation Plan" key="title"></meta>
+      </Head>
       {role === "admin" && (
         <>
           <Navbar />

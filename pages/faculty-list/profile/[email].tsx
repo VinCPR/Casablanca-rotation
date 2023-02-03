@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import ViewAttendingDetail from "../../../src/containers/RotationDesignPage/containers/ScheduleContainer/containers/ViewStudentList/containers/ViewAttendingDetail";
 import SideBarStudent from "../../../src/components/SideBarStudent";
 import SideBarAttending from "../../../src/components/SideBarAttending";
+import Head from "next/head";
 
 export default function RouteToViewFacultyProfile(props: {
   attending: AttendingInfo;
@@ -20,9 +21,13 @@ export default function RouteToViewFacultyProfile(props: {
   }, []);
   return (
     <>
+      <Head>
+        <title>Profile</title>
+        <meta property="og:title" content="Profile" key="title"></meta>
+      </Head>
       <Navbar />
       <div style={{ position: "relative" }}>
-        {role === "admin" && <SideBar highlight={2} />}
+        {role === "admin" && <SideBar highlight={4} />}
         {role === "student" && <SideBarStudent highlight={2} />}
         {role === "attending" && <SideBarAttending highlight={2} />}
         <div className={styles.profileContainer}>
