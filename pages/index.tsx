@@ -11,7 +11,7 @@ export default function RouteToLandingPage() {
   }, []);
   return (
     <>
-      {!localStorage.getItem("role_name") && (
+      {!role && (
         <Head>
           <title>Casablanca Clinical Rotation</title>
           <meta
