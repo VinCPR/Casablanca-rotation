@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import LoginPage from "../../src/containers/LoginPage";
@@ -12,5 +13,13 @@ export default function RouteToLoginPage() {
       setIsLogin(false);
     }
   }, []);
-  return <>{!isLogin && <LoginPage />}</>;
+  return (
+    <>
+      <Head>
+        <title>Login Page</title>
+        <meta property="og:title" content="Login Page" key="title"></meta>
+      </Head>
+      {!isLogin && <LoginPage />}
+    </>
+  );
 }
