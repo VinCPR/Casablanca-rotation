@@ -7,6 +7,7 @@ import { StudentInfo } from "@/modules/utils/type";
 import { GetStaticPaths, GetStaticProps } from "next";
 import SideBarStudent from "../../../src/components/SideBarStudent";
 import SideBarAttending from "../../../src/components/SideBarAttending";
+import Head from "next/head";
 
 export default function RouteToViewStudentProfile(props: {
   student: StudentInfo;
@@ -21,9 +22,17 @@ export default function RouteToViewStudentProfile(props: {
 
   return (
     <>
+      <Head>
+        <title>Profile</title>
+        <meta
+          property="og:title"
+          content="Profile"
+          key="title"
+        ></meta>
+      </Head>
       <Navbar />
       <div style={{ position: "relative" }}>
-        {role === "admin" && <SideBar highlight={2} />}
+        {role === "admin" && <SideBar highlight={3} />}
         {role === "student" && <SideBarStudent highlight={2} />}
         {role === "attending" && <SideBarAttending highlight={2} />}
         <div className={styles.profileContainer}>
