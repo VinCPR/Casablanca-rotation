@@ -243,7 +243,6 @@ export default function StepTwo({
         ) : null}
         {isGenerated ? (
           <button
-            disabled={isSubmitted}
             className={styles.submitButton}
             onClick={async () => {
               setIsSubmitted(true);

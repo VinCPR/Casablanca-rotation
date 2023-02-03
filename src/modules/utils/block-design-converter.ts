@@ -27,12 +27,14 @@ export default function convertBlockDesign(blocks: Rotation[][]) {
           hospital_name: rotation.hospitals[i].name,
           services: tempArr,
         });
+        sumServices = 0;
         tempArr = [];
       }
       for (let i = 0; i < rotation.departments.length; i++) {
         while (
           curHospital < rotation.hospitals.length &&
-          sumHospitals + rotation.hospitals[curHospital].numOfWeeks
+          sumHospitals + rotation.hospitals[curHospital].numOfWeeks <=
+            rotation.departments[i].numOfWeeks
         ) {
           tempArr.push(hospitals[curHospital]);
           sumHospitals += rotation.hospitals[curHospital].numOfWeeks;
@@ -42,6 +44,7 @@ export default function convertBlockDesign(blocks: Rotation[][]) {
           specialty_name: rotation.departments[i].name,
           hospitals: tempArr,
         });
+        sumHospitals = 0;
         tempArr = [];
       }
       return departments;

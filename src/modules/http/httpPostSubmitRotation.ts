@@ -32,7 +32,8 @@ export default async function httpPostSubmitRotation({
       })),
       blocks: convertBlockDesign(rotation),
     };
-    await httpPostResetRotation("2023-2024 MD Program");
+    //console.log(data);
+    await httpPostResetRotation(academicYearName);
     await fetch("https://api.vincpr.com/v1/rotation/design", {
       method: "POST",
       headers: {

@@ -123,7 +123,7 @@ export default function RotationDesign() {
           )}
         </div>
       ) : (
-        <LoadingScreen/>
+        <LoadingScreen />
       )}
     </>
   );
