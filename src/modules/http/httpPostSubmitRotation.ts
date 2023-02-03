@@ -32,7 +32,6 @@ export default async function httpPostSubmitRotation({
       })),
       blocks: convertBlockDesign(rotation),
     };
-    //console.log(data);
     await httpPostResetRotation(academicYearName);
     await fetch("https://api.vincpr.com/v1/rotation/design", {
       method: "POST",

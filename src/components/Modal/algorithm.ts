@@ -219,3 +219,21 @@ export function designRotation(data: Rotation, x: number) {
   });
   return returnValue;
 }
+
+export function clean(
+  lists: Hospital[] | Department[] | Service[]
+): Hospital[] | Department[] | Service[] {
+  let res: typeof lists = [];
+  for (let i = 0; i < lists.length; i++) {
+    if (res.length == 0 || res[res.length - 1].name !== lists[i].name) {
+      const l = {
+        name: lists[i].name,
+        numOfWeeks: lists[i].numOfWeeks,
+      };
+      res.push(l);
+    } else {
+      res[res.length - 1].numOfWeeks += lists[i].numOfWeeks;
+    }
+  }
+  return res;
+}

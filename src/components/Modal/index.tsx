@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./index.module.css";
 import RotationCard from "./containers/RotationCard";
-import { designRotation } from "./algorithm";
+import { clean, designRotation } from "./algorithm";
 import { OptionSelector } from "./containers/BlockContainer/types";
 import { Department, Hospital, Rotation, Service } from "./types";
 import data from "./containers/BlockContainer/data";
@@ -54,6 +54,7 @@ export default function Modal({
   );
   const [isShowPreview, setIsShowPreview] = React.useState(showPreview);
   const [rotation, setRotation] = React.useState<Rotation[]>([]);
+  const [cleanRotation, setCleanRotation] = React.useState<Rotation[]>([]);
   const [isPreview, setIsPreview1] = React.useState(showPreview);
 
   const deptArr: DepartmentInfo[] = deptResponse?.data;
@@ -103,6 +104,15 @@ export default function Modal({
     const blockDesign = designRotation(inputFormated, numberOfGroup);
     onChangeRotationDesign(blockDesign);
     setRotation(blockDesign);
+    setCleanRotation(
+      blockDesign.map((rotation) => {
+        return {
+          departments: clean(rotation.departments),
+          hospitals: clean(rotation.hospitals),
+          services: clean(rotation.services),
+        };
+      })
+    );
   }
 
   function onClickBack() {
@@ -215,7 +225,7 @@ export default function Modal({
                 <div style={{ width: "1400px" }} className={styles.modal}>
                   <div className={styles.modalHeader}>{subHeading}</div>
                   <div className={styles.mainContentContainer}>
-                    {rotation.map((rotation, index) => {
+                    {cleanRotation.map((cRotation, index) => {
                       return (
                         <div key={index} className={styles.previewContainer}>
                           <div className={styles.text}>
@@ -238,12 +248,12 @@ export default function Modal({
                               <div
                                 style={{
                                   gridTemplateColumns: getGridTemplateCol(
-                                    rotation.departments
+                                    cRotation.departments
                                   ),
                                 }}
                                 className={styles.selectionContainer1}
                               >
-                                {rotation.departments.map((obj, index) => {
+                                {cRotation.departments.map((obj, index) => {
                                   return (
                                     <div
                                       style={{
@@ -273,12 +283,12 @@ export default function Modal({
                               <div
                                 style={{
                                   gridTemplateColumns: getGridTemplateCol(
-                                    rotation.hospitals
+                                    cRotation.hospitals
                                   ),
                                 }}
                                 className={styles.selectionContainer2}
                               >
-                                {rotation.hospitals.map((obj, index) => {
+                                {cRotation.hospitals.map((obj, index) => {
                                   return (
                                     <div
                                       style={{
@@ -306,12 +316,12 @@ export default function Modal({
                               <div
                                 style={{
                                   gridTemplateColumns: getGridTemplateCol(
-                                    rotation.services
+                                    cRotation.services
                                   ),
                                 }}
                                 className={styles.selectionContainer3}
                               >
-                                {rotation.services.map((obj, index) => {
+                                {cRotation.services.map((obj, index) => {
                                   return (
                                     <div
                                       style={{
